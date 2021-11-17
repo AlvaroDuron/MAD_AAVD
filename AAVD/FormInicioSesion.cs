@@ -16,24 +16,36 @@ namespace AAVD
         {
             InitializeComponent();
         }
-        private void btnIngresar_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            FormPantallaPrincipal fPrincipal = new FormPantallaPrincipal();
-            fPrincipal.Show();
-        }
         private void FormInicioSesion_Load(object sender, EventArgs e)
         {
             btnIngresar.Enabled = false;
             cbEmpleado.SelectedIndex = 0;
-       
-            if (Program.MAD_AAVD)
-            {
+        }
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            int selectedIndex = cbEmpleado.SelectedIndex;
 
-            }
-            else
+            switch (selectedIndex)
             {
-
+                case 0:
+                    {
+                        FormClientePrincipal fPrincipal = new FormClientePrincipal();
+                        fPrincipal.Show();
+                    }
+                    break;
+                case 1:
+                    {
+                        FormEmpleadoPrincipal fPrincipal = new FormEmpleadoPrincipal();
+                        fPrincipal.Show();
+                    }
+                    break;
+                case 2:
+                    {
+                        FormAdministradorPrincipal fPrincipal = new FormAdministradorPrincipal();
+                        fPrincipal.Show();
+                    }
+                    break;
             }
         }
         private void tbUsuario_TextChanged(object sender, EventArgs e)

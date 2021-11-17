@@ -148,27 +148,27 @@ namespace AAVD
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(553, 53);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 13);
+            this.label7.Size = new System.Drawing.Size(51, 13);
             this.label7.TabIndex = 10;
-            this.label7.Text = "Excedente:";
+            this.label7.Text = "Rango 3:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(382, 53);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.Size = new System.Drawing.Size(51, 13);
             this.label6.TabIndex = 9;
-            this.label6.Text = "Intermedio:";
+            this.label6.Text = "Rango 2:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(228, 53);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 13);
+            this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Basico:";
+            this.label5.Text = "Rango 1:";
             // 
             // label4
             // 

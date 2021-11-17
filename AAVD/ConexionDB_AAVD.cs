@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace AAVD
 {
-    class ConexionDB_AAVD
+    public class ConexionDB_AAVD
     {
         static private string _dbServer { set; get; }
         static private string _dbKeySpace { set; get; }

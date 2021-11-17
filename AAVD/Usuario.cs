@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AAVD
 {
-    class Usuario
+    public class Usuario
     {
         public string nombre { get; set; }
         public string contraseña { get; set; }

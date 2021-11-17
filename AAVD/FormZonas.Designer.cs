@@ -39,6 +39,8 @@ namespace AAVD
             this.label1 = new System.Windows.Forms.Label();
             this.tbMunicipio = new System.Windows.Forms.TextBox();
             this.btnRegresar = new System.Windows.Forms.Button();
+            this.numeroZona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.municipio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvZona)).BeginInit();
             this.gbZonas.SuspendLayout();
             this.SuspendLayout();
@@ -48,6 +50,9 @@ namespace AAVD
             this.dgvZona.AllowUserToAddRows = false;
             this.dgvZona.AllowUserToDeleteRows = false;
             this.dgvZona.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvZona.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.numeroZona,
+            this.municipio});
             this.dgvZona.Location = new System.Drawing.Point(376, 12);
             this.dgvZona.Name = "dgvZona";
             this.dgvZona.ReadOnly = true;
@@ -62,6 +67,7 @@ namespace AAVD
             this.btnEliminar.TabIndex = 10;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnModificar
             // 
@@ -81,6 +87,7 @@ namespace AAVD
             this.btnAgregar.TabIndex = 8;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // gbZonas
             // 
@@ -135,6 +142,21 @@ namespace AAVD
             this.btnRegresar.TabIndex = 12;
             this.btnRegresar.Text = "Regresar";
             this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            // 
+            // numeroZona
+            // 
+            this.numeroZona.DataPropertyName = "numeroZona";
+            this.numeroZona.HeaderText = "Zona";
+            this.numeroZona.Name = "numeroZona";
+            this.numeroZona.ReadOnly = true;
+            // 
+            // municipio
+            // 
+            this.municipio.DataPropertyName = "municipio";
+            this.municipio.HeaderText = "Municipio";
+            this.municipio.Name = "municipio";
+            this.municipio.ReadOnly = true;
             // 
             // FormZonas
             // 
@@ -149,6 +171,7 @@ namespace AAVD
             this.Controls.Add(this.gbZonas);
             this.Name = "FormZonas";
             this.Text = "Zonas";
+            this.Load += new System.EventHandler(this.FormZonas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvZona)).EndInit();
             this.gbZonas.ResumeLayout(false);
             this.gbZonas.PerformLayout();
@@ -168,5 +191,7 @@ namespace AAVD
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbMunicipio;
         private System.Windows.Forms.Button btnRegresar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numeroZona;
+        private System.Windows.Forms.DataGridViewTextBoxColumn municipio;
     }
 }

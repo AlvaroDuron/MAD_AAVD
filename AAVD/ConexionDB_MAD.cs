@@ -1,42 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
-using System.Data.SqlClient;
-using System.Configuration;
-using System.Windows.Forms;
+using System.Windows;
 
 namespace AAVD
 {
     public class ConexionDB_MAD
     {
-        static private string _aux { set; get; }
-        static private SqlConnection _conexion;
-        static private SqlDataAdapter _adaptador = new SqlDataAdapter();
-        static private SqlCommand _comandosql = new SqlCommand();
-        static private DataTable _tabla = new DataTable();
-        static private DataSet _DS = new DataSet();
+        static public SqlConnection con;
+        static public IDbConnection db;
 
-        public DataTable obtenertabla
+        static public void conectar()
         {
-            get
-            {
-                return _tabla;
-            }
+            db = new SqlConnection(ConfigurationManager.ConnectionStrings["HydroLAN"].ConnectionString);
+            if (db.State == ConnectionState.Closed)
+                db.Open();
         }
 
-        private static void conectar()
+        static public void desconectar()
         {
-            //string cnn = ConfigurationManager.AppSettings["desarrollo1"];
-            string cnn = ConfigurationManager.ConnectionStrings["HydroLAN"].ToString();
-            _conexion = new SqlConnection(cnn);
-            _conexion.Open();
-        }
-        private static void desconectar()
-        {
-            _conexion.Close();
+            db.Close();
         }
     }
 }

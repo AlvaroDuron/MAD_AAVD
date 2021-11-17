@@ -91,7 +91,8 @@ namespace AAVD
             this.cbEmpleado.FormattingEnabled = true;
             this.cbEmpleado.Items.AddRange(new object[] {
             "Empleado",
-            "Cliente"});
+            "Cliente",
+            "Administrador"});
             this.cbEmpleado.Location = new System.Drawing.Point(101, 64);
             this.cbEmpleado.Name = "cbEmpleado";
             this.cbEmpleado.Size = new System.Drawing.Size(156, 21);
