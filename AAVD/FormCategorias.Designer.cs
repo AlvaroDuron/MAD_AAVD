@@ -36,9 +36,9 @@ namespace AAVD
             this.tbCategoria = new System.Windows.Forms.TextBox();
             this.btnRegresar = new System.Windows.Forms.Button();
             this.dgvCategoria = new System.Windows.Forms.DataGridView();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbCategorias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).BeginInit();
             this.SuspendLayout();
@@ -90,50 +90,51 @@ namespace AAVD
             // 
             // btnRegresar
             // 
-            this.btnRegresar.Location = new System.Drawing.Point(274, 99);
+            this.btnRegresar.Location = new System.Drawing.Point(274, 57);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(75, 23);
             this.btnRegresar.TabIndex = 18;
             this.btnRegresar.Text = "Regresar";
             this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // dgvCategoria
             // 
             this.dgvCategoria.AllowUserToAddRows = false;
             this.dgvCategoria.AllowUserToDeleteRows = false;
             this.dgvCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCategoria.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Categoria,
+            this.Porcentaje});
             this.dgvCategoria.Location = new System.Drawing.Point(355, 12);
             this.dgvCategoria.Name = "dgvCategoria";
             this.dgvCategoria.ReadOnly = true;
             this.dgvCategoria.Size = new System.Drawing.Size(321, 158);
             this.dgvCategoria.TabIndex = 17;
             // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(274, 70);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 16;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(274, 41);
+            this.btnModificar.Location = new System.Drawing.Point(274, 28);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 15;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // btnAgregar
+            // Categoria
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(274, 12);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 14;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.Categoria.DataPropertyName = "Categoria";
+            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.Name = "Categoria";
+            this.Categoria.ReadOnly = true;
+            // 
+            // Porcentaje
+            // 
+            this.Porcentaje.DataPropertyName = "Porcentaje";
+            this.Porcentaje.HeaderText = "Porcentaje";
+            this.Porcentaje.Name = "Porcentaje";
+            this.Porcentaje.ReadOnly = true;
             // 
             // FormCategorias
             // 
@@ -143,11 +144,10 @@ namespace AAVD
             this.Controls.Add(this.gbCategorias);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.dgvCategoria);
-            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.btnAgregar);
             this.Name = "FormCategorias";
             this.Text = "Categorias";
+            this.Load += new System.EventHandler(this.FormCategorias_Load);
             this.gbCategorias.ResumeLayout(false);
             this.gbCategorias.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).EndInit();
@@ -164,8 +164,8 @@ namespace AAVD
         private System.Windows.Forms.TextBox tbCategoria;
         private System.Windows.Forms.Button btnRegresar;
         private System.Windows.Forms.DataGridView dgvCategoria;
-        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Porcentaje;
     }
 }

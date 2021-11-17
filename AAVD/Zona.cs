@@ -27,15 +27,22 @@ namespace AAVD
         //BD QUERY
         public static void LlenarDG(DataGridView dg)
         {
-            ConexionDB_MAD.conectar();
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
 
-            var data = ConexionDB_MAD.db.Query<Zona>("sp_ConsultarZonas",
-                new { },
-                commandType: CommandType.StoredProcedure);
+                var data = ConexionDB_MAD.db.Query<Zona>("sp_ConsultarZonas",
+                    new { },
+                    commandType: CommandType.StoredProcedure);
 
-            ConexionDB_MAD.desconectar();
+                ConexionDB_MAD.desconectar();
 
-            dg.DataSource = data.ToList();
+                dg.DataSource = data.ToList();
+            }
+            else
+            {
+
+            }
         }
         public static void Modifica(int numero, string municipio)
         {
@@ -43,7 +50,7 @@ namespace AAVD
             {
                 ConexionDB_MAD.conectar();
 
-                var data = ConexionDB_MAD.db.Query<Zona>("sp_ModificarZona",
+                ConexionDB_MAD.db.Query<Zona>("sp_ModificarZona",
                     new
                     {
                         @municipio = municipio,
@@ -56,7 +63,6 @@ namespace AAVD
             else
             {
 
-
             }
         }
         public static void Agrega(int numero, string municipio)
@@ -65,7 +71,7 @@ namespace AAVD
             {
                 ConexionDB_MAD.conectar();
 
-                var data = ConexionDB_MAD.db.Query<Zona>("sp_AgregarZona",
+                ConexionDB_MAD.db.Query<Zona>("sp_AgregarZona",
                     new 
                     { 
                         @municipio = municipio,
@@ -87,7 +93,7 @@ namespace AAVD
             {
                 ConexionDB_MAD.conectar();
 
-                var data = ConexionDB_MAD.db.Query<Zona>("sp_EliminarZona",
+                ConexionDB_MAD.db.Query<Zona>("sp_EliminarZona",
                     new
                     {
                         @municipio = municipio

@@ -16,5 +16,22 @@ namespace AAVD
         {
             InitializeComponent();
         }
+        private void FormCategorias_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+
+            FormCategorias_Load(sender, e);
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+
+            FormCategorias_Load(sender, e);
+        }
+
     }
 }

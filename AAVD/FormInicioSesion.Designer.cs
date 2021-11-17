@@ -90,8 +90,8 @@ namespace AAVD
             // 
             this.cbEmpleado.FormattingEnabled = true;
             this.cbEmpleado.Items.AddRange(new object[] {
-            "Empleado",
             "Cliente",
+            "Empleado",
             "Administrador"});
             this.cbEmpleado.Location = new System.Drawing.Point(101, 64);
             this.cbEmpleado.Name = "cbEmpleado";
@@ -146,7 +146,7 @@ namespace AAVD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(475, 266);
+            this.ClientSize = new System.Drawing.Size(378, 152);
             this.Controls.Add(this.cbAAVD);
             this.Controls.Add(this.cbMAD);
             this.Controls.Add(this.btnSalir);

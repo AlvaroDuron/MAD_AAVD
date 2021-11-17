@@ -56,7 +56,7 @@ namespace AAVD
             this.dgvZona.Location = new System.Drawing.Point(376, 12);
             this.dgvZona.Name = "dgvZona";
             this.dgvZona.ReadOnly = true;
-            this.dgvZona.Size = new System.Drawing.Size(321, 158);
+            this.dgvZona.Size = new System.Drawing.Size(247, 158);
             this.dgvZona.TabIndex = 11;
             // 
             // btnEliminar
@@ -162,7 +162,7 @@ namespace AAVD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 188);
+            this.ClientSize = new System.Drawing.Size(638, 188);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.dgvZona);
             this.Controls.Add(this.btnEliminar);

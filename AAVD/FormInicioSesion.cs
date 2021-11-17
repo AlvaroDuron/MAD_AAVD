@@ -23,29 +23,12 @@ namespace AAVD
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            this.Hide();
             int selectedIndex = cbEmpleado.SelectedIndex;
-
-            switch (selectedIndex)
+            bool log = Usuario.LogIn(tbUsuario.Text, tbContraseña.Text, selectedIndex);
+            if (log)
             {
-                case 0:
-                    {
-                        FormClientePrincipal fPrincipal = new FormClientePrincipal();
-                        fPrincipal.Show();
-                    }
-                    break;
-                case 1:
-                    {
-                        FormEmpleadoPrincipal fPrincipal = new FormEmpleadoPrincipal();
-                        fPrincipal.Show();
-                    }
-                    break;
-                case 2:
-                    {
-                        FormAdministradorPrincipal fPrincipal = new FormAdministradorPrincipal();
-                        fPrincipal.Show();
-                    }
-                    break;
+                this.Hide();
+                Program.VentanaPrincipal();
             }
         }
         private void tbUsuario_TextChanged(object sender, EventArgs e)

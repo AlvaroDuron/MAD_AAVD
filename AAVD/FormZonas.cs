@@ -54,7 +54,8 @@ namespace AAVD
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Program.VentanaPrincipal();
         }
     }
 }
