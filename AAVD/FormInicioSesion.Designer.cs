@@ -33,10 +33,12 @@ namespace AAVD
             this.tbUsuario = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbContraseña = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.cbEmpleado = new System.Windows.Forms.CheckBox();
+            this.cbMAD = new System.Windows.Forms.CheckBox();
+            this.cbAAVD = new System.Windows.Forms.CheckBox();
+            this.Debugtxt = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -71,56 +73,87 @@ namespace AAVD
             this.tbContraseña.Size = new System.Drawing.Size(156, 20);
             this.tbContraseña.TabIndex = 3;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 67);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Tipo de usuario:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(101, 64);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(156, 21);
-            this.comboBox1.TabIndex = 5;
-            // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(182, 91);
+            this.btnIngresar.Location = new System.Drawing.Point(182, 132);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(75, 23);
             this.btnIngresar.TabIndex = 6;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
+            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(101, 91);
+            this.button1.Location = new System.Drawing.Point(101, 132);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 7;
             this.button1.Text = "Ingresar";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // cbEmpleado
+            // 
+            this.cbEmpleado.AutoSize = true;
+            this.cbEmpleado.Location = new System.Drawing.Point(139, 85);
+            this.cbEmpleado.Name = "cbEmpleado";
+            this.cbEmpleado.Size = new System.Drawing.Size(73, 17);
+            this.cbEmpleado.TabIndex = 8;
+            this.cbEmpleado.Text = "Empleado";
+            this.cbEmpleado.UseVisualStyleBackColor = true;
+            this.cbEmpleado.Click += new System.EventHandler(this.cbEmpleado_Click);
+            // 
+            // cbMAD
+            // 
+            this.cbMAD.AutoSize = true;
+            this.cbMAD.Checked = true;
+            this.cbMAD.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbMAD.Location = new System.Drawing.Point(303, 15);
+            this.cbMAD.Name = "cbMAD";
+            this.cbMAD.Size = new System.Drawing.Size(50, 17);
+            this.cbMAD.TabIndex = 9;
+            this.cbMAD.Text = "MAD";
+            this.cbMAD.UseVisualStyleBackColor = true;
+            this.cbMAD.Click += new System.EventHandler(this.cbMAD_Click);
+            // 
+            // cbAAVD
+            // 
+            this.cbAAVD.AutoSize = true;
+            this.cbAAVD.Location = new System.Drawing.Point(303, 41);
+            this.cbAAVD.Name = "cbAAVD";
+            this.cbAAVD.Size = new System.Drawing.Size(55, 17);
+            this.cbAAVD.TabIndex = 10;
+            this.cbAAVD.Text = "AAVD";
+            this.cbAAVD.UseVisualStyleBackColor = true;
+            this.cbAAVD.Click += new System.EventHandler(this.cbAAVD_Click);
+            // 
+            // Debugtxt
+            // 
+            this.Debugtxt.AutoSize = true;
+            this.Debugtxt.Location = new System.Drawing.Point(31, 183);
+            this.Debugtxt.Name = "Debugtxt";
+            this.Debugtxt.Size = new System.Drawing.Size(40, 13);
+            this.Debugtxt.TabIndex = 11;
+            this.Debugtxt.Text = "debug:";
+            // 
             // FormInicioSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(268, 123);
+            this.ClientSize = new System.Drawing.Size(651, 293);
+            this.Controls.Add(this.Debugtxt);
+            this.Controls.Add(this.cbAAVD);
+            this.Controls.Add(this.cbMAD);
+            this.Controls.Add(this.cbEmpleado);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnIngresar);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.tbContraseña);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbUsuario);
             this.Controls.Add(this.label1);
             this.Name = "FormInicioSesion";
             this.Text = "Inicio de sesion";
+            this.Load += new System.EventHandler(this.FormInicioSesion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,10 +165,12 @@ namespace AAVD
         private System.Windows.Forms.TextBox tbUsuario;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbContraseña;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox cbEmpleado;
+        private System.Windows.Forms.CheckBox cbMAD;
+        private System.Windows.Forms.CheckBox cbAAVD;
+        private System.Windows.Forms.Label Debugtxt;
     }
 }
 
