@@ -26,6 +26,15 @@ namespace AAVD
         {
             btnIngresar.Enabled = false;
             cbEmpleado.SelectedIndex = 0;
+       
+            if (Program.MAD_AAVD)
+            {
+
+            }
+            else
+            {
+
+            }
         }
         private void tbUsuario_TextChanged(object sender, EventArgs e)
         {
@@ -56,12 +65,16 @@ namespace AAVD
 
         private void cbMAD_Click(object sender, EventArgs e)
         {
-
+            cbMAD.Checked = true;
+            cbAAVD.Checked = false;
+            Program.MAD_AAVD = false;
         }
 
         private void cbAAVD_Click(object sender, EventArgs e)
         {
-
+            cbMAD.Checked = false;
+            cbAAVD.Checked = true;
+            Program.MAD_AAVD = true;
         }
     }
 }
