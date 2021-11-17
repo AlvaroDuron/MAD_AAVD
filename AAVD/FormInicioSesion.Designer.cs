@@ -34,9 +34,9 @@ namespace AAVD
             this.label2 = new System.Windows.Forms.Label();
             this.tbContraseña = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbEmpleado = new System.Windows.Forms.ComboBox();
             this.btnIngresar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -54,6 +54,8 @@ namespace AAVD
             this.tbUsuario.Name = "tbUsuario";
             this.tbUsuario.Size = new System.Drawing.Size(156, 20);
             this.tbUsuario.TabIndex = 1;
+            this.tbUsuario.TextChanged += new System.EventHandler(this.tbUsuario_TextChanged);
+            this.tbUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbUsuario_KeyPress);
             // 
             // label2
             // 
@@ -70,6 +72,8 @@ namespace AAVD
             this.tbContraseña.Name = "tbContraseña";
             this.tbContraseña.Size = new System.Drawing.Size(156, 20);
             this.tbContraseña.TabIndex = 3;
+            this.tbContraseña.TextChanged += new System.EventHandler(this.tbContraseña_TextChanged);
+            this.tbContraseña.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbContraseña_KeyPress);
             // 
             // label3
             // 
@@ -80,13 +84,16 @@ namespace AAVD
             this.label3.TabIndex = 4;
             this.label3.Text = "Tipo de usuario:";
             // 
-            // comboBox1
+            // cbEmpleado
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(101, 64);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(156, 21);
-            this.comboBox1.TabIndex = 5;
+            this.cbEmpleado.FormattingEnabled = true;
+            this.cbEmpleado.Items.AddRange(new object[] {
+            "Empleado",
+            "Cliente"});
+            this.cbEmpleado.Location = new System.Drawing.Point(101, 64);
+            this.cbEmpleado.Name = "cbEmpleado";
+            this.cbEmpleado.Size = new System.Drawing.Size(156, 21);
+            this.cbEmpleado.TabIndex = 5;
             // 
             // btnIngresar
             // 
@@ -96,24 +103,26 @@ namespace AAVD
             this.btnIngresar.TabIndex = 6;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
+            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
-            // button1
+            // btnSalir
             // 
-            this.button1.Location = new System.Drawing.Point(101, 91);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Ingresar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSalir.Location = new System.Drawing.Point(101, 91);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 7;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // FormInicioSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(268, 123);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnIngresar);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbEmpleado);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbContraseña);
             this.Controls.Add(this.label2);
@@ -121,6 +130,7 @@ namespace AAVD
             this.Controls.Add(this.label1);
             this.Name = "FormInicioSesion";
             this.Text = "Inicio de sesion";
+            this.Load += new System.EventHandler(this.FormInicioSesion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,9 +143,9 @@ namespace AAVD
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbContraseña;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbEmpleado;
         private System.Windows.Forms.Button btnIngresar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSalir;
     }
 }
 

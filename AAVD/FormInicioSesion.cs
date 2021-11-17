@@ -16,5 +16,42 @@ namespace AAVD
         {
             InitializeComponent();
         }
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormPantallaPrincipal fPrincipal = new FormPantallaPrincipal();
+            fPrincipal.Show();
+        }
+        private void FormInicioSesion_Load(object sender, EventArgs e)
+        {
+            btnIngresar.Enabled = false;
+            cbEmpleado.SelectedIndex = 0;
+        }
+        private void tbUsuario_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbUsuario.Text) && !string.IsNullOrEmpty(tbContraseña.Text))
+                btnIngresar.Enabled = true;
+            else
+                btnIngresar.Enabled = false;
+        }
+        private void tbContraseña_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbUsuario.Text) && !string.IsNullOrEmpty(tbContraseña.Text))
+                btnIngresar.Enabled = true;
+            else
+                btnIngresar.Enabled = false;
+        }
+        private void tbUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = char.IsWhiteSpace(e.KeyChar);
+        }
+        private void tbContraseña_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = char.IsWhiteSpace(e.KeyChar);
+        }
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
