@@ -37,6 +37,8 @@ namespace AAVD
             this.cbEmpleado = new System.Windows.Forms.ComboBox();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.cbMAD = new System.Windows.Forms.CheckBox();
+            this.cbAAVD = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -115,11 +117,37 @@ namespace AAVD
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // cbMAD
+            // 
+            this.cbMAD.AutoSize = true;
+            this.cbMAD.Checked = true;
+            this.cbMAD.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbMAD.Location = new System.Drawing.Point(276, 15);
+            this.cbMAD.Name = "cbMAD";
+            this.cbMAD.Size = new System.Drawing.Size(50, 17);
+            this.cbMAD.TabIndex = 9;
+            this.cbMAD.Text = "MAD";
+            this.cbMAD.UseVisualStyleBackColor = true;
+            this.cbMAD.Click += new System.EventHandler(this.cbMAD_Click);
+            // 
+            // cbAAVD
+            // 
+            this.cbAAVD.AutoSize = true;
+            this.cbAAVD.Location = new System.Drawing.Point(276, 39);
+            this.cbAAVD.Name = "cbAAVD";
+            this.cbAAVD.Size = new System.Drawing.Size(55, 17);
+            this.cbAAVD.TabIndex = 10;
+            this.cbAAVD.Text = "AAVD";
+            this.cbAAVD.UseVisualStyleBackColor = true;
+            this.cbAAVD.Click += new System.EventHandler(this.cbAAVD_Click);
+            // 
             // FormInicioSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(268, 123);
+            this.ClientSize = new System.Drawing.Size(475, 266);
+            this.Controls.Add(this.cbAAVD);
+            this.Controls.Add(this.cbMAD);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.cbEmpleado);
@@ -146,6 +174,8 @@ namespace AAVD
         private System.Windows.Forms.ComboBox cbEmpleado;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.CheckBox cbMAD;
+        private System.Windows.Forms.CheckBox cbAAVD;
     }
 }
 

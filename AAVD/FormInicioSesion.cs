@@ -53,5 +53,15 @@ namespace AAVD
         {
             Application.Exit();
         }
+
+        private void cbMAD_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbAAVD_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
