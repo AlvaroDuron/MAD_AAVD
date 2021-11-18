@@ -37,8 +37,8 @@ namespace AAVD
             this.btnRegresar = new System.Windows.Forms.Button();
             this.dgvCategoria = new System.Windows.Forms.DataGridView();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbCategorias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).BeginInit();
             this.SuspendLayout();
@@ -104,12 +104,12 @@ namespace AAVD
             this.dgvCategoria.AllowUserToDeleteRows = false;
             this.dgvCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategoria.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Categoria,
-            this.Porcentaje});
+            this.categoria,
+            this.porcentaje});
             this.dgvCategoria.Location = new System.Drawing.Point(355, 12);
             this.dgvCategoria.Name = "dgvCategoria";
             this.dgvCategoria.ReadOnly = true;
-            this.dgvCategoria.Size = new System.Drawing.Size(321, 158);
+            this.dgvCategoria.Size = new System.Drawing.Size(263, 158);
             this.dgvCategoria.TabIndex = 17;
             // 
             // btnModificar
@@ -122,25 +122,25 @@ namespace AAVD
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // Categoria
+            // categoria
             // 
-            this.Categoria.DataPropertyName = "Categoria";
-            this.Categoria.HeaderText = "Categoria";
-            this.Categoria.Name = "Categoria";
-            this.Categoria.ReadOnly = true;
+            this.categoria.DataPropertyName = "categoria";
+            this.categoria.HeaderText = "Categoria";
+            this.categoria.Name = "categoria";
+            this.categoria.ReadOnly = true;
             // 
-            // Porcentaje
+            // porcentaje
             // 
-            this.Porcentaje.DataPropertyName = "Porcentaje";
-            this.Porcentaje.HeaderText = "Porcentaje";
-            this.Porcentaje.Name = "Porcentaje";
-            this.Porcentaje.ReadOnly = true;
+            this.porcentaje.DataPropertyName = "porcentaje";
+            this.porcentaje.HeaderText = "Porcentaje";
+            this.porcentaje.Name = "porcentaje";
+            this.porcentaje.ReadOnly = true;
             // 
             // FormCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 183);
+            this.ClientSize = new System.Drawing.Size(638, 183);
             this.Controls.Add(this.gbCategorias);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.dgvCategoria);
@@ -165,7 +165,7 @@ namespace AAVD
         private System.Windows.Forms.Button btnRegresar;
         private System.Windows.Forms.DataGridView dgvCategoria;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Porcentaje;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn porcentaje;
     }
 }

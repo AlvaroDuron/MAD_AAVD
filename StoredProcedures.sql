@@ -2,6 +2,13 @@ USE HydroLAN;
 use Proyecto;
 
 
+CREATE PROCEDURE sp_ModificarCategoria(@categoria char(1), @porcentaje decimal)
+AS
+BEGIN
+UPDATE Categoria SET porcentaje = @porcentaje WHERE categoria = @categoria;
+END
+GO
+
 CREATE PROCEDURE sp_ConsultarZonas
 AS
 BEGIN
@@ -30,5 +37,10 @@ DELETE Zona WHERE municipio = @municipio;
 END
 GO
 
-select * from Usuario;
+select * from Categoria;
 insert into Usuario(nombreUsuario, contraseña, empleadoCliente, intentos, estado) values('mohidan', 123, 1, 0, 0);
+insert into Usuario(nombreUsuario, contraseña, empleadoCliente, intentos, estado) values('aldana', 123, 2, 0, 0);
+
+insert into Categoria(categoria, porcentaje) values('A', 0.10);
+insert into Categoria(categoria, porcentaje) values('B', 0.15);
+insert into Categoria(categoria, porcentaje) values('C', 0.18);
