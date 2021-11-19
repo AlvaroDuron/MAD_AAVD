@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AAVD
 {
-    public partial class FormContratos : Form
+    public partial class FormGestionContratos : Form
     {
-        public FormContratos()
+        public FormGestionContratos()
         {
             InitializeComponent();
         }

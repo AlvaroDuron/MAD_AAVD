@@ -36,9 +36,9 @@ namespace AAVD
             this.tbCategoria = new System.Windows.Forms.TextBox();
             this.btnRegresar = new System.Windows.Forms.Button();
             this.dgvCategoria = new System.Windows.Forms.DataGridView();
-            this.btnModificar = new System.Windows.Forms.Button();
             this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.gbCategorias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).BeginInit();
             this.SuspendLayout();
@@ -109,18 +109,8 @@ namespace AAVD
             this.dgvCategoria.Location = new System.Drawing.Point(355, 12);
             this.dgvCategoria.Name = "dgvCategoria";
             this.dgvCategoria.ReadOnly = true;
-            this.dgvCategoria.Size = new System.Drawing.Size(263, 158);
+            this.dgvCategoria.Size = new System.Drawing.Size(317, 158);
             this.dgvCategoria.TabIndex = 17;
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Location = new System.Drawing.Point(274, 28);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 23);
-            this.btnModificar.TabIndex = 15;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // categoria
             // 
@@ -136,11 +126,21 @@ namespace AAVD
             this.porcentaje.Name = "porcentaje";
             this.porcentaje.ReadOnly = true;
             // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(274, 28);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.TabIndex = 15;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
             // FormCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(638, 183);
+            this.ClientSize = new System.Drawing.Size(704, 183);
             this.Controls.Add(this.gbCategorias);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.dgvCategoria);

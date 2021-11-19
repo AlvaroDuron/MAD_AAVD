@@ -194,6 +194,7 @@ namespace AAVD
             this.btnRegresar.TabIndex = 7;
             this.btnRegresar.Text = "Regresar";
             this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // FormParametros
             // 
@@ -208,6 +209,7 @@ namespace AAVD
             this.Controls.Add(this.gbParametros);
             this.Name = "FormParametros";
             this.Text = "Parametros";
+            this.Load += new System.EventHandler(this.FormParametros_Load);
             this.gbParametros.ResumeLayout(false);
             this.gbParametros.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvParametro)).EndInit();

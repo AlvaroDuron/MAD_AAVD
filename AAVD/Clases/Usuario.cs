@@ -21,7 +21,6 @@ namespace AAVD
         {
 
         }
-
         public Usuario(string nombre, string contraseña, byte empleado, byte intentos, byte estado)
         {
             this.nombreUsuario = nombre;
@@ -32,22 +31,34 @@ namespace AAVD
         }
 
         //BD QUERY
-        public static void Consulta()
+        public static Usuario Buscar(string nombreUsuario)
         {
+            Usuario temp = null;
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+                var data = ConexionDB_MAD.db.Query<Usuario>("sp_BuscarUsuario", new { @nombreUsuario = nombreUsuario }, commandType: CommandType.StoredProcedure);
+                temp = data.ToList()[0];
+                ConexionDB_MAD.desconectar();
+            }
+            else
+            {
 
+            }
+            return temp;
         }
-
-        public static void Modifica(Usuario usuario)
+        public static void Agregar(Usuario usuario)
         {
             if (Program.MAD_AAVD)
             {
                 ConexionDB_MAD.conectar();
 
-                ConexionDB_MAD.db.Query<Usuario>("sp_ModificarUsuario",
+                ConexionDB_MAD.db.Query<Usuario>("sp_AgregarUsuario",
                     new
                     {
                         @nombreUsuario = usuario.nombreUsuario,
                         @contraseña = usuario.contraseña,
+                        @empleadoCliente = usuario.empleadoCliente,
                         @intentos = usuario.intentos,
                         @estado = usuario.estado
                     },
@@ -59,20 +70,37 @@ namespace AAVD
             {
 
             }
-            
         }
-
-        public static void Agrega()
-        {
-
-        }
-
-        public static void Elimina(string usuario)
+        public static void Modificar(Usuario usuario)
         {
             if (Program.MAD_AAVD)
             {
                 ConexionDB_MAD.conectar();
-                ConexionDB_MAD.db.Query<Usuario>("sp_EliminarUsuario", new { @nombreUsuario = usuario }, commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.db.Query<Usuario>("sp_ModificarUsuario",
+                    new
+                    {
+                        @nombreUsuario = usuario.nombreUsuario,
+                        @contraseña = usuario.contraseña,
+                        @empleadoCliente = usuario.empleadoCliente,
+                        @intentos = usuario.intentos,
+                        @estado = usuario.estado
+                    },
+                    commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+            }
+            else
+            {
+
+            }            
+        }
+        public static void Eliminar(int id)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+                ConexionDB_MAD.db.Query<Usuario>("sp_EliminarUsuario", new { @idUsuario = id }, commandType: CommandType.StoredProcedure);
                 ConexionDB_MAD.desconectar();
             }
             else
@@ -81,6 +109,7 @@ namespace AAVD
             }
         }
 
+        //FORM PROCESOS
         public static bool LogIn(string usuario, string contraseña, int empleadoCliente)
         {
             bool log = false;
@@ -89,10 +118,9 @@ namespace AAVD
                 ConexionDB_MAD.conectar();
                 try
                 {
-                    var data = ConexionDB_MAD.db.Query<Usuario>("sp_BuscarUsuario", new { @nombreUsuario = usuario }, commandType: CommandType.StoredProcedure);
-                    Usuario vusuario = data.ToList()[0];
+                    Usuario vusuario = Buscar(usuario);
                     //List<Usuario> usuarios = data.ToList();
-                    if (vusuario.intentos < 5)
+                    if (vusuario.intentos < 3)
                     {
                         if (vusuario.contraseña == contraseña)
                         {
@@ -119,7 +147,7 @@ namespace AAVD
                         vusuario.estado = 3;
                         MessageBox.Show("La cuenta se ha suspendido por el momento.");
                     }
-                    Modifica(vusuario);
+                    Modificar(vusuario);
                 }
                 catch (Exception except)
                 {
@@ -131,10 +159,8 @@ namespace AAVD
             else
             {
 
-
             }
             return log;
         }
-
     } 
 }

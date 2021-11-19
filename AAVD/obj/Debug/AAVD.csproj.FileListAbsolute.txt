@@ -69,3 +69,6 @@ Z:\FCFM\AAVD\MAD_AAVD\AAVD\bin\Debug\Dapper.dll
 Z:\FCFM\AAVD\MAD_AAVD\AAVD\bin\Debug\System.Data.SqlClient.dll
 Z:\FCFM\AAVD\MAD_AAVD\AAVD\bin\Debug\Dapper.xml
 Z:\FCFM\AAVD\MAD_AAVD\AAVD\bin\Debug\System.Data.SqlClient.xml
+Z:\FCFM\AAVD\MAD_AAVD\AAVD\obj\Debug\AAVD.FormGestionContratos.resources
+Z:\FCFM\AAVD\MAD_AAVD\AAVD\obj\Debug\AAVD.FormEmpleados.resources
+Z:\FCFM\AAVD\MAD_AAVD\AAVD\obj\Debug\AAVD.FormClienteAlta.resources

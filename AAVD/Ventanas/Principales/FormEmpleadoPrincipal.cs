@@ -46,7 +46,7 @@ namespace AAVD
         private void bContratos_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FormContratos fPrincipal = new FormContratos();
+            FormGestionContratos fPrincipal = new FormGestionContratos();
             fPrincipal.Show();
         }
 

@@ -11,8 +11,8 @@ namespace AAVD
 {
     public class Categoria
     {
-        public char categoria;
-        public float porcentaje;
+        public char categoria { get; set; }
+        public float porcentaje { get; set; }
 
         public Categoria()
         {
@@ -24,6 +24,23 @@ namespace AAVD
             this.porcentaje = porcentaje;
         }
 
+        //BD QUERY
+        public static Categoria Buscar(string categoria)
+        {
+            Categoria temp = null;
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+                var data = ConexionDB_MAD.db.Query<Categoria>("sp_BuscarCategoria", new { @categoria = categoria }, commandType: CommandType.StoredProcedure);
+                temp = data.ToList()[0];
+                ConexionDB_MAD.desconectar();
+            }
+            else
+            {
+
+            }
+            return temp;
+        }
         public static void Modificar(char categoria, float porcentaje)
         {
             if (Program.MAD_AAVD)
@@ -45,6 +62,8 @@ namespace AAVD
 
             }
         }
+
+        //FORM METODOS
         public static void LlenarDG(DataGridView dg)
         {
             try
@@ -71,5 +90,6 @@ namespace AAVD
                 MessageBox.Show("Error:" + except);
             }
         }
+ 
     }
 }

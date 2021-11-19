@@ -158,6 +158,7 @@ namespace AAVD
             this.Controls.Add(this.tbUsuario);
             this.Controls.Add(this.label1);
             this.Name = "FormInicioSesion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de sesion";
             this.Load += new System.EventHandler(this.FormInicioSesion_Load);
             this.ResumeLayout(false);

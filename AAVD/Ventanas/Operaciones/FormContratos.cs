@@ -10,26 +10,26 @@ using System.Windows.Forms;
 
 namespace AAVD
 {
-    public partial class FormTarifas : Form
+    public partial class FormContratos : Form
     {
-        public FormTarifas()
+        public FormContratos()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void FormContratos_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void btnRegresar_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
+            this.Hide();
+            Program.VentanaPrincipal();
         }
     }
 }

@@ -16,5 +16,16 @@ namespace AAVD
         {
             InitializeComponent();
         }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Program.VentanaPrincipal();
+        }
+
+        private void FormParametros_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

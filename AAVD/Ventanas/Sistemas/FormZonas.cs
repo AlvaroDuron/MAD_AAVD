@@ -10,17 +10,18 @@ using System.Windows.Forms;
 
 namespace AAVD
 {
-    public partial class FormCategorias : Form
+    public partial class FormZonas : Form
     {
-        public FormCategorias()
+        public FormZonas()
         {
             InitializeComponent();
         }
-        private void FormCategorias_Load(object sender, EventArgs e)
+
+        private void FormZonas_Load(object sender, EventArgs e)
         {
             try
             {
-                Categoria.LlenarDG(dgvCategoria);
+                Zona.LlenarDG(dgvZona);
             }
             catch (Exception except)
             {
@@ -30,22 +31,31 @@ namespace AAVD
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            FormZonas_Load(sender, e);
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
             try
             {
-                Categoria.Modificar(char.Parse(tbCategoria.Text), int.Parse(tbPorcentaje.Text));
-            }
-            catch (Exception except)
+                Zona.Agregar(new Zona(int.Parse(tbNumeroZona.Text), tbMunicipio.Text));
+            } catch(Exception except)
             {
                 MessageBox.Show("Error: " + except.Message);
             }
-            FormCategorias_Load(sender, e);
+            FormZonas_Load(sender, e);
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Zona.Eliminar(tbMunicipio.Text);
+            FormZonas_Load(sender, e);
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Program.VentanaPrincipal();
-            FormCategorias_Load(sender, e);
         }
-
     }
 }

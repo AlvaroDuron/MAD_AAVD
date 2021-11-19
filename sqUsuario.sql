@@ -8,10 +8,10 @@ SELECT * FROM Usuario WHERE nombreUsuario = @nombreUsuario;
 END
 GO
 
-CREATE PROCEDURE sp_ModificarUsuario(@nombreUsuario varchar(100), @contraseña varchar(100), @intentos tinyint, @estado tinyint)
+CREATE PROCEDURE sp_ModificarUsuario(@nombreUsuario varchar(100), @contraseña varchar(100), @empleadoCliente tinyint, @intentos tinyint, @estado tinyint)
 AS
 BEGIN
-UPDATE Usuario SET contraseña = @contraseña, intentos = @intentos, estado = @estado WHERE nombreUsuario = @nombreUsuario;
+UPDATE Usuario SET contraseña = @contraseña, empleadoCliente = @empleadoCliente, intentos = @intentos, estado = @estado WHERE nombreUsuario = @nombreUsuario;
 END
 GO
 

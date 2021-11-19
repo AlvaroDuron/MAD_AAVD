@@ -1,7 +1,7 @@
 ﻿
 namespace AAVD
 {
-    partial class FormContratos
+    partial class FormGestionContratos
     {
         /// <summary>
         /// Required designer variable.

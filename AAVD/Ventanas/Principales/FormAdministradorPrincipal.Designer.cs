@@ -48,6 +48,7 @@ namespace AAVD
             this.bEmpleados = new System.Windows.Forms.Button();
             this.bParametros = new System.Windows.Forms.Button();
             this.bCerrar = new System.Windows.Forms.Button();
+            this.bCategorias = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.gDatos.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +65,7 @@ namespace AAVD
             this.mContratos});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(534, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(648, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -219,11 +220,22 @@ namespace AAVD
             this.bCerrar.UseVisualStyleBackColor = true;
             this.bCerrar.Click += new System.EventHandler(this.bCerrar_Click);
             // 
+            // bCategorias
+            // 
+            this.bCategorias.Location = new System.Drawing.Point(490, 177);
+            this.bCategorias.Name = "bCategorias";
+            this.bCategorias.Size = new System.Drawing.Size(100, 50);
+            this.bCategorias.TabIndex = 17;
+            this.bCategorias.Text = "Categorias";
+            this.bCategorias.UseVisualStyleBackColor = true;
+            this.bCategorias.Click += new System.EventHandler(this.bCategorias_Click);
+            // 
             // FormAdministradorPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 461);
+            this.ClientSize = new System.Drawing.Size(648, 461);
+            this.Controls.Add(this.bCategorias);
             this.Controls.Add(this.bCerrar);
             this.Controls.Add(this.bParametros);
             this.Controls.Add(this.bEmpleados);
@@ -268,5 +280,6 @@ namespace AAVD
         private System.Windows.Forms.Button bEmpleados;
         private System.Windows.Forms.Button bParametros;
         private System.Windows.Forms.Button bCerrar;
+        private System.Windows.Forms.Button bCategorias;
     }
 }

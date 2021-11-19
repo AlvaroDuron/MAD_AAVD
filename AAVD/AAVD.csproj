@@ -125,140 +125,171 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Categoria.cs" />
-    <Compile Include="Cliente.cs" />
-    <Compile Include="ConexionDB_AAVD.cs" />
-    <Compile Include="ConexionDB_MAD.cs" />
-    <Compile Include="Contrato.cs" />
-    <Compile Include="Empleado.cs" />
-    <Compile Include="FormAdministradorPrincipal.cs">
+    <Compile Include="Clases\Categoria.cs" />
+    <Compile Include="Clases\Cliente.cs" />
+    <Compile Include="Clases\ConexionDB_AAVD.cs" />
+    <Compile Include="Clases\ConexionDB_MAD.cs" />
+    <Compile Include="Clases\Consumo.cs" />
+    <Compile Include="Clases\Contrato.cs" />
+    <Compile Include="Clases\Empleado.cs" />
+    <Compile Include="Clases\Recibo.cs" />
+    <Compile Include="Clases\Tarifa.cs" />
+    <Compile Include="Clases\Domicilio.cs" />
+    <Compile Include="Ventanas\RHyCuentahabientes\FormClienteAlta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAdministradorPrincipal.Designer.cs">
+    <Compile Include="Ventanas\RHyCuentahabientes\FormClienteAlta.Designer.cs">
+      <DependentUpon>FormClienteAlta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Principales\FormAdministradorPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Principales\FormAdministradorPrincipal.Designer.cs">
       <DependentUpon>FormAdministradorPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCategorias.cs">
+    <Compile Include="Ventanas\Sistemas\FormCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCategorias.Designer.cs">
+    <Compile Include="Ventanas\Sistemas\FormCategorias.Designer.cs">
       <DependentUpon>FormCategorias.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCliente.cs">
+    <Compile Include="Ventanas\RHyCuentahabientes\FormCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCliente.designer.cs">
+    <Compile Include="Ventanas\RHyCuentahabientes\FormCliente.designer.cs">
       <DependentUpon>FormCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormClientePrincipal.cs">
+    <Compile Include="Ventanas\Principales\FormClientePrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormClientePrincipal.Designer.cs">
+    <Compile Include="Ventanas\Principales\FormClientePrincipal.Designer.cs">
       <DependentUpon>FormClientePrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormConsumoHistorico.cs">
+    <Compile Include="Ventanas\Operaciones\FormConsumoHistorico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormConsumoHistorico.Designer.cs">
+    <Compile Include="Ventanas\Operaciones\FormConsumoHistorico.Designer.cs">
       <DependentUpon>FormConsumoHistorico.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormConsumos.cs">
+    <Compile Include="Ventanas\Operaciones\FormConsumos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormConsumos.Designer.cs">
+    <Compile Include="Ventanas\Operaciones\FormConsumos.Designer.cs">
       <DependentUpon>FormConsumos.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormContratos.cs">
+    <Compile Include="Ventanas\Operaciones\FormContratos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormContratos.designer.cs">
+    <Compile Include="Ventanas\Operaciones\FormContratos.Designer.cs">
       <DependentUpon>FormContratos.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEmpleadoPrincipal.cs">
+    <Compile Include="Ventanas\RHyCuentahabientes\FormEmpleados.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEmpleadoPrincipal.Designer.cs">
+    <Compile Include="Ventanas\RHyCuentahabientes\FormEmpleados.Designer.cs">
+      <DependentUpon>FormEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Operaciones\FormGestionContratos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Operaciones\FormGestionContratos.designer.cs">
+      <DependentUpon>FormGestionContratos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Principales\FormEmpleadoPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Principales\FormEmpleadoPrincipal.Designer.cs">
       <DependentUpon>FormEmpleadoPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormInicioSesion.cs">
+    <Compile Include="Ventanas\Principales\FormInicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormInicioSesion.Designer.cs">
+    <Compile Include="Ventanas\Principales\FormInicioSesion.Designer.cs">
       <DependentUpon>FormInicioSesion.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormParametros.cs">
+    <Compile Include="Ventanas\Sistemas\FormParametros.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormParametros.Designer.cs">
+    <Compile Include="Ventanas\Sistemas\FormParametros.Designer.cs">
       <DependentUpon>FormParametros.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRecibos.cs">
+    <Compile Include="Ventanas\Operaciones\FormRecibos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormRecibos.Designer.cs">
+    <Compile Include="Ventanas\Operaciones\FormRecibos.Designer.cs">
       <DependentUpon>FormRecibos.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTarifas.cs">
+    <Compile Include="Ventanas\Sistemas\FormTarifas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTarifas.Designer.cs">
+    <Compile Include="Ventanas\Sistemas\FormTarifas.Designer.cs">
       <DependentUpon>FormTarifas.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTipoServicios.cs">
+    <Compile Include="Ventanas\Sistemas\FormTipoServicios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTipoServicios.Designer.cs">
+    <Compile Include="Ventanas\Sistemas\FormTipoServicios.Designer.cs">
       <DependentUpon>FormTipoServicios.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormZonas.cs">
+    <Compile Include="Ventanas\Sistemas\FormZonas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormZonas.Designer.cs">
+    <Compile Include="Ventanas\Sistemas\FormZonas.Designer.cs">
       <DependentUpon>FormZonas.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Usuario.cs" />
-    <Compile Include="Zona.cs" />
-    <EmbeddedResource Include="FormAdministradorPrincipal.resx">
+    <Compile Include="Clases\Usuario.cs" />
+    <Compile Include="Clases\Zona.cs" />
+    <EmbeddedResource Include="Ventanas\RHyCuentahabientes\FormClienteAlta.resx">
+      <DependentUpon>FormClienteAlta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Principales\FormAdministradorPrincipal.resx">
       <DependentUpon>FormAdministradorPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCategorias.resx">
+    <EmbeddedResource Include="Ventanas\Sistemas\FormCategorias.resx">
       <DependentUpon>FormCategorias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCliente.resx">
+    <EmbeddedResource Include="Ventanas\RHyCuentahabientes\FormCliente.resx">
       <DependentUpon>FormCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormClientePrincipal.resx">
+    <EmbeddedResource Include="Ventanas\Principales\FormClientePrincipal.resx">
       <DependentUpon>FormClientePrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormConsumoHistorico.resx">
+    <EmbeddedResource Include="Ventanas\Operaciones\FormConsumoHistorico.resx">
       <DependentUpon>FormConsumoHistorico.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormConsumos.resx">
+    <EmbeddedResource Include="Ventanas\Operaciones\FormConsumos.resx">
       <DependentUpon>FormConsumos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormContratos.resx">
+    <EmbeddedResource Include="Ventanas\Operaciones\FormContratos.resx">
       <DependentUpon>FormContratos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEmpleadoPrincipal.resx">
+    <EmbeddedResource Include="Ventanas\RHyCuentahabientes\FormEmpleados.resx">
+      <DependentUpon>FormEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Operaciones\FormGestionContratos.resx">
+      <DependentUpon>FormGestionContratos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Principales\FormEmpleadoPrincipal.resx">
       <DependentUpon>FormEmpleadoPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormInicioSesion.resx">
+    <EmbeddedResource Include="Ventanas\Principales\FormInicioSesion.resx">
       <DependentUpon>FormInicioSesion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormParametros.resx">
+    <EmbeddedResource Include="Ventanas\Sistemas\FormParametros.resx">
       <DependentUpon>FormParametros.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormRecibos.resx">
+    <EmbeddedResource Include="Ventanas\Operaciones\FormRecibos.resx">
       <DependentUpon>FormRecibos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTarifas.resx">
+    <EmbeddedResource Include="Ventanas\Sistemas\FormTarifas.resx">
       <DependentUpon>FormTarifas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTipoServicios.resx">
+    <EmbeddedResource Include="Ventanas\Sistemas\FormTipoServicios.resx">
       <DependentUpon>FormTipoServicios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormZonas.resx">
+    <EmbeddedResource Include="Ventanas\Sistemas\FormZonas.resx">
       <DependentUpon>FormZonas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -284,5 +315,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

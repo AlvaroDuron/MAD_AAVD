@@ -25,47 +25,23 @@ namespace AAVD
         }
 
         //BD QUERY
-        public static void LlenarDG(DataGridView dg)
+        public static Zona Buscar(string municipio)
         {
+            Zona temp = null;
             if (Program.MAD_AAVD)
             {
                 ConexionDB_MAD.conectar();
-
-                var data = ConexionDB_MAD.db.Query<Zona>("sp_ConsultarZonas",
-                    new { },
-                    commandType: CommandType.StoredProcedure);
-
-                ConexionDB_MAD.desconectar();
-
-                dg.DataSource = data.ToList();
-            }
-            else
-            {
-
-            }
-        }
-        public static void Modifica(int numero, string municipio)
-        {
-            if (Program.MAD_AAVD)
-            {
-                ConexionDB_MAD.conectar();
-
-                ConexionDB_MAD.db.Query<Zona>("sp_ModificarZona",
-                    new
-                    {
-                        @municipio = municipio,
-                        @numeroZona = numero
-                    },
-                    commandType: CommandType.StoredProcedure);
-
+                var data = ConexionDB_MAD.db.Query<Zona>("sp_BuscarZona", new { @municipio = municipio }, commandType: CommandType.StoredProcedure);
+                temp = data.ToList()[0];
                 ConexionDB_MAD.desconectar();
             }
             else
             {
 
             }
+            return temp;
         }
-        public static void Agrega(int numero, string municipio)
+        public static void Agregar(Zona zona)
         {
             if (Program.MAD_AAVD)
             {
@@ -74,8 +50,8 @@ namespace AAVD
                 ConexionDB_MAD.db.Query<Zona>("sp_AgregarZona",
                     new 
                     { 
-                        @municipio = municipio,
-                        @numeroZona = numero
+                        @municipio = zona.municipio,
+                        @numeroZona = zona.numeroZona
                     },
                     commandType: CommandType.StoredProcedure);
 
@@ -87,7 +63,28 @@ namespace AAVD
 
             }
         }
-        public static void Elimina(string municipio)
+        public static void Modificar(Zona zona)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+
+                ConexionDB_MAD.db.Query<Zona>("sp_ModificarZona",
+                    new
+                    {
+                        @municipio = zona.municipio,
+                        @numeroZona = zona.numeroZona
+                    },
+                    commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+            }
+            else
+            {
+
+            }
+        }
+        public static void Eliminar(string municipio)
         {
             if (Program.MAD_AAVD)
             {
@@ -108,17 +105,27 @@ namespace AAVD
 
             }
         }
-        //public static List<string> getMunicipios()
-        //{
-        //    ConexionDB_MAD.conectar();
 
-        //    var data = ConexionDB_MAD.db.Query<string>("sp_ObtenerMunicipios",
-        //        new { },
-        //        commandType: CommandType.StoredProcedure);
+        //FORM METODOS
+        public static void LlenarDG(DataGridView dg)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
 
-        //    ConexionDB_MAD.desconectar();
+                var data = ConexionDB_MAD.db.Query<Zona>("sp_ConsultarZonas",
+                    new { },
+                    commandType: CommandType.StoredProcedure);
 
-        //    return data.ToList();
-        //}
+                ConexionDB_MAD.desconectar();
+
+                dg.DataSource = data.ToList();
+            }
+            else
+            {
+
+            }
+        }
+
     }
 }

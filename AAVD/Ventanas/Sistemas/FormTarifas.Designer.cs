@@ -71,7 +71,6 @@ namespace AAVD
             this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Numero de zona:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // gbTarifas
             // 
@@ -210,7 +209,6 @@ namespace AAVD
             this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Año:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // cbNumeroZona
             // 
@@ -254,7 +252,6 @@ namespace AAVD
             this.btnEliminar.TabIndex = 5;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.button3_Click);
             // 
             // label9
             // 
@@ -333,6 +330,7 @@ namespace AAVD
             this.btnRegresar.TabIndex = 24;
             this.btnRegresar.Text = "Regresar";
             this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // FormTarifas
             // 
@@ -355,6 +353,7 @@ namespace AAVD
             this.Controls.Add(this.gbTarifas);
             this.Name = "FormTarifas";
             this.Text = "Tarifas";
+            this.Load += new System.EventHandler(this.FormTarifas_Load);
             this.gbTarifas.ResumeLayout(false);
             this.gbTarifas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTarifas)).EndInit();
