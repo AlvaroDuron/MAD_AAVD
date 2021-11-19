@@ -26,15 +26,22 @@ namespace AAVD
         {
             try
             {
+                Usuario usuario = null;
+                usuario.nombreUsuario = tbNombreUsuario.Text;
+                usuario.contraseña = tbContraseña.Text;
+                usuario.empleadoCliente = 0;
+                usuario.intentos = 0;
+                usuario.estado = 0;
                 ClienteFisico cliente = null;
-                cliente.usuario.nombreUsuario = tbNombreUsuario.Text;
-                cliente.usuario.contraseña = tbContraseña.Text;
+                cliente.nombreUsuario = usuario.nombreUsuario;
                 cliente.nombre = tbNombre.Text;
-                cliente.curp = tbCURP.Text;
-                //cliente.domicilio
+                cliente.apellidoPaterno = tbApellidoPaterno.Text;
+                cliente.apellidoMaterno = tbApellidoMaterno.Text;
                 cliente.email = tbEmail.Text;
-                //cliente.genero
+                cliente.curp = tbCURP.Text;
                 //cliente.nacimiento
+                //cliente.genero
+                Usuario.Agregar(usuario);
                 ClienteFisico.Agregar(cliente);
             }
             catch (Exception except)

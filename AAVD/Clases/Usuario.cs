@@ -68,7 +68,13 @@ namespace AAVD
             }
             else
             {
-
+                string query = string.Format(
+                    "INSERT INTO Usuario(nombreUsuario, contraseña, empleadoCliente, intentos, estado)" +
+                    "VALUES('{0}', '{1}', '{2}', '{3}', '{4}'); ",
+                    usuario.nombreUsuario, usuario.contraseña, usuario.empleadoCliente, usuario.intentos, usuario.estado
+                );
+                ConexionDB_AAVD.executeQuery(query);
+                MessageBox.Show("Se agregó el usuario correctamente a la base de datos.", "Exito");
             }
         }
         public static void Modificar(Usuario usuario)
@@ -92,7 +98,13 @@ namespace AAVD
             }
             else
             {
-
+                string query = string.Format(
+                    "UPDATE Usuario SET nombreUsuario = '{0}', contraseña = '{1}', empleadoCliente = '{2}', intentos = '{3}', estado = '{4}')" +
+                    "WHERE nombreUsuario = {0} if exists;",
+                    usuario.nombreUsuario, usuario.contraseña, usuario.empleadoCliente, usuario.intentos, usuario.estado
+                );
+                ConexionDB_AAVD.executeQuery(query);
+                MessageBox.Show("Se modificó el usuario correctamente a la base de datos.", "Exito");
             }            
         }
         public static void Eliminar(string nombreUsuario)
@@ -105,7 +117,12 @@ namespace AAVD
             }
             else
             {
-
+                string query = string.Format(
+                    "DELETE FROM Usuario WHERE nombreUsuario = {0} if exists;",
+                    nombreUsuario
+                    );
+                ConexionDB_AAVD.executeQuery(query);
+                MessageBox.Show("Se eliminó el usuario correctamente de la base de datos.", "Exito");
             }
         }
 
@@ -158,7 +175,15 @@ namespace AAVD
             }
             else
             {
+                try
+                {
+                    Usuario vusuario = Buscar(usuario);
 
+                }
+                catch(Exception except)
+                {
+
+                }
             }
             return log;
         }

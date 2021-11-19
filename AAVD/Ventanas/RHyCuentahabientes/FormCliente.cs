@@ -19,7 +19,14 @@ namespace AAVD
 
         private void FormCliente_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                ClienteFisico.LlenarDG(dgvClienteFisico);
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show("Error: " + except.Message);
+            }
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)

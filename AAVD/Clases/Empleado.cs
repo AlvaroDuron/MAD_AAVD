@@ -47,13 +47,13 @@ namespace AAVD
         }
 
         //BD QUERY
-        public static Empleado Buscar(string nombreEmpleado)
+        public static Empleado Buscar(int idEmpleado)
         {
             Empleado temp = null;
             if (Program.MAD_AAVD)
             {
                 ConexionDB_MAD.conectar();
-                var data = ConexionDB_MAD.db.Query<Empleado>("sp_BuscarEmpleado", new { @nombre = nombreEmpleado }, commandType: CommandType.StoredProcedure);
+                var data = ConexionDB_MAD.db.Query<Empleado>("sp_BuscarEmpleado", new { @idEmpleado = idEmpleado }, commandType: CommandType.StoredProcedure);
                 temp = data.ToList()[0];
                 ConexionDB_MAD.desconectar();
             }
@@ -61,8 +61,8 @@ namespace AAVD
             {
                 string query = string.Format(
                 "SELECT idEmpleado, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, numeroExterior, calle, colonia, municipio, genero, fechaAltaMod" +
-                "FROM Empleado WHERE nombre = '{0}' allow filtering;",
-                nombreEmpleado);
+                "FROM Empleado WHERE idEmpleado = '{0}' allow filtering;",
+                idEmpleado);
 
                 IMapper mapper = ConexionDB_AAVD.conexion();
                 IEnumerable<Empleado> data = mapper.Fetch<Empleado>(query);
@@ -116,7 +116,7 @@ namespace AAVD
                 ConexionDB_MAD.db.Query<Empleado>("sp_ModificarEmpleado",
                     new
                     {
-                        @idEmpleado = empleado.idEmpleado,
+                        //@idEmpleado = empleado.idEmpleado,
                         @nombreUsuario = empleado.nombreUsuario,
                         @nombre = empleado.nombre,
                         @apellidoPaterno = empleado.apellidoPaterno,
@@ -137,26 +137,26 @@ namespace AAVD
             {
                 string query = string.Format(
                     "UPDATE Empleado SET nombreUsuario = '{0}', nombre = '{1}', apellidoPaterno = '{2}', apellidoMaterno = '{3}', nacimiento = '{4}', numeroExterior = '{5}', calle = '{6}', colonia = '{7}', municipio = '{8}', genero = '{9}', fechaAltaMod = toUnixTimestamp(now())" +
-                    "WHERE id = {10} if exists;",
+                    "WHERE idEmpleado = {10} if exists;",
                     empleado.nombreUsuario, empleado.nombre, empleado.apellidoPaterno, empleado.apellidoMaterno, empleado.nacimiento, empleado.numeroExterior, empleado.calle, empleado.colonia, empleado.municipio, empleado.genero, empleado.idEmpleado
                 );
                 ConexionDB_AAVD.executeQuery(query);
                 MessageBox.Show("Se modificó el empleado correctamente a la base de datos.", "Exito");
             }
         }
-        public static void Eliminar(int id)
+        public static void Eliminar(int idEmpleado)
         {
             if (Program.MAD_AAVD)
             {
                 ConexionDB_MAD.conectar();
-                ConexionDB_MAD.db.Query<Empleado>("sp_EliminarEmpleado", new { @idEmpleado = id }, commandType: CommandType.StoredProcedure);
+                ConexionDB_MAD.db.Query<Empleado>("sp_EliminarEmpleado", new { @idEmpleado = idEmpleado }, commandType: CommandType.StoredProcedure);
                 ConexionDB_MAD.desconectar();
             }
             else
             {
                 string query = string.Format(
-                    "DELETE FROM Empleado WHERE id = {0} if exists;",
-                    id
+                    "DELETE FROM Empleado WHERE idEmpleado = {0} if exists;",
+                    idEmpleado
                     );
                 ConexionDB_AAVD.executeQuery(query);
                 MessageBox.Show("Se eliminó el empleado correctamente a la base de datos.", "Exito");
@@ -181,7 +181,7 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT idUsuario, idEmpleado, nombre, apellidoPaterno, apellidoMaterno, nacimiento, numeroExterior, calle, colonia, municipio, genero, fechaAltaMod" +
+                "SELECT idEmpleado, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, numeroExterior, calle, colonia, municipio, genero, fechaAltaMod" +
                 "FROM Empleado allow filtering;"
                 );
 
