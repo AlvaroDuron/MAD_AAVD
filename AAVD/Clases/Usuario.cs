@@ -21,9 +21,9 @@ namespace AAVD
         {
 
         }
-        public Usuario(string nombre, string contraseña, byte empleado, byte intentos, byte estado)
+        public Usuario(string nombreUsuario, string contraseña, byte empleado, byte intentos, byte estado)
         {
-            this.nombreUsuario = nombre;
+            this.nombreUsuario = nombreUsuario;
             this.contraseña = contraseña;
             this.empleadoCliente = empleado;
             this.intentos = intentos;
@@ -95,12 +95,12 @@ namespace AAVD
 
             }            
         }
-        public static void Eliminar(int id)
+        public static void Eliminar(string nombreUsuario)
         {
             if (Program.MAD_AAVD)
             {
                 ConexionDB_MAD.conectar();
-                ConexionDB_MAD.db.Query<Usuario>("sp_EliminarUsuario", new { @idUsuario = id }, commandType: CommandType.StoredProcedure);
+                ConexionDB_MAD.db.Query<Usuario>("sp_EliminarUsuario", new { @nombreUsuario = nombreUsuario }, commandType: CommandType.StoredProcedure);
                 ConexionDB_MAD.desconectar();
             }
             else

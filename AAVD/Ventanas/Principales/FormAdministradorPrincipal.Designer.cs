@@ -29,14 +29,6 @@ namespace AAVD
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.mClientes = new System.Windows.Forms.ToolStripMenuItem();
-            this.mEmpleados = new System.Windows.Forms.ToolStripMenuItem();
-            this.mReportes = new System.Windows.Forms.ToolStripMenuItem();
-            this.mRecibos = new System.Windows.Forms.ToolStripMenuItem();
-            this.mTarifas = new System.Windows.Forms.ToolStripMenuItem();
-            this.mConsumos = new System.Windows.Forms.ToolStripMenuItem();
-            this.mContratos = new System.Windows.Forms.ToolStripMenuItem();
             this.gDatos = new System.Windows.Forms.GroupBox();
             this.lNombre = new System.Windows.Forms.Label();
             this.bZonas = new System.Windows.Forms.Button();
@@ -49,67 +41,8 @@ namespace AAVD
             this.bParametros = new System.Windows.Forms.Button();
             this.bCerrar = new System.Windows.Forms.Button();
             this.bCategorias = new System.Windows.Forms.Button();
-            this.menuStrip1.SuspendLayout();
             this.gDatos.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mClientes,
-            this.mEmpleados,
-            this.mReportes,
-            this.mRecibos,
-            this.mTarifas,
-            this.mConsumos,
-            this.mContratos});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(648, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // mClientes
-            // 
-            this.mClientes.Name = "mClientes";
-            this.mClientes.Size = new System.Drawing.Size(61, 20);
-            this.mClientes.Text = "Clientes";
-            // 
-            // mEmpleados
-            // 
-            this.mEmpleados.Name = "mEmpleados";
-            this.mEmpleados.Size = new System.Drawing.Size(77, 20);
-            this.mEmpleados.Text = "Empleados";
-            // 
-            // mReportes
-            // 
-            this.mReportes.Name = "mReportes";
-            this.mReportes.Size = new System.Drawing.Size(65, 20);
-            this.mReportes.Text = "Reportes";
-            // 
-            // mRecibos
-            // 
-            this.mRecibos.Name = "mRecibos";
-            this.mRecibos.Size = new System.Drawing.Size(60, 20);
-            this.mRecibos.Text = "Recibos";
-            // 
-            // mTarifas
-            // 
-            this.mTarifas.Name = "mTarifas";
-            this.mTarifas.Size = new System.Drawing.Size(52, 20);
-            this.mTarifas.Text = "Tarifas";
-            // 
-            // mConsumos
-            // 
-            this.mConsumos.Name = "mConsumos";
-            this.mConsumos.Size = new System.Drawing.Size(76, 20);
-            this.mConsumos.Text = "Consumos";
-            // 
-            // mContratos
-            // 
-            this.mContratos.Name = "mContratos";
-            this.mContratos.Size = new System.Drawing.Size(71, 20);
-            this.mContratos.Text = "Contratos";
             // 
             // gDatos
             // 
@@ -142,7 +75,7 @@ namespace AAVD
             // 
             // bTarifas
             // 
-            this.bTarifas.Location = new System.Drawing.Point(348, 177);
+            this.bTarifas.Location = new System.Drawing.Point(197, 342);
             this.bTarifas.Name = "bTarifas";
             this.bTarifas.Size = new System.Drawing.Size(100, 50);
             this.bTarifas.TabIndex = 12;
@@ -152,7 +85,7 @@ namespace AAVD
             // 
             // bContratos
             // 
-            this.bContratos.Location = new System.Drawing.Point(197, 262);
+            this.bContratos.Location = new System.Drawing.Point(348, 177);
             this.bContratos.Name = "bContratos";
             this.bContratos.Size = new System.Drawing.Size(100, 50);
             this.bContratos.TabIndex = 11;
@@ -162,7 +95,7 @@ namespace AAVD
             // 
             // bConsumos
             // 
-            this.bConsumos.Location = new System.Drawing.Point(54, 262);
+            this.bConsumos.Location = new System.Drawing.Point(197, 262);
             this.bConsumos.Name = "bConsumos";
             this.bConsumos.Size = new System.Drawing.Size(100, 50);
             this.bConsumos.TabIndex = 10;
@@ -172,7 +105,7 @@ namespace AAVD
             // 
             // bReportes
             // 
-            this.bReportes.Location = new System.Drawing.Point(197, 177);
+            this.bReportes.Location = new System.Drawing.Point(348, 342);
             this.bReportes.Name = "bReportes";
             this.bReportes.Size = new System.Drawing.Size(100, 50);
             this.bReportes.TabIndex = 9;
@@ -182,7 +115,7 @@ namespace AAVD
             // 
             // bClientes
             // 
-            this.bClientes.Location = new System.Drawing.Point(54, 177);
+            this.bClientes.Location = new System.Drawing.Point(197, 177);
             this.bClientes.Name = "bClientes";
             this.bClientes.Size = new System.Drawing.Size(100, 50);
             this.bClientes.TabIndex = 8;
@@ -192,7 +125,7 @@ namespace AAVD
             // 
             // bEmpleados
             // 
-            this.bEmpleados.Location = new System.Drawing.Point(197, 342);
+            this.bEmpleados.Location = new System.Drawing.Point(57, 177);
             this.bEmpleados.Name = "bEmpleados";
             this.bEmpleados.Size = new System.Drawing.Size(100, 50);
             this.bEmpleados.TabIndex = 14;
@@ -212,7 +145,7 @@ namespace AAVD
             // 
             // bCerrar
             // 
-            this.bCerrar.Location = new System.Drawing.Point(348, 342);
+            this.bCerrar.Location = new System.Drawing.Point(483, 177);
             this.bCerrar.Name = "bCerrar";
             this.bCerrar.Size = new System.Drawing.Size(100, 50);
             this.bCerrar.TabIndex = 16;
@@ -222,7 +155,7 @@ namespace AAVD
             // 
             // bCategorias
             // 
-            this.bCategorias.Location = new System.Drawing.Point(490, 177);
+            this.bCategorias.Location = new System.Drawing.Point(57, 262);
             this.bCategorias.Name = "bCategorias";
             this.bCategorias.Size = new System.Drawing.Size(100, 50);
             this.bCategorias.TabIndex = 17;
@@ -243,32 +176,18 @@ namespace AAVD
             this.Controls.Add(this.gDatos);
             this.Controls.Add(this.bTarifas);
             this.Controls.Add(this.bContratos);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.bConsumos);
             this.Controls.Add(this.bClientes);
             this.Controls.Add(this.bReportes);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormAdministradorPrincipal";
             this.Text = "Administrador - Home";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.gDatos.ResumeLayout(false);
             this.gDatos.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem mClientes;
-        private System.Windows.Forms.ToolStripMenuItem mEmpleados;
-        private System.Windows.Forms.ToolStripMenuItem mReportes;
-        private System.Windows.Forms.ToolStripMenuItem mRecibos;
-        private System.Windows.Forms.ToolStripMenuItem mTarifas;
-        private System.Windows.Forms.ToolStripMenuItem mConsumos;
-        private System.Windows.Forms.ToolStripMenuItem mContratos;
         private System.Windows.Forms.GroupBox gDatos;
         private System.Windows.Forms.Label lNombre;
         private System.Windows.Forms.Button bZonas;

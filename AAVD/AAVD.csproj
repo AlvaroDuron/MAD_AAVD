@@ -135,11 +135,23 @@
     <Compile Include="Clases\Recibo.cs" />
     <Compile Include="Clases\Tarifa.cs" />
     <Compile Include="Clases\Domicilio.cs" />
-    <Compile Include="Ventanas\RHyCuentahabientes\FormClienteAlta.cs">
+    <Compile Include="FormEmpleadoAlta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventanas\RHyCuentahabientes\FormClienteAlta.Designer.cs">
-      <DependentUpon>FormClienteAlta.cs</DependentUpon>
+    <Compile Include="FormEmpleadoAlta.Designer.cs">
+      <DependentUpon>FormEmpleadoAlta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\RHyCuentahabientes\FormClienteMoralAlta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\RHyCuentahabientes\FormClienteMoralAlta.Designer.cs">
+      <DependentUpon>FormClienteMoralAlta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\RHyCuentahabientes\FormClienteFisicoAlta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\RHyCuentahabientes\FormClienteFisicoAlta.Designer.cs">
+      <DependentUpon>FormClienteFisicoAlta.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\Principales\FormAdministradorPrincipal.cs">
       <SubType>Form</SubType>
@@ -241,8 +253,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Clases\Zona.cs" />
-    <EmbeddedResource Include="Ventanas\RHyCuentahabientes\FormClienteAlta.resx">
-      <DependentUpon>FormClienteAlta.cs</DependentUpon>
+    <EmbeddedResource Include="FormEmpleadoAlta.resx">
+      <DependentUpon>FormEmpleadoAlta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\RHyCuentahabientes\FormClienteMoralAlta.resx">
+      <DependentUpon>FormClienteMoralAlta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\RHyCuentahabientes\FormClienteFisicoAlta.resx">
+      <DependentUpon>FormClienteFisicoAlta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Principales\FormAdministradorPrincipal.resx">
       <DependentUpon>FormAdministradorPrincipal.cs</DependentUpon>

@@ -37,17 +37,21 @@ namespace AAVD
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            FormEmpleadoAlta fPrincipal = new FormEmpleadoAlta();
+            fPrincipal.Show();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
 
+            FormEmpleados_Load(sender, e);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
 
+            FormEmpleados_Load(sender, e);
         }
     }
 }

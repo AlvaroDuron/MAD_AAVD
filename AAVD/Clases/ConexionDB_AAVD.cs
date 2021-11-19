@@ -1,39 +1,58 @@
-﻿using System;
+﻿using Cassandra;
+using Cassandra.Mapping;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Cassandra;
-using Cassandra.Mapping;
-using System.Configuration;
 using System.Windows.Forms;
+
 
 namespace AAVD
 {
-    public class ConexionDB_AAVD
+    class ConexionDB_AAVD
     {
-        static private string _dbServer { set; get; }
-        static private string _dbKeySpace { set; get; }
-        static private Cluster _cluster;
-        static private ISession _session;
+        static private string HostCQL { get; set; }
+        static private string keyspace { get; set; }
 
-        private static void conectar()
+        static private Cluster cluster;
+        static private ISession session;
+
+        static private ConexionDB_AAVD _instance = null;
+        private ConexionDB_AAVD()
         {
-            _dbServer = ConfigurationManager.AppSettings["Cluster"].ToString();
-            _dbKeySpace = ConfigurationManager.AppSettings["KeySpace"].ToString();
-
-            _cluster = Cluster.Builder().AddContactPoint(_dbServer).Build();
-            _session = _cluster.Connect(_dbKeySpace);
+            HostCQL = ConfigurationManager.AppSettings["HostCQL"].ToString();
+            keyspace = ConfigurationManager.AppSettings["KeySpace"].ToString();
+            cluster = Cluster.Builder().AddContactPoint(HostCQL).Build();
+        }
+        static public ConexionDB_AAVD getInstance()
+        {
+            if (_instance == null)
+            {
+                _instance = new ConexionDB_AAVD();
+            }
+            return _instance;
         }
 
-        private static void desconectar()
+        static public IMapper conexion()
         {
-            _cluster.Dispose();
+            session = cluster.Connect(keyspace);
+            IMapper mapper = new Mapper(session);
+            return mapper;
         }
 
-        public void Insertar()
+        static public void executeQuery(string query)
         {
-
+            session = cluster.Connect(keyspace);
+            session.Execute(query);
         }
+
+        //static public void pruebaConexion()
+        //{
+        //    string query = "select id, nick, pass, recordar, tipo from Administrador;";
+        //    IMapper mapper = conexion();
+        //    IEnumerable<Administrador> result = mapper.Fetch<Administrador>(query);
+        //    List<Administrador> admins = result.ToList();
+        //}
     }
 }

@@ -37,11 +37,17 @@ namespace AAVD
         {
 
         }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnAgregarMoral_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FormClienteAlta fPrincipal = new FormClienteAlta();
+            FormClienteMoralAlta fPrincipal = new FormClienteMoralAlta();
+            fPrincipal.Show();
+        }
+
+        private void btnAgregarFisico_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormClienteFisicoAlta fPrincipal = new FormClienteFisicoAlta();
             fPrincipal.Show();
         }
     }

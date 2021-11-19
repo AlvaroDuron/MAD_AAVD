@@ -40,7 +40,8 @@ namespace AAVD
             this.btnRegresar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnAgregarFisico = new System.Windows.Forms.Button();
+            this.btnAgregarMoral = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClienteFisico)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,7 +100,7 @@ namespace AAVD
             // 
             this.btnRegresar.Location = new System.Drawing.Point(778, 202);
             this.btnRegresar.Name = "btnRegresar";
-            this.btnRegresar.Size = new System.Drawing.Size(75, 23);
+            this.btnRegresar.Size = new System.Drawing.Size(130, 23);
             this.btnRegresar.TabIndex = 20;
             this.btnRegresar.Text = "Regresar";
             this.btnRegresar.UseVisualStyleBackColor = true;
@@ -109,7 +110,7 @@ namespace AAVD
             // 
             this.btnEliminar.Location = new System.Drawing.Point(778, 173);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.Size = new System.Drawing.Size(130, 23);
             this.btnEliminar.TabIndex = 19;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -119,31 +120,42 @@ namespace AAVD
             // 
             this.btnModificar.Location = new System.Drawing.Point(778, 144);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.Size = new System.Drawing.Size(130, 23);
             this.btnModificar.TabIndex = 18;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // btnAgregar
+            // btnAgregarFisico
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(778, 115);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 17;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnAgregarFisico.Location = new System.Drawing.Point(777, 85);
+            this.btnAgregarFisico.Name = "btnAgregarFisico";
+            this.btnAgregarFisico.Size = new System.Drawing.Size(131, 23);
+            this.btnAgregarFisico.TabIndex = 17;
+            this.btnAgregarFisico.Text = "Agregar Cliente Fisico";
+            this.btnAgregarFisico.UseVisualStyleBackColor = true;
+            this.btnAgregarFisico.Click += new System.EventHandler(this.btnAgregarFisico_Click);
+            // 
+            // btnAgregarMoral
+            // 
+            this.btnAgregarMoral.Location = new System.Drawing.Point(777, 114);
+            this.btnAgregarMoral.Name = "btnAgregarMoral";
+            this.btnAgregarMoral.Size = new System.Drawing.Size(131, 23);
+            this.btnAgregarMoral.TabIndex = 21;
+            this.btnAgregarMoral.Text = "Agregar Cliente Moral";
+            this.btnAgregarMoral.UseVisualStyleBackColor = true;
+            this.btnAgregarMoral.Click += new System.EventHandler(this.btnAgregarMoral_Click);
             // 
             // FormCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 384);
+            this.ClientSize = new System.Drawing.Size(920, 384);
+            this.Controls.Add(this.btnAgregarMoral);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.btnAgregarFisico);
             this.Controls.Add(this.dgvClienteFisico);
             this.Name = "FormCliente";
             this.Text = "Cliente";
@@ -166,6 +178,7 @@ namespace AAVD
         private System.Windows.Forms.Button btnRegresar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnAgregarFisico;
+        private System.Windows.Forms.Button btnAgregarMoral;
     }
 }
