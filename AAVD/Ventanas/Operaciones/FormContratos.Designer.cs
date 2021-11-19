@@ -29,32 +29,51 @@ namespace AAVD
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dgvContrato = new System.Windows.Forms.DataGridView();
+            this.tbCliente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.tbTipoServicio = new System.Windows.Forms.TextBox();
+            this.bEliminar = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.bModificar = new System.Windows.Forms.Button();
+            this.bAgregar = new System.Windows.Forms.Button();
+            this.numeroContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroMedidor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoServicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.municipio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.creacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContrato)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvContrato
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(27, 92);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(667, 249);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvContrato.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvContrato.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.numeroContrato,
+            this.numeroMedidor,
+            this.categoria,
+            this.tipoServicio,
+            this.estatus,
+            this.municipio,
+            this.domicilio,
+            this.creacion,
+            this.modificacion});
+            this.dgvContrato.Location = new System.Drawing.Point(27, 92);
+            this.dgvContrato.Name = "dgvContrato";
+            this.dgvContrato.Size = new System.Drawing.Size(667, 249);
+            this.dgvContrato.TabIndex = 0;
             // 
-            // textBox1
+            // tbCliente
             // 
-            this.textBox1.Location = new System.Drawing.Point(243, 44);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.tbCliente.Location = new System.Drawing.Point(243, 44);
+            this.tbCliente.Name = "tbCliente";
+            this.tbCliente.Size = new System.Drawing.Size(100, 20);
+            this.tbCliente.TabIndex = 1;
             // 
             // label1
             // 
@@ -74,22 +93,22 @@ namespace AAVD
             this.label2.TabIndex = 4;
             this.label2.Text = "Tipo de Servicio:";
             // 
-            // textBox2
+            // tbTipoServicio
             // 
-            this.textBox2.Location = new System.Drawing.Point(487, 44);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.tbTipoServicio.Location = new System.Drawing.Point(487, 44);
+            this.tbTipoServicio.Name = "tbTipoServicio";
+            this.tbTipoServicio.Size = new System.Drawing.Size(100, 20);
+            this.tbTipoServicio.TabIndex = 3;
+            this.tbTipoServicio.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // button1
+            // bEliminar
             // 
-            this.button1.Location = new System.Drawing.Point(714, 153);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Eliminar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bEliminar.Location = new System.Drawing.Point(714, 153);
+            this.bEliminar.Name = "bEliminar";
+            this.bEliminar.Size = new System.Drawing.Size(75, 23);
+            this.bEliminar.TabIndex = 5;
+            this.bEliminar.Text = "Eliminar";
+            this.bEliminar.UseVisualStyleBackColor = true;
             // 
             // btnRegresar
             // 
@@ -101,42 +120,96 @@ namespace AAVD
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
-            // button3
+            // bModificar
             // 
-            this.button3.Location = new System.Drawing.Point(714, 123);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Modificar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bModificar.Location = new System.Drawing.Point(714, 123);
+            this.bModificar.Name = "bModificar";
+            this.bModificar.Size = new System.Drawing.Size(75, 23);
+            this.bModificar.TabIndex = 8;
+            this.bModificar.Text = "Modificar";
+            this.bModificar.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // bAgregar
             // 
-            this.button4.Location = new System.Drawing.Point(714, 94);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Agregar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.bAgregar.Location = new System.Drawing.Point(714, 94);
+            this.bAgregar.Name = "bAgregar";
+            this.bAgregar.Size = new System.Drawing.Size(75, 23);
+            this.bAgregar.TabIndex = 7;
+            this.bAgregar.Text = "Agregar";
+            this.bAgregar.UseVisualStyleBackColor = true;
+            // 
+            // numeroContrato
+            // 
+            this.numeroContrato.DataPropertyName = "numeroContrato";
+            this.numeroContrato.HeaderText = "Numero de Contrato";
+            this.numeroContrato.Name = "numeroContrato";
+            // 
+            // numeroMedidor
+            // 
+            this.numeroMedidor.DataPropertyName = "numeroMedidor";
+            this.numeroMedidor.HeaderText = "Numero de Medidor";
+            this.numeroMedidor.Name = "numeroMedidor";
+            // 
+            // categoria
+            // 
+            this.categoria.DataPropertyName = "categoria";
+            this.categoria.HeaderText = "Categoria";
+            this.categoria.Name = "categoria";
+            // 
+            // tipoServicio
+            // 
+            this.tipoServicio.DataPropertyName = "tipoServicio";
+            this.tipoServicio.HeaderText = "Tipo de Servicio";
+            this.tipoServicio.Name = "tipoServicio";
+            // 
+            // estatus
+            // 
+            this.estatus.DataPropertyName = "estatus";
+            this.estatus.HeaderText = "Estado";
+            this.estatus.Name = "estatus";
+            // 
+            // municipio
+            // 
+            this.municipio.DataPropertyName = "municipio";
+            this.municipio.HeaderText = "Municipio";
+            this.municipio.Name = "municipio";
+            // 
+            // domicilio
+            // 
+            this.domicilio.DataPropertyName = "domicilio";
+            this.domicilio.HeaderText = "Domicilio";
+            this.domicilio.Name = "domicilio";
+            // 
+            // creacion
+            // 
+            this.creacion.DataPropertyName = "creacion";
+            this.creacion.HeaderText = "Fecha de Creacion";
+            this.creacion.Name = "creacion";
+            // 
+            // modificacion
+            // 
+            this.modificacion.DataPropertyName = "modificacion";
+            this.modificacion.HeaderText = "Fecha de Modificacion";
+            this.modificacion.Name = "modificacion";
             // 
             // FormContratos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(811, 367);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.bModificar);
+            this.Controls.Add(this.bAgregar);
             this.Controls.Add(this.btnRegresar);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bEliminar);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbTipoServicio);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.tbCliente);
+            this.Controls.Add(this.dgvContrato);
             this.Name = "FormContratos";
             this.Text = "Contratos";
             this.Load += new System.EventHandler(this.FormContratos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContrato)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,14 +217,23 @@ namespace AAVD
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridView dgvContrato;
+        private System.Windows.Forms.TextBox tbCliente;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox tbTipoServicio;
+        private System.Windows.Forms.Button bEliminar;
         private System.Windows.Forms.Button btnRegresar;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button bModificar;
+        private System.Windows.Forms.Button bAgregar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numeroContrato;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numeroMedidor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoServicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn municipio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn domicilio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn creacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn modificacion;
     }
 }

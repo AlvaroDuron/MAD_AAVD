@@ -60,16 +60,36 @@ namespace AAVD
 
         private void cbMAD_Click(object sender, EventArgs e)
         {
-            cbMAD.Checked = true;
-            cbAAVD.Checked = false;
-            Program.MAD_AAVD = false;
+            //cbMAD.Checked = true;
+            //cbAAVD.Checked = false;
+            //Program.MAD_AAVD = false;
+            if (cbMAD.Checked)
+            {
+                Program.MAD_AAVD = true;
+                cbAAVD.Checked = false;
+            }
+            else
+            {
+                Program.MAD_AAVD = false;
+                cbAAVD.Checked = true;
+            }
         }
 
         private void cbAAVD_Click(object sender, EventArgs e)
         {
-            cbMAD.Checked = false;
-            cbAAVD.Checked = true;
-            Program.MAD_AAVD = true;
+            //cbMAD.Checked = false;
+            //cbAAVD.Checked = true;
+            //Program.MAD_AAVD = true;
+            if (cbAAVD.Checked)
+            {
+                Program.MAD_AAVD = false;
+                cbMAD.Checked = false;
+            }
+            else
+            {
+                Program.MAD_AAVD = true;
+                cbMAD.Checked = true;
+            }
         }
     }
 }

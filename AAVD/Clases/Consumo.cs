@@ -14,8 +14,8 @@ namespace AAVD.Clases
         public int año { get; set; }
         public int mes { get; set; }
         public int numeroMedidor { get; set; }
-        public float lecturaActual { get; set; }
         public float lecturaAnterior { get; set; }
+        public float lecturaActual { get; set; }
         public float consumo { get; set; }
 
         public Consumo()
@@ -27,8 +27,8 @@ namespace AAVD.Clases
             this.año = año;
             this.mes = mes;
             this.numeroMedidor = numeroMedidor;
-            this.lecturaActual = lecturaActual;
             this.lecturaAnterior = lecturaAnterior;
+            this.lecturaActual = lecturaActual;
             this.consumo = consumo;
         }
 

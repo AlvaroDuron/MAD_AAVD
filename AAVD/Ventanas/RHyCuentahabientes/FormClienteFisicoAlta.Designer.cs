@@ -37,10 +37,8 @@ namespace AAVD
             this.label6 = new System.Windows.Forms.Label();
             this.mcNacimiento = new System.Windows.Forms.MonthCalendar();
             this.tbEmail = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.rbMujer = new System.Windows.Forms.RadioButton();
             this.rbHombre = new System.Windows.Forms.RadioButton();
-            this.tbDomicilio = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbCURP = new System.Windows.Forms.TextBox();
             this.tbNombre = new System.Windows.Forms.TextBox();
@@ -89,17 +87,15 @@ namespace AAVD
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.mcNacimiento);
             this.groupBox2.Controls.Add(this.tbEmail);
-            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.rbMujer);
             this.groupBox2.Controls.Add(this.rbHombre);
-            this.groupBox2.Controls.Add(this.tbDomicilio);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.tbCURP);
             this.groupBox2.Controls.Add(this.tbNombre);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(12, 103);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(556, 232);
+            this.groupBox2.Size = new System.Drawing.Size(556, 218);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos Personales";
@@ -116,7 +112,7 @@ namespace AAVD
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(59, 198);
+            this.label7.Location = new System.Drawing.Point(59, 172);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 13);
             this.label7.TabIndex = 9;
@@ -125,7 +121,7 @@ namespace AAVD
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 173);
+            this.label6.Location = new System.Drawing.Point(11, 147);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(97, 13);
             this.label6.TabIndex = 8;
@@ -140,24 +136,15 @@ namespace AAVD
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(110, 170);
+            this.tbEmail.Location = new System.Drawing.Point(110, 144);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(170, 20);
             this.tbEmail.TabIndex = 7;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(52, 147);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Domicilio:";
-            // 
             // rbMujer
             // 
             this.rbMujer.AutoSize = true;
-            this.rbMujer.Location = new System.Drawing.Point(181, 196);
+            this.rbMujer.Location = new System.Drawing.Point(181, 170);
             this.rbMujer.Name = "rbMujer";
             this.rbMujer.Size = new System.Drawing.Size(51, 17);
             this.rbMujer.TabIndex = 7;
@@ -168,20 +155,13 @@ namespace AAVD
             // rbHombre
             // 
             this.rbHombre.AutoSize = true;
-            this.rbHombre.Location = new System.Drawing.Point(112, 196);
+            this.rbHombre.Location = new System.Drawing.Point(112, 170);
             this.rbHombre.Name = "rbHombre";
             this.rbHombre.Size = new System.Drawing.Size(62, 17);
             this.rbHombre.TabIndex = 6;
             this.rbHombre.TabStop = true;
             this.rbHombre.Text = "Hombre";
             this.rbHombre.UseVisualStyleBackColor = true;
-            // 
-            // tbDomicilio
-            // 
-            this.tbDomicilio.Location = new System.Drawing.Point(110, 144);
-            this.tbDomicilio.Name = "tbDomicilio";
-            this.tbDomicilio.Size = new System.Drawing.Size(170, 20);
-            this.tbDomicilio.TabIndex = 5;
             // 
             // label3
             // 
@@ -296,13 +276,13 @@ namespace AAVD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(586, 370);
+            this.ClientSize = new System.Drawing.Size(586, 339);
             this.Controls.Add(this.bAgregar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormClienteFisicoAlta";
-            this.Text = "FormClienteFisicoAlta";
+            this.Text = "Registro de Cliente Fisico";
             this.Load += new System.EventHandler(this.FormClienteFisicoAlta_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -322,10 +302,8 @@ namespace AAVD
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MonthCalendar mcNacimiento;
         private System.Windows.Forms.TextBox tbEmail;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton rbMujer;
         private System.Windows.Forms.RadioButton rbHombre;
-        private System.Windows.Forms.TextBox tbDomicilio;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbCURP;
         private System.Windows.Forms.TextBox tbNombre;
