@@ -23,7 +23,11 @@ namespace AAVD
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            int selectedIndex = cbEmpleado.SelectedIndex;
+            byte selectedIndex = Byte.Parse(cbEmpleado.SelectedIndex.ToString());
+            if (cbAAVD.Checked)
+                Program.MAD_AAVD = false;
+            else if(cbMAD.Checked)
+                Program.MAD_AAVD = true;
             bool log = Usuario.LogIn(tbUsuario.Text, tbContraseña.Text, selectedIndex);
             if (log)
             {
@@ -56,20 +60,6 @@ namespace AAVD
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void cbMAD_Click(object sender, EventArgs e)
-        {
-            cbMAD.Checked = true;
-            cbAAVD.Checked = false;
-            Program.MAD_AAVD = false;
-        }
-
-        private void cbAAVD_Click(object sender, EventArgs e)
-        {
-            cbMAD.Checked = false;
-            cbAAVD.Checked = true;
-            Program.MAD_AAVD = true;
         }
     }
 }

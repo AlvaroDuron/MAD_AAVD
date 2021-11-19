@@ -113,6 +113,7 @@ namespace AAVD
         public static bool LogIn(string usuario, string contraseña, int empleadoCliente)
         {
             bool log = false;
+            
             if (Program.MAD_AAVD)
             {
                 ConexionDB_MAD.conectar();
@@ -158,7 +159,7 @@ namespace AAVD
             }
             else
             {
-
+                log = true;
             }
             return log;
         }

@@ -41,12 +41,30 @@ namespace AAVD
             return mapper;
         }
 
-        static public void executeQuery(string query)
+        static public void executeQuery (string query)
+        {
+            session = cluster.Connect(keyspace);
+            session.Execute(query);
+            //foreach (var row in rs)
+            //{
+            //    int numeroServicio = row.GetValue<int>("numeroServicio");
+            //    string municipio = row.GetValue<string>("municipio");
+            //    string calle = row.GetValue<string>("calle");
+            //    int numeroCalle = row.GetValue<int>("numeroCalle");
+            //    string colonia = row.GetValue<string>("colonia");
+            //    string tipoServicio = row.GetValue<string>("tipoServicio");
+            //    string estatus = row.GetValue<string>("estatus");
+            //    int numeroMedidor = row.GetValue<int>("numeroMedidor");
+            //    string categoria = row.GetValue<string>("categoria");
+            //    string curp = row.GetValue<string>("curp");
+            //    string rfc = row.GetValue<string>("rfc");
+            //}
+        }
+        static public void agregar(string query) 
         {
             session = cluster.Connect(keyspace);
             session.Execute(query);
         }
-
         //static public void pruebaConexion()
         //{
         //    string query = "select id, nick, pass, recordar, tipo from Administrador;";

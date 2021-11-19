@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cassandra;
+using Cassandra.Mapping;
 
 namespace AAVD
 {
@@ -49,10 +51,12 @@ namespace AAVD
                 var data = ConexionDB_MAD.db.Query<Contrato>("sp_BuscarContrato", new { @numeroContrato = numeroContrato }, commandType: CommandType.StoredProcedure);
                 temp = data.ToList()[0];
                 ConexionDB_MAD.desconectar();
+                
             }
             else
             {
-
+                ConexionDB_AAVD cass = ConexionDB_AAVD.getInstance();
+                IMapper mapper = ConexionDB_AAVD.conexion();
             }
             return temp;
         }
@@ -81,7 +85,7 @@ namespace AAVD
             }
             else
             {
-
+                ConexionDB_AAVD.agregar("INSERT INTO Contrato (numeroServicio, municipio, calle, numeroCalle, colonia, tipoServicio, estatus, numeroMedidor, categoria, curp, rfc) VALUES (" + Guid.NewGuid() + "'Guadalupe', 'Hierro', '336', 'Cristales', 'Domestico', 'Activo'," + Guid.NewGuid() + ", 'A', 'asdf', 'fgfgfgf');");
             }
         }
         public static void Modificar(Contrato contrato)

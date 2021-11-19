@@ -129,7 +129,6 @@ namespace AAVD
             this.cbMAD.TabIndex = 9;
             this.cbMAD.Text = "MAD";
             this.cbMAD.UseVisualStyleBackColor = true;
-            this.cbMAD.Click += new System.EventHandler(this.cbMAD_Click);
             // 
             // cbAAVD
             // 
@@ -140,7 +139,6 @@ namespace AAVD
             this.cbAAVD.TabIndex = 10;
             this.cbAAVD.Text = "AAVD";
             this.cbAAVD.UseVisualStyleBackColor = true;
-            this.cbAAVD.Click += new System.EventHandler(this.cbAAVD_Click);
             // 
             // FormInicioSesion
             // 

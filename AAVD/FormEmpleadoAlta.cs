@@ -34,13 +34,14 @@ namespace AAVD
             try
             {
                 Empleado empleado = null;
-                if(tbNombreUsuario.Text == "" || tbContraseña.Text == "" || tbNombre.Text == "")
-                Empleado.Agregar(empleado);
+                if (tbNombreUsuario.Text == "" || tbContraseña.Text == "" || tbNombre.Text == "")
+                    Empleado.Agregar(empleado);
                 MessageBox.Show("Empleado agregado exitosamente.");
                 this.Hide();
                 FormEmpleados fPrincipal = new FormEmpleados();
                 fPrincipal.Show();
             }
+            catch (Exception) { }
         }
     }
 }
