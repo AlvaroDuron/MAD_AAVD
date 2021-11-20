@@ -18,12 +18,13 @@ namespace AAVD.Clases
         public float rango1 { get; set; }
         public float rango2 { get; set; }
         public float rango3 { get; set; }
+        public int idParametro { get; set; }
 
         public Tarifa()
         {
 
         }
-        public Tarifa(int año, int mes, int zona, float cuotaFija, float rango1, float rango2, float rango3)
+        public Tarifa(int año, int mes, int zona, float cuotaFija, float rango1, float rango2, float rango3, int idParametro)
         {
             this.año = año;
             this.mes = mes;
@@ -32,6 +33,7 @@ namespace AAVD.Clases
             this.rango1 = rango1;
             this.rango2 = rango2;
             this.rango3 = rango3;
+            this.idParametro = idParametro;
         }
 
         //DB QUERY 
@@ -73,7 +75,8 @@ namespace AAVD.Clases
                         @cuotaFija = tarifa.cuotaFija,
                         @rango1 = tarifa.rango1,
                         @rango2 = tarifa.rango2,
-                        @rango3 = tarifa.rango3
+                        @rango3 = tarifa.rango3,
+                        @idParametro = tarifa.idParametro
                     },
                     commandType: CommandType.StoredProcedure);
 
@@ -100,7 +103,8 @@ namespace AAVD.Clases
                         @cuotaFija = tarifa.cuotaFija,
                         @rango1 = tarifa.rango1,
                         @rango2 = tarifa.rango2,
-                        @rango3 = tarifa.rango3
+                        @rango3 = tarifa.rango3,
+                        @idParametro = tarifa.idParametro
                     },
                     commandType: CommandType.StoredProcedure);
 

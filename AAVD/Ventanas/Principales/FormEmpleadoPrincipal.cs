@@ -26,7 +26,9 @@ namespace AAVD
 
         private void bReportes_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            FormRecibos fPrincipal = new FormRecibos();
+            fPrincipal.Show();
         }
 
         private void bTarifas_Click(object sender, EventArgs e)
@@ -61,6 +63,20 @@ namespace AAVD
         {
             this.Hide();
             FormInicioSesion fPrincipal = new FormInicioSesion();
+            fPrincipal.Show();
+        }
+
+        private void bRecibos_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormRecibos fPrincipal = new FormRecibos();
+            fPrincipal.Show();
+        }
+
+        private void bConsumoHistorico_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormConsumoHistorico fPrincipal = new FormConsumoHistorico();
             fPrincipal.Show();
         }
     }

@@ -37,6 +37,7 @@ namespace AAVD
             this.label4 = new System.Windows.Forms.Label();
             this.cbNumeroServicio = new System.Windows.Forms.ComboBox();
             this.btnPdf = new System.Windows.Forms.Button();
+            this.bRegresar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,11 +110,22 @@ namespace AAVD
             this.btnPdf.Text = "PDF";
             this.btnPdf.UseVisualStyleBackColor = true;
             // 
+            // bRegresar
+            // 
+            this.bRegresar.Location = new System.Drawing.Point(614, 236);
+            this.bRegresar.Name = "bRegresar";
+            this.bRegresar.Size = new System.Drawing.Size(75, 23);
+            this.bRegresar.TabIndex = 9;
+            this.bRegresar.Text = "Regresar";
+            this.bRegresar.UseVisualStyleBackColor = true;
+            this.bRegresar.Click += new System.EventHandler(this.bRegresar_Click);
+            // 
             // FormConsumoHistorico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 271);
+            this.Controls.Add(this.bRegresar);
             this.Controls.Add(this.btnPdf);
             this.Controls.Add(this.cbNumeroServicio);
             this.Controls.Add(this.label4);
@@ -140,5 +152,6 @@ namespace AAVD
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbNumeroServicio;
         private System.Windows.Forms.Button btnPdf;
+        private System.Windows.Forms.Button bRegresar;
     }
 }

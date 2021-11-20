@@ -41,13 +41,13 @@ namespace AAVD
         }
 
         //BD QUERY
-        public static ClienteFisico Buscar(int idCliente)
+        public static ClienteFisico Buscar(int curp)
         {
             ClienteFisico temp = null;
             if (Program.MAD_AAVD)
             {
                 ConexionDB_MAD.conectar();
-                var data = ConexionDB_MAD.db.Query<ClienteFisico>("sp_BuscarClienteFisico", new { @idCliente = idCliente }, commandType: CommandType.StoredProcedure);
+                var data = ConexionDB_MAD.db.Query<ClienteFisico>("sp_BuscarClienteFisico", new { @curp = curp }, commandType: CommandType.StoredProcedure);
                 temp = data.ToList()[0];
                 ConexionDB_MAD.desconectar();
             }
@@ -55,8 +55,8 @@ namespace AAVD
             {
                 string query = string.Format(
                 "SELECT idCliente, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, email, curp, nacimiento, genero, fechaAltaMod" +
-                "FROM ClienteFisico WHERE idCliente = '{0}' allow filtering;",
-                idCliente);
+                "FROM ClienteFisico WHERE curp = '{0}' allow filtering;",
+                curp);
 
                 IMapper mapper = ConexionDB_AAVD.conexion();
                 IEnumerable<ClienteFisico> data = mapper.Fetch<ClienteFisico>(query);
@@ -125,26 +125,26 @@ namespace AAVD
             {
                 string query = string.Format(
                     "UPDATE ClienteFisico SET nombreUsuario = '{0}', nombre = '{1}', apellidoPaterno = '{2}', apellidoMaterno = '{3}', email = '{4}', curp = '{5}', nacimiento = '{6}', genero = '{7}', fechaAltaMod = toUnixTimestamp(now())" +
-                    "WHERE idCliente = {8} if exists;",
-                    cliente.nombreUsuario, cliente.nombre, cliente.apellidoPaterno, cliente.apellidoMaterno, cliente.email, cliente.curp, cliente.nacimiento, cliente.genero, cliente.idCliente
+                    "WHERE curp = {8} if exists;",
+                    cliente.nombreUsuario, cliente.nombre, cliente.apellidoPaterno, cliente.apellidoMaterno, cliente.email, cliente.curp, cliente.nacimiento, cliente.genero, cliente.curp
                 );
                 ConexionDB_AAVD.executeQuery(query);
                 MessageBox.Show("Se modificó el cliente correctamente a la base de datos.", "Exito");
             }
         }
-        public static void Eliminar(int idCliente)
+        public static void Eliminar(int curp)
         {
             if (Program.MAD_AAVD)
             {
                 ConexionDB_MAD.conectar();
-                ConexionDB_MAD.db.Query<ClienteFisico>("sp_EliminarClienteFisico", new { @idCliente = idCliente }, commandType: CommandType.StoredProcedure);
+                ConexionDB_MAD.db.Query<ClienteFisico>("sp_EliminarClienteFisico", new { @curp = curp }, commandType: CommandType.StoredProcedure);
                 ConexionDB_MAD.desconectar();
             }
             else
             {
                 string query = string.Format(
-                    "DELETE FROM ClienteFisico WHERE idCliente = {0} if exists;",
-                    idCliente
+                    "DELETE FROM ClienteFisico WHERE curp = {0} if exists;",
+                    curp
                     );
                 ConexionDB_AAVD.executeQuery(query);
                 MessageBox.Show("Se eliminó el cliente correctamente a la base de datos.", "Exito");

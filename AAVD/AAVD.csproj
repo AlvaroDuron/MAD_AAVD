@@ -135,6 +135,12 @@
     <Compile Include="Clases\Recibo.cs" />
     <Compile Include="Clases\Tarifa.cs" />
     <Compile Include="Clases\Domicilio.cs" />
+    <Compile Include="FormReporteGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReporteGeneral.Designer.cs">
+      <DependentUpon>FormReporteGeneral.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\RHyCuentahabientes\FormEmpleadoAlta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +259,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Clases\Zona.cs" />
+    <EmbeddedResource Include="FormReporteGeneral.resx">
+      <DependentUpon>FormReporteGeneral.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\RHyCuentahabientes\FormEmpleadoAlta.resx">
       <DependentUpon>FormEmpleadoAlta.cs</DependentUpon>
     </EmbeddedResource>

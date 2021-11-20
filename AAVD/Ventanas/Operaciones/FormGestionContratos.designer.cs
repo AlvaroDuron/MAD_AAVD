@@ -74,6 +74,7 @@ namespace AAVD
             this.btnCancelar.TabIndex = 27;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // gbInformacionContratos
             // 
@@ -288,7 +289,7 @@ namespace AAVD
             this.label26.TabIndex = 6;
             this.label26.Text = "Numero de calle:";
             // 
-            // FormContratos
+            // FormGestionContratos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -296,7 +297,7 @@ namespace AAVD
             this.Controls.Add(this.gbInformacionContratos);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
-            this.Name = "FormContratos";
+            this.Name = "FormGestionContratos";
             this.Text = "Cliente";
             this.gbInformacionContratos.ResumeLayout(false);
             this.gbInformacionContratos.PerformLayout();

@@ -40,6 +40,7 @@ namespace AAVD
             this.gDatos = new System.Windows.Forms.GroupBox();
             this.lNombre = new System.Windows.Forms.Label();
             this.bCerrar = new System.Windows.Forms.Button();
+            this.bConsumoHistorico = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.gDatos.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +51,7 @@ namespace AAVD
             this.mCerrarSesion});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(534, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(503, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -62,7 +63,7 @@ namespace AAVD
             // 
             // bClientes
             // 
-            this.bClientes.Location = new System.Drawing.Point(44, 200);
+            this.bClientes.Location = new System.Drawing.Point(51, 168);
             this.bClientes.Name = "bClientes";
             this.bClientes.Size = new System.Drawing.Size(100, 50);
             this.bClientes.TabIndex = 2;
@@ -72,7 +73,7 @@ namespace AAVD
             // 
             // bReportes
             // 
-            this.bReportes.Location = new System.Drawing.Point(187, 200);
+            this.bReportes.Location = new System.Drawing.Point(194, 168);
             this.bReportes.Name = "bReportes";
             this.bReportes.Size = new System.Drawing.Size(100, 50);
             this.bReportes.TabIndex = 3;
@@ -82,7 +83,7 @@ namespace AAVD
             // 
             // bContratos
             // 
-            this.bContratos.Location = new System.Drawing.Point(187, 285);
+            this.bContratos.Location = new System.Drawing.Point(345, 168);
             this.bContratos.Name = "bContratos";
             this.bContratos.Size = new System.Drawing.Size(100, 50);
             this.bContratos.TabIndex = 5;
@@ -92,7 +93,7 @@ namespace AAVD
             // 
             // bConsumos
             // 
-            this.bConsumos.Location = new System.Drawing.Point(44, 285);
+            this.bConsumos.Location = new System.Drawing.Point(51, 335);
             this.bConsumos.Name = "bConsumos";
             this.bConsumos.Size = new System.Drawing.Size(100, 50);
             this.bConsumos.TabIndex = 4;
@@ -102,7 +103,7 @@ namespace AAVD
             // 
             // bZonas
             // 
-            this.bZonas.Location = new System.Drawing.Point(338, 285);
+            this.bZonas.Location = new System.Drawing.Point(194, 253);
             this.bZonas.Name = "bZonas";
             this.bZonas.Size = new System.Drawing.Size(100, 50);
             this.bZonas.TabIndex = 7;
@@ -112,7 +113,7 @@ namespace AAVD
             // 
             // bTarifas
             // 
-            this.bTarifas.Location = new System.Drawing.Point(338, 200);
+            this.bTarifas.Location = new System.Drawing.Point(51, 253);
             this.bTarifas.Name = "bTarifas";
             this.bTarifas.Size = new System.Drawing.Size(100, 50);
             this.bTarifas.TabIndex = 6;
@@ -141,7 +142,7 @@ namespace AAVD
             // 
             // bCerrar
             // 
-            this.bCerrar.Location = new System.Drawing.Point(187, 367);
+            this.bCerrar.Location = new System.Drawing.Point(345, 253);
             this.bCerrar.Name = "bCerrar";
             this.bCerrar.Size = new System.Drawing.Size(100, 50);
             this.bCerrar.TabIndex = 13;
@@ -149,11 +150,22 @@ namespace AAVD
             this.bCerrar.UseVisualStyleBackColor = true;
             this.bCerrar.Click += new System.EventHandler(this.bCerrar_Click);
             // 
+            // bConsumoHistorico
+            // 
+            this.bConsumoHistorico.Location = new System.Drawing.Point(194, 335);
+            this.bConsumoHistorico.Name = "bConsumoHistorico";
+            this.bConsumoHistorico.Size = new System.Drawing.Size(100, 50);
+            this.bConsumoHistorico.TabIndex = 15;
+            this.bConsumoHistorico.Text = "Consumo Historico";
+            this.bConsumoHistorico.UseVisualStyleBackColor = true;
+            this.bConsumoHistorico.Click += new System.EventHandler(this.bConsumoHistorico_Click);
+            // 
             // FormEmpleadoPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 461);
+            this.ClientSize = new System.Drawing.Size(503, 429);
+            this.Controls.Add(this.bConsumoHistorico);
             this.Controls.Add(this.bCerrar);
             this.Controls.Add(this.gDatos);
             this.Controls.Add(this.bZonas);
@@ -187,5 +199,6 @@ namespace AAVD
         private System.Windows.Forms.GroupBox gDatos;
         private System.Windows.Forms.Label lNombre;
         private System.Windows.Forms.Button bCerrar;
+        private System.Windows.Forms.Button bConsumoHistorico;
     }
 }

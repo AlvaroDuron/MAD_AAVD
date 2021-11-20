@@ -74,3 +74,4 @@ Z:\FCFM\AAVD\MAD_AAVD\AAVD\obj\Debug\AAVD.FormEmpleados.resources
 Z:\FCFM\AAVD\MAD_AAVD\AAVD\obj\Debug\AAVD.FormClienteFisicoAlta.resources
 Z:\FCFM\AAVD\MAD_AAVD\AAVD\obj\Debug\AAVD.FormClienteMoralAlta.resources
 Z:\FCFM\AAVD\MAD_AAVD\AAVD\obj\Debug\AAVD.FormEmpleadoAlta.resources
+Z:\FCFM\AAVD\MAD_AAVD\AAVD\obj\Debug\AAVD.FormReporteGeneral.resources

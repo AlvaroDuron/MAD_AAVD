@@ -34,7 +34,9 @@ namespace AAVD
 
         private void bReportes_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            FormRecibos fPrincipal = new FormRecibos();
+            fPrincipal.Show();
         }
 
         private void bTarifas_Click(object sender, EventArgs e)

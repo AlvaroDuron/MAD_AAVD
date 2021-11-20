@@ -41,6 +41,12 @@ namespace AAVD
             this.cbAño = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvConsumo = new System.Windows.Forms.DataGridView();
+            this.año = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroMedidor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lecturaAnterior = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lecturaActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.consumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
@@ -52,12 +58,6 @@ namespace AAVD
             this.label5 = new System.Windows.Forms.Label();
             this.btnImportar = new System.Windows.Forms.Button();
             this.btnPdf = new System.Windows.Forms.Button();
-            this.año = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroMedidor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lecturaAnterior = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lecturaActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.consumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbConsumos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsumo)).BeginInit();
             this.SuspendLayout();
@@ -175,8 +175,44 @@ namespace AAVD
             this.consumo});
             this.dgvConsumo.Location = new System.Drawing.Point(12, 149);
             this.dgvConsumo.Name = "dgvConsumo";
-            this.dgvConsumo.Size = new System.Drawing.Size(328, 131);
+            this.dgvConsumo.Size = new System.Drawing.Size(393, 200);
             this.dgvConsumo.TabIndex = 1;
+            // 
+            // año
+            // 
+            this.año.DataPropertyName = "año";
+            this.año.HeaderText = "Año";
+            this.año.Name = "año";
+            // 
+            // mes
+            // 
+            this.mes.DataPropertyName = "mes";
+            this.mes.HeaderText = "Mes";
+            this.mes.Name = "mes";
+            // 
+            // numeroMedidor
+            // 
+            this.numeroMedidor.DataPropertyName = "numeroMedidor";
+            this.numeroMedidor.HeaderText = "Numero de Medidor";
+            this.numeroMedidor.Name = "numeroMedidor";
+            // 
+            // lecturaAnterior
+            // 
+            this.lecturaAnterior.DataPropertyName = "lecturaAnterior";
+            this.lecturaAnterior.HeaderText = "Lectura Anterior";
+            this.lecturaAnterior.Name = "lecturaAnterior";
+            // 
+            // lecturaActual
+            // 
+            this.lecturaActual.DataPropertyName = "lecturaActual";
+            this.lecturaActual.HeaderText = "Lectura Actual";
+            this.lecturaActual.Name = "lecturaActual";
+            // 
+            // consumo
+            // 
+            this.consumo.DataPropertyName = "consumo";
+            this.consumo.HeaderText = "Consumo";
+            this.consumo.Name = "consumo";
             // 
             // btnAgregar
             // 
@@ -217,7 +253,7 @@ namespace AAVD
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(346, 205);
+            this.comboBox1.Location = new System.Drawing.Point(412, 208);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(75, 21);
             this.comboBox1.TabIndex = 32;
@@ -225,7 +261,7 @@ namespace AAVD
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(366, 189);
+            this.label4.Location = new System.Drawing.Point(432, 192);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(30, 13);
             this.label4.TabIndex = 33;
@@ -234,7 +270,7 @@ namespace AAVD
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(346, 165);
+            this.comboBox2.Location = new System.Drawing.Point(412, 168);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(75, 21);
             this.comboBox2.TabIndex = 30;
@@ -242,7 +278,7 @@ namespace AAVD
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(367, 149);
+            this.label5.Location = new System.Drawing.Point(433, 152);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 13);
             this.label5.TabIndex = 31;
@@ -259,54 +295,18 @@ namespace AAVD
             // 
             // btnPdf
             // 
-            this.btnPdf.Location = new System.Drawing.Point(345, 232);
+            this.btnPdf.Location = new System.Drawing.Point(411, 235);
             this.btnPdf.Name = "btnPdf";
             this.btnPdf.Size = new System.Drawing.Size(75, 23);
             this.btnPdf.TabIndex = 35;
             this.btnPdf.Text = "PDF";
             this.btnPdf.UseVisualStyleBackColor = true;
             // 
-            // año
-            // 
-            this.año.DataPropertyName = "año";
-            this.año.HeaderText = "Año";
-            this.año.Name = "año";
-            // 
-            // mes
-            // 
-            this.mes.DataPropertyName = "mes";
-            this.mes.HeaderText = "Mes";
-            this.mes.Name = "mes";
-            // 
-            // numeroMedidor
-            // 
-            this.numeroMedidor.DataPropertyName = "numeroMedidor";
-            this.numeroMedidor.HeaderText = "Numero de Medidor";
-            this.numeroMedidor.Name = "numeroMedidor";
-            // 
-            // lecturaAnterior
-            // 
-            this.lecturaAnterior.DataPropertyName = "lecturaAnterior";
-            this.lecturaAnterior.HeaderText = "Lectura Anterior";
-            this.lecturaAnterior.Name = "lecturaAnterior";
-            // 
-            // lecturaActual
-            // 
-            this.lecturaActual.DataPropertyName = "lecturaActual";
-            this.lecturaActual.HeaderText = "Lectura Actual";
-            this.lecturaActual.Name = "lecturaActual";
-            // 
-            // consumo
-            // 
-            this.consumo.DataPropertyName = "consumo";
-            this.consumo.HeaderText = "Consumo";
-            this.consumo.Name = "consumo";
-            // 
             // FormConsumos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 290);
+            this.ClientSize = new System.Drawing.Size(499, 361);
             this.Controls.Add(this.btnPdf);
             this.Controls.Add(this.btnImportar);
             this.Controls.Add(this.comboBox1);
