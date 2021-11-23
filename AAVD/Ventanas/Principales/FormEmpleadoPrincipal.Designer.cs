@@ -176,6 +176,7 @@ namespace AAVD
             this.Controls.Add(this.bClientes);
             this.Controls.Add(this.menuStrip1);
             this.Name = "FormEmpleadoPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Empleado - Home";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

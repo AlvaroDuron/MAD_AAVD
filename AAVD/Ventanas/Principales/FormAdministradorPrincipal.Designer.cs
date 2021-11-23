@@ -180,6 +180,7 @@ namespace AAVD
             this.Controls.Add(this.bClientes);
             this.Controls.Add(this.bReportes);
             this.Name = "FormAdministradorPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrador - Home";
             this.gDatos.ResumeLayout(false);
             this.gDatos.PerformLayout();

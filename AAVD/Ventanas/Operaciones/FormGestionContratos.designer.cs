@@ -298,6 +298,7 @@ namespace AAVD
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Name = "FormGestionContratos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliente";
             this.gbInformacionContratos.ResumeLayout(false);
             this.gbInformacionContratos.PerformLayout();

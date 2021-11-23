@@ -208,6 +208,7 @@ namespace AAVD
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.gbParametros);
             this.Name = "FormParametros";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Parametros";
             this.Load += new System.EventHandler(this.FormParametros_Load);
             this.gbParametros.ResumeLayout(false);

@@ -30,14 +30,6 @@ namespace AAVD
         private void InitializeComponent()
         {
             this.dgvContrato = new System.Windows.Forms.DataGridView();
-            this.tbCliente = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbTipoServicio = new System.Windows.Forms.TextBox();
-            this.bEliminar = new System.Windows.Forms.Button();
-            this.btnRegresar = new System.Windows.Forms.Button();
-            this.bModificar = new System.Windows.Forms.Button();
-            this.bAgregar = new System.Windows.Forms.Button();
             this.numeroContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroMedidor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +39,14 @@ namespace AAVD
             this.domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.creacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbCliente = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbTipoServicio = new System.Windows.Forms.TextBox();
+            this.bEliminar = new System.Windows.Forms.Button();
+            this.btnRegresar = new System.Windows.Forms.Button();
+            this.bModificar = new System.Windows.Forms.Button();
+            this.bAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContrato)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,6 +67,60 @@ namespace AAVD
             this.dgvContrato.Name = "dgvContrato";
             this.dgvContrato.Size = new System.Drawing.Size(667, 249);
             this.dgvContrato.TabIndex = 0;
+            // 
+            // numeroContrato
+            // 
+            this.numeroContrato.DataPropertyName = "numeroContrato";
+            this.numeroContrato.HeaderText = "Numero de Contrato";
+            this.numeroContrato.Name = "numeroContrato";
+            // 
+            // numeroMedidor
+            // 
+            this.numeroMedidor.DataPropertyName = "numeroMedidor";
+            this.numeroMedidor.HeaderText = "Numero de Medidor";
+            this.numeroMedidor.Name = "numeroMedidor";
+            // 
+            // categoria
+            // 
+            this.categoria.DataPropertyName = "categoria";
+            this.categoria.HeaderText = "Categoria";
+            this.categoria.Name = "categoria";
+            // 
+            // tipoServicio
+            // 
+            this.tipoServicio.DataPropertyName = "tipoServicio";
+            this.tipoServicio.HeaderText = "Tipo de Servicio";
+            this.tipoServicio.Name = "tipoServicio";
+            // 
+            // estatus
+            // 
+            this.estatus.DataPropertyName = "estatus";
+            this.estatus.HeaderText = "Estado";
+            this.estatus.Name = "estatus";
+            // 
+            // municipio
+            // 
+            this.municipio.DataPropertyName = "municipio";
+            this.municipio.HeaderText = "Municipio";
+            this.municipio.Name = "municipio";
+            // 
+            // domicilio
+            // 
+            this.domicilio.DataPropertyName = "domicilio";
+            this.domicilio.HeaderText = "Domicilio";
+            this.domicilio.Name = "domicilio";
+            // 
+            // creacion
+            // 
+            this.creacion.DataPropertyName = "creacion";
+            this.creacion.HeaderText = "Fecha de Creacion";
+            this.creacion.Name = "creacion";
+            // 
+            // modificacion
+            // 
+            this.modificacion.DataPropertyName = "modificacion";
+            this.modificacion.HeaderText = "Fecha de Modificacion";
+            this.modificacion.Name = "modificacion";
             // 
             // tbCliente
             // 
@@ -138,60 +192,6 @@ namespace AAVD
             this.bAgregar.Text = "Agregar";
             this.bAgregar.UseVisualStyleBackColor = true;
             // 
-            // numeroContrato
-            // 
-            this.numeroContrato.DataPropertyName = "numeroContrato";
-            this.numeroContrato.HeaderText = "Numero de Contrato";
-            this.numeroContrato.Name = "numeroContrato";
-            // 
-            // numeroMedidor
-            // 
-            this.numeroMedidor.DataPropertyName = "numeroMedidor";
-            this.numeroMedidor.HeaderText = "Numero de Medidor";
-            this.numeroMedidor.Name = "numeroMedidor";
-            // 
-            // categoria
-            // 
-            this.categoria.DataPropertyName = "categoria";
-            this.categoria.HeaderText = "Categoria";
-            this.categoria.Name = "categoria";
-            // 
-            // tipoServicio
-            // 
-            this.tipoServicio.DataPropertyName = "tipoServicio";
-            this.tipoServicio.HeaderText = "Tipo de Servicio";
-            this.tipoServicio.Name = "tipoServicio";
-            // 
-            // estatus
-            // 
-            this.estatus.DataPropertyName = "estatus";
-            this.estatus.HeaderText = "Estado";
-            this.estatus.Name = "estatus";
-            // 
-            // municipio
-            // 
-            this.municipio.DataPropertyName = "municipio";
-            this.municipio.HeaderText = "Municipio";
-            this.municipio.Name = "municipio";
-            // 
-            // domicilio
-            // 
-            this.domicilio.DataPropertyName = "domicilio";
-            this.domicilio.HeaderText = "Domicilio";
-            this.domicilio.Name = "domicilio";
-            // 
-            // creacion
-            // 
-            this.creacion.DataPropertyName = "creacion";
-            this.creacion.HeaderText = "Fecha de Creacion";
-            this.creacion.Name = "creacion";
-            // 
-            // modificacion
-            // 
-            this.modificacion.DataPropertyName = "modificacion";
-            this.modificacion.HeaderText = "Fecha de Modificacion";
-            this.modificacion.Name = "modificacion";
-            // 
             // FormContratos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,6 +207,7 @@ namespace AAVD
             this.Controls.Add(this.tbCliente);
             this.Controls.Add(this.dgvContrato);
             this.Name = "FormContratos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contratos";
             this.Load += new System.EventHandler(this.FormContratos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvContrato)).EndInit();

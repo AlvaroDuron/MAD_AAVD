@@ -108,6 +108,7 @@ namespace AAVD
             this.Controls.Add(this.bConsumos);
             this.Controls.Add(this.gDatos);
             this.Name = "FormClientePrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliente - Home";
             this.gDatos.ResumeLayout(false);
             this.gDatos.PerformLayout();

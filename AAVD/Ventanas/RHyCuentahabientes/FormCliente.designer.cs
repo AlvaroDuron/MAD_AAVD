@@ -213,7 +213,7 @@ namespace AAVD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(920, 384);
+            this.ClientSize = new System.Drawing.Size(930, 391);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnAgregarMoral);
             this.Controls.Add(this.btnRegresar);
@@ -222,6 +222,7 @@ namespace AAVD
             this.Controls.Add(this.btnAgregarFisico);
             this.Controls.Add(this.dgvClienteFisico);
             this.Name = "FormCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliente";
             this.Load += new System.EventHandler(this.FormCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClienteFisico)).EndInit();

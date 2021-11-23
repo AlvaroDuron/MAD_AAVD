@@ -241,6 +241,7 @@ namespace AAVD
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormClienteMoralAlta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de Cliente Moral";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

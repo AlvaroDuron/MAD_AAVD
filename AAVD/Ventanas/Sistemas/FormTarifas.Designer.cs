@@ -352,6 +352,7 @@ namespace AAVD
             this.Controls.Add(this.dgvTarifas);
             this.Controls.Add(this.gbTarifas);
             this.Name = "FormTarifas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tarifas";
             this.Load += new System.EventHandler(this.FormTarifas_Load);
             this.gbTarifas.ResumeLayout(false);

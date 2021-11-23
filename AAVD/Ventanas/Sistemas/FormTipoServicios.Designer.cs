@@ -149,6 +149,7 @@ namespace AAVD
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Name = "FormTipoServicios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tipos de servicio";
             this.gbTiposServicio.ResumeLayout(false);
             this.gbTiposServicio.PerformLayout();

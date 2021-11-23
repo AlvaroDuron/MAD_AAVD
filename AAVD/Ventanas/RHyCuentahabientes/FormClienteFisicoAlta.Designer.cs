@@ -165,6 +165,7 @@ namespace AAVD
             this.mcNacimiento.MaxDate = new System.DateTime(2021, 11, 18, 0, 0, 0, 0);
             this.mcNacimiento.Name = "mcNacimiento";
             this.mcNacimiento.TabIndex = 10;
+            this.mcNacimiento.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.mcNacimiento_DateSelected);
             // 
             // tbEmail
             // 
@@ -282,6 +283,7 @@ namespace AAVD
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormClienteFisicoAlta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de Cliente Fisico";
             this.Load += new System.EventHandler(this.FormClienteFisicoAlta_Load);
             this.groupBox2.ResumeLayout(false);

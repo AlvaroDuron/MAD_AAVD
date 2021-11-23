@@ -320,6 +320,7 @@ namespace AAVD
             this.Controls.Add(this.dgvConsumo);
             this.Controls.Add(this.gbConsumos);
             this.Name = "FormConsumos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consumos";
             this.gbConsumos.ResumeLayout(false);
             this.gbConsumos.PerformLayout();

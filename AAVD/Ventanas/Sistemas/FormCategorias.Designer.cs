@@ -146,6 +146,7 @@ namespace AAVD
             this.Controls.Add(this.dgvCategoria);
             this.Controls.Add(this.btnModificar);
             this.Name = "FormCategorias";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Categorias";
             this.Load += new System.EventHandler(this.FormCategorias_Load);
             this.gbCategorias.ResumeLayout(false);
