@@ -33,12 +33,9 @@ namespace AAVD
             this.bCancelar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.mcNacimiento = new System.Windows.Forms.MonthCalendar();
             this.tbEmail = new System.Windows.Forms.TextBox();
-            this.rbMujer = new System.Windows.Forms.RadioButton();
-            this.rbHombre = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.tbCURP = new System.Windows.Forms.TextBox();
             this.tbNombre = new System.Windows.Forms.TextBox();
@@ -60,6 +57,7 @@ namespace AAVD
             this.bAgregar.TabIndex = 22;
             this.bAgregar.Text = "Agregar";
             this.bAgregar.UseVisualStyleBackColor = true;
+            this.bAgregar.Click += new System.EventHandler(this.bAgregar_Click);
             // 
             // bCancelar
             // 
@@ -74,12 +72,9 @@ namespace AAVD
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.mcNacimiento);
             this.groupBox2.Controls.Add(this.tbEmail);
-            this.groupBox2.Controls.Add(this.rbMujer);
-            this.groupBox2.Controls.Add(this.rbHombre);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.tbCURP);
             this.groupBox2.Controls.Add(this.tbNombre);
@@ -96,23 +91,14 @@ namespace AAVD
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(289, 16);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(111, 13);
+            this.label8.Size = new System.Drawing.Size(116, 13);
             this.label8.TabIndex = 10;
-            this.label8.Text = "Fecha de Nacimiento:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(59, 115);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 13);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Género:";
+            this.label8.Text = "Fecha de Constitucion:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 90);
+            this.label6.Location = new System.Drawing.Point(7, 90);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(97, 13);
             this.label6.TabIndex = 8;
@@ -124,6 +110,7 @@ namespace AAVD
             this.mcNacimiento.MaxDate = new System.DateTime(2021, 11, 18, 0, 0, 0, 0);
             this.mcNacimiento.Name = "mcNacimiento";
             this.mcNacimiento.TabIndex = 8;
+            this.mcNacimiento.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.mcNacimiento_DateSelected);
             // 
             // tbEmail
             // 
@@ -132,36 +119,14 @@ namespace AAVD
             this.tbEmail.Size = new System.Drawing.Size(170, 20);
             this.tbEmail.TabIndex = 7;
             // 
-            // rbMujer
-            // 
-            this.rbMujer.AutoSize = true;
-            this.rbMujer.Location = new System.Drawing.Point(181, 113);
-            this.rbMujer.Name = "rbMujer";
-            this.rbMujer.Size = new System.Drawing.Size(51, 17);
-            this.rbMujer.TabIndex = 7;
-            this.rbMujer.TabStop = true;
-            this.rbMujer.Text = "Mujer";
-            this.rbMujer.UseVisualStyleBackColor = true;
-            // 
-            // rbHombre
-            // 
-            this.rbHombre.AutoSize = true;
-            this.rbHombre.Location = new System.Drawing.Point(112, 113);
-            this.rbHombre.Name = "rbHombre";
-            this.rbHombre.Size = new System.Drawing.Size(62, 17);
-            this.rbHombre.TabIndex = 6;
-            this.rbHombre.TabStop = true;
-            this.rbHombre.Text = "Hombre";
-            this.rbHombre.UseVisualStyleBackColor = true;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(64, 64);
+            this.label3.Location = new System.Drawing.Point(73, 64);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "CURP:";
+            this.label3.Text = "RFC:";
             // 
             // tbCURP
             // 
@@ -243,6 +208,7 @@ namespace AAVD
             this.Name = "FormClienteMoralAlta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de Cliente Moral";
+            this.Load += new System.EventHandler(this.FormClienteMoralAlta_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -257,12 +223,9 @@ namespace AAVD
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MonthCalendar mcNacimiento;
         private System.Windows.Forms.TextBox tbEmail;
-        private System.Windows.Forms.RadioButton rbMujer;
-        private System.Windows.Forms.RadioButton rbHombre;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbCURP;
         private System.Windows.Forms.TextBox tbNombre;

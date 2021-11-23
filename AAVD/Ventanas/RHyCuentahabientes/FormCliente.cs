@@ -26,7 +26,21 @@ namespace AAVD
             cellSelected = false;
             try
             {
-                ClienteFisico.LlenarDG(dgvClienteFisico);
+                if (rbClientesFisicos.Checked)
+                {
+                    //this.dgvClienteFisico.Columns["rfc"].Visible = false;
+                    //this.dgvClienteFisico.Columns["constitucion"].Visible = false;
+                    ClienteFisico.LlenarDG(dgvClienteFisico);
+                }
+                else
+                {
+                    //this.dgvClienteFisico.Columns["curp"].Visible = false;
+                    //this.dgvClienteFisico.Columns["apellidoPaterno"].Visible = false;
+                    //this.dgvClienteFisico.Columns["apellidoMaterno"].Visible = false;
+                    //this.dgvClienteFisico.Columns["nacimiento"].Visible = false;
+                    //this.dgvClienteFisico.Columns["genero"].Visible = false;
+                    ClienteMoral.LlenarDG(dgvClienteFisico);
+                }
             }
             catch (Exception except)
             {
@@ -57,17 +71,34 @@ namespace AAVD
         {
             if (cellSelected)
             {
-                ClienteFisico cliente = ClienteFisico.Buscar(keySelected);
+                if (rbClientesFisicos.Checked)
+                {
 
-                ClienteFisico modificado = new ClienteFisico(
-                    cliente.curp, cliente.nombreUsuario,
-                    selectedRow.Cells["nombre"].Value.ToString(), selectedRow.Cells["apellidoPaterno"].Value.ToString(), selectedRow.Cells[4].Value.ToString(),
-                    Convert.ToDateTime(selectedRow.Cells[5].Value.ToString()),
-                    char.Parse(selectedRow.Cells[6].Value.ToString()),
-                    selectedRow.Cells[7].Value.ToString(),
-                    DateTime.Now
-                    );
-                ClienteFisico.Modificar(modificado);
+                    ClienteFisico cliente = ClienteFisico.Buscar(keySelected);
+
+                    ClienteFisico modificado = new ClienteFisico(
+                        cliente.curp, cliente.nombreUsuario,
+                        selectedRow.Cells["nombre"].Value.ToString(), selectedRow.Cells["apellidoPaterno"].Value.ToString(), selectedRow.Cells["apellidoMaterno"].Value.ToString(),
+                        Convert.ToDateTime(selectedRow.Cells["nacimiento"].Value.ToString()),
+                        char.Parse(selectedRow.Cells["genero"].Value.ToString()),
+                        selectedRow.Cells["email"].Value.ToString(),
+                        DateTime.Now
+                        );
+                    ClienteFisico.Modificar(modificado);
+                }
+                else
+                {
+                    ClienteMoral cliente = ClienteMoral.Buscar(keySelected);
+
+                    ClienteMoral modificado = new ClienteMoral(
+                        cliente.rfc, cliente.nombreUsuario,
+                        selectedRow.Cells["nombre"].Value.ToString(),
+                        Convert.ToDateTime(selectedRow.Cells["constitucion"].Value.ToString()),
+                        selectedRow.Cells["email"].Value.ToString(),
+                        DateTime.Now
+                        );
+                    ClienteMoral.Modificar(modificado);
+                }
             }
             FormCliente_Load(sender, e);
         }
@@ -76,9 +107,18 @@ namespace AAVD
         {
             if (cellSelected)
             {
-                string nombreUsuario = ClienteFisico.Buscar(keySelected).nombreUsuario;
-                ClienteFisico.Eliminar(keySelected);
-                Usuario.Eliminar(nombreUsuario);
+                if (rbClientesFisicos.Checked)
+                {
+                    string nombreUsuario = ClienteFisico.Buscar(keySelected).nombreUsuario;
+                    ClienteFisico.Eliminar(keySelected);
+                    Usuario.Eliminar(nombreUsuario);
+                }
+                else
+                {
+                    string nombreUsuario = ClienteMoral.Buscar(keySelected).nombreUsuario;
+                    ClienteMoral.Eliminar(keySelected);
+                    Usuario.Eliminar(nombreUsuario);
+                }
             }
             FormCliente_Load(sender, e);
         }
@@ -88,7 +128,14 @@ namespace AAVD
             cellSelected = true;
             cellIndex = e.RowIndex;
             selectedRow = dgvClienteFisico.Rows[cellIndex];
-            keySelected = selectedRow.Cells[0].Value.ToString();
+            if (rbClientesFisicos.Checked)
+            {
+                keySelected = selectedRow.Cells["curp"].Value.ToString();
+            }
+            else
+            {
+                keySelected = selectedRow.Cells["rfc"].Value.ToString();
+            }
         }
 
         private void rbClientesFisicos_Click(object sender, EventArgs e)

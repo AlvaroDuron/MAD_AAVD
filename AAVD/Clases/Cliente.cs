@@ -193,7 +193,7 @@ namespace AAVD
         {
 
         }
-        public ClienteMoral(string nombreUsuario, string nombre, string email, string rfc, DateTime constitucion, DateTime fechaAltaMod)
+        public ClienteMoral(string rfc, string nombreUsuario, string nombre, DateTime constitucion, string email, DateTime fechaAltaMod)
         {
             this.rfc = rfc;
             this.nombreUsuario = nombreUsuario;
