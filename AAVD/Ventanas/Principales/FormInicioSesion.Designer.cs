@@ -74,6 +74,7 @@ namespace AAVD
             this.tbContraseña.Name = "tbContraseña";
             this.tbContraseña.Size = new System.Drawing.Size(156, 20);
             this.tbContraseña.TabIndex = 3;
+            this.tbContraseña.UseSystemPasswordChar = true;
             this.tbContraseña.TextChanged += new System.EventHandler(this.tbContraseña_TextChanged);
             this.tbContraseña.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbContraseña_KeyPress);
             // 

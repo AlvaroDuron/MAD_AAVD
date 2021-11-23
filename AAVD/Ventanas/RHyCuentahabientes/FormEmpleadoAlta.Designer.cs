@@ -317,6 +317,7 @@ namespace AAVD
             this.tbContraseña.Name = "tbContraseña";
             this.tbContraseña.Size = new System.Drawing.Size(170, 20);
             this.tbContraseña.TabIndex = 2;
+            this.tbContraseña.UseSystemPasswordChar = true;
             // 
             // tbNombreUsuario
             // 
@@ -338,7 +339,7 @@ namespace AAVD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 438);
+            this.ClientSize = new System.Drawing.Size(601, 421);
             this.Controls.Add(this.bAgregar);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.groupBox2);

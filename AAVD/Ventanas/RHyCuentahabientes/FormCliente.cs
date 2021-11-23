@@ -61,7 +61,7 @@ namespace AAVD
 
                 ClienteFisico modificado = new ClienteFisico(
                     cliente.curp, cliente.nombreUsuario,
-                    selectedRow.Cells[2].Value.ToString(), selectedRow.Cells[3].Value.ToString(), selectedRow.Cells[4].Value.ToString(),
+                    selectedRow.Cells["nombre"].Value.ToString(), selectedRow.Cells["apellidoPaterno"].Value.ToString(), selectedRow.Cells[4].Value.ToString(),
                     Convert.ToDateTime(selectedRow.Cells[5].Value.ToString()),
                     char.Parse(selectedRow.Cells[6].Value.ToString()),
                     selectedRow.Cells[7].Value.ToString(),
@@ -76,8 +76,9 @@ namespace AAVD
         {
             if (cellSelected)
             {
-                Usuario.Eliminar(ClienteFisico.Buscar(keySelected).nombreUsuario);
+                string nombreUsuario = ClienteFisico.Buscar(keySelected).nombreUsuario;
                 ClienteFisico.Eliminar(keySelected);
+                Usuario.Eliminar(nombreUsuario);
             }
             FormCliente_Load(sender, e);
         }

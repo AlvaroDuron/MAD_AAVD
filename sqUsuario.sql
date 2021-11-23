@@ -13,7 +13,7 @@ estado TINYINT NOT NULL
 CREATE PROCEDURE sp_BuscarUsuario(@nombreUsuario varchar(100))
 AS
 BEGIN
-SELECT * FROM Usuario WHERE nombreUsuario = @nombreUsuario;
+SELECT nombreUsuario, contraseña, empleadoCliente, intentos, estado FROM Usuario WHERE nombreUsuario = @nombreUsuario;
 END
 GO
 

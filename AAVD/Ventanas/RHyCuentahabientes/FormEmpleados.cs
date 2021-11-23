@@ -70,8 +70,9 @@ namespace AAVD
         {
             if (cellSelected)
             {
-                Usuario.Eliminar(Empleado.Buscar(idSelected).nombreUsuario);
+                string nombreUsuario = Empleado.Buscar(idSelected).nombreUsuario;
                 Empleado.Eliminar(idSelected);
+                Usuario.Eliminar(nombreUsuario);
             }
             FormEmpleados_Load(sender, e);
         }
