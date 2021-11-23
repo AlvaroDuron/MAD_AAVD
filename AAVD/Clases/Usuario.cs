@@ -38,7 +38,10 @@ namespace AAVD
             {
                 ConexionDB_MAD.conectar();
                 var data = ConexionDB_MAD.db.Query<Usuario>("sp_BuscarUsuario", new { @nombreUsuario = nombreUsuario }, commandType: CommandType.StoredProcedure);
-                temp = data.ToList()[0];
+                if(data.Count() != 0)
+                {
+                    temp = data.ToList()[0];
+                }
                 ConexionDB_MAD.desconectar();
             }
             else
@@ -136,35 +139,45 @@ namespace AAVD
                 try
                 {
                     Usuario vusuario = Buscar(usuario);
-                    //List<Usuario> usuarios = data.ToList();
-                    if (vusuario.intentos < 3)
+                    if (vusuario != null)
                     {
-                        if (vusuario.contraseña == contraseña)
+                        if (vusuario.empleadoCliente == empleadoCliente)
                         {
-                            //login
-                            if (vusuario.empleadoCliente == empleadoCliente)
+                            if (vusuario.intentos < 3)
                             {
-                                vusuario.intentos = 0;
-                                Program.session = vusuario;
-                                log = true;
+                                if (vusuario.contraseña == contraseña)
+                                {
+                                    //login
+                                    vusuario.intentos = 0;
+                                    Program.session = vusuario;
+                                    log = true;
+                                }
+                                else
+                                {
+                                    vusuario.intentos++;
+                                    MessageBox.Show("Contraseña incorrecta.");
+                                    if (vusuario.intentos == 3)
+                                    {
+                                        MessageBox.Show("La cuenta se ha suspendido.");
+                                    }
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Esa cuenta no coincide.");
+                                vusuario.estado = 3;
+                                MessageBox.Show("La cuenta está suspendida por el momento.");
                             }
                         }
                         else
                         {
-                            vusuario.intentos++;
-                            MessageBox.Show("Contraseña incorrecta.");
+                            MessageBox.Show("Esa cuenta no coincide.");
                         }
+                        Modificar(vusuario);
                     }
                     else
                     {
-                        vusuario.estado = 3;
-                        MessageBox.Show("La cuenta se ha suspendido por el momento.");
+                        MessageBox.Show("Ese usuario no existe.");
                     }
-                    Modificar(vusuario);
                 }
                 catch (Exception except)
                 {

@@ -5,15 +5,6 @@ CREATE DATABASE HydroLAN;
 USE HydroLAN;
 use Proyecto;
 
-
-CREATE TABLE Calle
-( claveCalle INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-nombre VARCHAR(50)
-);
-CREATE TABLE Colonia
-( claveColonia INT IDENTITY(1,1) PRIMARY KEY,
-colonia VARCHAR(50)
-);
 CREATE TABLE Zona
 ( municipio VARCHAR(100) PRIMARY KEY,
 numeroZona INT

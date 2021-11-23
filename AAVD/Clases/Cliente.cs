@@ -13,35 +13,35 @@ namespace AAVD
 {
     public class ClienteFisico
     {
-        public int idCliente { get; set; }
+        public string curp { get; set; }
         public string nombreUsuario { get; set; }
         public string nombre { get; set; }
         public string apellidoPaterno { get; set; }
         public string apellidoMaterno { get; set; }
-        public string email { get; set; }
-        public string curp { get; set; }
         public DateTime nacimiento { get; set; }
-        public bool genero { get; set; }
+        public char genero { get; set; }
+        public string email { get; set; }
         public DateTime fechaAltaMod { get; set; }
 
         public ClienteFisico()
         {
 
         }
-        public ClienteFisico(int idCliente, string nombreUsuario, string nombre, string apellidoPaterno, string apellidoMaterno, string email, string curp, DateTime nacimiento, bool genero, DateTime fechaAltaMod)
+        public ClienteFisico(string curp, string nombreUsuario, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime nacimiento, char genero, string email, DateTime fechaAltaMod)
         {
-            this.idCliente = idCliente;
+            this.curp = curp;
             this.nombreUsuario = nombreUsuario;
             this.nombre = nombre;
+            this.apellidoPaterno = apellidoPaterno;
+            this.apellidoMaterno = apellidoMaterno;
             this.email = email;
-            this.curp = curp;
             this.nacimiento = nacimiento;
             this.genero = genero;
             this.fechaAltaMod = fechaAltaMod;
         }
 
         //BD QUERY
-        public static ClienteFisico Buscar(int curp)
+        public static ClienteFisico Buscar(string curp)
         {
             ClienteFisico temp = null;
             if (Program.MAD_AAVD)
@@ -54,7 +54,7 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT idCliente, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, email, curp, nacimiento, genero, fechaAltaMod" +
+                "SELECT nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, email, curp, nacimiento, genero, fechaAltaMod" +
                 "FROM ClienteFisico WHERE curp = '{0}' allow filtering;",
                 curp);
 
@@ -73,14 +73,14 @@ namespace AAVD
                 ConexionDB_MAD.db.Query<ClienteFisico>("sp_AgregarClienteFisico",
                     new
                     {
-                        //@idCliente = cliente.idCliente,
+                        @curp = cliente.curp,
+                        @nombreUsuario = cliente.nombreUsuario,
                         @nombre = cliente.nombre,
                         @apellidoPaterno = cliente.apellidoPaterno,
                         @apellidoMaterno = cliente.apellidoMaterno,
-                        @email = cliente.email,
-                        @curp = cliente.curp,
                         @nacimiento = cliente.nacimiento,
                         @genero = cliente.genero,
+                        @email = cliente.email
                         //@fechaAltaMod = cliente.fechaAltaMod
                     },
                     commandType: CommandType.StoredProcedure);
@@ -90,9 +90,9 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "INSERT INTO ClieneteFisico(idCliente, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, email, curp, nacimiento, genero, fechaAltaMod)" +
-                    "VALUES(uuid(), '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', toUnixTimestamp(now())); ",
-                    cliente.nombreUsuario, cliente.nombre, cliente.apellidoPaterno, cliente.apellidoMaterno, cliente.email, cliente.curp, cliente.nacimiento, cliente.genero
+                    "INSERT INTO ClieneteFisico(curp, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, email, nacimiento, genero, fechaAltaMod)" +
+                    "VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', toUnixTimestamp(now())); ",
+                    cliente.curp, cliente.nombreUsuario, cliente.nombre, cliente.apellidoPaterno, cliente.apellidoMaterno, cliente.email, cliente.nacimiento, cliente.genero
                 );
                 ConexionDB_AAVD.executeQuery(query);
                 MessageBox.Show("Se agregó al cliente correctamente a la base de datos.", "Exito");
@@ -107,14 +107,14 @@ namespace AAVD
                 ConexionDB_MAD.db.Query<ClienteFisico>("sp_ModificarClienteFisico",
                     new
                     {
-                        @idCliente = cliente.idCliente,
+                        @curp = cliente.curp,
+                        @nombreUsuario = cliente.nombreUsuario,
                         @nombre = cliente.nombre,
                         @apellidoPaterno = cliente.apellidoPaterno,
                         @apellidoMaterno = cliente.apellidoMaterno,
-                        @email = cliente.email,
-                        @curp = cliente.curp,
                         @nacimiento = cliente.nacimiento,
                         @genero = cliente.genero,
+                        @email = cliente.email
                         //@fechaAltaMod = cliente.fechaAltaMod
                     },
                     commandType: CommandType.StoredProcedure);
@@ -124,15 +124,15 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "UPDATE ClienteFisico SET nombreUsuario = '{0}', nombre = '{1}', apellidoPaterno = '{2}', apellidoMaterno = '{3}', email = '{4}', curp = '{5}', nacimiento = '{6}', genero = '{7}', fechaAltaMod = toUnixTimestamp(now())" +
-                    "WHERE curp = {8} if exists;",
-                    cliente.nombreUsuario, cliente.nombre, cliente.apellidoPaterno, cliente.apellidoMaterno, cliente.email, cliente.curp, cliente.nacimiento, cliente.genero, cliente.curp
+                    "UPDATE ClienteFisico SET nombreUsuario = '{1}', nombre = '{2}', apellidoPaterno = '{3}', apellidoMaterno = '{4}', email = '{5}', curp = '{0}', nacimiento = '{6}', genero = '{7}', fechaAltaMod = toUnixTimestamp(now())" +
+                    "WHERE curp = {0} if exists;",
+                    cliente.curp, cliente.nombreUsuario, cliente.nombre, cliente.apellidoPaterno, cliente.apellidoMaterno, cliente.email, cliente.nacimiento, cliente.genero
                 );
                 ConexionDB_AAVD.executeQuery(query);
                 MessageBox.Show("Se modificó el cliente correctamente a la base de datos.", "Exito");
             }
         }
-        public static void Eliminar(int curp)
+        public static void Eliminar(string curp)
         {
             if (Program.MAD_AAVD)
             {
@@ -182,50 +182,48 @@ namespace AAVD
 
     class ClienteMoral
     {
-        public int idCliente { get; set; }
+        public string rfc { get; set; }
         public string nombreUsuario { get; set; }
         public string nombre { get; set; }
-        public string email { get; set; }
-        public string rfc { get; set; }
         public DateTime constitucion { get; set; }
+        public string email { get; set; }
         public DateTime fechaAltaMod { get; set; }
 
         public ClienteMoral()
         {
 
         }
-        public ClienteMoral(int idCliente, string nombreUsuario, string nombre, string email, string rfc, DateTime constitucion, DateTime fechaAltaMod)
+        public ClienteMoral(string nombreUsuario, string nombre, string email, string rfc, DateTime constitucion, DateTime fechaAltaMod)
         {
-            this.idCliente = idCliente;
+            this.rfc = rfc;
             this.nombreUsuario = nombreUsuario;
             this.nombre = nombre;
-            this.email = email;
-            this.rfc = rfc;
             this.constitucion = constitucion;
+            this.email = email;
             this.fechaAltaMod = fechaAltaMod;
         }
 
         //BD QUERY
-        public static ClienteMoral Buscar(int idCliente)
+        public static ClienteMoral Buscar(string rfc)
         {
             ClienteMoral temp = null;
             if (Program.MAD_AAVD)
             {
                 ConexionDB_MAD.conectar();
-                var data = ConexionDB_MAD.db.Query<ClienteMoral>("sp_BuscarClienteMoral", new { @idCliente = idCliente }, commandType: CommandType.StoredProcedure);
+                var data = ConexionDB_MAD.db.Query<ClienteMoral>("sp_BuscarClienteMoral", new { @rfc = rfc }, commandType: CommandType.StoredProcedure);
                 temp = data.ToList()[0];
                 ConexionDB_MAD.desconectar();
             }
             else
             {
-                string query = string.Format(
-                "SELECT idCliente, nombreUsuario, nombre, email, rfc, constitucion, fechaAltaMod" +
-                "FROM ClienteMoral WHERE idCliente = '{0}' allow filtering;",
-                idCliente);
+                //string query = string.Format(
+                //"SELECT idCliente, nombreUsuario, nombre, email, rfc, constitucion, fechaAltaMod" +
+                //"FROM ClienteMoral WHERE idCliente = '{0}' allow filtering;",
+                //idCliente);
 
-                IMapper mapper = ConexionDB_AAVD.conexion();
-                IEnumerable<ClienteMoral> data = mapper.Fetch<ClienteMoral>(query);
-                temp = data.ToList()[0];
+                //IMapper mapper = ConexionDB_AAVD.conexion();
+                //IEnumerable<ClienteMoral> data = mapper.Fetch<ClienteMoral>(query);
+                //temp = data.ToList()[0];
             }
             return temp;
         }
@@ -238,12 +236,11 @@ namespace AAVD
                 ConexionDB_MAD.db.Query<ClienteMoral>("sp_AgregarClienteMoral",
                     new
                     {
-                        //@idCliente = cliente.idCliente,
+                        @rfc = cliente.rfc,
                         @nombreUsuario = cliente.nombreUsuario,
                         @nombre = cliente.nombre,
-                        @email = cliente.email,
-                        @rfc = cliente.rfc,
                         @constitucion = cliente.constitucion,
+                        @email = cliente.email
                         //@fechaAltaMod = cliente.fechaAltaMod
                     },
                     commandType: CommandType.StoredProcedure);
@@ -270,12 +267,11 @@ namespace AAVD
                 ConexionDB_MAD.db.Query<ClienteMoral>("sp_ModificarClienteMoral",
                     new
                     {
-                        //@idCliente = cliente.idCliente,
+                        @rfc = cliente.rfc,
                         @nombreUsuario = cliente.nombreUsuario,
                         @nombre = cliente.nombre,
-                        @email = cliente.email,
-                        @rfc = cliente.rfc,
                         @constitucion = cliente.constitucion,
+                        @email = cliente.email
                         //@fechaAltaMod = cliente.fechaAltaMod
                     },
                     commandType: CommandType.StoredProcedure);
@@ -284,28 +280,28 @@ namespace AAVD
             }
             else
             {
-                string query = string.Format(
-                    "UPDATE ClienteMoral SET nombreUsuario = '{0}', nombre = '{1}', email = '{2}', rfc = '{3}', constitucion = '{4}', fechaAltaMod = toUnixTimestamp(now())" +
-                    "WHERE idCliente = {8} if exists;",
-                    cliente.nombreUsuario, cliente.nombre, cliente.email, cliente.rfc, cliente.constitucion, cliente.idCliente
-                );
-                ConexionDB_AAVD.executeQuery(query);
-                MessageBox.Show("Se modificó el cliente correctamente a la base de datos.", "Exito");
+                //string query = string.Format(
+                //    "UPDATE ClienteMoral SET nombreUsuario = '{0}', nombre = '{1}', email = '{2}', rfc = '{3}', constitucion = '{4}', fechaAltaMod = toUnixTimestamp(now())" +
+                //    "WHERE idCliente = {8} if exists;",
+                //    cliente.nombreUsuario, cliente.nombre, cliente.email, cliente.rfc, cliente.constitucion, cliente.idCliente
+                //);
+                //ConexionDB_AAVD.executeQuery(query);
+                //MessageBox.Show("Se modificó el cliente correctamente a la base de datos.", "Exito");
             }
         }
-        public static void Eliminar(int idCliente)
+        public static void Eliminar(string rfc)
         {
             if (Program.MAD_AAVD)
             {
                 ConexionDB_MAD.conectar();
-                ConexionDB_MAD.db.Query<ClienteMoral>("sp_EliminarClienteMoral", new { @idCliente = idCliente }, commandType: CommandType.StoredProcedure);
+                ConexionDB_MAD.db.Query<ClienteMoral>("sp_EliminarClienteMoral", new { @rfc = rfc }, commandType: CommandType.StoredProcedure);
                 ConexionDB_MAD.desconectar();
             }
             else
             {
                 string query = string.Format(
                     "DELETE FROM ClienteFisico WHERE idCliente = {0} if exists;",
-                    idCliente
+                    rfc
                     );
                 ConexionDB_AAVD.executeQuery(query);
                 MessageBox.Show("Se eliminó el cliente correctamente a la base de datos.", "Exito");
@@ -313,6 +309,24 @@ namespace AAVD
         }
 
         //FORM METODOS
+        public static void LlenarDG(DataGridView dg)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
 
+                var data = ConexionDB_MAD.db.Query<ClienteMoral>("sp_ConsultarClientesMorales",
+                    new { },
+                    commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+
+                dg.DataSource = data.ToList();
+            }
+            else
+            {
+                
+            }
+        }
     }
 }

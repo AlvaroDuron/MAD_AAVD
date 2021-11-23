@@ -19,18 +19,18 @@ namespace AAVD
         public string apellidoPaterno { get; set; }
         public string apellidoMaterno { get; set; }
         public DateTime nacimiento { get; set; }
+        public char genero { get; set; }
         public int numeroExterior { get; set; }
         public string calle { get; set; }
         public string colonia { get; set; }
         public string municipio { get; set; }
-        public bool genero { get; set; }
         public DateTime fechaAltaMod { get; set; }
 
         public Empleado()
         {
 
         }
-        public Empleado(int idEmpleado, string nombreUsuario, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime nacimiento, int numeroExterior, string calle, string colonia, string municipio, bool genero, DateTime fechaAltaMod)
+        public Empleado(int idEmpleado, string nombreUsuario, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime nacimiento, char genero, int numeroExterior, string calle, string colonia, string municipio, DateTime fechaAltaMod)
         {
             this.idEmpleado = idEmpleado;
             this.nombreUsuario = nombreUsuario;
@@ -38,11 +38,11 @@ namespace AAVD
             this.apellidoPaterno = apellidoPaterno;
             this.apellidoMaterno = apellidoMaterno;
             this.nacimiento = nacimiento;
+            this.genero = genero;
             this.numeroExterior = numeroExterior;
             this.calle = calle;
             this.colonia = colonia;
             this.municipio = municipio;
-            this.genero = genero;
             this.fechaAltaMod = fechaAltaMod;
         }
 
@@ -85,11 +85,11 @@ namespace AAVD
                         @apellidoPaterno = empleado.apellidoPaterno,
                         @apellidoMaterno = empleado.apellidoMaterno,
                         @nacimiento = empleado.nacimiento,
+                        @genero = empleado.genero,
                         @numeroExterior = empleado.numeroExterior,
                         @calle = empleado.calle,
                         @colonia = empleado.colonia,
-                        @municipio = empleado.municipio,
-                        @genero = empleado.genero
+                        @municipio = empleado.municipio
                         //@fechaAltaMod = empleado.fechaAltaMod
                     },
                     commandType: CommandType.StoredProcedure);
@@ -116,17 +116,17 @@ namespace AAVD
                 ConexionDB_MAD.db.Query<Empleado>("sp_ModificarEmpleado",
                     new
                     {
-                        //@idEmpleado = empleado.idEmpleado,
+                        @idEmpleado = empleado.idEmpleado,
                         @nombreUsuario = empleado.nombreUsuario,
                         @nombre = empleado.nombre,
                         @apellidoPaterno = empleado.apellidoPaterno,
                         @apellidoMaterno = empleado.apellidoMaterno,
                         @nacimiento = empleado.nacimiento,
+                        @genero = empleado.genero,
                         @numeroExterior = empleado.numeroExterior,
                         @calle = empleado.calle,
                         @colonia = empleado.colonia,
-                        @municipio = empleado.municipio,
-                        @genero = empleado.genero
+                        @municipio = empleado.municipio
                         //@fechaAltaMod = empleado.fechaAltaMod
                     },
                     commandType: CommandType.StoredProcedure);

@@ -30,21 +30,23 @@ namespace AAVD
         private void InitializeComponent()
         {
             this.dgvClienteFisico = new System.Windows.Forms.DataGridView();
-            this.idCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.curp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRegresar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAgregarFisico = new System.Windows.Forms.Button();
             this.btnAgregarMoral = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.rbClientesMorales = new System.Windows.Forms.RadioButton();
+            this.rbClientesFisicos = new System.Windows.Forms.RadioButton();
+            this.curp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidoMaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaAltaMod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClienteFisico)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -53,52 +55,20 @@ namespace AAVD
             // 
             this.dgvClienteFisico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClienteFisico.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idCliente,
-            this.nombre,
-            this.email,
             this.curp,
+            this.nombreUsuario,
+            this.nombre,
+            this.apellidoPaterno,
+            this.apellidoMaterno,
             this.nacimiento,
             this.genero,
-            this.modificacion});
+            this.email,
+            this.fechaAltaMod});
             this.dgvClienteFisico.Location = new System.Drawing.Point(12, 114);
             this.dgvClienteFisico.Name = "dgvClienteFisico";
             this.dgvClienteFisico.Size = new System.Drawing.Size(748, 244);
             this.dgvClienteFisico.TabIndex = 0;
-            // 
-            // idCliente
-            // 
-            this.idCliente.HeaderText = "ID";
-            this.idCliente.Name = "idCliente";
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            // 
-            // email
-            // 
-            this.email.HeaderText = "Correo Electrónico";
-            this.email.Name = "email";
-            // 
-            // curp
-            // 
-            this.curp.HeaderText = "CURP";
-            this.curp.Name = "curp";
-            // 
-            // nacimiento
-            // 
-            this.nacimiento.HeaderText = "Fecha de Nacimiento";
-            this.nacimiento.Name = "nacimiento";
-            // 
-            // genero
-            // 
-            this.genero.HeaderText = "Género";
-            this.genero.Name = "genero";
-            // 
-            // modificacion
-            // 
-            this.modificacion.HeaderText = "Fecha de Modificacion";
-            this.modificacion.Name = "modificacion";
+            this.dgvClienteFisico.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClienteFisico_CellClick);
             // 
             // btnRegresar
             // 
@@ -152,8 +122,8 @@ namespace AAVD
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.rbClientesMorales);
+            this.groupBox1.Controls.Add(this.rbClientesFisicos);
             this.groupBox1.Location = new System.Drawing.Point(411, 40);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(312, 58);
@@ -161,27 +131,83 @@ namespace AAVD
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros";
             // 
-            // radioButton1
+            // rbClientesMorales
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(78, 35);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(97, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Clientes Fisicos";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbClientesMorales.AutoSize = true;
+            this.rbClientesMorales.Location = new System.Drawing.Point(181, 35);
+            this.rbClientesMorales.Name = "rbClientesMorales";
+            this.rbClientesMorales.Size = new System.Drawing.Size(102, 17);
+            this.rbClientesMorales.TabIndex = 1;
+            this.rbClientesMorales.Text = "Clientes Morales";
+            this.rbClientesMorales.UseVisualStyleBackColor = true;
+            this.rbClientesMorales.Click += new System.EventHandler(this.rbClientesMorales_Click);
             // 
-            // radioButton2
+            // rbClientesFisicos
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(181, 35);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(102, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Clientes Morales";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbClientesFisicos.AutoSize = true;
+            this.rbClientesFisicos.Checked = true;
+            this.rbClientesFisicos.Location = new System.Drawing.Point(78, 35);
+            this.rbClientesFisicos.Name = "rbClientesFisicos";
+            this.rbClientesFisicos.Size = new System.Drawing.Size(97, 17);
+            this.rbClientesFisicos.TabIndex = 0;
+            this.rbClientesFisicos.TabStop = true;
+            this.rbClientesFisicos.Text = "Clientes Fisicos";
+            this.rbClientesFisicos.UseVisualStyleBackColor = true;
+            this.rbClientesFisicos.Click += new System.EventHandler(this.rbClientesFisicos_Click);
+            // 
+            // curp
+            // 
+            this.curp.DataPropertyName = "curp";
+            this.curp.HeaderText = "CURP";
+            this.curp.Name = "curp";
+            // 
+            // nombreUsuario
+            // 
+            this.nombreUsuario.DataPropertyName = "nombreUsuario";
+            this.nombreUsuario.HeaderText = "Nombre de Usuario";
+            this.nombreUsuario.Name = "nombreUsuario";
+            // 
+            // nombre
+            // 
+            this.nombre.DataPropertyName = "nombre";
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            // 
+            // apellidoPaterno
+            // 
+            this.apellidoPaterno.DataPropertyName = "apellidoPaterno";
+            this.apellidoPaterno.HeaderText = "Apellido Paterno";
+            this.apellidoPaterno.Name = "apellidoPaterno";
+            // 
+            // apellidoMaterno
+            // 
+            this.apellidoMaterno.DataPropertyName = "apellidoMaterno";
+            this.apellidoMaterno.HeaderText = "Apellido Materno";
+            this.apellidoMaterno.Name = "apellidoMaterno";
+            // 
+            // nacimiento
+            // 
+            this.nacimiento.DataPropertyName = "nacimiento";
+            this.nacimiento.HeaderText = "Fecha de Nacimiento";
+            this.nacimiento.Name = "nacimiento";
+            // 
+            // genero
+            // 
+            this.genero.DataPropertyName = "genero";
+            this.genero.HeaderText = "Género";
+            this.genero.Name = "genero";
+            // 
+            // email
+            // 
+            this.email.DataPropertyName = "email";
+            this.email.HeaderText = "Correo Electrónico";
+            this.email.Name = "email";
+            // 
+            // fechaAltaMod
+            // 
+            this.fechaAltaMod.DataPropertyName = "fechaAltaMod";
+            this.fechaAltaMod.HeaderText = "Fecha de Modificacion";
+            this.fechaAltaMod.Name = "fechaAltaMod";
             // 
             // FormCliente
             // 
@@ -208,20 +234,22 @@ namespace AAVD
         #endregion
 
         private System.Windows.Forms.DataGridView dgvClienteFisico;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn curp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nacimiento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn genero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn modificacion;
         private System.Windows.Forms.Button btnRegresar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnAgregarFisico;
         private System.Windows.Forms.Button btnAgregarMoral;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rbClientesMorales;
+        private System.Windows.Forms.RadioButton rbClientesFisicos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellidoPaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellidoMaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nacimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaAltaMod;
     }
 }

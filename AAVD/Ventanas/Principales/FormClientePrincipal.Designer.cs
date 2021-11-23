@@ -32,9 +32,9 @@ namespace AAVD
             this.gDatos = new System.Windows.Forms.GroupBox();
             this.lNombre = new System.Windows.Forms.Label();
             this.bContratos = new System.Windows.Forms.Button();
-            this.bReportes = new System.Windows.Forms.Button();
+            this.bConsumos = new System.Windows.Forms.Button();
             this.bCerrar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bRecibos = new System.Windows.Forms.Button();
             this.gDatos.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,15 +67,15 @@ namespace AAVD
             this.bContratos.UseVisualStyleBackColor = true;
             this.bContratos.Click += new System.EventHandler(this.bContratos_Click);
             // 
-            // bReportes
+            // bConsumos
             // 
-            this.bReportes.Location = new System.Drawing.Point(207, 130);
-            this.bReportes.Name = "bReportes";
-            this.bReportes.Size = new System.Drawing.Size(100, 50);
-            this.bReportes.TabIndex = 10;
-            this.bReportes.Text = "Consumo Historico";
-            this.bReportes.UseVisualStyleBackColor = true;
-            this.bReportes.Click += new System.EventHandler(this.bReportes_Click);
+            this.bConsumos.Location = new System.Drawing.Point(207, 130);
+            this.bConsumos.Name = "bConsumos";
+            this.bConsumos.Size = new System.Drawing.Size(100, 50);
+            this.bConsumos.TabIndex = 10;
+            this.bConsumos.Text = "Consumo Historico";
+            this.bConsumos.UseVisualStyleBackColor = true;
+            this.bConsumos.Click += new System.EventHandler(this.bConsumos_Click);
             // 
             // bCerrar
             // 
@@ -87,24 +87,25 @@ namespace AAVD
             this.bCerrar.UseVisualStyleBackColor = true;
             this.bCerrar.Click += new System.EventHandler(this.bCerrar_Click);
             // 
-            // button1
+            // bRecibos
             // 
-            this.button1.Location = new System.Drawing.Point(349, 130);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 50);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Pagar Recibos";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bRecibos.Location = new System.Drawing.Point(349, 130);
+            this.bRecibos.Name = "bRecibos";
+            this.bRecibos.Size = new System.Drawing.Size(100, 50);
+            this.bRecibos.TabIndex = 13;
+            this.bRecibos.Text = "Pagar Recibos";
+            this.bRecibos.UseVisualStyleBackColor = true;
+            this.bRecibos.Click += new System.EventHandler(this.bRecibos_Click);
             // 
             // FormClientePrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 298);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bRecibos);
             this.Controls.Add(this.bCerrar);
             this.Controls.Add(this.bContratos);
-            this.Controls.Add(this.bReportes);
+            this.Controls.Add(this.bConsumos);
             this.Controls.Add(this.gDatos);
             this.Name = "FormClientePrincipal";
             this.Text = "Cliente - Home";
@@ -118,8 +119,8 @@ namespace AAVD
         private System.Windows.Forms.GroupBox gDatos;
         private System.Windows.Forms.Label lNombre;
         private System.Windows.Forms.Button bContratos;
-        private System.Windows.Forms.Button bReportes;
+        private System.Windows.Forms.Button bConsumos;
         private System.Windows.Forms.Button bCerrar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bRecibos;
     }
 }

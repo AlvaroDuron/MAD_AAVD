@@ -12,6 +12,10 @@ namespace AAVD
 {
     public partial class FormEmpleados : Form
     {
+        bool cellSelected = false;
+        int cellIndex;
+        DataGridViewRow selectedRow;
+        int idSelected;
         public FormEmpleados()
         {
             InitializeComponent();
@@ -19,6 +23,7 @@ namespace AAVD
 
         private void FormEmpleados_Load(object sender, EventArgs e)
         {
+            cellSelected = false;
             try
             {
                 Empleado.LlenarDG(dgvEmpleados);
@@ -44,14 +49,39 @@ namespace AAVD
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            if (cellSelected)
+            {
+                Empleado empleado = Empleado.Buscar(idSelected);
 
+                Empleado modificado = new Empleado(
+                    empleado.idEmpleado, empleado.nombreUsuario,
+                    selectedRow.Cells[2].Value.ToString(), selectedRow.Cells[3].Value.ToString(), selectedRow.Cells[4].Value.ToString(),
+                    Convert.ToDateTime(selectedRow.Cells[5].Value.ToString()),
+                    char.Parse(selectedRow.Cells[6].Value.ToString()),
+                    int.Parse(selectedRow.Cells[7].Value.ToString()), selectedRow.Cells[8].Value.ToString(), selectedRow.Cells[9].Value.ToString(), selectedRow.Cells[10].Value.ToString(),
+                    DateTime.Now
+                    );
+                Empleado.Modificar(modificado);
+            }
             FormEmpleados_Load(sender, e);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-
+            if (cellSelected)
+            {
+                Usuario.Eliminar(Empleado.Buscar(idSelected).nombreUsuario);
+                Empleado.Eliminar(idSelected);
+            }
             FormEmpleados_Load(sender, e);
+        }
+
+        private void dgvEmpleados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            cellSelected = true;
+            cellIndex = e.RowIndex;
+            selectedRow = dgvEmpleados.Rows[cellIndex];
+            idSelected = int.Parse(selectedRow.Cells[0].Value.ToString());
         }
     }
 }

@@ -16,5 +16,11 @@ namespace AAVD
         {
             InitializeComponent();
         }
+
+        private void bCancelar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Program.VentanaPrincipal();
+        }
     }
 }

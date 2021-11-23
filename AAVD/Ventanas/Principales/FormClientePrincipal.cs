@@ -17,20 +17,29 @@ namespace AAVD
             InitializeComponent();
         }
 
-        private void bContratos_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bReportes_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void bCerrar_Click(object sender, EventArgs e)
         {
             this.Hide();
             FormInicioSesion fPrincipal = new FormInicioSesion();
+            fPrincipal.Show();
+        }
+        private void bContratos_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormContratos fPrincipal = new FormContratos();
+            fPrincipal.Show();
+        }
+        private void bRecibos_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormRecibos fPrincipal = new FormRecibos();
+            fPrincipal.Show();
+        }
+
+        private void bConsumos_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormConsumos fPrincipal = new FormConsumos();
             fPrincipal.Show();
         }
     }
