@@ -32,6 +32,13 @@ SELECT curp, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento
 END
 GO
 
+CREATE PROCEDURE sp_ConsultarClientesFisicosPorCurpNombre
+AS
+BEGIN
+SELECT curp, nombreUsuario FROM Cliente_Fisico;
+END
+GO
+
 CREATE PROCEDURE sp_BuscarClienteFisico(@curp char(18))
 AS
 BEGIN

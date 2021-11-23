@@ -41,17 +41,17 @@ namespace AAVD
             }
             return temp;
         }
-        public static void Modificar(char categoria, float porcentaje)
+        public static void Modificar(Categoria categoria)
         {
             if (Program.MAD_AAVD)
             {
                 ConexionDB_MAD.conectar();
 
-                ConexionDB_MAD.db.Query<Zona>("sp_ModificarCategoria",
+                ConexionDB_MAD.db.Query<Categoria>("sp_ModificarCategoria",
                     new
                     {
-                        @categoria = categoria,
-                        @procentaje = porcentaje
+                        @categoria = categoria.categoria,
+                        @porcentaje = categoria.porcentaje
                     },
                     commandType: CommandType.StoredProcedure);
 
@@ -72,9 +72,7 @@ namespace AAVD
                 {
                     ConexionDB_MAD.conectar();
 
-                    var data = ConexionDB_MAD.db.Query<Categoria>("sp_ConsultarCategorias",
-                        new { },
-                        commandType: CommandType.StoredProcedure);
+                    var data = ConexionDB_MAD.db.Query<Categoria>("sp_ConsultarCategorias", new { }, commandType: CommandType.StoredProcedure);
 
                     ConexionDB_MAD.desconectar();
 

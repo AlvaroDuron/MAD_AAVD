@@ -68,7 +68,7 @@ namespace AAVD
             this.genero,
             this.email,
             this.fechaAltaMod});
-            this.dgvClienteFisico.Location = new System.Drawing.Point(12, 114);
+            this.dgvClienteFisico.Location = new System.Drawing.Point(22, 115);
             this.dgvClienteFisico.Name = "dgvClienteFisico";
             this.dgvClienteFisico.Size = new System.Drawing.Size(748, 244);
             this.dgvClienteFisico.TabIndex = 0;
@@ -76,7 +76,7 @@ namespace AAVD
             // 
             // btnRegresar
             // 
-            this.btnRegresar.Location = new System.Drawing.Point(778, 202);
+            this.btnRegresar.Location = new System.Drawing.Point(788, 203);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(130, 23);
             this.btnRegresar.TabIndex = 20;
@@ -86,7 +86,7 @@ namespace AAVD
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(778, 173);
+            this.btnEliminar.Location = new System.Drawing.Point(788, 174);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(130, 23);
             this.btnEliminar.TabIndex = 19;
@@ -96,7 +96,7 @@ namespace AAVD
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(778, 144);
+            this.btnModificar.Location = new System.Drawing.Point(788, 145);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(130, 23);
             this.btnModificar.TabIndex = 18;
@@ -106,7 +106,7 @@ namespace AAVD
             // 
             // btnAgregarFisico
             // 
-            this.btnAgregarFisico.Location = new System.Drawing.Point(777, 85);
+            this.btnAgregarFisico.Location = new System.Drawing.Point(787, 86);
             this.btnAgregarFisico.Name = "btnAgregarFisico";
             this.btnAgregarFisico.Size = new System.Drawing.Size(131, 23);
             this.btnAgregarFisico.TabIndex = 17;
@@ -116,7 +116,7 @@ namespace AAVD
             // 
             // btnAgregarMoral
             // 
-            this.btnAgregarMoral.Location = new System.Drawing.Point(777, 114);
+            this.btnAgregarMoral.Location = new System.Drawing.Point(787, 115);
             this.btnAgregarMoral.Name = "btnAgregarMoral";
             this.btnAgregarMoral.Size = new System.Drawing.Size(131, 23);
             this.btnAgregarMoral.TabIndex = 21;
@@ -128,7 +128,7 @@ namespace AAVD
             // 
             this.groupBox1.Controls.Add(this.rbClientesMorales);
             this.groupBox1.Controls.Add(this.rbClientesFisicos);
-            this.groupBox1.Location = new System.Drawing.Point(411, 40);
+            this.groupBox1.Location = new System.Drawing.Point(421, 41);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(312, 58);
             this.groupBox1.TabIndex = 22;
@@ -231,7 +231,7 @@ namespace AAVD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 415);
+            this.ClientSize = new System.Drawing.Size(943, 386);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnAgregarMoral);
             this.Controls.Add(this.btnRegresar);

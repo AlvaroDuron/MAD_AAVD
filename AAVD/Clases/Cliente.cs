@@ -178,6 +178,31 @@ namespace AAVD
                 dg.DataSource = data.ToList();
             }
         }
+        public static void LlenarCB(ComboBox cb)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+
+                var data = ConexionDB_MAD.db.Query<ClienteFisico>("sp_ConsultarClientesFisicosPorCurpNombre",
+                    new { },
+                    commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+
+                List<string> infos = new List<string>();
+                List<ClienteFisico> clientes = data.ToList();
+                foreach (ClienteFisico cliente in clientes)
+                {
+                    infos.Add(cliente.curp + " - " + cliente.nombreUsuario);
+                }
+                cb.DataSource = infos.ToList();
+            }
+            else
+            {
+
+            }
+        }
     }
 
     class ClienteMoral

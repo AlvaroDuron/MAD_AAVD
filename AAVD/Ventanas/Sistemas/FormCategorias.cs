@@ -12,6 +12,10 @@ namespace AAVD
 {
     public partial class FormCategorias : Form
     {
+        bool cellSelected = false;
+        int cellIndex;
+        DataGridViewRow selectedRow;
+        char catSelected;
         public FormCategorias()
         {
             InitializeComponent();
@@ -30,13 +34,15 @@ namespace AAVD
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            try
+            if (cellSelected)
             {
-                Categoria.Modificar(char.Parse(tbCategoria.Text), int.Parse(tbPorcentaje.Text));
-            }
-            catch (Exception except)
-            {
-                MessageBox.Show("Error: " + except.Message);
+                Categoria categoria = Categoria.Buscar(catSelected.ToString());
+
+                Categoria modificado = new Categoria(
+                    categoria.categoria, 
+                    float.Parse(selectedRow.Cells["porcentaje"].Value.ToString())
+                    );
+                Categoria.Modificar(modificado);
             }
             FormCategorias_Load(sender, e);
         }
@@ -47,5 +53,12 @@ namespace AAVD
             Program.VentanaPrincipal();
         }
 
+        private void dgvCategoria_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            cellSelected = true;
+            cellIndex = e.RowIndex;
+            selectedRow = dgvCategoria.Rows[cellIndex];
+            catSelected = char.Parse(selectedRow.Cells[0].Value.ToString());
+        }
     }
 }

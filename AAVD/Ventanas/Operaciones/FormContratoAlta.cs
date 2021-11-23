@@ -10,29 +10,19 @@ using System.Windows.Forms;
 
 namespace AAVD
 {
-    public partial class FormGestionContratos : Form
+    public partial class FormContratoAlta : Form
     {
-        public FormGestionContratos()
+        public FormContratoAlta()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void FormContratoAlta_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void btnAceptar_Click(object sender, EventArgs e)
         {
 
         }
@@ -40,7 +30,8 @@ namespace AAVD
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Program.VentanaPrincipal();
+            FormContratos fPrincipal = new FormContratos();
+            fPrincipal.Show();
         }
     }
 }

@@ -34,12 +34,13 @@ namespace AAVD
             this.numeroMedidor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoServicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroExterior = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colonia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.municipio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.creacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbCliente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbTipoServicio = new System.Windows.Forms.TextBox();
@@ -47,6 +48,7 @@ namespace AAVD
             this.btnRegresar = new System.Windows.Forms.Button();
             this.bModificar = new System.Windows.Forms.Button();
             this.bAgregar = new System.Windows.Forms.Button();
+            this.cbCliente = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContrato)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,9 +60,11 @@ namespace AAVD
             this.numeroMedidor,
             this.categoria,
             this.tipoServicio,
-            this.estatus,
+            this.numeroExterior,
+            this.calle,
+            this.colonia,
             this.municipio,
-            this.domicilio,
+            this.estatus,
             this.creacion,
             this.modificacion});
             this.dgvContrato.Location = new System.Drawing.Point(27, 92);
@@ -92,11 +96,23 @@ namespace AAVD
             this.tipoServicio.HeaderText = "Tipo de Servicio";
             this.tipoServicio.Name = "tipoServicio";
             // 
-            // estatus
+            // numeroExterior
             // 
-            this.estatus.DataPropertyName = "estatus";
-            this.estatus.HeaderText = "Estado";
-            this.estatus.Name = "estatus";
+            this.numeroExterior.DataPropertyName = "numeroExterior";
+            this.numeroExterior.HeaderText = "Numero Exterior";
+            this.numeroExterior.Name = "numeroExterior";
+            // 
+            // calle
+            // 
+            this.calle.DataPropertyName = "calle";
+            this.calle.HeaderText = "Calle";
+            this.calle.Name = "calle";
+            // 
+            // colonia
+            // 
+            this.colonia.DataPropertyName = "colonia";
+            this.colonia.HeaderText = "Colonia";
+            this.colonia.Name = "colonia";
             // 
             // municipio
             // 
@@ -104,11 +120,11 @@ namespace AAVD
             this.municipio.HeaderText = "Municipio";
             this.municipio.Name = "municipio";
             // 
-            // domicilio
+            // estatus
             // 
-            this.domicilio.DataPropertyName = "domicilio";
-            this.domicilio.HeaderText = "Domicilio";
-            this.domicilio.Name = "domicilio";
+            this.estatus.DataPropertyName = "estatus";
+            this.estatus.HeaderText = "Estado";
+            this.estatus.Name = "estatus";
             // 
             // creacion
             // 
@@ -121,13 +137,6 @@ namespace AAVD
             this.modificacion.DataPropertyName = "modificacion";
             this.modificacion.HeaderText = "Fecha de Modificacion";
             this.modificacion.Name = "modificacion";
-            // 
-            // tbCliente
-            // 
-            this.tbCliente.Location = new System.Drawing.Point(243, 44);
-            this.tbCliente.Name = "tbCliente";
-            this.tbCliente.Size = new System.Drawing.Size(100, 20);
-            this.tbCliente.TabIndex = 1;
             // 
             // label1
             // 
@@ -153,7 +162,6 @@ namespace AAVD
             this.tbTipoServicio.Name = "tbTipoServicio";
             this.tbTipoServicio.Size = new System.Drawing.Size(100, 20);
             this.tbTipoServicio.TabIndex = 3;
-            this.tbTipoServicio.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // bEliminar
             // 
@@ -163,6 +171,7 @@ namespace AAVD
             this.bEliminar.TabIndex = 5;
             this.bEliminar.Text = "Eliminar";
             this.bEliminar.UseVisualStyleBackColor = true;
+            this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click);
             // 
             // btnRegresar
             // 
@@ -182,6 +191,7 @@ namespace AAVD
             this.bModificar.TabIndex = 8;
             this.bModificar.Text = "Modificar";
             this.bModificar.UseVisualStyleBackColor = true;
+            this.bModificar.Click += new System.EventHandler(this.bModificar_Click);
             // 
             // bAgregar
             // 
@@ -191,12 +201,22 @@ namespace AAVD
             this.bAgregar.TabIndex = 7;
             this.bAgregar.Text = "Agregar";
             this.bAgregar.UseVisualStyleBackColor = true;
+            this.bAgregar.Click += new System.EventHandler(this.bAgregar_Click);
+            // 
+            // cbCliente
+            // 
+            this.cbCliente.FormattingEnabled = true;
+            this.cbCliente.Location = new System.Drawing.Point(243, 43);
+            this.cbCliente.Name = "cbCliente";
+            this.cbCliente.Size = new System.Drawing.Size(121, 21);
+            this.cbCliente.TabIndex = 9;
             // 
             // FormContratos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(811, 367);
+            this.Controls.Add(this.cbCliente);
             this.Controls.Add(this.bModificar);
             this.Controls.Add(this.bAgregar);
             this.Controls.Add(this.btnRegresar);
@@ -204,7 +224,6 @@ namespace AAVD
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbTipoServicio);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tbCliente);
             this.Controls.Add(this.dgvContrato);
             this.Name = "FormContratos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -219,7 +238,6 @@ namespace AAVD
         #endregion
 
         private System.Windows.Forms.DataGridView dgvContrato;
-        private System.Windows.Forms.TextBox tbCliente;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbTipoServicio;
@@ -231,10 +249,13 @@ namespace AAVD
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroMedidor;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoServicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numeroExterior;
+        private System.Windows.Forms.DataGridViewTextBoxColumn calle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colonia;
         private System.Windows.Forms.DataGridViewTextBoxColumn municipio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn domicilio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn creacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn modificacion;
+        private System.Windows.Forms.ComboBox cbCliente;
     }
 }

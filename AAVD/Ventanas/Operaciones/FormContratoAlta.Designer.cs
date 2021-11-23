@@ -1,7 +1,7 @@
 ﻿
 namespace AAVD
 {
-    partial class FormGestionContratos
+    partial class FormContratoAlta
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,6 @@ namespace AAVD
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAceptar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.gbInformacionContratos = new System.Windows.Forms.GroupBox();
             this.cbCategoria = new System.Windows.Forms.ComboBox();
             this.cbEstatus = new System.Windows.Forms.ComboBox();
@@ -54,27 +52,10 @@ namespace AAVD
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.gbInformacionContratos.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnAceptar
-            // 
-            this.btnAceptar.Location = new System.Drawing.Point(660, 199);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 26;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(579, 199);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 27;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // gbInformacionContratos
             // 
@@ -103,7 +84,7 @@ namespace AAVD
             this.gbInformacionContratos.Location = new System.Drawing.Point(12, 12);
             this.gbInformacionContratos.Name = "gbInformacionContratos";
             this.gbInformacionContratos.Size = new System.Drawing.Size(731, 181);
-            this.gbInformacionContratos.TabIndex = 30;
+            this.gbInformacionContratos.TabIndex = 33;
             this.gbInformacionContratos.TabStop = false;
             this.gbInformacionContratos.Text = "Informacion Contratos";
             // 
@@ -289,17 +270,37 @@ namespace AAVD
             this.label26.TabIndex = 6;
             this.label26.Text = "Numero de calle:";
             // 
-            // FormGestionContratos
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(579, 199);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 32;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Location = new System.Drawing.Point(660, 199);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 31;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
+            // FormContratoAlta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(755, 231);
+            this.ClientSize = new System.Drawing.Size(760, 248);
             this.Controls.Add(this.gbInformacionContratos);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
-            this.Name = "FormGestionContratos";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cliente";
+            this.Name = "FormContratoAlta";
+            this.Text = "Registro de Contrato";
+            this.Load += new System.EventHandler(this.FormContratoAlta_Load);
             this.gbInformacionContratos.ResumeLayout(false);
             this.gbInformacionContratos.PerformLayout();
             this.ResumeLayout(false);
@@ -307,8 +308,7 @@ namespace AAVD
         }
 
         #endregion
-        private System.Windows.Forms.Button btnAceptar;
-        private System.Windows.Forms.Button btnCancelar;
+
         private System.Windows.Forms.GroupBox gbInformacionContratos;
         private System.Windows.Forms.ComboBox cbCategoria;
         private System.Windows.Forms.ComboBox cbEstatus;
@@ -332,5 +332,7 @@ namespace AAVD
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAceptar;
     }
 }

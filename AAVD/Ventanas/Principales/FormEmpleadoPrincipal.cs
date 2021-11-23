@@ -17,6 +17,19 @@ namespace AAVD
             InitializeComponent();
         }
 
+        private void FormEmpleadoPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bCerrar_Click(object sender, EventArgs e)
+        {
+            Program.session = null;
+            this.Hide();
+            FormInicioSesion fPrincipal = new FormInicioSesion();
+            fPrincipal.Show();
+        }
+
         private void bClientes_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -48,7 +61,7 @@ namespace AAVD
         private void bContratos_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FormGestionContratos fPrincipal = new FormGestionContratos();
+            FormContratos fPrincipal = new FormContratos();
             fPrincipal.Show();
         }
 
@@ -56,13 +69,6 @@ namespace AAVD
         {
             this.Hide();
             FormZonas fPrincipal = new FormZonas();
-            fPrincipal.Show();
-        }
-
-        private void bCerrar_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            FormInicioSesion fPrincipal = new FormInicioSesion();
             fPrincipal.Show();
         }
 

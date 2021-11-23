@@ -28,17 +28,10 @@ namespace AAVD
             {
                 if (rbClientesFisicos.Checked)
                 {
-                    //this.dgvClienteFisico.Columns["rfc"].Visible = false;
-                    //this.dgvClienteFisico.Columns["constitucion"].Visible = false;
                     ClienteFisico.LlenarDG(dgvClienteFisico);
                 }
                 else
                 {
-                    //this.dgvClienteFisico.Columns["curp"].Visible = false;
-                    //this.dgvClienteFisico.Columns["apellidoPaterno"].Visible = false;
-                    //this.dgvClienteFisico.Columns["apellidoMaterno"].Visible = false;
-                    //this.dgvClienteFisico.Columns["nacimiento"].Visible = false;
-                    //this.dgvClienteFisico.Columns["genero"].Visible = false;
                     ClienteMoral.LlenarDG(dgvClienteFisico);
                 }
             }
@@ -53,6 +46,7 @@ namespace AAVD
             this.Hide();
             Program.VentanaPrincipal();
         }
+
         private void btnAgregarFisico_Click(object sender, EventArgs e)
         {
             this.Hide();

@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using Cassandra;
+using Cassandra.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,11 +15,13 @@ namespace AAVD
     {
         public int numeroContrato { get; set; }
         public int numeroMedidor { get; set; }
-        public string categoria { get; set; }
+        public char categoria { get; set; }
         public string tipoServicio { get; set; }
         public string estatus { get; set; }
+        public int numeroExterior { get; set; }
+        public string calle { get; set; }
+        public string colonia { get; set; }
         public string municipio { get; set; }
-        public string domicilio { get; set; }
         public DateTime creacion { get; set; }
         public DateTime modificacion { get; set; }
 
@@ -26,15 +30,17 @@ namespace AAVD
 
         }
 
-        public Contrato(int numeroContrato, int numeroMedidor, string categoria, string tipoServicio, string estatus, string municipio, string domicilio, DateTime creacion, DateTime modificacion)
+        public Contrato(int numeroContrato, int numeroMedidor, char categoria, string tipoServicio, int numeroExterior, string calle, string colonia, string municipio, string estatus, DateTime creacion, DateTime modificacion)
         {
             this.numeroContrato = numeroContrato;
             this.numeroMedidor = numeroMedidor;
             this.categoria = categoria;
             this.tipoServicio = tipoServicio;
-            this.estatus = estatus;
+            this.numeroExterior = numeroExterior;
+            this.calle = calle;
+            this.colonia = colonia;
             this.municipio = municipio;
-            this.domicilio = domicilio;
+            this.estatus = estatus;
             this.creacion = creacion;
             this.modificacion = modificacion;
         }
@@ -69,9 +75,11 @@ namespace AAVD
                         @numeroMedidor = contrato.numeroMedidor,
                         @categoria = contrato.categoria,
                         @tipoServicio = contrato.tipoServicio,
-                        @estatus = contrato.estatus,
+                        @numeroExterior = contrato.numeroExterior,
+                        @calle = contrato.calle,
+                        @colonia = contrato.colonia,
                         @municipio = contrato.municipio,
-                        @domicilio = contrato.domicilio,
+                        @estatus = contrato.estatus,
                         @creacion = contrato.creacion,
                         @modificacion = contrato.modificacion
                     },
@@ -97,9 +105,11 @@ namespace AAVD
                         @numeroMedidor = contrato.numeroMedidor,
                         @categoria = contrato.categoria,
                         @tipoServicio = contrato.tipoServicio,
-                        @estatus = contrato.estatus,
+                        @numeroExterior = contrato.numeroExterior,
+                        @calle = contrato.calle,
+                        @colonia = contrato.colonia,
                         @municipio = contrato.municipio,
-                        @domicilio = contrato.domicilio,
+                        @estatus = contrato.estatus,
                         @creacion = contrato.creacion,
                         @modificacion = contrato.modificacion
                     },
@@ -112,12 +122,12 @@ namespace AAVD
 
             }
         }
-        public static void Eliminar(int id)
+        public static void Eliminar(int numeroContrato)
         {
             if (Program.MAD_AAVD)
             {
                 ConexionDB_MAD.conectar();
-                ConexionDB_MAD.db.Query<Empleado>("sp_EliminarContrato", new { @numeroContrato = id }, commandType: CommandType.StoredProcedure);
+                ConexionDB_MAD.db.Query<Empleado>("sp_EliminarContrato", new { @numeroContrato = numeroContrato }, commandType: CommandType.StoredProcedure);
                 ConexionDB_MAD.desconectar();
             }
             else
@@ -127,6 +137,24 @@ namespace AAVD
         }
 
         //FORM METODOS
+        public static void LlenarDG(DataGridView dg)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
 
+                var data = ConexionDB_MAD.db.Query<Contrato>("sp_ConsultarContratos",
+                    new { },
+                    commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+
+                dg.DataSource = data.ToList();
+            }
+            else
+            {
+
+            }
+        }
     }
 }

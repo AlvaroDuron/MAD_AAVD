@@ -178,6 +178,7 @@ namespace AAVD
             this.Name = "FormEmpleadoPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Empleado - Home";
+            this.Load += new System.EventHandler(this.FormEmpleadoPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.gDatos.ResumeLayout(false);
