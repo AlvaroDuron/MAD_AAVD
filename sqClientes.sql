@@ -75,6 +75,13 @@ SELECT rfc, nombreUsuario, nombre, constitucion, email, fechaAltaMod FROM Client
 END
 GO
 
+CREATE PROCEDURE sp_ConsultarClientesMoralesPorRfcNombre
+AS
+BEGIN
+SELECT rfc, nombreUsuario FROM Cliente_Moral;
+END
+GO
+
 CREATE PROCEDURE sp_BuscarClienteMoral(@rfc char(12))
 AS
 BEGIN

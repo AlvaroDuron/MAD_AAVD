@@ -13,25 +13,27 @@ namespace AAVD
 {
     public class Contrato
     {
+        public string nombreUsuario { get; set; }
         public int numeroContrato { get; set; }
         public int numeroMedidor { get; set; }
         public char categoria { get; set; }
         public string tipoServicio { get; set; }
-        public string estatus { get; set; }
         public int numeroExterior { get; set; }
         public string calle { get; set; }
         public string colonia { get; set; }
         public string municipio { get; set; }
+        public byte estado { get; set; }
         public DateTime creacion { get; set; }
-        public DateTime modificacion { get; set; }
+        public DateTime fechaAltaMod { get; set; }
 
         public Contrato()
         {
 
         }
 
-        public Contrato(int numeroContrato, int numeroMedidor, char categoria, string tipoServicio, int numeroExterior, string calle, string colonia, string municipio, string estatus, DateTime creacion, DateTime modificacion)
+        public Contrato(string nombreUsuario, int numeroContrato, int numeroMedidor, char categoria, string tipoServicio, int numeroExterior, string calle, string colonia, string municipio, byte estado, DateTime creacion, DateTime fechaAltaMod)
         {
+            this.nombreUsuario = nombreUsuario;
             this.numeroContrato = numeroContrato;
             this.numeroMedidor = numeroMedidor;
             this.categoria = categoria;
@@ -40,9 +42,9 @@ namespace AAVD
             this.calle = calle;
             this.colonia = colonia;
             this.municipio = municipio;
-            this.estatus = estatus;
+            this.estado = estado;
             this.creacion = creacion;
-            this.modificacion = modificacion;
+            this.fechaAltaMod = fechaAltaMod;
         }
 
         //BD QUERY
@@ -71,6 +73,7 @@ namespace AAVD
                 ConexionDB_MAD.db.Query<Contrato>("sp_AgregarContrato",
                     new
                     {
+                        @nombreUsaurio = contrato.nombreUsuario,
                         @numeroContrato = contrato.numeroContrato,
                         @numeroMedidor = contrato.numeroMedidor,
                         @categoria = contrato.categoria,
@@ -79,9 +82,9 @@ namespace AAVD
                         @calle = contrato.calle,
                         @colonia = contrato.colonia,
                         @municipio = contrato.municipio,
-                        @estatus = contrato.estatus,
+                        @estado = contrato.estado,
                         @creacion = contrato.creacion,
-                        @modificacion = contrato.modificacion
+                        @fechaAltaMod = contrato.fechaAltaMod
                     },
                     commandType: CommandType.StoredProcedure);
 
@@ -101,6 +104,7 @@ namespace AAVD
                 ConexionDB_MAD.db.Query<Contrato>("sp_ModificarContrato",
                     new
                     {
+                        @nombreUsaurio = contrato.nombreUsuario,
                         @numeroContrato = contrato.numeroContrato,
                         @numeroMedidor = contrato.numeroMedidor,
                         @categoria = contrato.categoria,
@@ -109,9 +113,9 @@ namespace AAVD
                         @calle = contrato.calle,
                         @colonia = contrato.colonia,
                         @municipio = contrato.municipio,
-                        @estatus = contrato.estatus,
+                        @estado = contrato.estado,
                         @creacion = contrato.creacion,
-                        @modificacion = contrato.modificacion
+                        @fechaAltaMod = contrato.fechaAltaMod
                     },
                     commandType: CommandType.StoredProcedure);
 

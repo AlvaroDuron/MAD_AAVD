@@ -27,6 +27,14 @@ namespace AAVD
             try
             {
                 Contrato.LlenarDG(dgvContrato);
+                if (rbClientesFisicos.Checked)
+                {
+                    ClienteFisico.LlenarCB(cbCliente);
+                }
+                else
+                {
+                    ClienteMoral.LlenarCB(cbCliente);
+                }
             }
             catch (Exception except)
             {
@@ -55,6 +63,20 @@ namespace AAVD
         private void bEliminar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void rbClientesFisicos_Click(object sender, EventArgs e)
+        {
+            rbClientesFisicos.Checked = true;
+            rbClientesMorales.Checked = false;
+            FormContratos_Load(sender, e);
+        }
+
+        private void rbClientesMorales_Click(object sender, EventArgs e)
+        {
+            rbClientesFisicos.Checked = false;
+            rbClientesMorales.Checked = true;
+            FormContratos_Load(sender, e);
         }
     }
 }

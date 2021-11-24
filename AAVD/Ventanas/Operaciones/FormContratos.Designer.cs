@@ -30,17 +30,6 @@ namespace AAVD
         private void InitializeComponent()
         {
             this.dgvContrato = new System.Windows.Forms.DataGridView();
-            this.numeroContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroMedidor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoServicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroExterior = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colonia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.municipio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.creacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbTipoServicio = new System.Windows.Forms.TextBox();
@@ -49,7 +38,22 @@ namespace AAVD
             this.bModificar = new System.Windows.Forms.Button();
             this.bAgregar = new System.Windows.Forms.Button();
             this.cbCliente = new System.Windows.Forms.ComboBox();
+            this.rbClientesFisicos = new System.Windows.Forms.RadioButton();
+            this.rbClientesMorales = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numeroContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroMedidor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoServicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroExterior = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colonia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.municipio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.creacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaAltaMod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContrato)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvContrato
@@ -64,13 +68,125 @@ namespace AAVD
             this.calle,
             this.colonia,
             this.municipio,
-            this.estatus,
+            this.estado,
             this.creacion,
-            this.modificacion});
-            this.dgvContrato.Location = new System.Drawing.Point(27, 92);
+            this.fechaAltaMod});
+            this.dgvContrato.Location = new System.Drawing.Point(27, 144);
             this.dgvContrato.Name = "dgvContrato";
             this.dgvContrato.Size = new System.Drawing.Size(667, 249);
             this.dgvContrato.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(178, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Cliente:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(133, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Tipo de Servicio:";
+            // 
+            // tbTipoServicio
+            // 
+            this.tbTipoServicio.Location = new System.Drawing.Point(226, 19);
+            this.tbTipoServicio.Name = "tbTipoServicio";
+            this.tbTipoServicio.Size = new System.Drawing.Size(121, 20);
+            this.tbTipoServicio.TabIndex = 3;
+            // 
+            // bEliminar
+            // 
+            this.bEliminar.Location = new System.Drawing.Point(619, 78);
+            this.bEliminar.Name = "bEliminar";
+            this.bEliminar.Size = new System.Drawing.Size(75, 23);
+            this.bEliminar.TabIndex = 5;
+            this.bEliminar.Text = "Eliminar";
+            this.bEliminar.UseVisualStyleBackColor = true;
+            this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click);
+            // 
+            // btnRegresar
+            // 
+            this.btnRegresar.Location = new System.Drawing.Point(619, 107);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(75, 23);
+            this.btnRegresar.TabIndex = 6;
+            this.btnRegresar.Text = "Regresar";
+            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            // 
+            // bModificar
+            // 
+            this.bModificar.Location = new System.Drawing.Point(619, 48);
+            this.bModificar.Name = "bModificar";
+            this.bModificar.Size = new System.Drawing.Size(75, 23);
+            this.bModificar.TabIndex = 8;
+            this.bModificar.Text = "Modificar";
+            this.bModificar.UseVisualStyleBackColor = true;
+            this.bModificar.Click += new System.EventHandler(this.bModificar_Click);
+            // 
+            // bAgregar
+            // 
+            this.bAgregar.Location = new System.Drawing.Point(619, 19);
+            this.bAgregar.Name = "bAgregar";
+            this.bAgregar.Size = new System.Drawing.Size(75, 23);
+            this.bAgregar.TabIndex = 7;
+            this.bAgregar.Text = "Agregar";
+            this.bAgregar.UseVisualStyleBackColor = true;
+            this.bAgregar.Click += new System.EventHandler(this.bAgregar_Click);
+            // 
+            // cbCliente
+            // 
+            this.cbCliente.FormattingEnabled = true;
+            this.cbCliente.Location = new System.Drawing.Point(226, 45);
+            this.cbCliente.Name = "cbCliente";
+            this.cbCliente.Size = new System.Drawing.Size(121, 21);
+            this.cbCliente.TabIndex = 9;
+            // 
+            // rbClientesFisicos
+            // 
+            this.rbClientesFisicos.AutoSize = true;
+            this.rbClientesFisicos.Checked = true;
+            this.rbClientesFisicos.Location = new System.Drawing.Point(17, 38);
+            this.rbClientesFisicos.Name = "rbClientesFisicos";
+            this.rbClientesFisicos.Size = new System.Drawing.Size(97, 17);
+            this.rbClientesFisicos.TabIndex = 0;
+            this.rbClientesFisicos.TabStop = true;
+            this.rbClientesFisicos.Text = "Clientes Fisicos";
+            this.rbClientesFisicos.UseVisualStyleBackColor = true;
+            this.rbClientesFisicos.Click += new System.EventHandler(this.rbClientesFisicos_Click);
+            // 
+            // rbClientesMorales
+            // 
+            this.rbClientesMorales.AutoSize = true;
+            this.rbClientesMorales.Location = new System.Drawing.Point(17, 61);
+            this.rbClientesMorales.Name = "rbClientesMorales";
+            this.rbClientesMorales.Size = new System.Drawing.Size(102, 17);
+            this.rbClientesMorales.TabIndex = 1;
+            this.rbClientesMorales.Text = "Clientes Morales";
+            this.rbClientesMorales.UseVisualStyleBackColor = true;
+            this.rbClientesMorales.Click += new System.EventHandler(this.rbClientesMorales_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbClientesMorales);
+            this.groupBox1.Controls.Add(this.cbCliente);
+            this.groupBox1.Controls.Add(this.rbClientesFisicos);
+            this.groupBox1.Controls.Add(this.tbTipoServicio);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(27, 35);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(353, 90);
+            this.groupBox1.TabIndex = 23;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filtros";
             // 
             // numeroContrato
             // 
@@ -120,11 +236,11 @@ namespace AAVD
             this.municipio.HeaderText = "Municipio";
             this.municipio.Name = "municipio";
             // 
-            // estatus
+            // estado
             // 
-            this.estatus.DataPropertyName = "estatus";
-            this.estatus.HeaderText = "Estado";
-            this.estatus.Name = "estatus";
+            this.estado.DataPropertyName = "estado";
+            this.estado.HeaderText = "Estado";
+            this.estado.Name = "estado";
             // 
             // creacion
             // 
@@ -132,106 +248,31 @@ namespace AAVD
             this.creacion.HeaderText = "Fecha de Creacion";
             this.creacion.Name = "creacion";
             // 
-            // modificacion
+            // fechaAltaMod
             // 
-            this.modificacion.DataPropertyName = "modificacion";
-            this.modificacion.HeaderText = "Fecha de Modificacion";
-            this.modificacion.Name = "modificacion";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(195, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Cliente:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(394, 47);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Tipo de Servicio:";
-            // 
-            // tbTipoServicio
-            // 
-            this.tbTipoServicio.Location = new System.Drawing.Point(487, 44);
-            this.tbTipoServicio.Name = "tbTipoServicio";
-            this.tbTipoServicio.Size = new System.Drawing.Size(100, 20);
-            this.tbTipoServicio.TabIndex = 3;
-            // 
-            // bEliminar
-            // 
-            this.bEliminar.Location = new System.Drawing.Point(714, 153);
-            this.bEliminar.Name = "bEliminar";
-            this.bEliminar.Size = new System.Drawing.Size(75, 23);
-            this.bEliminar.TabIndex = 5;
-            this.bEliminar.Text = "Eliminar";
-            this.bEliminar.UseVisualStyleBackColor = true;
-            this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click);
-            // 
-            // btnRegresar
-            // 
-            this.btnRegresar.Location = new System.Drawing.Point(714, 182);
-            this.btnRegresar.Name = "btnRegresar";
-            this.btnRegresar.Size = new System.Drawing.Size(75, 23);
-            this.btnRegresar.TabIndex = 6;
-            this.btnRegresar.Text = "Regresar";
-            this.btnRegresar.UseVisualStyleBackColor = true;
-            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
-            // 
-            // bModificar
-            // 
-            this.bModificar.Location = new System.Drawing.Point(714, 123);
-            this.bModificar.Name = "bModificar";
-            this.bModificar.Size = new System.Drawing.Size(75, 23);
-            this.bModificar.TabIndex = 8;
-            this.bModificar.Text = "Modificar";
-            this.bModificar.UseVisualStyleBackColor = true;
-            this.bModificar.Click += new System.EventHandler(this.bModificar_Click);
-            // 
-            // bAgregar
-            // 
-            this.bAgregar.Location = new System.Drawing.Point(714, 94);
-            this.bAgregar.Name = "bAgregar";
-            this.bAgregar.Size = new System.Drawing.Size(75, 23);
-            this.bAgregar.TabIndex = 7;
-            this.bAgregar.Text = "Agregar";
-            this.bAgregar.UseVisualStyleBackColor = true;
-            this.bAgregar.Click += new System.EventHandler(this.bAgregar_Click);
-            // 
-            // cbCliente
-            // 
-            this.cbCliente.FormattingEnabled = true;
-            this.cbCliente.Location = new System.Drawing.Point(243, 43);
-            this.cbCliente.Name = "cbCliente";
-            this.cbCliente.Size = new System.Drawing.Size(121, 21);
-            this.cbCliente.TabIndex = 9;
+            this.fechaAltaMod.DataPropertyName = "fechaAltaMod";
+            this.fechaAltaMod.HeaderText = "Fecha de Modificacion";
+            this.fechaAltaMod.Name = "fechaAltaMod";
             // 
             // FormContratos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(811, 367);
-            this.Controls.Add(this.cbCliente);
+            this.ClientSize = new System.Drawing.Size(719, 420);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bModificar);
             this.Controls.Add(this.bAgregar);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.bEliminar);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.tbTipoServicio);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvContrato);
             this.Name = "FormContratos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contratos";
             this.Load += new System.EventHandler(this.FormContratos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvContrato)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -245,6 +286,10 @@ namespace AAVD
         private System.Windows.Forms.Button btnRegresar;
         private System.Windows.Forms.Button bModificar;
         private System.Windows.Forms.Button bAgregar;
+        private System.Windows.Forms.ComboBox cbCliente;
+        private System.Windows.Forms.RadioButton rbClientesFisicos;
+        private System.Windows.Forms.RadioButton rbClientesMorales;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroContrato;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroMedidor;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoria;
@@ -253,9 +298,8 @@ namespace AAVD
         private System.Windows.Forms.DataGridViewTextBoxColumn calle;
         private System.Windows.Forms.DataGridViewTextBoxColumn colonia;
         private System.Windows.Forms.DataGridViewTextBoxColumn municipio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn creacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn modificacion;
-        private System.Windows.Forms.ComboBox cbCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaAltaMod;
     }
 }

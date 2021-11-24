@@ -14,7 +14,7 @@ select * from Empleado;
 
 INSERT INTO Cliente_Moral(rfc, nombreUsuario, nombre, constitucion, email, fechaAltaMod) VALUES('1234jdse8854', 'alan', 'pemex', '1850-06-22', 'pemex_alan@sasa.com', CURRENT_TIMESTAMP);
 select * from Cliente_Moral;
-
+select * from Cliente_Fisico;
 
 UPDATE Usuario SET empleadoCliente = 0 WHERE nombreUsuario = 'alan';
 
@@ -27,4 +27,12 @@ insert into Zona(municipio, numeroZona) values('guadalupe', 1);
 insert into Zona(municipio, numeroZona) values('juarez', 1);
 insert into Zona(municipio, numeroZona) values('garcia', 2);
 insert into Zona(municipio, numeroZona) values('san pedro', 3);
+insert into Zona(municipio, numeroZona) values('san nicolas', 3);
+insert into Zona(municipio, numeroZona) values('apodaca', 4);
 select * from Zona;
+
+insert into Tipo_Servicio(tipoServicio, cuotaDrenaje) values('Domicilio', 55);
+
+
+INSERT INTO Contrato(nombreUsuario, numeroMedidor, tipoServicio, categoria, estado, numeroExterior, calle, colonia, municipio, creacion, fechaAltaMod) VALUES('dasda', 5005, 'Domicilio', 'A', 0, 778, 'calle7', 'alamedas', 'guadalupe', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+select * from Contrato;

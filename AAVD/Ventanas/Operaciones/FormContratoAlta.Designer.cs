@@ -42,10 +42,8 @@ namespace AAVD
             this.tbNumeroMedidor = new System.Windows.Forms.TextBox();
             this.cbTipoServicio = new System.Windows.Forms.ComboBox();
             this.cbMunicipio = new System.Windows.Forms.ComboBox();
-            this.cbColonia = new System.Windows.Forms.ComboBox();
-            this.tbNumeroCalle = new System.Windows.Forms.TextBox();
+            this.tbNumeroExterior = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.cbCalle = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -54,11 +52,19 @@ namespace AAVD
             this.label26 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.tbColonia = new System.Windows.Forms.TextBox();
+            this.tbCalle = new System.Windows.Forms.TextBox();
+            this.cbUsuario = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbInformacionContratos.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbInformacionContratos
             // 
+            this.gbInformacionContratos.Controls.Add(this.cbUsuario);
+            this.gbInformacionContratos.Controls.Add(this.label1);
+            this.gbInformacionContratos.Controls.Add(this.tbCalle);
+            this.gbInformacionContratos.Controls.Add(this.tbColonia);
             this.gbInformacionContratos.Controls.Add(this.cbCategoria);
             this.gbInformacionContratos.Controls.Add(this.cbEstatus);
             this.gbInformacionContratos.Controls.Add(this.label14);
@@ -71,10 +77,8 @@ namespace AAVD
             this.gbInformacionContratos.Controls.Add(this.tbNumeroMedidor);
             this.gbInformacionContratos.Controls.Add(this.cbTipoServicio);
             this.gbInformacionContratos.Controls.Add(this.cbMunicipio);
-            this.gbInformacionContratos.Controls.Add(this.cbColonia);
-            this.gbInformacionContratos.Controls.Add(this.tbNumeroCalle);
+            this.gbInformacionContratos.Controls.Add(this.tbNumeroExterior);
             this.gbInformacionContratos.Controls.Add(this.label20);
-            this.gbInformacionContratos.Controls.Add(this.cbCalle);
             this.gbInformacionContratos.Controls.Add(this.label21);
             this.gbInformacionContratos.Controls.Add(this.label22);
             this.gbInformacionContratos.Controls.Add(this.label23);
@@ -91,7 +95,7 @@ namespace AAVD
             // cbCategoria
             // 
             this.cbCategoria.FormattingEnabled = true;
-            this.cbCategoria.Location = new System.Drawing.Point(114, 121);
+            this.cbCategoria.Location = new System.Drawing.Point(114, 147);
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(263, 21);
             this.cbCategoria.TabIndex = 31;
@@ -99,7 +103,7 @@ namespace AAVD
             // cbEstatus
             // 
             this.cbEstatus.FormattingEnabled = true;
-            this.cbEstatus.Location = new System.Drawing.Point(114, 42);
+            this.cbEstatus.Location = new System.Drawing.Point(114, 68);
             this.cbEstatus.Name = "cbEstatus";
             this.cbEstatus.Size = new System.Drawing.Size(263, 21);
             this.cbEstatus.TabIndex = 30;
@@ -139,7 +143,7 @@ namespace AAVD
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 19);
+            this.label16.Location = new System.Drawing.Point(6, 45);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(101, 13);
             this.label16.TabIndex = 0;
@@ -147,7 +151,7 @@ namespace AAVD
             // 
             // tbNumeroServicio
             // 
-            this.tbNumeroServicio.Location = new System.Drawing.Point(114, 16);
+            this.tbNumeroServicio.Location = new System.Drawing.Point(114, 42);
             this.tbNumeroServicio.Name = "tbNumeroServicio";
             this.tbNumeroServicio.Size = new System.Drawing.Size(263, 20);
             this.tbNumeroServicio.TabIndex = 10;
@@ -155,7 +159,7 @@ namespace AAVD
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 45);
+            this.label17.Location = new System.Drawing.Point(6, 71);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(45, 13);
             this.label17.TabIndex = 1;
@@ -163,7 +167,7 @@ namespace AAVD
             // 
             // tbNumeroMedidor
             // 
-            this.tbNumeroMedidor.Location = new System.Drawing.Point(114, 69);
+            this.tbNumeroMedidor.Location = new System.Drawing.Point(114, 95);
             this.tbNumeroMedidor.Name = "tbNumeroMedidor";
             this.tbNumeroMedidor.Size = new System.Drawing.Size(263, 20);
             this.tbNumeroMedidor.TabIndex = 12;
@@ -171,7 +175,7 @@ namespace AAVD
             // cbTipoServicio
             // 
             this.cbTipoServicio.FormattingEnabled = true;
-            this.cbTipoServicio.Location = new System.Drawing.Point(114, 94);
+            this.cbTipoServicio.Location = new System.Drawing.Point(114, 120);
             this.cbTipoServicio.Name = "cbTipoServicio";
             this.cbTipoServicio.Size = new System.Drawing.Size(263, 21);
             this.cbTipoServicio.TabIndex = 15;
@@ -184,42 +188,26 @@ namespace AAVD
             this.cbMunicipio.Size = new System.Drawing.Size(247, 21);
             this.cbMunicipio.TabIndex = 21;
             // 
-            // cbColonia
+            // tbNumeroExterior
             // 
-            this.cbColonia.FormattingEnabled = true;
-            this.cbColonia.Location = new System.Drawing.Point(476, 68);
-            this.cbColonia.Name = "cbColonia";
-            this.cbColonia.Size = new System.Drawing.Size(247, 21);
-            this.cbColonia.TabIndex = 20;
-            // 
-            // tbNumeroCalle
-            // 
-            this.tbNumeroCalle.Location = new System.Drawing.Point(476, 42);
-            this.tbNumeroCalle.Name = "tbNumeroCalle";
-            this.tbNumeroCalle.Size = new System.Drawing.Size(247, 20);
-            this.tbNumeroCalle.TabIndex = 17;
+            this.tbNumeroExterior.Location = new System.Drawing.Point(476, 42);
+            this.tbNumeroExterior.Name = "tbNumeroExterior";
+            this.tbNumeroExterior.Size = new System.Drawing.Size(247, 20);
+            this.tbNumeroExterior.TabIndex = 17;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(6, 72);
+            this.label20.Location = new System.Drawing.Point(6, 98);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(102, 13);
             this.label20.TabIndex = 2;
             this.label20.Text = "Numero de medidor:";
             // 
-            // cbCalle
-            // 
-            this.cbCalle.FormattingEnabled = true;
-            this.cbCalle.Location = new System.Drawing.Point(476, 15);
-            this.cbCalle.Name = "cbCalle";
-            this.cbCalle.Size = new System.Drawing.Size(247, 21);
-            this.cbCalle.TabIndex = 16;
-            // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 97);
+            this.label21.Location = new System.Drawing.Point(6, 123);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(85, 13);
             this.label21.TabIndex = 3;
@@ -237,7 +225,7 @@ namespace AAVD
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(6, 124);
+            this.label23.Location = new System.Drawing.Point(6, 150);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(55, 13);
             this.label23.TabIndex = 4;
@@ -266,9 +254,9 @@ namespace AAVD
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(383, 45);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(87, 13);
+            this.label26.Size = new System.Drawing.Size(85, 13);
             this.label26.TabIndex = 6;
-            this.label26.Text = "Numero de calle:";
+            this.label26.Text = "Numero Exterior:";
             // 
             // btnCancelar
             // 
@@ -289,6 +277,37 @@ namespace AAVD
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
+            // tbColonia
+            // 
+            this.tbColonia.Location = new System.Drawing.Point(476, 68);
+            this.tbColonia.Name = "tbColonia";
+            this.tbColonia.Size = new System.Drawing.Size(247, 20);
+            this.tbColonia.TabIndex = 32;
+            // 
+            // tbCalle
+            // 
+            this.tbCalle.Location = new System.Drawing.Point(476, 16);
+            this.tbCalle.Name = "tbCalle";
+            this.tbCalle.Size = new System.Drawing.Size(247, 20);
+            this.tbCalle.TabIndex = 33;
+            // 
+            // cbUsuario
+            // 
+            this.cbUsuario.FormattingEnabled = true;
+            this.cbUsuario.Location = new System.Drawing.Point(114, 16);
+            this.cbUsuario.Name = "cbUsuario";
+            this.cbUsuario.Size = new System.Drawing.Size(263, 21);
+            this.cbUsuario.TabIndex = 35;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "Usaurio:";
             // 
             // FormContratoAlta
             // 
@@ -322,10 +341,8 @@ namespace AAVD
         private System.Windows.Forms.TextBox tbNumeroMedidor;
         private System.Windows.Forms.ComboBox cbTipoServicio;
         private System.Windows.Forms.ComboBox cbMunicipio;
-        private System.Windows.Forms.ComboBox cbColonia;
-        private System.Windows.Forms.TextBox tbNumeroCalle;
+        private System.Windows.Forms.TextBox tbNumeroExterior;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.ComboBox cbCalle;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
@@ -334,5 +351,9 @@ namespace AAVD
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.TextBox tbColonia;
+        private System.Windows.Forms.TextBox tbCalle;
+        private System.Windows.Forms.ComboBox cbUsuario;
+        private System.Windows.Forms.Label label1;
     }
 }

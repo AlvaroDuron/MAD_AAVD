@@ -353,5 +353,31 @@ namespace AAVD
                 
             }
         }
+
+        public static void LlenarCB(ComboBox cb)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+
+                var data = ConexionDB_MAD.db.Query<ClienteMoral>("sp_ConsultarClientesMoralesPorRfcNombre",
+                    new { },
+                    commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+
+                List<string> infos = new List<string>();
+                List<ClienteMoral> clientes = data.ToList();
+                foreach (ClienteMoral cliente in clientes)
+                {
+                    infos.Add(cliente.rfc + " - " + cliente.nombreUsuario);
+                }
+                cb.DataSource = infos.ToList();
+            }
+            else
+            {
+
+            }
+        }
     }
 }
