@@ -30,17 +30,6 @@ namespace AAVD
         private void InitializeComponent()
         {
             this.dgvContrato = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbTipoServicio = new System.Windows.Forms.TextBox();
-            this.bEliminar = new System.Windows.Forms.Button();
-            this.btnRegresar = new System.Windows.Forms.Button();
-            this.bModificar = new System.Windows.Forms.Button();
-            this.bAgregar = new System.Windows.Forms.Button();
-            this.cbCliente = new System.Windows.Forms.ComboBox();
-            this.rbClientesFisicos = new System.Windows.Forms.RadioButton();
-            this.rbClientesMorales = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numeroContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroMedidor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +41,17 @@ namespace AAVD
             this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.creacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaAltaMod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.bEliminar = new System.Windows.Forms.Button();
+            this.btnRegresar = new System.Windows.Forms.Button();
+            this.bModificar = new System.Windows.Forms.Button();
+            this.bAgregar = new System.Windows.Forms.Button();
+            this.cbCliente = new System.Windows.Forms.ComboBox();
+            this.rbClientesFisicos = new System.Windows.Forms.RadioButton();
+            this.rbClientesMorales = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbTipoServicio = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContrato)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -76,6 +76,72 @@ namespace AAVD
             this.dgvContrato.Size = new System.Drawing.Size(667, 249);
             this.dgvContrato.TabIndex = 0;
             // 
+            // numeroContrato
+            // 
+            this.numeroContrato.DataPropertyName = "numeroContrato";
+            this.numeroContrato.HeaderText = "Numero de Contrato";
+            this.numeroContrato.Name = "numeroContrato";
+            // 
+            // numeroMedidor
+            // 
+            this.numeroMedidor.DataPropertyName = "numeroMedidor";
+            this.numeroMedidor.HeaderText = "Numero de Medidor";
+            this.numeroMedidor.Name = "numeroMedidor";
+            // 
+            // categoria
+            // 
+            this.categoria.DataPropertyName = "categoria";
+            this.categoria.HeaderText = "Categoria";
+            this.categoria.Name = "categoria";
+            // 
+            // tipoServicio
+            // 
+            this.tipoServicio.DataPropertyName = "tipoServicio";
+            this.tipoServicio.HeaderText = "Tipo de Servicio";
+            this.tipoServicio.Name = "tipoServicio";
+            // 
+            // numeroExterior
+            // 
+            this.numeroExterior.DataPropertyName = "numeroExterior";
+            this.numeroExterior.HeaderText = "Numero Exterior";
+            this.numeroExterior.Name = "numeroExterior";
+            // 
+            // calle
+            // 
+            this.calle.DataPropertyName = "calle";
+            this.calle.HeaderText = "Calle";
+            this.calle.Name = "calle";
+            // 
+            // colonia
+            // 
+            this.colonia.DataPropertyName = "colonia";
+            this.colonia.HeaderText = "Colonia";
+            this.colonia.Name = "colonia";
+            // 
+            // municipio
+            // 
+            this.municipio.DataPropertyName = "municipio";
+            this.municipio.HeaderText = "Municipio";
+            this.municipio.Name = "municipio";
+            // 
+            // estado
+            // 
+            this.estado.DataPropertyName = "estado";
+            this.estado.HeaderText = "Estado";
+            this.estado.Name = "estado";
+            // 
+            // creacion
+            // 
+            this.creacion.DataPropertyName = "creacion";
+            this.creacion.HeaderText = "Fecha de Creacion";
+            this.creacion.Name = "creacion";
+            // 
+            // fechaAltaMod
+            // 
+            this.fechaAltaMod.DataPropertyName = "fechaAltaMod";
+            this.fechaAltaMod.HeaderText = "Fecha de Modificacion";
+            this.fechaAltaMod.Name = "fechaAltaMod";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -93,13 +159,6 @@ namespace AAVD
             this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Tipo de Servicio:";
-            // 
-            // tbTipoServicio
-            // 
-            this.tbTipoServicio.Location = new System.Drawing.Point(226, 19);
-            this.tbTipoServicio.Name = "tbTipoServicio";
-            this.tbTipoServicio.Size = new System.Drawing.Size(121, 20);
-            this.tbTipoServicio.TabIndex = 3;
             // 
             // bEliminar
             // 
@@ -175,10 +234,10 @@ namespace AAVD
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbTipoServicio);
             this.groupBox1.Controls.Add(this.rbClientesMorales);
             this.groupBox1.Controls.Add(this.cbCliente);
             this.groupBox1.Controls.Add(this.rbClientesFisicos);
-            this.groupBox1.Controls.Add(this.tbTipoServicio);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(27, 35);
@@ -188,71 +247,13 @@ namespace AAVD
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros";
             // 
-            // numeroContrato
+            // cbTipoServicio
             // 
-            this.numeroContrato.DataPropertyName = "numeroContrato";
-            this.numeroContrato.HeaderText = "Numero de Contrato";
-            this.numeroContrato.Name = "numeroContrato";
-            // 
-            // numeroMedidor
-            // 
-            this.numeroMedidor.DataPropertyName = "numeroMedidor";
-            this.numeroMedidor.HeaderText = "Numero de Medidor";
-            this.numeroMedidor.Name = "numeroMedidor";
-            // 
-            // categoria
-            // 
-            this.categoria.DataPropertyName = "categoria";
-            this.categoria.HeaderText = "Categoria";
-            this.categoria.Name = "categoria";
-            // 
-            // tipoServicio
-            // 
-            this.tipoServicio.DataPropertyName = "tipoServicio";
-            this.tipoServicio.HeaderText = "Tipo de Servicio";
-            this.tipoServicio.Name = "tipoServicio";
-            // 
-            // numeroExterior
-            // 
-            this.numeroExterior.DataPropertyName = "numeroExterior";
-            this.numeroExterior.HeaderText = "Numero Exterior";
-            this.numeroExterior.Name = "numeroExterior";
-            // 
-            // calle
-            // 
-            this.calle.DataPropertyName = "calle";
-            this.calle.HeaderText = "Calle";
-            this.calle.Name = "calle";
-            // 
-            // colonia
-            // 
-            this.colonia.DataPropertyName = "colonia";
-            this.colonia.HeaderText = "Colonia";
-            this.colonia.Name = "colonia";
-            // 
-            // municipio
-            // 
-            this.municipio.DataPropertyName = "municipio";
-            this.municipio.HeaderText = "Municipio";
-            this.municipio.Name = "municipio";
-            // 
-            // estado
-            // 
-            this.estado.DataPropertyName = "estado";
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
-            // 
-            // creacion
-            // 
-            this.creacion.DataPropertyName = "creacion";
-            this.creacion.HeaderText = "Fecha de Creacion";
-            this.creacion.Name = "creacion";
-            // 
-            // fechaAltaMod
-            // 
-            this.fechaAltaMod.DataPropertyName = "fechaAltaMod";
-            this.fechaAltaMod.HeaderText = "Fecha de Modificacion";
-            this.fechaAltaMod.Name = "fechaAltaMod";
+            this.cbTipoServicio.FormattingEnabled = true;
+            this.cbTipoServicio.Location = new System.Drawing.Point(226, 15);
+            this.cbTipoServicio.Name = "cbTipoServicio";
+            this.cbTipoServicio.Size = new System.Drawing.Size(121, 21);
+            this.cbTipoServicio.TabIndex = 10;
             // 
             // FormContratos
             // 
@@ -281,7 +282,6 @@ namespace AAVD
         private System.Windows.Forms.DataGridView dgvContrato;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tbTipoServicio;
         private System.Windows.Forms.Button bEliminar;
         private System.Windows.Forms.Button btnRegresar;
         private System.Windows.Forms.Button bModificar;
@@ -301,5 +301,6 @@ namespace AAVD
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn creacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaAltaMod;
+        private System.Windows.Forms.ComboBox cbTipoServicio;
     }
 }
