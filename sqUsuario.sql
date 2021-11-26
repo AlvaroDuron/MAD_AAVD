@@ -10,6 +10,13 @@ intentos TINYINT,
 estado TINYINT NOT NULL
 );
 
+CREATE PROCEDURE sp_ConsultarUsuariosPorNombre
+AS
+BEGIN
+SELECT nombreUsuario FROM Usuario;
+END
+GO
+
 CREATE PROCEDURE sp_BuscarUsuario(@nombreUsuario varchar(100))
 AS
 BEGIN
@@ -37,3 +44,11 @@ BEGIN
 DELETE Usuario WHERE nombreUsuario = @nombreUsuario;
 END
 GO
+
+insert into Usuario(nombreUsuario, contraseña, empleadoCliente, intentos, estado) values('alan', 123, 0, 0, 0);
+insert into Usuario(nombreUsuario, contraseña, empleadoCliente, intentos, estado) values('isaac', 123, 0, 0, 0);
+insert into Usuario(nombreUsuario, contraseña, empleadoCliente, intentos, estado) values('mohidan', 123, 1, 0, 0);
+insert into Usuario(nombreUsuario, contraseña, empleadoCliente, intentos, estado) values('aldana', 123, 2, 0, 0);
+select * from Usuario;
+
+update Usuario set intentos = 0 where nombreUsuario = 'mohidan';

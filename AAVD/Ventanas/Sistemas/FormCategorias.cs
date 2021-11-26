@@ -60,5 +60,23 @@ namespace AAVD
             selectedRow = dgvCategoria.Rows[cellIndex];
             catSelected = char.Parse(selectedRow.Cells[0].Value.ToString());
         }
+
+        private void dgvCategoria_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.ColumnIndex == 1) // 1 should be your column index
+            {
+                float i;
+
+                if (!float.TryParse(Convert.ToString(e.FormattedValue), out i))
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("Ingrese solamente numeros.");
+                }
+                else
+                {
+                    // the input is numeric 
+                }
+            }
+        }
     }
 }

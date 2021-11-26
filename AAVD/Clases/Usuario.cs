@@ -130,6 +130,26 @@ namespace AAVD
         }
 
         //FORM PROCESOS
+        public static void LlenarCB(ComboBox cb)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+
+                var data = ConexionDB_MAD.db.Query<string>("sp_ConsultarUsuariosPorNombre",
+                    new { },
+                    commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+
+                cb.DataSource = data.ToList();
+            }
+            else
+            {
+
+            }
+        }
+
         public static bool LogIn(string usuario, string contraseña, int empleadoCliente)
         {
             bool log = false;
@@ -158,13 +178,13 @@ namespace AAVD
                                     MessageBox.Show("Contraseña incorrecta.");
                                     if (vusuario.intentos == 3)
                                     {
+                                        vusuario.estado = 2;
                                         MessageBox.Show("La cuenta se ha suspendido.");
                                     }
                                 }
                             }
                             else
                             {
-                                vusuario.estado = 3;
                                 MessageBox.Show("La cuenta está suspendida por el momento.");
                             }
                         }

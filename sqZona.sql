@@ -2,42 +2,57 @@ USE HydroLAN;
 use Proyecto;
 
 CREATE TABLE Zona
-( municipio VARCHAR(100) PRIMARY KEY,
-numeroZona INT
+( numeroZona INT PRIMARY KEY,
+nombre VARCHAR(100) NOT NULL
 );
 
 
 CREATE PROCEDURE sp_ConsultarZonas
 AS
 BEGIN
-SELECT municipio, numeroZona FROM Zona;
+SELECT numeroZona, nombre FROM Zona;
 END
 GO
 
-CREATE PROCEDURE sp_ConsultarZonasPorMunicipio
+CREATE PROCEDURE sp_ConsultarZonasPorNombre
 AS
 BEGIN
-SELECT municipio FROM Zona;
+SELECT nombre FROM Zona;
 END
 GO
 
-CREATE PROCEDURE sp_ModificarZona(@municipio varchar(100), @numeroZona int)
+CREATE PROCEDURE sp_BuscarZona(@numeroZona int)
 AS
 BEGIN
-UPDATE Zona SET municipio = @municipio, numeroZona = @numeroZona WHERE municipio = @municipio;
+SELECT numeroZona, nombre FROM Zona WHERE numeroZona = @numeroZona;
 END
 GO
 
-CREATE PROCEDURE sp_AgregarZona(@municipio varchar(100), @numeroZona int)
+CREATE PROCEDURE sp_ModificarZona(@numeroZona int, @nombre varchar(100))
 AS
 BEGIN
-INSERT INTO Zona(municipio, numeroZona) VALUES(@municipio, @numeroZona);
+UPDATE Zona SET numeroZona = @numeroZona, nombre = @nombre WHERE numeroZona = @numeroZona;
 END
 GO
 
-CREATE PROCEDURE sp_EliminarZona(@municipio varchar(100))
+CREATE PROCEDURE sp_AgregarZona(@numeroZona int, @nombre varchar(100))
 AS
 BEGIN
-DELETE Zona WHERE municipio = @municipio;
+INSERT INTO Zona(numeroZona, nombre) VALUES(@numeroZona, @nombre);
 END
 GO
+
+CREATE PROCEDURE sp_EliminarZona(@numeroZona int)
+AS
+BEGIN
+DELETE Zona WHERE numeroZona = @numeroZona;
+END
+GO
+
+insert into Zona(numeroZona, nombre) VALUES(1, 'Zona Norte');
+insert into Zona(numeroZona, nombre) VALUES(2, 'Zona Sur');
+insert into Zona(numeroZona, nombre) VALUES(3, 'Zona Este');
+insert into Zona(numeroZona, nombre) VALUES(4, 'Zona Oeste');
+insert into Zona(numeroZona, nombre) VALUES(5, 'Zona Central');
+
+select * from Zona;

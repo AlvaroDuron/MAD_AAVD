@@ -12,6 +12,10 @@ namespace AAVD
 {
     public partial class FormEmpleadoPrincipal : Form
     {
+        bool cellSelected = false;
+        int cellIndex;
+        DataGridViewRow selectedRow;
+        string keySelected;
         public FormEmpleadoPrincipal()
         {
             InitializeComponent();
@@ -19,7 +23,22 @@ namespace AAVD
 
         private void FormEmpleadoPrincipal_Load(object sender, EventArgs e)
         {
-
+            cellSelected = false;
+            try
+            {
+                if (rbClientesFisicos.Checked)
+                {
+                    ClienteFisico.LlenarDGBan(dgvClientesBaneados);
+                }
+                else
+                {
+                    ClienteMoral.LlenarDGBan(dgvClientesBaneados);
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show("Error: " + except.Message);
+            }
         }
 
         private void bCerrar_Click(object sender, EventArgs e)
@@ -84,6 +103,40 @@ namespace AAVD
             this.Hide();
             FormConsumoHistorico fPrincipal = new FormConsumoHistorico();
             fPrincipal.Show();
+        }
+
+        private void rbClientesFisicos_Click(object sender, EventArgs e)
+        {
+            rbClientesFisicos.Checked = true;
+            rbClientesMorales.Checked = false;
+            FormEmpleadoPrincipal_Load(sender, e);
+        }
+
+        private void rbClientesMorales_Click(object sender, EventArgs e)
+        {
+            rbClientesFisicos.Checked = false;
+            rbClientesMorales.Checked = true;
+            FormEmpleadoPrincipal_Load(sender, e);
+        }
+
+        private void bActivar_Click(object sender, EventArgs e)
+        {
+            if (cellSelected)
+            {
+                Usuario cliente = Usuario.Buscar(keySelected);
+                cliente.estado = 1;
+                cliente.intentos = 0;
+                Usuario.Modificar(cliente);
+            }
+            FormEmpleadoPrincipal_Load(sender, e);
+        }
+
+        private void dgvClientesBaneados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            cellSelected = true;
+            cellIndex = e.RowIndex;
+            selectedRow = dgvClientesBaneados.Rows[cellIndex];
+            keySelected = selectedRow.Cells["nombreUsuario"].Value.ToString();
         }
     }
 }

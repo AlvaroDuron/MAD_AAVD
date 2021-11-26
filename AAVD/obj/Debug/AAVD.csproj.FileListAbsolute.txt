@@ -75,3 +75,4 @@ Z:\FCFM\AAVD\MAD_AAVD\AAVD\obj\Debug\AAVD.FormClienteMoralAlta.resources
 Z:\FCFM\AAVD\MAD_AAVD\AAVD\obj\Debug\AAVD.FormEmpleadoAlta.resources
 Z:\FCFM\AAVD\MAD_AAVD\AAVD\obj\Debug\AAVD.FormReporteGeneral.resources
 Z:\FCFM\AAVD\MAD_AAVD\AAVD\obj\Debug\AAVD.FormContratoAlta.resources
+Z:\FCFM\AAVD\MAD_AAVD\AAVD\obj\Debug\AAVD.FormMunicipio.resources

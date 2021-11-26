@@ -24,7 +24,7 @@ namespace AAVD
             mcNacimiento.MaxDate = DateTime.Now;
             try
             {
-                Zona.LlenarCB(cbMunicipio);
+                Municipio.LlenarCB(cbMunicipio);
             }
             catch (Exception except)
             {

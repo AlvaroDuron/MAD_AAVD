@@ -68,6 +68,7 @@ namespace AAVD
             this.dgvCategoria.Size = new System.Drawing.Size(240, 150);
             this.dgvCategoria.TabIndex = 19;
             this.dgvCategoria.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoria_CellClick);
+            this.dgvCategoria.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvCategoria_CellValidating);
             // 
             // categoria
             // 

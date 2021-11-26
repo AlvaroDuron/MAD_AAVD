@@ -3,44 +3,46 @@ use Proyecto;
 
 CREATE TABLE Tarifa
 ( numeroZona INT NOT NULL,
-año CHAR(4) NOT NULL,
-mes CHAR(2) NOT NULL,
-cuotaFija MONEY,
-basico MONEY,
-intermedio MONEY,
-excedente MONEY,
-municipio VARCHAR(100),
-FOREIGN KEY (municipio) REFERENCES Zona(municipio),
-idParametro INT,
-FOREIGN KEY (idParametro) REFERENCES Parametro(idParametro),
-PRIMARY KEY(numeroZona, año, mes)
+tipoServicio VARCHAR(100) NOT NULL,
+año INT NOT NULL,
+mes INT NOT NULL,
+cuotaFija DECIMAL(12,2),
+rango1 DECIMAL(12,2),
+rango2 DECIMAL(12,2),
+rango3 DECIMAL(12,2),
+FOREIGN KEY (numeroZona) REFERENCES Zona(numeroZona),
+FOREIGN KEY (tipoServicio) REFERENCES Tipo_Servicio(nombre),
+PRIMARY KEY(numeroZona, tipoServicio, año, mes)
 );
 
 CREATE PROCEDURE sp_ConsultarTarifas
 AS
 BEGIN
-SELECT * FROM Zona;
+SELECT * FROM Tarifa;
 END
 GO
 
-CREATE PROCEDURE sp_ModificarTarifa(@municipio varchar(100), @numeroZona int)
+CREATE PROCEDURE sp_ModificarTarifa(@numeroZona int, @tipoServicio varchar(100), @año int, @mes int, @cuotaFija decimal(12,2), @rango1 decimal(12,2), @rango2 decimal(12,2), @rango3 decimal(12,2))
 AS
 BEGIN
-UPDATE Zona SET numeroZona = @numeroZona WHERE municipio = @municipio;
+UPDATE Tarifa SET cuotaFija = @cuotaFija, rango1 = @rango1, rango2 = @rango2, rango3 = @rango3 WHERE numeroZona = @numeroZona AND tipoServicio = @tipoServicio AND año = @año AND mes = @mes;
 END
 GO
 
-CREATE PROCEDURE sp_AgregarTarifa(@municipio varchar(100), @numeroZona int)
+CREATE PROCEDURE sp_AgregarTarifa(@numeroZona int, @tipoServicio varchar(100), @año int, @mes int, @cuotaFija decimal(12,2), @rango1 decimal(12,2), @rango2 decimal(12,2), @rango3 decimal(12,2))
 AS
 BEGIN
-INSERT INTO Zona(municipio, numeroZona) VALUES(@municipio, @numeroZona);
+INSERT INTO Tarifa(numeroZona, tipoServicio, año, mes, cuotaFija, rango1, rango2, rango3) VALUES(@numeroZona, @tipoServicio, @año, @mes, @cuotaFija, @rango1, @rango2, @rango3);
 END
 GO
 
-CREATE PROCEDURE sp_EliminarTarifa(@municipio varchar(100))
+CREATE PROCEDURE sp_EliminarTarifa(@numeroZona int, @tipoServicio varchar(100), @año int, @mes int)
 AS
 BEGIN
-DELETE Zona WHERE municipio = @municipio;
+DELETE Tarifa WHERE numeroZona = @numeroZona AND tipoServicio = @tipoServicio AND año = @año AND mes = @mes;
 END
 GO
+
+insert into Tarifa(numeroZona, tipoServicio, año, mes, cuotaFija, rango1, rango2, rango3) values(5, 'Domestico', 2021, 1, 52.5, 3.5, 6, 9.5);
+select * from Tarifa;
 

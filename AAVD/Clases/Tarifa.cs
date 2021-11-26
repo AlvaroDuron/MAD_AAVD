@@ -11,9 +11,9 @@ namespace AAVD.Clases
 {
     class Tarifa
     {
+        public int zona { get; set; }
         public int año { get; set; }
         public int mes { get; set; }
-        public int zona { get; set; }
         public float cuotaFija { get; set; }
         public float rango1 { get; set; }
         public float rango2 { get; set; }

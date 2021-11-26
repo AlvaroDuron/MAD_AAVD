@@ -13,11 +13,11 @@ namespace AAVD
 {
     public class Contrato
     {
-        public string nombreUsuario { get; set; }
         public int numeroContrato { get; set; }
         public int numeroMedidor { get; set; }
-        public char categoria { get; set; }
+        public string nombreUsuario { get; set; }
         public string tipoServicio { get; set; }
+        public char categoria { get; set; }
         public int numeroExterior { get; set; }
         public string calle { get; set; }
         public string colonia { get; set; }
@@ -73,18 +73,18 @@ namespace AAVD
                 ConexionDB_MAD.db.Query<Contrato>("sp_AgregarContrato",
                     new
                     {
-                        @nombreUsaurio = contrato.nombreUsuario,
-                        @numeroContrato = contrato.numeroContrato,
+                        @nombreUsuario = contrato.nombreUsuario,
+                        //@numeroContrato = contrato.numeroContrato
                         @numeroMedidor = contrato.numeroMedidor,
-                        @categoria = contrato.categoria,
                         @tipoServicio = contrato.tipoServicio,
+                        @categoria = contrato.categoria,
+                        @estado = contrato.estado,
                         @numeroExterior = contrato.numeroExterior,
                         @calle = contrato.calle,
                         @colonia = contrato.colonia,
-                        @municipio = contrato.municipio,
-                        @estado = contrato.estado,
-                        @creacion = contrato.creacion,
-                        @fechaAltaMod = contrato.fechaAltaMod
+                        @municipio = contrato.municipio
+                        //@creacion = contrato.creacion,
+                        //@fechaAltaMod = contrato.fechaAltaMod
                     },
                     commandType: CommandType.StoredProcedure);
 
@@ -104,7 +104,7 @@ namespace AAVD
                 ConexionDB_MAD.db.Query<Contrato>("sp_ModificarContrato",
                     new
                     {
-                        @nombreUsaurio = contrato.nombreUsuario,
+                        @nombreUsuario = contrato.nombreUsuario,
                         @numeroContrato = contrato.numeroContrato,
                         @numeroMedidor = contrato.numeroMedidor,
                         @categoria = contrato.categoria,
@@ -115,7 +115,7 @@ namespace AAVD
                         @municipio = contrato.municipio,
                         @estado = contrato.estado,
                         @creacion = contrato.creacion,
-                        @fechaAltaMod = contrato.fechaAltaMod
+                        //@fechaAltaMod = contrato.fechaAltaMod
                     },
                     commandType: CommandType.StoredProcedure);
 

@@ -38,7 +38,7 @@ namespace AAVD
         {
             try
             {
-                Zona.Agregar(new Zona(int.Parse(tbNumeroZona.Text), tbMunicipio.Text));
+                Zona.Agregar(new Zona(int.Parse(tbNumeroZona.Text), tbNombre.Text));
             } catch(Exception except)
             {
                 MessageBox.Show("Error: " + except.Message);
@@ -48,7 +48,7 @@ namespace AAVD
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Zona.Eliminar(tbMunicipio.Text);
+            Zona.Eliminar(int.Parse(tbNumeroZona.Text));
             FormZonas_Load(sender, e);
         }
 

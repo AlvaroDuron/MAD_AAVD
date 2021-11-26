@@ -190,5 +190,23 @@ namespace AAVD
                 dg.DataSource = data.ToList();
             }
         }
+
+        public static void LlenarDGBan(DataGridView dg)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+
+                var data = ConexionDB_MAD.db.Query<Empleado>("sp_ConsultarEmpleadosBaneados", new { }, commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+
+                dg.DataSource = data.ToList();
+            }
+            else
+            {
+
+            }
+        }
     }
 }

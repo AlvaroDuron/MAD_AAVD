@@ -6,6 +6,13 @@ CREATE TABLE Categoria
 porcentaje FLOAT
 );
 
+CREATE PROCEDURE sp_ConsultarCategoriasPorCategoria
+AS
+BEGIN
+SELECT categoria FROM Categoria;
+END
+GO
+
 CREATE PROCEDURE sp_ConsultarCategorias
 AS
 BEGIN

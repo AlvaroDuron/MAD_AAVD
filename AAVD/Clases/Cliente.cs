@@ -178,25 +178,40 @@ namespace AAVD
                 dg.DataSource = data.ToList();
             }
         }
+
+        public static void LlenarDGBan(DataGridView dg)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+
+                var data = ConexionDB_MAD.db.Query<ClienteFisico>("sp_ConsultarClientesFisicosBaneados",
+                    new { },
+                    commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+
+                dg.DataSource = data.ToList();
+            }
+            else
+            {
+
+            }
+        }
+
         public static void LlenarCB(ComboBox cb)
         {
             if (Program.MAD_AAVD)
             {
                 ConexionDB_MAD.conectar();
 
-                var data = ConexionDB_MAD.db.Query<ClienteFisico>("sp_ConsultarClientesFisicosPorCurpNombre",
+                var data = ConexionDB_MAD.db.Query<string>("sp_ConsultarClientesFisicosPorUsuario",
                     new { },
                     commandType: CommandType.StoredProcedure);
 
                 ConexionDB_MAD.desconectar();
 
-                List<string> infos = new List<string>();
-                List<ClienteFisico> clientes = data.ToList();
-                foreach (ClienteFisico cliente in clientes)
-                {
-                    infos.Add(cliente.curp + " - " + cliente.nombreUsuario);
-                }
-                cb.DataSource = infos.ToList();
+                cb.DataSource = data.ToList();
             }
             else
             {
@@ -354,25 +369,37 @@ namespace AAVD
             }
         }
 
+        public static void LlenarDGBan(DataGridView dg)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+
+                var data = ConexionDB_MAD.db.Query<ClienteMoral>("sp_ConsultarClientesMoralesBaneados", new { }, commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+
+                dg.DataSource = data.ToList();
+            }
+            else
+            {
+
+            }
+        }
+
         public static void LlenarCB(ComboBox cb)
         {
             if (Program.MAD_AAVD)
             {
                 ConexionDB_MAD.conectar();
 
-                var data = ConexionDB_MAD.db.Query<ClienteMoral>("sp_ConsultarClientesMoralesPorRfcNombre",
+                var data = ConexionDB_MAD.db.Query<string>("sp_ConsultarClientesMoralesPorUsuario",
                     new { },
                     commandType: CommandType.StoredProcedure);
 
                 ConexionDB_MAD.desconectar();
 
-                List<string> infos = new List<string>();
-                List<ClienteMoral> clientes = data.ToList();
-                foreach (ClienteMoral cliente in clientes)
-                {
-                    infos.Add(cliente.rfc + " - " + cliente.nombreUsuario);
-                }
-                cb.DataSource = infos.ToList();
+                cb.DataSource = data.ToList();
             }
             else
             {

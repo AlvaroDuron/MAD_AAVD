@@ -6,8 +6,13 @@ USE HydroLAN;
 use Proyecto;
 
 CREATE TABLE Zona
+( numeroZona INT PRIMARY KEY,
+nombre VARCHAR(100) 
+);
+
+CREATE TABLE Municipio
 ( municipio VARCHAR(100) PRIMARY KEY,
-numeroZona INT
+numeroZona INT 
 );
 
 CREATE TABLE Parametro

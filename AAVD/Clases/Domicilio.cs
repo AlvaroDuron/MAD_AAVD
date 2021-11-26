@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AAVD
 {
@@ -72,5 +75,144 @@ namespace AAVD
 
         //FORM METODOS
 
+    }
+
+    public class Municipio
+    {
+        public string municipio { get; set; }
+        public int numeroZona { get; set; }
+
+        public Municipio()
+        {
+
+        }
+        public Municipio(string municipio, int numeroZona)
+        {
+            this.municipio = municipio;
+            this.numeroZona = numeroZona;
+        }
+
+        //BD QUERY
+        public static Municipio Buscar(string municipio)
+        {
+            Municipio temp = null;
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+                var data = ConexionDB_MAD.db.Query<Municipio>("sp_BuscarMunicipio", new { @municipio = municipio }, commandType: CommandType.StoredProcedure);
+                temp = data.ToList()[0];
+                ConexionDB_MAD.desconectar();
+            }
+            else
+            {
+
+            }
+            return temp;
+        }
+        public static void Agregar(Municipio municipio)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+
+                ConexionDB_MAD.db.Query<Municipio>("sp_AgregarMunicipio",
+                    new
+                    {
+                        @municipio = municipio.municipio,
+                        @numeroZona = municipio.numeroZona
+                    },
+                    commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+            }
+            else
+            {
+
+
+            }
+        }
+        public static void Modificar(Municipio municipio)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+
+                ConexionDB_MAD.db.Query<Municipio>("sp_ModificarMunicipio",
+                    new
+                    {
+                        @municipio = municipio.municipio,
+                        @numeroZona = municipio.numeroZona
+                    },
+                    commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+            }
+            else
+            {
+
+            }
+        }
+        public static void Eliminar(string municipio)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+
+                ConexionDB_MAD.db.Query<Municipio>("sp_EliminarMunicipio",
+                    new
+                    {
+                        @municipio = municipio
+                    },
+                    commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+            }
+            else
+            {
+
+
+            }
+        }
+
+        //FORM METODOS
+        public static void LlenarDG(DataGridView dg)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+
+                var data = ConexionDB_MAD.db.Query<Municipio>("sp_ConsultarMunicipios",
+                    new { },
+                    commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+
+                dg.DataSource = data.ToList();
+            }
+            else
+            {
+
+            }
+        }
+
+        public static void LlenarCB(ComboBox cb)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+
+                var data = ConexionDB_MAD.db.Query<string>("sp_ConsultarMunicipiosPorNombre",
+                    new { },
+                    commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+
+                cb.DataSource = data.ToList();
+            }
+            else
+            {
+
+            }
+        }
     }
 }

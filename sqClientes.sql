@@ -3,6 +3,7 @@ USE Proyecto;
 
 CREATE TABLE Cliente_Fisico
 ( curp CHAR(18) PRIMARY KEY NOT NULL,
+nombreUsuario VARCHAR(100) UNIQUE NOT NULL,
 nombre VARCHAR(100) NOT NULL,
 apellidoPaterno VARCHAR(100) NOT NULL,
 apellidoMaterno VARCHAR(100) NOT NULL,
@@ -10,17 +11,16 @@ nacimiento DATE NOT NULL,
 genero CHAR(1) NOT NULL,
 email VARCHAR(100) NOT NULL,
 fechaAltaMod DATETIME NOT NULL,
-nombreUsuario VARCHAR(100) UNIQUE NOT NULL,
 FOREIGN KEY (nombreUsuario) REFERENCES Usuario(nombreUsuario)
 );
 
 CREATE TABLE Cliente_Moral
 ( rfc CHAR(12) PRIMARY KEY NOT NULL,
+nombreUsuario VARCHAR(100) UNIQUE NOT NULL,
 nombre VARCHAR(100) NOT NULL,
 constitucion DATE NOT NULL,
 email VARCHAR(100) NOT NULL,
 fechaAltaMod DATETIME NOT NULL,
-nombreUsuario VARCHAR(100) UNIQUE NOT NULL,
 FOREIGN KEY (nombreUsuario) REFERENCES Usuario(nombreUsuario)
 );
 
@@ -32,10 +32,19 @@ SELECT curp, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento
 END
 GO
 
-CREATE PROCEDURE sp_ConsultarClientesFisicosPorCurpNombre
+CREATE PROCEDURE sp_ConsultarClientesFisicosBaneados
 AS
 BEGIN
-SELECT curp, nombreUsuario FROM Cliente_Fisico;
+SELECT Usuario.nombreUsuario, Cliente_Fisico.nombre, Cliente_Fisico.apellidoPaterno, Cliente_Fisico.apellidoMaterno, Cliente_Fisico.nacimiento, Cliente_Fisico.genero, Cliente_Fisico.fechaAltaMod
+FROM Usuario
+INNER JOIN Cliente_Fisico ON Usuario.nombreUsuario = Cliente_Fisico.nombreUsuario AND Usuario.estado = 2;
+END
+GO
+
+CREATE PROCEDURE sp_ConsultarClientesFisicosPorUsuario
+AS
+BEGIN
+SELECT nombreUsuario FROM Cliente_Fisico;
 END
 GO
 
@@ -75,10 +84,19 @@ SELECT rfc, nombreUsuario, nombre, constitucion, email, fechaAltaMod FROM Client
 END
 GO
 
-CREATE PROCEDURE sp_ConsultarClientesMoralesPorRfcNombre
+CREATE PROCEDURE sp_ConsultarClientesMoralesBaneados
 AS
 BEGIN
-SELECT rfc, nombreUsuario FROM Cliente_Moral;
+SELECT Usuario.nombreUsuario, Cliente_Moral.nombre, Cliente_Moral.constitucion, Cliente_Moral.fechaAltaMod
+FROM Usuario
+INNER JOIN Cliente_Moral ON Usuario.nombreUsuario = Cliente_Moral.nombreUsuario AND Usuario.estado = 2;
+END
+GO
+
+CREATE PROCEDURE sp_ConsultarClientesMoralesPorUsuario
+AS
+BEGIN
+SELECT nombreUsuario FROM Cliente_Moral;
 END
 GO
 
@@ -109,3 +127,8 @@ BEGIN
 DELETE Cliente_Moral WHERE rfc = @rfc;
 END
 GO
+
+insert into Cliente_Fisico(curp, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, email, fechaAltaMod) values('559941315', 'isaac', 'Alan Isaac', 'Aldana', 'Nuñez', '1997-11-03', 'H', 'alan.isaac@sasa.com', CURRENT_TIMESTAMP);
+select * from Cliente_Fisico;
+insert into Cliente_Moral(rfc, nombreUsuario, nombre, constitucion, email, fechaAltaMod) values('1234jdse8854', 'alan', 'pemex', '1850-06-22', 'pemex_alan@sasa.com', CURRENT_TIMESTAMP);
+select * from Cliente_Moral;
