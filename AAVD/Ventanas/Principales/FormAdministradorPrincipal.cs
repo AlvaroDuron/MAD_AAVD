@@ -105,6 +105,13 @@ namespace AAVD
             fPrincipal.Show();
         }
 
+        private void bTipoServicio_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormTipoServicios fPrincipal = new FormTipoServicios();
+            fPrincipal.Show();
+        }
+
         private void bActivar_Click(object sender, EventArgs e)
         {
             if (cellSelected)
@@ -124,5 +131,6 @@ namespace AAVD
             selectedRow = dgvEmpleadosBaneados.Rows[cellIndex];
             keySelected = selectedRow.Cells["nombreUsuario"].Value.ToString();
         }
+
     }
 }

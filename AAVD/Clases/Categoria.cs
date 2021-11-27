@@ -32,7 +32,10 @@ namespace AAVD
             {
                 ConexionDB_MAD.conectar();
                 var data = ConexionDB_MAD.db.Query<Categoria>("sp_BuscarCategoria", new { @categoria = categoria }, commandType: CommandType.StoredProcedure);
-                temp = data.ToList()[0];
+                if (data.Count() > 0)
+                {
+                    temp = data.ToList()[0];
+                }
                 ConexionDB_MAD.desconectar();
             }
             else

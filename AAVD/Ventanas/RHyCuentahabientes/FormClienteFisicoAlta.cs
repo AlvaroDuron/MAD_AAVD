@@ -65,7 +65,7 @@ namespace AAVD
                     {
                         genero = 'M';
                     }
-                    usuario = new Usuario(tbNombreUsuario.Text, tbContraseña.Text, 0, 0, 0);
+                    usuario = new Usuario(tbNombreUsuario.Text, tbContraseña.Text, 0, 0, 1);
                     cliente = new ClienteFisico(
                         tbCURP.Text, tbNombreUsuario.Text,
                         tbNombre.Text, tbApellidoPaterno.Text, tbApellidoMaterno.Text,

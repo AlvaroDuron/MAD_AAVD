@@ -39,8 +39,9 @@ namespace AAVD
             this.label1 = new System.Windows.Forms.Label();
             this.tbNombre = new System.Windows.Forms.TextBox();
             this.dgvMunicipio = new System.Windows.Forms.DataGridView();
-            this.municipio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroZona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.municipio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbZonas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMunicipio)).BeginInit();
             this.SuspendLayout();
@@ -134,12 +135,20 @@ namespace AAVD
             // 
             this.dgvMunicipio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMunicipio.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.numeroZona,
             this.municipio,
-            this.numeroZona});
+            this.nombre});
             this.dgvMunicipio.Location = new System.Drawing.Point(384, 12);
             this.dgvMunicipio.Name = "dgvMunicipio";
             this.dgvMunicipio.Size = new System.Drawing.Size(240, 158);
             this.dgvMunicipio.TabIndex = 19;
+            // 
+            // numeroZona
+            // 
+            this.numeroZona.DataPropertyName = "numeroZona";
+            this.numeroZona.HeaderText = "Numero de Zona";
+            this.numeroZona.Name = "numeroZona";
+            this.numeroZona.ReadOnly = true;
             // 
             // municipio
             // 
@@ -147,11 +156,11 @@ namespace AAVD
             this.municipio.HeaderText = "Municipio";
             this.municipio.Name = "municipio";
             // 
-            // numeroZona
+            // nombre
             // 
-            this.numeroZona.DataPropertyName = "numeroZona";
-            this.numeroZona.HeaderText = "Numero de Zona";
-            this.numeroZona.Name = "numeroZona";
+            this.nombre.DataPropertyName = "nombre";
+            this.nombre.HeaderText = "Zona";
+            this.nombre.Name = "nombre";
             // 
             // FormMunicipio
             // 
@@ -187,7 +196,8 @@ namespace AAVD
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbNombre;
         private System.Windows.Forms.DataGridView dgvMunicipio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn municipio;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroZona;
+        private System.Windows.Forms.DataGridViewTextBoxColumn municipio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
     }
 }

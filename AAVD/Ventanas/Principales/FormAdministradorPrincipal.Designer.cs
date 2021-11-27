@@ -41,10 +41,9 @@ namespace AAVD
             this.bEmpleados = new System.Windows.Forms.Button();
             this.bCategorias = new System.Windows.Forms.Button();
             this.bMunicipios = new System.Windows.Forms.Button();
-            this.dgvEmpleadosBaneados = new System.Windows.Forms.DataGridView();
-            this.nombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bActivar = new System.Windows.Forms.Button();
+            this.dgvEmpleadosBaneados = new System.Windows.Forms.DataGridView();
+            this.bTipoServicio = new System.Windows.Forms.Button();
             this.gDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleadosBaneados)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +57,7 @@ namespace AAVD
             this.gDatos.Size = new System.Drawing.Size(507, 80);
             this.gDatos.TabIndex = 9;
             this.gDatos.TabStop = false;
-            this.gDatos.Text = "Nombre de Usuario";
+            this.gDatos.Text = "Datos de Usuario";
             // 
             // lNombre
             // 
@@ -169,30 +168,6 @@ namespace AAVD
             this.bMunicipios.UseVisualStyleBackColor = true;
             this.bMunicipios.Click += new System.EventHandler(this.bMunicipios_Click);
             // 
-            // dgvEmpleadosBaneados
-            // 
-            this.dgvEmpleadosBaneados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmpleadosBaneados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nombreUsuario,
-            this.estado});
-            this.dgvEmpleadosBaneados.Location = new System.Drawing.Point(133, 236);
-            this.dgvEmpleadosBaneados.Name = "dgvEmpleadosBaneados";
-            this.dgvEmpleadosBaneados.Size = new System.Drawing.Size(426, 274);
-            this.dgvEmpleadosBaneados.TabIndex = 20;
-            this.dgvEmpleadosBaneados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmpleadosBaneados_CellClick);
-            // 
-            // nombreUsuario
-            // 
-            this.nombreUsuario.DataPropertyName = "nombreUsuario";
-            this.nombreUsuario.HeaderText = "Nombre de Usuario";
-            this.nombreUsuario.Name = "nombreUsuario";
-            // 
-            // estado
-            // 
-            this.estado.DataPropertyName = "estado";
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
-            // 
             // bActivar
             // 
             this.bActivar.Location = new System.Drawing.Point(565, 236);
@@ -203,11 +178,31 @@ namespace AAVD
             this.bActivar.UseVisualStyleBackColor = true;
             this.bActivar.Click += new System.EventHandler(this.bActivar_Click);
             // 
+            // dgvEmpleadosBaneados
+            // 
+            this.dgvEmpleadosBaneados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmpleadosBaneados.Location = new System.Drawing.Point(133, 236);
+            this.dgvEmpleadosBaneados.Name = "dgvEmpleadosBaneados";
+            this.dgvEmpleadosBaneados.Size = new System.Drawing.Size(426, 330);
+            this.dgvEmpleadosBaneados.TabIndex = 20;
+            this.dgvEmpleadosBaneados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmpleadosBaneados_CellClick);
+            // 
+            // bTipoServicio
+            // 
+            this.bTipoServicio.Location = new System.Drawing.Point(12, 516);
+            this.bTipoServicio.Name = "bTipoServicio";
+            this.bTipoServicio.Size = new System.Drawing.Size(100, 50);
+            this.bTipoServicio.TabIndex = 21;
+            this.bTipoServicio.Text = "Tipos de Servicio";
+            this.bTipoServicio.UseVisualStyleBackColor = true;
+            this.bTipoServicio.Click += new System.EventHandler(this.bTipoServicio_Click);
+            // 
             // FormAdministradorPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 532);
+            this.ClientSize = new System.Drawing.Size(659, 581);
+            this.Controls.Add(this.bTipoServicio);
             this.Controls.Add(this.dgvEmpleadosBaneados);
             this.Controls.Add(this.bActivar);
             this.Controls.Add(this.bMunicipios);
@@ -244,9 +239,8 @@ namespace AAVD
         private System.Windows.Forms.Button bCerrar;
         private System.Windows.Forms.Button bCategorias;
         private System.Windows.Forms.Button bMunicipios;
-        private System.Windows.Forms.DataGridView dgvEmpleadosBaneados;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreUsuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private System.Windows.Forms.Button bActivar;
+        private System.Windows.Forms.DataGridView dgvEmpleadosBaneados;
+        private System.Windows.Forms.Button bTipoServicio;
     }
 }

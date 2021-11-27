@@ -52,7 +52,7 @@ namespace AAVD
                 bool v6 = nacimientoSel;
                 if (v1 && v2 && v3 && v4 && v5 && v6)
                 {
-                    usuario = new Usuario(tbNombreUsuario.Text, tbContraseña.Text, 0, 0, 0);
+                    usuario = new Usuario(tbNombreUsuario.Text, tbContraseña.Text, 0, 0, 1);
                     cliente = new ClienteMoral(
                         tbCURP.Text, tbNombreUsuario.Text,
                         tbNombre.Text,

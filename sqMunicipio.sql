@@ -28,7 +28,7 @@ AS
 BEGIN
 SELECT Zona.numeroZona, Municipio.municipio, Zona.nombre
 FROM Zona
-INNER JOIN Municipio ON Zona.numeroZona=Municipio.numeroZona;
+INNER JOIN Municipio ON Zona.numeroZona = Municipio.numeroZona;
 END
 GO
 

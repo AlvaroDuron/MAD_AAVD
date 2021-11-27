@@ -208,15 +208,7 @@ namespace AAVD
             }
             else
             {
-                try
-                {
-                    Usuario vusuario = Buscar(usuario);
-
-                }
-                catch(Exception except)
-                {
-
-                }
+                
             }
             return log;
         }

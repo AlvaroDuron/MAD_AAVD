@@ -7,51 +7,55 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AAVD.Clases
+namespace AAVD
 {
     class Tarifa
     {
-        public int zona { get; set; }
+        public int numeroZona { get; set; }
+        public string tipoServicio { get; set; }
         public int año { get; set; }
         public int mes { get; set; }
         public float cuotaFija { get; set; }
         public float rango1 { get; set; }
         public float rango2 { get; set; }
         public float rango3 { get; set; }
-        public int idParametro { get; set; }
 
         public Tarifa()
         {
 
         }
-        public Tarifa(int año, int mes, int zona, float cuotaFija, float rango1, float rango2, float rango3, int idParametro)
+        public Tarifa(int numeroZona, string tipoServicio, int año, int mes, float cuotaFija, float rango1, float rango2, float rango3)
         {
+            this.numeroZona = numeroZona;
+            this.tipoServicio = tipoServicio;
             this.año = año;
             this.mes = mes;
-            this.zona = zona;
             this.cuotaFija = cuotaFija;
             this.rango1 = rango1;
             this.rango2 = rango2;
             this.rango3 = rango3;
-            this.idParametro = idParametro;
         }
 
         //DB QUERY 
-        public static Tarifa Buscar(int año, int mes, int zona)
+        public static Tarifa Buscar(int numeroZona, string tipoServicio, int año, int mes)
         {
             Tarifa temp = null;
             if (Program.MAD_AAVD)
             {
                 ConexionDB_MAD.conectar();
-                var data = ConexionDB_MAD.db.Query<Tarifa>("sp_BuscarTarifa", 
-                    new 
-                    { 
+                var data = ConexionDB_MAD.db.Query<Tarifa>("sp_BuscarTarifa",
+                    new
+                    {
+                        @numeroZona = numeroZona,
+                        @tipoServicio = tipoServicio,
                         @año = año,
-                        @mes = mes,
-                        @zona = zona
-                    }, 
+                        @mes = mes
+                    },
                     commandType: CommandType.StoredProcedure);
-                temp = data.ToList()[0];
+                if (data.Count() > 0)
+                {
+                    temp = data.ToList()[0];
+                }
                 ConexionDB_MAD.desconectar();
             }
             else
@@ -69,14 +73,14 @@ namespace AAVD.Clases
                 ConexionDB_MAD.db.Query<Zona>("sp_AgregarTarifa",
                     new
                     {
+                        @numeroZona = tarifa.numeroZona,
+                        @tipoServicio = tarifa.tipoServicio,
                         @año = tarifa.año,
                         @mes = tarifa.mes,
-                        @zona = tarifa.zona,
                         @cuotaFija = tarifa.cuotaFija,
                         @rango1 = tarifa.rango1,
                         @rango2 = tarifa.rango2,
-                        @rango3 = tarifa.rango3,
-                        @idParametro = tarifa.idParametro
+                        @rango3 = tarifa.rango3
                     },
                     commandType: CommandType.StoredProcedure);
 
@@ -97,14 +101,14 @@ namespace AAVD.Clases
                 ConexionDB_MAD.db.Query<Tarifa>("sp_ModificarTarifa",
                     new
                     {
+                        @numeroZona = tarifa.numeroZona,
+                        @tipoServicio = tarifa.tipoServicio,
                         @año = tarifa.año,
                         @mes = tarifa.mes,
-                        @zona = tarifa.zona,
                         @cuotaFija = tarifa.cuotaFija,
                         @rango1 = tarifa.rango1,
                         @rango2 = tarifa.rango2,
-                        @rango3 = tarifa.rango3,
-                        @idParametro = tarifa.idParametro
+                        @rango3 = tarifa.rango3
                     },
                     commandType: CommandType.StoredProcedure);
 
@@ -115,7 +119,7 @@ namespace AAVD.Clases
 
             }
         }
-        public static void Eliminar(int año, int mes, int zona)
+        public static void Eliminar(int numeroZona, string tipoServicio, int año, int mes)
         {
             if (Program.MAD_AAVD)
             {
@@ -124,9 +128,10 @@ namespace AAVD.Clases
                 ConexionDB_MAD.db.Query<Tarifa>("sp_EliminarTarifa",
                     new
                     {
+                        @numeroZona = numeroZona,
+                        @tipoServicio = tipoServicio,
                         @año = año,
-                        @mes = mes,
-                        @zona = zona
+                        @mes = mes
                     },
                     commandType: CommandType.StoredProcedure);
 
@@ -146,7 +151,7 @@ namespace AAVD.Clases
             {
                 ConexionDB_MAD.conectar();
 
-                var data = ConexionDB_MAD.db.Query<Zona>("sp_ConsultarTarifas",
+                var data = ConexionDB_MAD.db.Query<Tarifa>("sp_ConsultarTarifas",
                     new { },
                     commandType: CommandType.StoredProcedure);
 

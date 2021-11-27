@@ -34,6 +34,7 @@ namespace AAVD
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.dgvEmpleados = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.idEmpleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,7 +47,6 @@ namespace AAVD
             this.colonia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.municipio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaAltaMod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,17 +112,28 @@ namespace AAVD
             this.dgvEmpleados.TabIndex = 17;
             this.dgvEmpleados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmpleados_CellClick);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(183, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(458, 54);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filtros";
+            // 
             // idEmpleado
             // 
             this.idEmpleado.DataPropertyName = "idEmpleado";
             this.idEmpleado.HeaderText = "Id de Empleado";
             this.idEmpleado.Name = "idEmpleado";
+            this.idEmpleado.ReadOnly = true;
             // 
             // nombreUsuario
             // 
             this.nombreUsuario.DataPropertyName = "nombreUsuario";
             this.nombreUsuario.HeaderText = "Nombre de Usuario";
             this.nombreUsuario.Name = "nombreUsuario";
+            this.nombreUsuario.ReadOnly = true;
             // 
             // nombre
             // 
@@ -183,15 +194,7 @@ namespace AAVD
             this.fechaAltaMod.DataPropertyName = "fechaAltaMod";
             this.fechaAltaMod.HeaderText = "Fecha de Alta o Mod";
             this.fechaAltaMod.Name = "fechaAltaMod";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Location = new System.Drawing.Point(183, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(458, 54);
-            this.groupBox1.TabIndex = 18;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filtros";
+            this.fechaAltaMod.ReadOnly = true;
             // 
             // FormEmpleados
             // 

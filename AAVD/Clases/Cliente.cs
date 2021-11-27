@@ -48,7 +48,10 @@ namespace AAVD
             {
                 ConexionDB_MAD.conectar();
                 var data = ConexionDB_MAD.db.Query<ClienteFisico>("sp_BuscarClienteFisico", new { @curp = curp }, commandType: CommandType.StoredProcedure);
-                temp = data.ToList()[0];
+                if (data.Count() > 0)
+                {
+                    temp = data.ToList()[0];
+                }
                 ConexionDB_MAD.desconectar();
             }
             else
@@ -251,7 +254,10 @@ namespace AAVD
             {
                 ConexionDB_MAD.conectar();
                 var data = ConexionDB_MAD.db.Query<ClienteMoral>("sp_BuscarClienteMoral", new { @rfc = rfc }, commandType: CommandType.StoredProcedure);
-                temp = data.ToList()[0];
+                if (data.Count() > 0)
+                {
+                    temp = data.ToList()[0];
+                }
                 ConexionDB_MAD.desconectar();
             }
             else

@@ -3,7 +3,7 @@ use Proyecto;
 
 CREATE TABLE Zona
 ( numeroZona INT PRIMARY KEY,
-nombre VARCHAR(100) NOT NULL
+nombre VARCHAR(100) UNIQUE NOT NULL
 );
 
 
@@ -25,6 +25,13 @@ CREATE PROCEDURE sp_BuscarZona(@numeroZona int)
 AS
 BEGIN
 SELECT numeroZona, nombre FROM Zona WHERE numeroZona = @numeroZona;
+END
+GO
+
+CREATE PROCEDURE sp_BuscarZonaPorNombre(@nombre varchar(100))
+AS
+BEGIN
+SELECT numeroZona, nombre FROM Zona WHERE nombre = @nombre;
 END
 GO
 

@@ -75,6 +75,7 @@ namespace AAVD
             this.categoria.DataPropertyName = "categoria";
             this.categoria.HeaderText = "Categoria";
             this.categoria.Name = "categoria";
+            this.categoria.ReadOnly = true;
             // 
             // porcentaje
             // 

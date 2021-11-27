@@ -51,4 +51,4 @@ insert into Usuario(nombreUsuario, contraseña, empleadoCliente, intentos, estado
 insert into Usuario(nombreUsuario, contraseña, empleadoCliente, intentos, estado) values('aldana', 123, 2, 0, 0);
 select * from Usuario;
 
-update Usuario set intentos = 0 where nombreUsuario = 'mohidan';
+update Usuario set estado = 1 where nombreUsuario = 'mohidan';

@@ -31,12 +31,12 @@ namespace AAVD
         {
             this.label1 = new System.Windows.Forms.Label();
             this.gbTarifas = new System.Windows.Forms.GroupBox();
-            this.cbParametro = new System.Windows.Forms.ComboBox();
+            this.cbTipoServicio = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tbCuotaFija = new System.Windows.Forms.TextBox();
-            this.tbExcedente = new System.Windows.Forms.TextBox();
-            this.tbIntermedio = new System.Windows.Forms.TextBox();
-            this.tbBasico = new System.Windows.Forms.TextBox();
+            this.tbRango3 = new System.Windows.Forms.TextBox();
+            this.tbRango2 = new System.Windows.Forms.TextBox();
+            this.tbRango1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,13 +45,13 @@ namespace AAVD
             this.tbAño = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbNumeroZona = new System.Windows.Forms.ComboBox();
+            this.cbZona = new System.Windows.Forms.ComboBox();
             this.dgvTarifas = new System.Windows.Forms.DataGridView();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.cbZona = new System.Windows.Forms.ComboBox();
+            this.cbFiltroZona = new System.Windows.Forms.ComboBox();
             this.cbAño = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.cbMes = new System.Windows.Forms.ComboBox();
@@ -59,6 +59,14 @@ namespace AAVD
             this.btnImportar = new System.Windows.Forms.Button();
             this.btnPdf = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
+            this.numeroZona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoServicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.año = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuotaFija = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rango1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rango2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rango3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbTarifas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTarifas)).BeginInit();
             this.SuspendLayout();
@@ -66,20 +74,20 @@ namespace AAVD
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 22);
+            this.label1.Location = new System.Drawing.Point(33, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Numero de zona:";
+            this.label1.Text = "Zona:";
             // 
             // gbTarifas
             // 
-            this.gbTarifas.Controls.Add(this.cbParametro);
+            this.gbTarifas.Controls.Add(this.cbTipoServicio);
             this.gbTarifas.Controls.Add(this.label8);
             this.gbTarifas.Controls.Add(this.tbCuotaFija);
-            this.gbTarifas.Controls.Add(this.tbExcedente);
-            this.gbTarifas.Controls.Add(this.tbIntermedio);
-            this.gbTarifas.Controls.Add(this.tbBasico);
+            this.gbTarifas.Controls.Add(this.tbRango3);
+            this.gbTarifas.Controls.Add(this.tbRango2);
+            this.gbTarifas.Controls.Add(this.tbRango1);
             this.gbTarifas.Controls.Add(this.label7);
             this.gbTarifas.Controls.Add(this.label6);
             this.gbTarifas.Controls.Add(this.label5);
@@ -88,7 +96,7 @@ namespace AAVD
             this.gbTarifas.Controls.Add(this.tbAño);
             this.gbTarifas.Controls.Add(this.label3);
             this.gbTarifas.Controls.Add(this.label2);
-            this.gbTarifas.Controls.Add(this.cbNumeroZona);
+            this.gbTarifas.Controls.Add(this.cbZona);
             this.gbTarifas.Controls.Add(this.label1);
             this.gbTarifas.Location = new System.Drawing.Point(12, 12);
             this.gbTarifas.Name = "gbTarifas";
@@ -97,55 +105,55 @@ namespace AAVD
             this.gbTarifas.TabStop = false;
             this.gbTarifas.Text = "Informacion tarifas";
             // 
-            // cbParametro
+            // cbTipoServicio
             // 
-            this.cbParametro.FormattingEnabled = true;
-            this.cbParametro.Location = new System.Drawing.Point(620, 19);
-            this.cbParametro.Name = "cbParametro";
-            this.cbParametro.Size = new System.Drawing.Size(121, 21);
-            this.cbParametro.TabIndex = 16;
+            this.cbTipoServicio.FormattingEnabled = true;
+            this.cbTipoServicio.Location = new System.Drawing.Point(620, 19);
+            this.cbTipoServicio.Name = "cbTipoServicio";
+            this.cbTipoServicio.Size = new System.Drawing.Size(121, 21);
+            this.cbTipoServicio.TabIndex = 16;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(553, 22);
+            this.label8.Location = new System.Drawing.Point(527, 22);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.Size = new System.Drawing.Size(87, 13);
             this.label8.TabIndex = 15;
-            this.label8.Text = "Parametro:";
+            this.label8.Text = "Tipo de Servicio:";
             // 
             // tbCuotaFija
             // 
-            this.tbCuotaFija.Location = new System.Drawing.Point(101, 50);
+            this.tbCuotaFija.Location = new System.Drawing.Point(75, 50);
             this.tbCuotaFija.Name = "tbCuotaFija";
             this.tbCuotaFija.Size = new System.Drawing.Size(121, 20);
             this.tbCuotaFija.TabIndex = 14;
             // 
-            // tbExcedente
+            // tbRango3
             // 
-            this.tbExcedente.Location = new System.Drawing.Point(620, 50);
-            this.tbExcedente.Name = "tbExcedente";
-            this.tbExcedente.Size = new System.Drawing.Size(121, 20);
-            this.tbExcedente.TabIndex = 13;
+            this.tbRango3.Location = new System.Drawing.Point(620, 50);
+            this.tbRango3.Name = "tbRango3";
+            this.tbRango3.Size = new System.Drawing.Size(121, 20);
+            this.tbRango3.TabIndex = 13;
             // 
-            // tbIntermedio
+            // tbRango2
             // 
-            this.tbIntermedio.Location = new System.Drawing.Point(447, 50);
-            this.tbIntermedio.Name = "tbIntermedio";
-            this.tbIntermedio.Size = new System.Drawing.Size(100, 20);
-            this.tbIntermedio.TabIndex = 12;
+            this.tbRango2.Location = new System.Drawing.Point(439, 50);
+            this.tbRango2.Name = "tbRango2";
+            this.tbRango2.Size = new System.Drawing.Size(100, 20);
+            this.tbRango2.TabIndex = 12;
             // 
-            // tbBasico
+            // tbRango1
             // 
-            this.tbBasico.Location = new System.Drawing.Point(276, 50);
-            this.tbBasico.Name = "tbBasico";
-            this.tbBasico.Size = new System.Drawing.Size(100, 20);
-            this.tbBasico.TabIndex = 11;
+            this.tbRango1.Location = new System.Drawing.Point(265, 50);
+            this.tbRango1.Name = "tbRango1";
+            this.tbRango1.Size = new System.Drawing.Size(100, 20);
+            this.tbRango1.TabIndex = 11;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(553, 53);
+            this.label7.Location = new System.Drawing.Point(563, 53);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(51, 13);
             this.label7.TabIndex = 10;
@@ -163,7 +171,7 @@ namespace AAVD
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(228, 53);
+            this.label5.Location = new System.Drawing.Point(208, 53);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 8;
@@ -172,7 +180,7 @@ namespace AAVD
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(40, 53);
+            this.label4.Location = new System.Drawing.Point(14, 53);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 13);
             this.label4.TabIndex = 7;
@@ -180,14 +188,14 @@ namespace AAVD
             // 
             // tbMes
             // 
-            this.tbMes.Location = new System.Drawing.Point(447, 19);
+            this.tbMes.Location = new System.Drawing.Point(418, 19);
             this.tbMes.Name = "tbMes";
             this.tbMes.Size = new System.Drawing.Size(100, 20);
             this.tbMes.TabIndex = 6;
             // 
             // tbAño
             // 
-            this.tbAño.Location = new System.Drawing.Point(276, 19);
+            this.tbAño.Location = new System.Drawing.Point(265, 19);
             this.tbAño.Name = "tbAño";
             this.tbAño.Size = new System.Drawing.Size(100, 20);
             this.tbAño.TabIndex = 5;
@@ -204,27 +212,38 @@ namespace AAVD
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(228, 22);
+            this.label2.Location = new System.Drawing.Point(217, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Año:";
             // 
-            // cbNumeroZona
+            // cbZona
             // 
-            this.cbNumeroZona.FormattingEnabled = true;
-            this.cbNumeroZona.Location = new System.Drawing.Point(101, 19);
-            this.cbNumeroZona.Name = "cbNumeroZona";
-            this.cbNumeroZona.Size = new System.Drawing.Size(121, 21);
-            this.cbNumeroZona.TabIndex = 1;
+            this.cbZona.FormattingEnabled = true;
+            this.cbZona.Location = new System.Drawing.Point(75, 19);
+            this.cbZona.Name = "cbZona";
+            this.cbZona.Size = new System.Drawing.Size(121, 21);
+            this.cbZona.TabIndex = 1;
             // 
             // dgvTarifas
             // 
             this.dgvTarifas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTarifas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.numeroZona,
+            this.tipoServicio,
+            this.año,
+            this.mes,
+            this.cuotaFija,
+            this.rango1,
+            this.rango2,
+            this.rango3});
             this.dgvTarifas.Location = new System.Drawing.Point(12, 104);
             this.dgvTarifas.Name = "dgvTarifas";
-            this.dgvTarifas.Size = new System.Drawing.Size(754, 158);
+            this.dgvTarifas.Size = new System.Drawing.Size(754, 272);
             this.dgvTarifas.TabIndex = 2;
+            this.dgvTarifas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTarifas_CellClick);
+            this.dgvTarifas.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvTarifas_CellValidating);
             // 
             // btnAgregar
             // 
@@ -234,6 +253,7 @@ namespace AAVD
             this.btnAgregar.TabIndex = 3;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnModificar
             // 
@@ -243,6 +263,7 @@ namespace AAVD
             this.btnModificar.TabIndex = 4;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
@@ -252,6 +273,7 @@ namespace AAVD
             this.btnEliminar.TabIndex = 5;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // label9
             // 
@@ -262,13 +284,13 @@ namespace AAVD
             this.label9.TabIndex = 17;
             this.label9.Text = "Zona:";
             // 
-            // cbZona
+            // cbFiltroZona
             // 
-            this.cbZona.FormattingEnabled = true;
-            this.cbZona.Location = new System.Drawing.Point(772, 161);
-            this.cbZona.Name = "cbZona";
-            this.cbZona.Size = new System.Drawing.Size(75, 21);
-            this.cbZona.TabIndex = 17;
+            this.cbFiltroZona.FormattingEnabled = true;
+            this.cbFiltroZona.Location = new System.Drawing.Point(772, 161);
+            this.cbFiltroZona.Name = "cbFiltroZona";
+            this.cbFiltroZona.Size = new System.Drawing.Size(75, 21);
+            this.cbFiltroZona.TabIndex = 17;
             // 
             // cbAño
             // 
@@ -332,11 +354,63 @@ namespace AAVD
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
+            // numeroZona
+            // 
+            this.numeroZona.DataPropertyName = "numeroZona";
+            this.numeroZona.HeaderText = "Numero de Zona";
+            this.numeroZona.Name = "numeroZona";
+            this.numeroZona.ReadOnly = true;
+            // 
+            // tipoServicio
+            // 
+            this.tipoServicio.DataPropertyName = "tipoServicio";
+            this.tipoServicio.HeaderText = "Tipo de Servicio";
+            this.tipoServicio.Name = "tipoServicio";
+            this.tipoServicio.ReadOnly = true;
+            // 
+            // año
+            // 
+            this.año.DataPropertyName = "año";
+            this.año.HeaderText = "Año";
+            this.año.Name = "año";
+            this.año.ReadOnly = true;
+            // 
+            // mes
+            // 
+            this.mes.DataPropertyName = "mes";
+            this.mes.HeaderText = "Mes";
+            this.mes.Name = "mes";
+            this.mes.ReadOnly = true;
+            // 
+            // cuotaFija
+            // 
+            this.cuotaFija.DataPropertyName = "cuotaFija";
+            this.cuotaFija.HeaderText = "Cuota Fija";
+            this.cuotaFija.Name = "cuotaFija";
+            // 
+            // rango1
+            // 
+            this.rango1.DataPropertyName = "rango1";
+            this.rango1.HeaderText = "Rango 1";
+            this.rango1.Name = "rango1";
+            // 
+            // rango2
+            // 
+            this.rango2.DataPropertyName = "rango2";
+            this.rango2.HeaderText = "Rango 2";
+            this.rango2.Name = "rango2";
+            // 
+            // rango3
+            // 
+            this.rango3.DataPropertyName = "rango3";
+            this.rango3.HeaderText = "Rango 3";
+            this.rango3.Name = "rango3";
+            // 
             // FormTarifas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 274);
+            this.ClientSize = new System.Drawing.Size(934, 388);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.btnPdf);
             this.Controls.Add(this.btnImportar);
@@ -344,7 +418,7 @@ namespace AAVD
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cbAño);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.cbZona);
+            this.Controls.Add(this.cbFiltroZona);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
@@ -368,10 +442,10 @@ namespace AAVD
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gbTarifas;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbNumeroZona;
-        private System.Windows.Forms.TextBox tbExcedente;
-        private System.Windows.Forms.TextBox tbIntermedio;
-        private System.Windows.Forms.TextBox tbBasico;
+        private System.Windows.Forms.ComboBox cbZona;
+        private System.Windows.Forms.TextBox tbRango3;
+        private System.Windows.Forms.TextBox tbRango2;
+        private System.Windows.Forms.TextBox tbRango1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -379,7 +453,7 @@ namespace AAVD
         private System.Windows.Forms.TextBox tbMes;
         private System.Windows.Forms.TextBox tbAño;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbParametro;
+        private System.Windows.Forms.ComboBox cbTipoServicio;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbCuotaFija;
         private System.Windows.Forms.DataGridView dgvTarifas;
@@ -387,7 +461,7 @@ namespace AAVD
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cbZona;
+        private System.Windows.Forms.ComboBox cbFiltroZona;
         private System.Windows.Forms.ComboBox cbAño;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbMes;
@@ -395,5 +469,13 @@ namespace AAVD
         private System.Windows.Forms.Button btnImportar;
         private System.Windows.Forms.Button btnPdf;
         private System.Windows.Forms.Button btnRegresar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numeroZona;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoServicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn año;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuotaFija;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rango1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rango2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rango3;
     }
 }

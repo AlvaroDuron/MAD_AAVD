@@ -32,7 +32,29 @@ namespace AAVD
             {
                 ConexionDB_MAD.conectar();
                 var data = ConexionDB_MAD.db.Query<Zona>("sp_BuscarZona", new { @numeroZona = numeroZona }, commandType: CommandType.StoredProcedure);
-                temp = data.ToList()[0];
+                if (data.Count() > 0)
+                {
+                    temp = data.ToList()[0];
+                }
+                ConexionDB_MAD.desconectar();
+            }
+            else
+            {
+
+            }
+            return temp;
+        }
+        public static Zona BuscarPorNombre(string nombre)
+        {
+            Zona temp = null;
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+                var data = ConexionDB_MAD.db.Query<Zona>("sp_BuscarZonaPorNombre", new { @nombre = nombre }, commandType: CommandType.StoredProcedure);
+                if (data.Count() > 0)
+                {
+                    temp = data.ToList()[0];
+                }
                 ConexionDB_MAD.desconectar();
             }
             else

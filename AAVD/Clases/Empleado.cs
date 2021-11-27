@@ -54,7 +54,10 @@ namespace AAVD
             {
                 ConexionDB_MAD.conectar();
                 var data = ConexionDB_MAD.db.Query<Empleado>("sp_BuscarEmpleado", new { @idEmpleado = idEmpleado }, commandType: CommandType.StoredProcedure);
-                temp = data.ToList()[0];
+                if (data.Count() > 0)
+                {
+                    temp = data.ToList()[0];
+                }
                 ConexionDB_MAD.desconectar();
             }
             else
@@ -190,7 +193,6 @@ namespace AAVD
                 dg.DataSource = data.ToList();
             }
         }
-
         public static void LlenarDGBan(DataGridView dg)
         {
             if (Program.MAD_AAVD)
@@ -198,6 +200,52 @@ namespace AAVD
                 ConexionDB_MAD.conectar();
 
                 var data = ConexionDB_MAD.db.Query<Empleado>("sp_ConsultarEmpleadosBaneados", new { }, commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+
+                dg.DataSource = data.ToList();
+            }
+            else
+            {
+
+            }
+        }
+    }
+
+    public class EmpleadoBan
+    {
+        string nombreUsuario { get; set; }
+        string nombre { get; set; }
+        string apellidoPaterno { get; set; }
+        string apellidoMaterno { get; set; }
+        DateTime nacimiento { get; set; }
+        char genero { get; set; }
+        string municipio { get; set; }
+        DateTime fechaAltaMod { get; set; }
+        public EmpleadoBan()
+        {
+
+        }
+        public EmpleadoBan(string nombreUsuario, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime nacimiento, char genero, string municipio, DateTime fechaAltaMod)
+        {
+            this.nombreUsuario = nombreUsuario;
+            this.nombre = nombre;
+            this.apellidoPaterno = apellidoPaterno;
+            this.apellidoMaterno = apellidoMaterno;
+            this.nacimiento = nacimiento;
+            this.genero = genero;
+            this.municipio = municipio;
+            this.fechaAltaMod = fechaAltaMod;
+        }
+
+        //FORM METODOS
+        public static void LlenarDG(DataGridView dg)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+
+                var data = ConexionDB_MAD.db.Query<EmpleadoBan>("sp_ConsultarEmpleadosBaneados", new { }, commandType: CommandType.StoredProcedure);
 
                 ConexionDB_MAD.desconectar();
 

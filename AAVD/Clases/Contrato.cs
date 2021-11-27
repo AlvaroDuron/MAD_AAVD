@@ -55,7 +55,29 @@ namespace AAVD
             {
                 ConexionDB_MAD.conectar();
                 var data = ConexionDB_MAD.db.Query<Contrato>("sp_BuscarContrato", new { @numeroContrato = numeroContrato }, commandType: CommandType.StoredProcedure);
-                temp = data.ToList()[0];
+                if (data.Count() > 0)
+                {
+                    temp = data.ToList()[0];
+                }
+                ConexionDB_MAD.desconectar();
+            }
+            else
+            {
+
+            }
+            return temp;
+        }
+        public static Contrato BuscarPorMedidor(int numeroMedidor)
+        {
+            Contrato temp = null;
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+                var data = ConexionDB_MAD.db.Query<Contrato>("sp_BuscarContratoPorMedidor", new { @numeroMedidor = numeroMedidor }, commandType: CommandType.StoredProcedure);
+                if (data.Count() > 0)
+                {
+                    temp = data.ToList()[0];
+                }
                 ConexionDB_MAD.desconectar();
             }
             else

@@ -18,7 +18,14 @@ PRIMARY KEY(numeroZona, tipoServicio, año, mes)
 CREATE PROCEDURE sp_ConsultarTarifas
 AS
 BEGIN
-SELECT * FROM Tarifa;
+SELECT numeroZona, tipoServicio, año, mes, cuotaFija, rango1, rango2, rango3 FROM Tarifa;
+END
+GO
+
+CREATE PROCEDURE sp_BuscarTarifa(@numeroZona int, @tipoServicio varchar(100), @año int, @mes int)
+AS
+BEGIN
+SELECT numeroZona, tipoServicio, año, mes, cuotaFija, rango1, rango2, rango3 FROM Tarifa WHERE numeroZona = @numeroZona AND tipoServicio = @tipoServicio AND año = @año AND mes = @mes;
 END
 GO
 
@@ -46,3 +53,4 @@ GO
 insert into Tarifa(numeroZona, tipoServicio, año, mes, cuotaFija, rango1, rango2, rango3) values(5, 'Domestico', 2021, 1, 52.5, 3.5, 6, 9.5);
 select * from Tarifa;
 
+SELECT numeroZona, tipoServicio, año, mes, cuotaFija, rango1, rango2, rango3 FROM Tarifa WHERE numeroZona = 1 AND tipoServicio = 'Comercial' AND año = 2021 AND mes = 2;

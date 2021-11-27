@@ -3,7 +3,7 @@ USE Proyecto;
 
 CREATE TABLE Contrato
 ( numeroContrato INT IDENTITY(1,1) PRIMARY KEY,
-numeroMedidor INT NOT NULL,
+numeroMedidor INT UNIQUE NOT NULL,
 nombreUsuario VARCHAR(100),
 tipoServicio VARCHAR(100) NOT NULL,
 categoria CHAR(1) NOT NULL,
@@ -32,6 +32,13 @@ CREATE PROCEDURE sp_BuscarContrato(@numeroContrato int)
 AS
 BEGIN
 SELECT numeroContrato, numeroMedidor, nombreUsuario, tipoServicio, categoria, numeroExterior, calle, colonia, municipio, estado, creacion, fechaAltaMod FROM Contrato WHERE numeroContrato = @numeroContrato;
+END
+GO
+
+CREATE PROCEDURE sp_BuscarContratoPorMedidor(@numeroMedidor int)
+AS
+BEGIN
+SELECT numeroContrato, numeroMedidor, nombreUsuario, tipoServicio, categoria, numeroExterior, calle, colonia, municipio, estado, creacion, fechaAltaMod FROM Contrato WHERE numeroMedidor = @numeroMedidor;
 END
 GO
 
