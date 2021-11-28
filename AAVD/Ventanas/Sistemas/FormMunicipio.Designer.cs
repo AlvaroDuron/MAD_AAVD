@@ -31,7 +31,6 @@ namespace AAVD
         {
             this.btnRegresar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.gbZonas = new System.Windows.Forms.GroupBox();
             this.tbNumeroZona = new System.Windows.Forms.TextBox();
@@ -48,7 +47,7 @@ namespace AAVD
             // 
             // btnRegresar
             // 
-            this.btnRegresar.Location = new System.Drawing.Point(295, 99);
+            this.btnRegresar.Location = new System.Drawing.Point(295, 70);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(75, 23);
             this.btnRegresar.TabIndex = 18;
@@ -58,23 +57,13 @@ namespace AAVD
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(295, 70);
+            this.btnEliminar.Location = new System.Drawing.Point(295, 41);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 16;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Location = new System.Drawing.Point(295, 41);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 23);
-            this.btnModificar.TabIndex = 15;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnAgregar
             // 
@@ -140,8 +129,9 @@ namespace AAVD
             this.nombre});
             this.dgvMunicipio.Location = new System.Drawing.Point(384, 12);
             this.dgvMunicipio.Name = "dgvMunicipio";
-            this.dgvMunicipio.Size = new System.Drawing.Size(240, 158);
+            this.dgvMunicipio.Size = new System.Drawing.Size(344, 158);
             this.dgvMunicipio.TabIndex = 19;
+            this.dgvMunicipio.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMunicipio_CellClick);
             // 
             // numeroZona
             // 
@@ -155,6 +145,7 @@ namespace AAVD
             this.municipio.DataPropertyName = "municipio";
             this.municipio.HeaderText = "Municipio";
             this.municipio.Name = "municipio";
+            this.municipio.ReadOnly = true;
             // 
             // nombre
             // 
@@ -166,11 +157,10 @@ namespace AAVD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 191);
+            this.ClientSize = new System.Drawing.Size(744, 191);
             this.Controls.Add(this.dgvMunicipio);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.gbZonas);
             this.Name = "FormMunicipio";
@@ -188,7 +178,6 @@ namespace AAVD
 
         private System.Windows.Forms.Button btnRegresar;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.GroupBox gbZonas;
         private System.Windows.Forms.TextBox tbNumeroZona;

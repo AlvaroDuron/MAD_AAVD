@@ -26,6 +26,9 @@ namespace AAVD
             cellSelected = false;
             try
             {
+                Program.CBFechaMes(cbMes);
+                Program.CBFechaAño(cbAño);
+                Contrato.LlenarCB(cbNumeroMedidor);
                 Consumo.LlenarDG(dgvConsumo);
             }
             catch (Exception except)
@@ -45,45 +48,23 @@ namespace AAVD
             try
             {
                 Consumo consumo = null;
-                bool v1 = (cbNumeroMedidor.SelectedIndex >= 0);
-                bool v2 = (cbAño.SelectedIndex >= 0);
-                bool v3 = (cbMes.SelectedIndex >= 0);
-                bool v4 = (tbLecturaActual.Text != "");
-                if(v1 || v2 || v3 || v4)
+                bool v1 = MostrarLecturaAnterior();
+                bool v2 = (tbLecturaActual.Text != "");
+                if(v1 && v2)
                 {
                     Contrato contrato = Contrato.BuscarPorMedidor(int.Parse(cbNumeroMedidor.SelectedItem.ToString()));
                     consumo = new Consumo(
                         int.Parse(cbNumeroMedidor.SelectedItem.ToString()),
                         int.Parse(cbAño.SelectedItem.ToString()),
                         int.Parse(cbMes.SelectedItem.ToString()),
-                        0,
+                        float.Parse(tbLecturaAnterior.Text.ToString()),
                         float.Parse(tbLecturaActual.Text.ToString()),
                         contrato.numeroContrato
                         );
                     if (Consumo.BuscarPorContrato(consumo.numeroContrato, consumo.año, consumo.mes) == null)
                     {
-                        Consumo anterior = consumo;
-                        if (consumo.mes > 1)
-                        {
-                            anterior.mes--;
-                        }
-                        else
-                        {
-                            anterior.mes = 12;
-                            anterior.año--;
-                        }
-                        anterior = Consumo.BuscarPorContrato(anterior.numeroContrato, anterior.año, anterior.mes);
-                        if (anterior != null)
-                        {
-                            consumo.lecturaAnterior = anterior.lecturaActual;
-                            Consumo.Agregar(consumo);
-                            MessageBox.Show("Lectura agregada exitosamente.");
-                        }
-                        else
-                        {
-                            Consumo.Agregar(consumo);
-                            MessageBox.Show("Lectura agregada exitosamente.");
-                        }
+                        Consumo.Agregar(consumo);
+                        MessageBox.Show("Lectura agregada exitosamente.");
                     }
                     else
                     {
@@ -95,11 +76,60 @@ namespace AAVD
             {
                 MessageBox.Show("Error: " + except.Message);
             }
+            FormConsumos_Load(sender, e);
         }
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbNumeroMedidor_Leave(object sender, EventArgs e)
+        {
+            MostrarLecturaAnterior();
+        }
+
+        private void cbAño_Leave(object sender, EventArgs e)
+        {
+            MostrarLecturaAnterior();
+        }
+
+        private void cbMes_Leave(object sender, EventArgs e)
+        {
+            MostrarLecturaAnterior();
+        }
+        private bool MostrarLecturaAnterior()
+        {
+            bool temp = false;
+            bool v1 = (cbNumeroMedidor.SelectedIndex >= 0);
+            bool v2 = (cbAño.SelectedIndex >= 0);
+            bool v3 = (cbMes.SelectedIndex >= 0);
+            if(v1 && v2 && v3)
+            {
+                Contrato contrato = Contrato.BuscarPorMedidor(int.Parse(cbNumeroMedidor.SelectedItem.ToString()));
+                int año = int.Parse(cbAño.SelectedItem.ToString());
+                int mes = int.Parse(cbMes.SelectedItem.ToString());
+                if (mes > 1)
+                {
+                    mes--;
+                }
+                else
+                {
+                    mes = 12;
+                    año--;
+                }
+                Consumo anterior = Consumo.BuscarPorContrato(contrato.numeroContrato, año, mes);
+                if (anterior != null)
+                {
+                    tbLecturaAnterior.Text = anterior.lecturaActual.ToString();
+                }
+                else
+                {
+                    tbLecturaAnterior.Text = "0";
+                }
+                temp = true;
+            }
+            return temp;
         }
     }
 }

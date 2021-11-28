@@ -36,6 +36,25 @@ namespace AAVD
                     break;
             }
         }
+        public static void CBFechaMes(ComboBox mes)
+        {
+            mes.Items.Clear();
+            for(int i = 1; i <= 12; i++)
+            {
+                mes.Items.Add(i.ToString());
+            }
+            mes.SelectedIndex = DateTime.Today.Month - 1;
+        }
+        public static void CBFechaAño(ComboBox año)
+        {
+            año.Items.Clear();
+            DateTime fecha = DateTime.Today;
+            for (int i = fecha.Year; i > 1800; i--)
+            {
+                año.Items.Add(i.ToString());
+            }
+            año.SelectedIndex = 0;
+        }
 
         /// <summary>
         /// Punto de entrada principal para la aplicación.

@@ -12,6 +12,10 @@ namespace AAVD
 {
     public partial class FormMunicipio : Form
     {
+        bool cellSelected = false;
+        int cellIndex;
+        DataGridViewRow selectedRow;
+        string keySelected;
         public FormMunicipio()
         {
             InitializeComponent();
@@ -48,15 +52,30 @@ namespace AAVD
             FormMunicipio_Load(sender, e);
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            FormMunicipio_Load(sender, e);
-        }
+        //private void btnModificar_Click(object sender, EventArgs e)
+        //{
+        //    if (cellSelected)
+        //    {
+        //        Municipio modificado = new Municipio(selectedRow.Cells["municipio"].ToString(), int.Parse(selectedRow.Cells["numeroZona"].Value.ToString()));
+        //    }
+        //    FormMunicipio_Load(sender, e);
+        //}
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Municipio.Eliminar(tbNombre.Text);
+            if (cellSelected)
+            {
+                Municipio.Eliminar(selectedRow.Cells["municipio"].ToString());
+            }
             FormMunicipio_Load(sender, e);
+        }
+
+        private void dgvMunicipio_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            cellSelected = true;
+            cellIndex = e.RowIndex;
+            selectedRow = dgvMunicipio.Rows[cellIndex];
+            keySelected = selectedRow.Cells[0].Value.ToString();
         }
     }
 }

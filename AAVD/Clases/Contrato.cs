@@ -182,5 +182,24 @@ namespace AAVD
 
             }
         }
+        public static void LlenarCB(ComboBox cb)
+        {
+            if (Program.MAD_AAVD)
+            {
+                ConexionDB_MAD.conectar();
+
+                var data = ConexionDB_MAD.db.Query<string>("sp_ConsultarContratosPorMedidor",
+                    new { },
+                    commandType: CommandType.StoredProcedure);
+
+                ConexionDB_MAD.desconectar();
+
+                cb.DataSource = data.ToList();
+            }
+            else
+            {
+
+            }
+        }
     }
 }

@@ -66,7 +66,7 @@ namespace AAVD
         private void bConsumos_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FormTarifas fPrincipal = new FormTarifas();
+            FormConsumos fPrincipal = new FormConsumos();
             fPrincipal.Show();
         }
 

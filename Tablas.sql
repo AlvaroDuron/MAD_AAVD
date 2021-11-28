@@ -15,14 +15,6 @@ CREATE TABLE Municipio
 numeroZona INT 
 );
 
-CREATE TABLE Parametro
-( idParametro INT IDENTITY(1,1) PRIMARY KEY,
-cuotaFija INT,
-rango1 INT,
-rango2 INT,
-rango3 INT
-);
-
 CREATE TABLE Categoria
 ( categoria CHAR(1) PRIMARY KEY NOT NULL,
 porcentaje DECIMAL

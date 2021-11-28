@@ -19,10 +19,24 @@ SELECT numeroMedidor, año, mes, lecturaAnterior, lecturaActual, numeroContrato F
 END
 GO
 
+CREATE PROCEDURE sp_ConsultarConsumosPorContrato(@numeroContrato int)
+AS
+BEGIN
+SELECT numeroMedidor, año, mes, lecturaAnterior, lecturaActual, numeroContrato FROM Consumo WHERE numeroContrato = @numeroContrato;
+END
+GO
+
 CREATE PROCEDURE sp_BuscarConsumo(@numeroMedidor int, @año int, @mes int)
 AS
 BEGIN
 SELECT numeroMedidor, año, mes, lecturaAnterior, lecturaActual, numeroContrato FROM Consumo WHERE numeroMedidor = @numeroMedidor AND año = @año AND mes = @mes;
+END
+GO
+
+CREATE PROCEDURE sp_BuscarConsumoPorContrato(@numeroContrato int, @año int, @mes int)
+AS
+BEGIN
+SELECT numeroMedidor, año, mes, lecturaAnterior, lecturaActual, numeroContrato FROM Consumo WHERE numeroContrato = @numeroContrato AND año = @año AND mes = @mes;
 END
 GO
 
@@ -46,3 +60,5 @@ BEGIN
 DELETE Consumo WHERE numeroMedidor = @numeroMedidor AND año = @año AND mes = @mes;
 END
 GO
+
+select * from Consumo;

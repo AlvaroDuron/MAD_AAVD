@@ -33,12 +33,12 @@ namespace AAVD
             this.cbUsuario = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbCalle = new System.Windows.Forms.TextBox();
+            this.cbEstatus = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.tbColonia = new System.Windows.Forms.TextBox();
             this.cbCategoria = new System.Windows.Forms.ComboBox();
-            this.cbEstatus = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.tbNumeroServicio = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.tbNumeroMedidor = new System.Windows.Forms.TextBox();
             this.cbTipoServicio = new System.Windows.Forms.ComboBox();
             this.cbMunicipio = new System.Windows.Forms.ComboBox();
@@ -86,6 +86,7 @@ namespace AAVD
             // 
             // cbUsuario
             // 
+            this.cbUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbUsuario.FormattingEnabled = true;
             this.cbUsuario.Location = new System.Drawing.Point(114, 16);
             this.cbUsuario.Name = "cbUsuario";
@@ -108,6 +109,27 @@ namespace AAVD
             this.tbCalle.Size = new System.Drawing.Size(247, 20);
             this.tbCalle.TabIndex = 33;
             // 
+            // cbEstatus
+            // 
+            this.cbEstatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEstatus.FormattingEnabled = true;
+            this.cbEstatus.Items.AddRange(new object[] {
+            "Activo",
+            "Suspendido"});
+            this.cbEstatus.Location = new System.Drawing.Point(114, 94);
+            this.cbEstatus.Name = "cbEstatus";
+            this.cbEstatus.Size = new System.Drawing.Size(263, 21);
+            this.cbEstatus.TabIndex = 30;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 97);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(45, 13);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "Estatus:";
+            // 
             // tbColonia
             // 
             this.tbColonia.Location = new System.Drawing.Point(476, 68);
@@ -117,22 +139,12 @@ namespace AAVD
             // 
             // cbCategoria
             // 
+            this.cbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategoria.FormattingEnabled = true;
             this.cbCategoria.Location = new System.Drawing.Point(114, 147);
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(263, 21);
             this.cbCategoria.TabIndex = 31;
-            // 
-            // cbEstatus
-            // 
-            this.cbEstatus.FormattingEnabled = true;
-            this.cbEstatus.Items.AddRange(new object[] {
-            "Activo",
-            "Suspendido"});
-            this.cbEstatus.Location = new System.Drawing.Point(114, 94);
-            this.cbEstatus.Name = "cbEstatus";
-            this.cbEstatus.Size = new System.Drawing.Size(263, 21);
-            this.cbEstatus.TabIndex = 30;
             // 
             // label16
             // 
@@ -150,15 +162,6 @@ namespace AAVD
             this.tbNumeroServicio.Size = new System.Drawing.Size(263, 20);
             this.tbNumeroServicio.TabIndex = 10;
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 97);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(45, 13);
-            this.label17.TabIndex = 1;
-            this.label17.Text = "Estatus:";
-            // 
             // tbNumeroMedidor
             // 
             this.tbNumeroMedidor.Location = new System.Drawing.Point(114, 68);
@@ -168,6 +171,7 @@ namespace AAVD
             // 
             // cbTipoServicio
             // 
+            this.cbTipoServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoServicio.FormattingEnabled = true;
             this.cbTipoServicio.Location = new System.Drawing.Point(114, 120);
             this.cbTipoServicio.Name = "cbTipoServicio";
@@ -176,6 +180,7 @@ namespace AAVD
             // 
             // cbMunicipio
             // 
+            this.cbMunicipio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMunicipio.FormattingEnabled = true;
             this.cbMunicipio.Location = new System.Drawing.Point(476, 94);
             this.cbMunicipio.Name = "cbMunicipio";

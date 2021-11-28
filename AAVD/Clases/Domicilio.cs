@@ -184,7 +184,7 @@ namespace AAVD
             {
                 ConexionDB_MAD.conectar();
 
-                var data = ConexionDB_MAD.db.Query<Municipio>("sp_ConsultarMunicipiosZonas",
+                var data = ConexionDB_MAD.db.Query<MunicipioZona>("sp_ConsultarMunicipiosZonas",
                     new { },
                     commandType: CommandType.StoredProcedure);
 
@@ -217,5 +217,11 @@ namespace AAVD
 
             }
         }
+    }
+    public class MunicipioZona
+    {
+        public int numeroZona { get; set; }
+        public string municipio { get; set; }
+        public string nombre { get; set; }
     }
 }

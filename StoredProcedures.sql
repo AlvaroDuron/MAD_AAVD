@@ -36,3 +36,7 @@ select * from Tipo_Servicio;
 
 INSERT INTO Contrato(nombreUsuario, numeroMedidor, tipoServicio, categoria, estado, numeroExterior, calle, colonia, municipio, creacion, fechaAltaMod) VALUES('dasda', 5005, 'Domestico', 'A', 0, 778, 'calle7', 'alamedas', 'guadalupe', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 select * from Contrato;
+
+
+declare @total int
+SELECT TA

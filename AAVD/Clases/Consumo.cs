@@ -22,7 +22,16 @@ namespace AAVD
         {
 
         }
-        public Consumo(int numeroMedidor, int año, int mes, float lecturaActual, float lecturaAnterior, int numeroContrato)
+        public Consumo(Consumo consumo)
+        {
+            this.numeroMedidor = consumo.numeroMedidor;
+            this.año = consumo.año;
+            this.mes = consumo.mes;
+            this.lecturaAnterior = consumo.lecturaAnterior;
+            this.lecturaActual = consumo.lecturaActual;
+            this.numeroContrato = consumo.numeroContrato;
+        }
+        public Consumo(int numeroMedidor, int año, int mes, float lecturaAnterior, float lecturaActual, int numeroContrato)
         {
             this.numeroMedidor = numeroMedidor;
             this.año = año;

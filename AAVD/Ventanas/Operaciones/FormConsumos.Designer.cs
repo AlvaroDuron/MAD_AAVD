@@ -30,6 +30,7 @@ namespace AAVD
         private void InitializeComponent()
         {
             this.gbConsumos = new System.Windows.Forms.GroupBox();
+            this.cbNumeroMedidor = new System.Windows.Forms.ComboBox();
             this.tbLecturaActual = new System.Windows.Forms.TextBox();
             this.tbLecturaAnterior = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@ namespace AAVD
             this.mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lecturaAnterior = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lecturaActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbNumeroMedidor = new System.Windows.Forms.ComboBox();
             this.gbConsumos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsumo)).BeginInit();
             this.SuspendLayout();
@@ -77,6 +77,16 @@ namespace AAVD
             this.gbConsumos.TabStop = false;
             this.gbConsumos.Text = "Informacion de consumos";
             // 
+            // cbNumeroMedidor
+            // 
+            this.cbNumeroMedidor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbNumeroMedidor.FormattingEnabled = true;
+            this.cbNumeroMedidor.Location = new System.Drawing.Point(114, 18);
+            this.cbNumeroMedidor.Name = "cbNumeroMedidor";
+            this.cbNumeroMedidor.Size = new System.Drawing.Size(119, 21);
+            this.cbNumeroMedidor.TabIndex = 36;
+            this.cbNumeroMedidor.Leave += new System.EventHandler(this.cbNumeroMedidor_Leave);
+            // 
             // tbLecturaActual
             // 
             this.tbLecturaActual.Location = new System.Drawing.Point(114, 98);
@@ -88,6 +98,7 @@ namespace AAVD
             // 
             this.tbLecturaAnterior.Location = new System.Drawing.Point(114, 72);
             this.tbLecturaAnterior.Name = "tbLecturaAnterior";
+            this.tbLecturaAnterior.ReadOnly = true;
             this.tbLecturaAnterior.Size = new System.Drawing.Size(119, 20);
             this.tbLecturaAnterior.TabIndex = 28;
             // 
@@ -111,11 +122,13 @@ namespace AAVD
             // 
             // cbMes
             // 
+            this.cbMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMes.FormattingEnabled = true;
             this.cbMes.Location = new System.Drawing.Point(158, 45);
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(75, 21);
             this.cbMes.TabIndex = 24;
+            this.cbMes.Leave += new System.EventHandler(this.cbMes_Leave);
             // 
             // label11
             // 
@@ -137,11 +150,13 @@ namespace AAVD
             // 
             // cbAño
             // 
+            this.cbAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAño.FormattingEnabled = true;
             this.cbAño.Location = new System.Drawing.Point(41, 45);
             this.cbAño.Name = "cbAño";
             this.cbAño.Size = new System.Drawing.Size(75, 21);
             this.cbAño.TabIndex = 22;
+            this.cbAño.Leave += new System.EventHandler(this.cbAño_Leave);
             // 
             // label10
             // 
@@ -188,6 +203,7 @@ namespace AAVD
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(425, 74);
             this.comboBox1.Name = "comboBox1";
@@ -205,6 +221,7 @@ namespace AAVD
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(425, 34);
             this.comboBox2.Name = "comboBox2";
@@ -235,38 +252,35 @@ namespace AAVD
             this.numeroMedidor.DataPropertyName = "numeroMedidor";
             this.numeroMedidor.HeaderText = "Numero de Medidor";
             this.numeroMedidor.Name = "numeroMedidor";
+            this.numeroMedidor.ReadOnly = true;
             // 
             // año
             // 
             this.año.DataPropertyName = "año";
             this.año.HeaderText = "Año";
             this.año.Name = "año";
+            this.año.ReadOnly = true;
             // 
             // mes
             // 
             this.mes.DataPropertyName = "mes";
             this.mes.HeaderText = "Mes";
             this.mes.Name = "mes";
+            this.mes.ReadOnly = true;
             // 
             // lecturaAnterior
             // 
             this.lecturaAnterior.DataPropertyName = "lecturaAnterior";
             this.lecturaAnterior.HeaderText = "Lectura Anterior";
             this.lecturaAnterior.Name = "lecturaAnterior";
+            this.lecturaAnterior.ReadOnly = true;
             // 
             // lecturaActual
             // 
             this.lecturaActual.DataPropertyName = "lecturaActual";
             this.lecturaActual.HeaderText = "Lectura Actual";
             this.lecturaActual.Name = "lecturaActual";
-            // 
-            // cbNumeroMedidor
-            // 
-            this.cbNumeroMedidor.FormattingEnabled = true;
-            this.cbNumeroMedidor.Location = new System.Drawing.Point(114, 18);
-            this.cbNumeroMedidor.Name = "cbNumeroMedidor";
-            this.cbNumeroMedidor.Size = new System.Drawing.Size(119, 21);
-            this.cbNumeroMedidor.TabIndex = 36;
+            this.lecturaActual.ReadOnly = true;
             // 
             // FormConsumos
             // 

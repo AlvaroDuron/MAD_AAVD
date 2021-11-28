@@ -28,6 +28,13 @@ SELECT numeroContrato, numeroMedidor, nombreUsuario, tipoServicio, categoria, nu
 END
 GO
 
+CREATE PROCEDURE sp_ConsultarContratosPorMedidor
+AS
+BEGIN
+SELECT numeroMedidor FROM Contrato;
+END
+GO
+
 CREATE PROCEDURE sp_BuscarContrato(@numeroContrato int)
 AS
 BEGIN

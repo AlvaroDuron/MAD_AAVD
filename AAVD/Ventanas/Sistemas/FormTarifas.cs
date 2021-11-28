@@ -28,7 +28,12 @@ namespace AAVD
         {
             try
             {
+                Program.CBFechaAño(cbAño);
+                Program.CBFechaMes(cbMes);
+                Program.CBFechaAño(cbFiltroAño);
+                Program.CBFechaMes(cbFiltroMes);
                 Zona.LlenarCB(cbZona);
+                Zona.LlenarCB(cbFiltroZona);
                 TipoServicio.LlenarCB(cbTipoServicio);
                 Tarifa.LlenarDG(dgvTarifas);
             }
@@ -51,8 +56,8 @@ namespace AAVD
                 Tarifa tarifa = null;
                 bool v1 = (cbZona.SelectedIndex >= 0);
                 bool v2 = (cbTipoServicio.SelectedIndex >= 0);
-                bool v3 = (tbAño.Text != "");
-                bool v4 = (tbMes.Text != "");
+                bool v3 = (cbAño.SelectedIndex >= 0);
+                bool v4 = (cbMes.SelectedIndex >= 0);
                 bool v5 = (tbCuotaFija.Text != "");
                 bool v6 = (tbRango1.Text != "");
                 bool v7 = (tbRango2.Text != "");
@@ -62,7 +67,7 @@ namespace AAVD
                     Zona zona = Zona.BuscarPorNombre(cbZona.SelectedItem.ToString());
                     tarifa = new Tarifa(
                         zona.numeroZona, cbTipoServicio.SelectedItem.ToString(),
-                        int.Parse(tbAño.Text.ToString()), int.Parse(tbMes.Text.ToString()),
+                        int.Parse(cbAño.SelectedItem.ToString()), int.Parse(cbMes.SelectedItem.ToString()),
                         float.Parse(tbCuotaFija.Text.ToString()),
                         float.Parse(tbRango1.Text.ToString()),
                         float.Parse(tbRango2.Text.ToString()),

@@ -32,7 +32,6 @@ INNER JOIN Municipio ON Zona.numeroZona = Municipio.numeroZona;
 END
 GO
 
-
 CREATE PROCEDURE sp_BuscarMunicipio(@municipio varchar(100))
 AS
 BEGIN
@@ -46,7 +45,7 @@ CREATE PROCEDURE sp_ModificarMunicipio(@municipio varchar(100), @numeroZona int)
 AS
 BEGIN
 UPDATE Municipio 
-SET municipio = @municipio, numeroZona = @numeroZona 
+SET numeroZona = @numeroZona 
 WHERE municipio = @municipio;
 END
 GO
