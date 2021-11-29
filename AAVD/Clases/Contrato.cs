@@ -63,7 +63,18 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT nombreUsuario, numeroContrato, numeroMedidor, categoria, tipoServicio, numeroExterior, calle, colonia, municipio, estado, creacion, fechaAtaMod " +
+                "FROM Contrato WHERE numeroContrato = {0} allow filtering;",
+                numeroContrato);
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Contrato> data = mapper.Fetch<Contrato>(query);
+                List<Contrato> lista = data.ToList();
+                if (lista.Count() > 0)
+                {
+                    temp = lista.ToList()[0];
+                }
             }
             return temp;
         }
@@ -82,7 +93,17 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT nombreUsuario, numeroContrato, numeroMedidor, categoria, tipoServicio, numeroExterior, calle, colonia, municipio, estado, creacion, fechaAtaMod " +
+                "FROM Contrato WHERE numeroMedidor = {0} allow filtering;",
+                numeroMedidor);
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Contrato> data = mapper.Fetch<Contrato>(query);
+                if (data.Count() > 0)
+                {
+                    temp = data.ToList()[0];
+                }
             }
             return temp;
         }
@@ -95,8 +116,8 @@ namespace AAVD
                 ConexionDB_MAD.db.Query<Contrato>("sp_AgregarContrato",
                     new
                     {
-                        @nombreUsuario = contrato.nombreUsuario,
                         //@numeroContrato = contrato.numeroContrato
+                        @nombreUsuario = contrato.nombreUsuario,
                         @numeroMedidor = contrato.numeroMedidor,
                         @tipoServicio = contrato.tipoServicio,
                         @categoria = contrato.categoria,
@@ -114,7 +135,12 @@ namespace AAVD
             }
             else
             {
-
+                string query = string.Format(
+                    "INSERT INTO Contrato(numeroContrato, nombreUsuario, numeroMedidor, categoria, tipoServicio, numeroExterior, calle, colonia, municipio, estado, creacion, fechaAtaMod) " +
+                    "VALUES({0}, '{1}', {2}, '{3}', '{4}', {5}, '{6}', '{7}', '{8}', {9}, '{10}', toUnixTimestamp(now()); ",
+                    contrato.numeroContrato, contrato.nombreUsuario, contrato.numeroMedidor, contrato.categoria, contrato.tipoServicio, contrato.numeroExterior, contrato.calle, contrato.colonia, contrato.municipio, contrato.estado, contrato.creacion
+                );
+                ConexionDB_AAVD.executeQuery(query);
             }
         }
         public static void Modificar(Contrato contrato)
@@ -126,8 +152,8 @@ namespace AAVD
                 ConexionDB_MAD.db.Query<Contrato>("sp_ModificarContrato",
                     new
                     {
-                        @nombreUsuario = contrato.nombreUsuario,
                         @numeroContrato = contrato.numeroContrato,
+                        @nombreUsuario = contrato.nombreUsuario,
                         @numeroMedidor = contrato.numeroMedidor,
                         @categoria = contrato.categoria,
                         @tipoServicio = contrato.tipoServicio,
@@ -145,7 +171,12 @@ namespace AAVD
             }
             else
             {
-
+                string query = string.Format(
+                    "UPDATE Contrato SET nombreUsuario = '{1}', numeroMedidor = {2}, categoria = '{3}', tipoServicio = '{4}', numeroExterior = {5}, calle = '{6}', colonia = '{7}', municipio = '{8}', estado = '{9}', creacion = '{10}', fechaAltaMod = toUnixTimestamp(now()) " +
+                    "WHERE numeroContrato = {0} if exists;",
+                    contrato.numeroContrato, contrato.nombreUsuario, contrato.numeroMedidor, contrato.categoria, contrato.tipoServicio, contrato.numeroExterior, contrato.calle, contrato.colonia, contrato.municipio, contrato.estado, contrato.creacion
+                );
+                ConexionDB_AAVD.executeQuery(query);
             }
         }
         public static void Eliminar(int numeroContrato)
@@ -158,7 +189,11 @@ namespace AAVD
             }
             else
             {
-
+                string query = string.Format(
+                    "DELETE FROM Contrato WHERE numeroContrato = {0} if exists;",
+                    numeroContrato
+                    );
+                ConexionDB_AAVD.executeQuery(query);
             }
         }
 
@@ -179,7 +214,14 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT numeroContrato, nombreUsuario, numeroMedidor, categoria, tipoServicio, numeroExterior, calle, colonia, municipio, estado, creacion, fechaAtaMod " +
+                "FROM Contrato allow filtering;"
+                );
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Contrato> data = mapper.Fetch<Contrato>(query);
+                dg.DataSource = data.ToList();
             }
         }
         public static void LlenarCB(ComboBox cb)
@@ -198,7 +240,14 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT numeroMedidor " +
+                "FROM Contrato allow filtering;"
+                );
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Contrato> data = mapper.Fetch<Contrato>(query);
+                cb.DataSource = data.ToList();
             }
         }
     }

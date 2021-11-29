@@ -62,7 +62,7 @@ namespace AAVD
             cellSelected = true;
             cellIndex = e.RowIndex;
             selectedRow = dgvTipoServicio.Rows[cellIndex];
-            tipoSelected = selectedRow.Cells[0].Value.ToString();
+            tipoSelected = selectedRow.Cells["nombre"].Value.ToString();
         }
 
         private void dgvTipoServicio_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)

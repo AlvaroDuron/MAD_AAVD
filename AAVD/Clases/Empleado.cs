@@ -13,13 +13,13 @@ namespace AAVD
 {
     public class Empleado
     {
-        public int idEmpleado { get; set; }
+        public Guid idEmpleado { get; set; }
         public string nombreUsuario { get; set; }
         public string nombre { get; set; }
         public string apellidoPaterno { get; set; }
         public string apellidoMaterno { get; set; }
         public DateTime nacimiento { get; set; }
-        public char genero { get; set; }
+        public string genero { get; set; }
         public int numeroExterior { get; set; }
         public string calle { get; set; }
         public string colonia { get; set; }
@@ -30,7 +30,7 @@ namespace AAVD
         {
 
         }
-        public Empleado(int idEmpleado, string nombreUsuario, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime nacimiento, char genero, int numeroExterior, string calle, string colonia, string municipio, DateTime fechaAltaMod)
+        public Empleado(Guid idEmpleado, string nombreUsuario, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime nacimiento, string genero, int numeroExterior, string calle, string colonia, string municipio, DateTime fechaAltaMod)
         {
             this.idEmpleado = idEmpleado;
             this.nombreUsuario = nombreUsuario;
@@ -47,7 +47,7 @@ namespace AAVD
         }
 
         //BD QUERY
-        public static Empleado Buscar(int idEmpleado)
+        public static Empleado Buscar(Guid idEmpleado)
         {
             Empleado temp = null;
             if (Program.MAD_AAVD)
@@ -69,7 +69,11 @@ namespace AAVD
 
                 IMapper mapper = ConexionDB_AAVD.conexion();
                 IEnumerable<Empleado> data = mapper.Fetch<Empleado>(query);
-                temp = data.ToList()[0];
+                List<Empleado> lista = data.ToList();
+                if (lista.Count() > 0)
+                {
+                    temp = lista.ToList()[0];
+                }
             }
             return temp;
         }
@@ -147,7 +151,7 @@ namespace AAVD
                 //MessageBox.Show("Se modificó el empleado correctamente a la base de datos.", "Exito");
             }
         }
-        public static void Eliminar(int idEmpleado)
+        public static void Eliminar(Guid idEmpleado)
         {
             if (Program.MAD_AAVD)
             {
@@ -207,14 +211,30 @@ namespace AAVD
             }
             else
             {
-                string query = string.Format(
-                "SELECT idEmpleado, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, numeroExterior, calle, colonia, municipio, fechaAltaMod " +
-                "FROM Empleado WHERE estado = 2 allow filtering;"
-                );
-
                 IMapper mapper = ConexionDB_AAVD.conexion();
-                IEnumerable<Empleado> data = mapper.Fetch<Empleado>(query);
-                dg.DataSource = data.ToList();
+
+                string query1 = string.Format(
+                "SELECT nombreUsuario " +
+                "FROM Usuario WHERE estado = 2 allow filtering;"
+                );
+                IEnumerable<Usuario> data = mapper.Fetch<Usuario>(query1);
+                List<Usuario> usuarios = data.ToList();
+
+                List<Empleado> empleados = new List<Empleado>();
+                foreach (Usuario usuario in usuarios)
+                {
+                    string query2 = string.Format(
+                    "SELECT idEmpleado, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, numeroExterior, calle, colonia, municipio, fechaAltaMod " +
+                    "FROM Empleado WHERE nombreUsuario = '{0}' allow filtering;",
+                    usuario.nombreUsuario
+                    );
+                    IEnumerable<Empleado> data2 = mapper.Fetch<Empleado>(query2);
+                    if (data2.Count() > 0)
+                    {
+                        empleados.Add(data2.ToList()[0]);
+                    }
+                }
+                dg.DataSource = empleados.ToList();
             }
         }
     }
@@ -260,14 +280,30 @@ namespace AAVD
             }
             else
             {
-                string query = string.Format(
-                "SELECT idEmpleado, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, numeroExterior, calle, colonia, municipio, fechaAltaMod " +
-                "FROM Empleado WHERE estado = 2 allow filtering;"
-                );
-
                 IMapper mapper = ConexionDB_AAVD.conexion();
-                IEnumerable<EmpleadoBan> data = mapper.Fetch<EmpleadoBan>(query);
-                dg.DataSource = data.ToList();
+
+                string query1 = string.Format(
+                "SELECT nombreUsuario " +
+                "FROM Usuario WHERE estado = 2 allow filtering;"
+                );
+                IEnumerable<Usuario> data = mapper.Fetch<Usuario>(query1);
+                List<Usuario> usuarios = data.ToList();
+
+                List<Empleado> empleados = new List<Empleado>();
+                foreach (Usuario usuario in usuarios)
+                {
+                    string query2 = string.Format(
+                    "SELECT idEmpleado, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, numeroExterior, calle, colonia, municipio, fechaAltaMod " +
+                    "FROM Empleado WHERE nombreUsuario = '{0}' allow filtering;",
+                    usuario.nombreUsuario
+                    );
+                    IEnumerable<Empleado> data2 = mapper.Fetch<Empleado>(query2);
+                    if (data2.Count() > 0)
+                    {
+                        empleados.Add(data2.ToList()[0]);
+                    }
+                }
+                dg.DataSource = empleados.ToList();
             }
         }
     }

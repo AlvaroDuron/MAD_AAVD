@@ -56,14 +56,14 @@ namespace AAVD
                 bool v9 = nacimientoSel;
                 if (v1 && v2 && v3 && v4 && v5 && v6 && v7 && v8 && v9)
                 {
-                    char genero;
+                    string genero;
                     if (rbHombre.Checked)
                     {
-                        genero = 'H';
+                        genero = "Hombre";
                     }
                     else
                     {
-                        genero = 'M';
+                        genero = "Mujer";
                     }
                     usuario = new Usuario(tbNombreUsuario.Text, tbContraseña.Text, 0, 0, 1);
                     cliente = new ClienteFisico(

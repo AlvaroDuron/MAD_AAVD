@@ -74,7 +74,7 @@ namespace AAVD
                         cliente.curp, cliente.nombreUsuario,
                         selectedRow.Cells["nombre"].Value.ToString(), selectedRow.Cells["apellidoPaterno"].Value.ToString(), selectedRow.Cells["apellidoMaterno"].Value.ToString(),
                         Convert.ToDateTime(selectedRow.Cells["nacimiento"].Value.ToString()),
-                        char.Parse(selectedRow.Cells["genero"].Value.ToString()),
+                        selectedRow.Cells["genero"].Value.ToString(),
                         selectedRow.Cells["email"].Value.ToString(),
                         DateTime.Now
                         );

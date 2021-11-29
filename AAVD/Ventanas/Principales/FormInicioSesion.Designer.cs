@@ -122,8 +122,6 @@ namespace AAVD
             // cbMAD
             // 
             this.cbMAD.AutoSize = true;
-            this.cbMAD.Checked = true;
-            this.cbMAD.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbMAD.Location = new System.Drawing.Point(276, 15);
             this.cbMAD.Name = "cbMAD";
             this.cbMAD.Size = new System.Drawing.Size(50, 17);
@@ -135,6 +133,8 @@ namespace AAVD
             // cbAAVD
             // 
             this.cbAAVD.AutoSize = true;
+            this.cbAAVD.Checked = true;
+            this.cbAAVD.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbAAVD.Location = new System.Drawing.Point(276, 39);
             this.cbAAVD.Name = "cbAAVD";
             this.cbAAVD.Size = new System.Drawing.Size(55, 17);

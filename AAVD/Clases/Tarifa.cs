@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using Cassandra;
+using Cassandra.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,7 +15,7 @@ namespace AAVD
     {
         public int numeroZona { get; set; }
         public string tipoServicio { get; set; }
-        public int año { get; set; }
+        public int anio { get; set; }
         public int mes { get; set; }
         public float cuotaFija { get; set; }
         public float rango1 { get; set; }
@@ -24,11 +26,11 @@ namespace AAVD
         {
 
         }
-        public Tarifa(int numeroZona, string tipoServicio, int año, int mes, float cuotaFija, float rango1, float rango2, float rango3)
+        public Tarifa(int numeroZona, string tipoServicio, int anio, int mes, float cuotaFija, float rango1, float rango2, float rango3)
         {
             this.numeroZona = numeroZona;
             this.tipoServicio = tipoServicio;
-            this.año = año;
+            this.anio = anio;
             this.mes = mes;
             this.cuotaFija = cuotaFija;
             this.rango1 = rango1;
@@ -37,7 +39,7 @@ namespace AAVD
         }
 
         //DB QUERY 
-        public static Tarifa Buscar(int numeroZona, string tipoServicio, int año, int mes)
+        public static Tarifa Buscar(int numeroZona, string tipoServicio, int anio, int mes)
         {
             Tarifa temp = null;
             if (Program.MAD_AAVD)
@@ -48,7 +50,7 @@ namespace AAVD
                     {
                         @numeroZona = numeroZona,
                         @tipoServicio = tipoServicio,
-                        @año = año,
+                        @anio = anio,
                         @mes = mes
                     },
                     commandType: CommandType.StoredProcedure);
@@ -60,7 +62,19 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT numeroZona, tipoServicio, anio, mes, cuotaFija, rango1, rango2, rango3 " +
+                "FROM Tarifa WHERE numeroZona = {0} AND tipoServicio = '{1}' AND anio = {2} AND mes = {3} allow filtering;",
+                numeroZona, tipoServicio, anio, mes
+                );
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Tarifa> data = mapper.Fetch<Tarifa>(query);
+                List<Tarifa> lista = data.ToList();
+                if (lista.Count() > 0)
+                {
+                    temp = lista.ToList()[0];
+                }
             }
             return temp;
         }
@@ -70,12 +84,12 @@ namespace AAVD
             {
                 ConexionDB_MAD.conectar();
 
-                ConexionDB_MAD.db.Query<Zona>("sp_AgregarTarifa",
+                ConexionDB_MAD.db.Query<Tarifa>("sp_AgregarTarifa",
                     new
                     {
                         @numeroZona = tarifa.numeroZona,
                         @tipoServicio = tarifa.tipoServicio,
-                        @año = tarifa.año,
+                        @anio = tarifa.anio,
                         @mes = tarifa.mes,
                         @cuotaFija = tarifa.cuotaFija,
                         @rango1 = tarifa.rango1,
@@ -88,8 +102,12 @@ namespace AAVD
             }
             else
             {
-
-
+                string query = string.Format(
+                    "INSERT INTO Tarifa(numeroZona, tipoServicio, anio, mes, cuotaFija, rango1, rango2, rango3) " +
+                    "VALUES({0}, '{1}', {2}, {3}, {4}, {5}, {6}, {7}); ",
+                    tarifa.numeroZona, tarifa.tipoServicio, tarifa.anio, tarifa.mes, tarifa.cuotaFija, tarifa.rango1, tarifa.rango2, tarifa.rango3
+                );
+                ConexionDB_AAVD.executeQuery(query);
             }
         }
         public static void Modificar(Tarifa tarifa)
@@ -103,7 +121,7 @@ namespace AAVD
                     {
                         @numeroZona = tarifa.numeroZona,
                         @tipoServicio = tarifa.tipoServicio,
-                        @año = tarifa.año,
+                        @anio = tarifa.anio,
                         @mes = tarifa.mes,
                         @cuotaFija = tarifa.cuotaFija,
                         @rango1 = tarifa.rango1,
@@ -116,10 +134,15 @@ namespace AAVD
             }
             else
             {
-
+                string query = string.Format(
+                    "UPDATE Tarifa SET cuotaFija = {4}, rango1 = {5}, rango2 = {6}, rango3 = {7} " +
+                    "WHERE numeroZona = {0} AND tipoServicio = '{1}' AND anio = {2} AND mes = {3} if exists;",
+                    tarifa.numeroZona, tarifa.tipoServicio, tarifa.anio, tarifa.mes, tarifa.cuotaFija, tarifa.rango1, tarifa.rango2, tarifa.rango3
+                );
+                ConexionDB_AAVD.executeQuery(query);
             }
         }
-        public static void Eliminar(int numeroZona, string tipoServicio, int año, int mes)
+        public static void Eliminar(int numeroZona, string tipoServicio, int anio, int mes)
         {
             if (Program.MAD_AAVD)
             {
@@ -130,7 +153,7 @@ namespace AAVD
                     {
                         @numeroZona = numeroZona,
                         @tipoServicio = tipoServicio,
-                        @año = año,
+                        @anio = anio,
                         @mes = mes
                     },
                     commandType: CommandType.StoredProcedure);
@@ -139,8 +162,11 @@ namespace AAVD
             }
             else
             {
-
-
+                string query = string.Format(
+                    "DELETE FROM Tarifa WHERE numeroZona = {0} AND tipoServicio = '{1}' AND anio = {2} AND mes = {3} if exists;",
+                    numeroZona, tipoServicio, anio, mes
+                    );
+                ConexionDB_AAVD.executeQuery(query);
             }
         }
 
@@ -161,7 +187,14 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT numeroZona, tipoServicio, anio, mes, cuotaFija, rango1, rango2, rango3 " +
+                "FROM Tarifa allow filtering;"
+                );
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Tarifa> data = mapper.Fetch<Tarifa>(query);
+                dg.DataSource = data.ToList();
             }
         }
     }

@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using Cassandra;
+using Cassandra.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,14 +13,14 @@ namespace AAVD
 {
     public class Categoria
     {
-        public char categoria { get; set; }
+        public string categoria { get; set; }
         public float porcentaje { get; set; }
 
         public Categoria()
         {
 
         }
-        public Categoria(char categoria, float porcentaje)
+        public Categoria(string categoria, float porcentaje)
         {
             this.categoria = categoria;
             this.porcentaje = porcentaje;
@@ -40,7 +42,18 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT categoria, porcentaje " +
+                "FROM Categoria WHERE categoria = '{0}' allow filtering;",
+                categoria);
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Categoria> data = mapper.Fetch<Categoria>(query);
+                List<Categoria> categorias = data.ToList();
+                if (categorias.Count() > 0)
+                {
+                    temp = categorias.ToList()[0];
+                }
             }
             return temp;
         }
@@ -62,7 +75,12 @@ namespace AAVD
             }
             else
             {
-
+                string query = string.Format(
+                    "UPDATE Categoria SET porcentaje = {1} " +
+                    "WHERE categoria = '{0}' if exists;",
+                    categoria.categoria, categoria.porcentaje
+                );
+                ConexionDB_AAVD.executeQuery(query);
             }
         }
 
@@ -83,7 +101,14 @@ namespace AAVD
                 }
                 else
                 {
+                    string query = string.Format(
+                    "SELECT categoria, porcentaje " +
+                    "FROM Categoria allow filtering;"
+                    );
 
+                    IMapper mapper = ConexionDB_AAVD.conexion();
+                    IEnumerable<Categoria> data = mapper.Fetch<Categoria>(query);
+                    dg.DataSource = data.ToList();
                 }
             }
             catch (Exception except)
@@ -108,7 +133,14 @@ namespace AAVD
                 }
                 else
                 {
+                    string query = string.Format(
+                    "SELECT categoria" +
+                    "FROM Categoria allow filtering;"
+                    );
 
+                    IMapper mapper = ConexionDB_AAVD.conexion();
+                    IEnumerable<Categoria> data = mapper.Fetch<Categoria>(query);
+                    cb.DataSource = data.ToList();
                 }
             }
             catch (Exception except)

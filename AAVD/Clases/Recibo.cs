@@ -55,7 +55,7 @@ namespace AAVD
         }
 
         //DB QUERY 
-        public static Recibo Buscar(int numeroContrato, int año, int mes)
+        public static Recibo Buscar(int numeroContrato, int anio, int mes)
         {
             Recibo temp = null;
             if (Program.MAD_AAVD)
@@ -65,7 +65,7 @@ namespace AAVD
                     new
                     {
                         @numeroContrato = numeroContrato,
-                        @año = año,
+                        @anio = anio,
                         @mes = mes
                     },
                     commandType: CommandType.StoredProcedure);
@@ -80,11 +80,15 @@ namespace AAVD
                 string query = string.Format(
                 "SELECT nombreUsuario, numeroContrato, anio, mes, expedicion, numeroZona, consumo, subtotal1, subtotal2, subtotal3, total, vencimiento, pagado" +
                 "FROM Recibo WHERE numeroContrato = '{0}' AND anio = '{1}' AND mes = '{2}' allow filtering;",
-                numeroContrato, año, mes);
+                numeroContrato, anio, mes);
 
                 IMapper mapper = ConexionDB_AAVD.conexion();
                 IEnumerable<Recibo> data = mapper.Fetch<Recibo>(query);
-                temp = data.ToList()[0];
+                List<Recibo> lista = data.ToList();
+                if (lista.Count() > 0)
+                {
+                    temp = lista.ToList()[0];
+                }
             }
             return temp;
         }
@@ -166,7 +170,7 @@ namespace AAVD
             }
         }
 
-        public static void Eliminar(int numeroContrato, int año, int mes)
+        public static void Eliminar(int numeroContrato, int anio, int mes)
         {
             if (Program.MAD_AAVD)
             {
@@ -176,7 +180,7 @@ namespace AAVD
                     new
                     {
                         @numeroContrato = numeroContrato,
-                        @año = año,
+                        @anio = anio,
                         @mes = mes
                     },
                     commandType: CommandType.StoredProcedure);
@@ -187,14 +191,14 @@ namespace AAVD
             {
                 string query = string.Format(
                     "DELETE FROM Recibo WHERE numeroContrato = {0} AND anio = {1} AND mes = {2} if exists;",
-                    numeroContrato, año, mes
+                    numeroContrato, anio, mes
                     );
                 ConexionDB_AAVD.executeQuery(query);
             }
         }
 
         //FORM METODOS
-        public static void LlenarDG(DataGridView dg, int año, int mes)
+        public static void LlenarDG(DataGridView dg, int anio, int mes)
         {
             if (Program.MAD_AAVD)
             {
@@ -202,8 +206,8 @@ namespace AAVD
 
                 var data = ConexionDB_MAD.db.Query<Recibo>("sp_ConsultarRecibos",
                     new 
-                    { 
-                        @año = año,
+                    {
+                        @anio = anio,
                         @mes = mes
                     },
                     commandType: CommandType.StoredProcedure);
@@ -215,9 +219,9 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT nombreUsuario, numeroContrato, anio, mes, expedicion, numeroZona, consumo, subtotal1, subtotal2, subtotal3, total, vencimiento, pagado" +
+                "SELECT nombreUsuario, numeroContrato, anio, mes, expedicion, numeroZona, consumo, subtotal1, subtotal2, subtotal3, total, vencimiento, pagado " +
                 "FROM Recibo WHERE anio = {0} AND mes = {1} allow filtering;",
-                año, mes
+                anio, mes
                 );
 
                 IMapper mapper = ConexionDB_AAVD.conexion();
@@ -225,7 +229,7 @@ namespace AAVD
                 dg.DataSource = data.ToList();
             }
         }
-        public static void LlenarDG(DataGridView dg, string tipoServicio, int año, int mes)
+        public static void LlenarDG(DataGridView dg, string tipoServicio, int anio, int mes)
         {
             if (Program.MAD_AAVD)
             {
@@ -235,7 +239,7 @@ namespace AAVD
                     new 
                     {
                         @tipoServicio = tipoServicio,
-                        @año = año,
+                        @anio = anio,
                         @mes = mes
                     },
                     commandType: CommandType.StoredProcedure);
@@ -246,7 +250,31 @@ namespace AAVD
             }
             else
             {
+                IMapper mapper = ConexionDB_AAVD.conexion();
 
+                string query1 = string.Format(
+                "SELECT numeroContrato " +
+                "FROM Contrato WHERE tipoServicio = '{0}' allow filtering;",
+                tipoServicio
+                );
+                IEnumerable<string> data1 = mapper.Fetch<string>(query1);
+                List<string> contratos = data1.ToList();
+
+                List<Recibo> recibos = new List<Recibo>();
+                foreach (string contrato in contratos)
+                {
+                    string query2 = string.Format(
+                    "SELECT nombreUsuario, numeroContrato, anio, mes, expedicion, numeroZona, consumo, subtotal1, subtotal2, subtotal3, total, vencimiento, pagado " +
+                    "FROM Recibo WHERE numeroContrato = '{0}' AND anio = {1} AND mes = {2} allow filtering;",
+                    contrato, anio, mes
+                    );
+                    IEnumerable<Recibo> data2 = mapper.Fetch<Recibo>(query2);
+                    if (data2.Count() > 0)
+                    {
+                        recibos.Add(data2.ToList()[0]);
+                    }
+                }
+                dg.DataSource = recibos.ToList();
             }
         }
     }

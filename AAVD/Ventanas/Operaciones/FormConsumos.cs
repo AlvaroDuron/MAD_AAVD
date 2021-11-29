@@ -61,7 +61,7 @@ namespace AAVD
                         float.Parse(tbLecturaActual.Text.ToString()),
                         contrato.numeroContrato
                         );
-                    if (Consumo.BuscarPorContrato(consumo.numeroContrato, consumo.año, consumo.mes) == null)
+                    if (Consumo.BuscarPorContrato(consumo.numeroContrato, consumo.anio, consumo.mes) == null)
                     {
                         Consumo.Agregar(consumo);
                         MessageBox.Show("Lectura agregada exitosamente.");

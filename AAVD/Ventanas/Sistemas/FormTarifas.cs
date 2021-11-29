@@ -73,7 +73,7 @@ namespace AAVD
                         float.Parse(tbRango2.Text.ToString()),
                         float.Parse(tbRango3.Text.ToString())
                         );
-                    if(Tarifa.Buscar(tarifa.numeroZona, tarifa.tipoServicio, tarifa.año, tarifa.mes) == null)
+                    if(Tarifa.Buscar(tarifa.numeroZona, tarifa.tipoServicio, tarifa.anio, tarifa.mes) == null)
                     {
                         Tarifa.Agregar(tarifa);
                         MessageBox.Show("Tarifa agregada exitosamente.");
@@ -107,7 +107,7 @@ namespace AAVD
             {
                 Tarifa tarifa = Tarifa.Buscar(zoneSelected, servSelected, yearSelected, montSelected);
                 Tarifa modificado = new Tarifa(
-                    tarifa.numeroZona, tarifa.tipoServicio, tarifa.año, tarifa.mes,
+                    tarifa.numeroZona, tarifa.tipoServicio, tarifa.anio, tarifa.mes,
                     float.Parse(selectedRow.Cells["cuotaFija"].Value.ToString()),
                     float.Parse(selectedRow.Cells["rango1"].Value.ToString()),
                     float.Parse(selectedRow.Cells["rango2"].Value.ToString()),

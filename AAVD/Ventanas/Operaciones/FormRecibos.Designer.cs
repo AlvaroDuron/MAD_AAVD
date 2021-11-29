@@ -42,7 +42,7 @@ namespace AAVD
             this.bRegresar = new System.Windows.Forms.Button();
             this.nombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.año = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.anio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.expedicion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroZona = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,7 +63,7 @@ namespace AAVD
             this.dgvRecibo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nombreUsuario,
             this.numeroContrato,
-            this.año,
+            this.anio,
             this.mes,
             this.expedicion,
             this.numeroZona,
@@ -199,12 +199,12 @@ namespace AAVD
             this.numeroContrato.Name = "numeroContrato";
             this.numeroContrato.ReadOnly = true;
             // 
-            // año
+            // anio
             // 
-            this.año.DataPropertyName = "año";
-            this.año.HeaderText = "Año";
-            this.año.Name = "año";
-            this.año.ReadOnly = true;
+            this.anio.DataPropertyName = "anio";
+            this.anio.HeaderText = "Año";
+            this.anio.Name = "anio";
+            this.anio.ReadOnly = true;
             // 
             // mes
             // 
@@ -308,7 +308,7 @@ namespace AAVD
         private System.Windows.Forms.Button bRegresar;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroContrato;
-        private System.Windows.Forms.DataGridViewTextBoxColumn año;
+        private System.Windows.Forms.DataGridViewTextBoxColumn anio;
         private System.Windows.Forms.DataGridViewTextBoxColumn mes;
         private System.Windows.Forms.DataGridViewTextBoxColumn expedicion;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroZona;

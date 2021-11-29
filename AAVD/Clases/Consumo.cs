@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using Cassandra;
+using Cassandra.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,7 +14,7 @@ namespace AAVD
     class Consumo
     {
         public int numeroMedidor { get; set; }
-        public int año { get; set; }
+        public int anio { get; set; }
         public int mes { get; set; }
         public float lecturaAnterior { get; set; }
         public float lecturaActual { get; set; }
@@ -25,16 +27,16 @@ namespace AAVD
         public Consumo(Consumo consumo)
         {
             this.numeroMedidor = consumo.numeroMedidor;
-            this.año = consumo.año;
+            this.anio = consumo.anio;
             this.mes = consumo.mes;
             this.lecturaAnterior = consumo.lecturaAnterior;
             this.lecturaActual = consumo.lecturaActual;
             this.numeroContrato = consumo.numeroContrato;
         }
-        public Consumo(int numeroMedidor, int año, int mes, float lecturaAnterior, float lecturaActual, int numeroContrato)
+        public Consumo(int numeroMedidor, int anio, int mes, float lecturaAnterior, float lecturaActual, int numeroContrato)
         {
             this.numeroMedidor = numeroMedidor;
-            this.año = año;
+            this.anio = anio;
             this.mes = mes;
             this.lecturaAnterior = lecturaAnterior;
             this.lecturaActual = lecturaActual;
@@ -42,7 +44,7 @@ namespace AAVD
         }
 
         //DB QUERY 
-        public static Consumo Buscar(int numeroMedidor, int año, int mes)
+        public static Consumo Buscar(int numeroMedidor, int anio, int mes)
         {
             Consumo temp = null;
             if (Program.MAD_AAVD)
@@ -52,7 +54,7 @@ namespace AAVD
                     new
                     {
                         @numeroMedidor = numeroMedidor,
-                        @año = año,
+                        @anio = anio,
                         @mes = mes
                     },
                     commandType: CommandType.StoredProcedure);
@@ -64,11 +66,22 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT numeroMedidor, anio, mes, lecturaAnterior, lecturaActual, numeroContrato " +
+                "FROM Consumo WHERE numeroMedidor = {0} AND anio = {1} AND mes = {2} allow filtering;",
+                numeroMedidor, anio, mes);
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Consumo> data = mapper.Fetch<Consumo>(query);
+                List<Consumo> lista = data.ToList();
+                if (lista.Count() > 0)
+                {
+                    temp = lista.ToList()[0];
+                }
             }
             return temp;
         }
-        public static Consumo BuscarPorContrato(int numeroContrato, int año, int mes)
+        public static Consumo BuscarPorContrato(int numeroContrato, int anio, int mes)
         {
             Consumo temp = null;
             if (Program.MAD_AAVD)
@@ -78,7 +91,7 @@ namespace AAVD
                     new
                     {
                         @numeroContrato = numeroContrato,
-                        @año = año,
+                        @anio = anio,
                         @mes = mes
                     },
                     commandType: CommandType.StoredProcedure);
@@ -90,7 +103,18 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT numeroMedidor, anio, mes, lecturaAnterior, lecturaActual, numeroContrato " +
+                "FROM Consumo WHERE numeroContrato = {0} AND anio = {1} AND mes = {2} allow filtering;",
+                numeroContrato, anio, mes);
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Consumo> data = mapper.Fetch<Consumo>(query);
+                List<Consumo> lista = data.ToList();
+                if (lista.Count() > 0)
+                {
+                    temp = lista.ToList()[0];
+                }
             }
             return temp;
         }
@@ -105,7 +129,7 @@ namespace AAVD
                     new
                     {
                         @numeroMedidor = consumo.numeroMedidor,
-                        @año = consumo.año,
+                        @anio = consumo.anio,
                         @mes = consumo.mes,
                         @lecturaActual = consumo.lecturaActual,
                         @lecturaAnterior = consumo.lecturaAnterior,
@@ -117,7 +141,12 @@ namespace AAVD
             }
             else
             {
-
+                string query = string.Format(
+                    "INSERT INTO Consumo(numeroMedidor, anio, mes, lecturaAnterior, lecturaActual, numeroContrato) " +
+                    "VALUES({0}, {1}, {2}, {3}, {4}, {5}); ",
+                    consumo.numeroMedidor, consumo.anio, consumo.mes, consumo.lecturaAnterior, consumo.lecturaActual, consumo.numeroContrato
+                );
+                ConexionDB_AAVD.executeQuery(query);
             }
         }
         public static void Modificar(Consumo consumo)
@@ -130,7 +159,7 @@ namespace AAVD
                     new
                     {
                         @numeroMedidor = consumo.numeroMedidor,
-                        @año = consumo.año,
+                        @anio = consumo.anio,
                         @mes = consumo.mes,
                         @lecturaActual = consumo.lecturaActual,
                         @lecturaAnterior = consumo.lecturaAnterior,
@@ -142,10 +171,16 @@ namespace AAVD
             }
             else
             {
-
+                //NO SIRVE PERO NO SE NECESITA
+                //string query = string.Format(
+                //    "UPDATE Consumo SET a = {1}, anio = {2} " +
+                //    "WHERE numeroZona = {0} if exists;",
+                //    zona.numeroZona, zona.nombre
+                //);
+                //ConexionDB_AAVD.executeQuery(query);
             }
         }
-        public static void Eliminar(int numeroMedidor, int año, int mes)
+        public static void Eliminar(int numeroMedidor, int anio, int mes)
         {
             if (Program.MAD_AAVD)
             {
@@ -155,7 +190,7 @@ namespace AAVD
                     new
                     {
                         @numeroMedidor = numeroMedidor,
-                        @año = año,
+                        @anio = anio,
                         @mes = mes
                     },
                     commandType: CommandType.StoredProcedure);
@@ -164,8 +199,11 @@ namespace AAVD
             }
             else
             {
-
-
+                string query = string.Format(
+                    "DELETE FROM Consumo WHERE numeroMedidor = {0} AND anio = {1} AND mes = {2} if exists;",
+                    numeroMedidor, anio, mes
+                    );
+                ConexionDB_AAVD.executeQuery(query);
             }
         }
 
@@ -186,7 +224,14 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT numeroMedidor, anio, mes, lecturaAnterior, lecturaActual, numeroContrato " +
+                "FROM Consumo allow filtering;"
+                );
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Consumo> data = mapper.Fetch<Consumo>(query);
+                dg.DataSource = data.ToList();
             }
         }
     }

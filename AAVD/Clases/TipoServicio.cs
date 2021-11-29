@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using Cassandra;
+using Cassandra.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -46,7 +48,18 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT nombre, cuotaDrenaje, rango1, rango2, rango3 " +
+                "FROM TipoServicio WHERE nombre = '{0}' allow filtering;",
+                nombre);
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<TipoServicio> data = mapper.Fetch<TipoServicio>(query);
+                List<TipoServicio> lista = data.ToList();
+                if (lista.Count() > 0)
+                {
+                    temp = lista.ToList()[0];
+                }
             }
             return temp;
         }
@@ -71,7 +84,12 @@ namespace AAVD
             }
             else
             {
-
+                string query = string.Format(
+                    "UPDATE TipoServicio SET cuotaDrenaje = {1}, rango1 = {2}, rango2 = {3}, rango3 = {4} " +
+                    "WHERE nombre = '{0}' if exists;",
+                    servicio.nombre, servicio.cuotaDrenaje, servicio.rango1, servicio.rango2, servicio.rango3
+                );
+                ConexionDB_AAVD.executeQuery(query);
             }
         }
 
@@ -92,7 +110,14 @@ namespace AAVD
                 }
                 else
                 {
+                    string query = string.Format(
+                        "SELECT nombre, cuotaDrenaje, rango1, rango2, rango3 " +
+                        "FROM TipoServicio allow filtering;"
+                        );
 
+                    IMapper mapper = ConexionDB_AAVD.conexion();
+                    IEnumerable<TipoServicio> data = mapper.Fetch<TipoServicio>(query);
+                    dg.DataSource = data.ToList();
                 }
             }
             catch (Exception except)
@@ -117,7 +142,19 @@ namespace AAVD
                 }
                 else
                 {
+                    string query = string.Format(
+                        "SELECT nombre " +
+                        "FROM TipoServicio allow filtering;"
+                        );
 
+                    IMapper mapper = ConexionDB_AAVD.conexion();
+                    IEnumerable<TipoServicio> data = mapper.Fetch<TipoServicio>(query);
+                    List<TipoServicio> servicios = data.ToList();
+                    cb.Items.Clear();
+                    foreach (TipoServicio servicio in servicios)
+                    {
+                        cb.Items.Add(servicio.nombre);
+                    }
                 }
             }
             catch (Exception except)

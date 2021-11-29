@@ -15,7 +15,7 @@ namespace AAVD
         bool cellSelected = false;
         int cellIndex;
         DataGridViewRow selectedRow;
-        int idSelected;
+        Guid idSelected;
         public FormEmpleados()
         {
             InitializeComponent();
@@ -57,7 +57,7 @@ namespace AAVD
                     empleado.idEmpleado, empleado.nombreUsuario,
                     selectedRow.Cells[2].Value.ToString(), selectedRow.Cells[3].Value.ToString(), selectedRow.Cells[4].Value.ToString(),
                     Convert.ToDateTime(selectedRow.Cells[5].Value.ToString()),
-                    char.Parse(selectedRow.Cells[6].Value.ToString()),
+                    selectedRow.Cells[6].Value.ToString(),
                     int.Parse(selectedRow.Cells[7].Value.ToString()), selectedRow.Cells[8].Value.ToString(), selectedRow.Cells[9].Value.ToString(), selectedRow.Cells[10].Value.ToString(),
                     DateTime.Now
                     );
@@ -82,7 +82,7 @@ namespace AAVD
             cellSelected = true;
             cellIndex = e.RowIndex;
             selectedRow = dgvEmpleados.Rows[cellIndex];
-            idSelected = int.Parse(selectedRow.Cells[0].Value.ToString());
+            idSelected = Guid.Parse(selectedRow.Cells["idEmpleado"].Value.ToString());
         }
     }
 }

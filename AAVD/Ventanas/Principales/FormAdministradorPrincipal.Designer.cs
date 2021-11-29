@@ -44,6 +44,18 @@ namespace AAVD
             this.bActivar = new System.Windows.Forms.Button();
             this.dgvEmpleadosBaneados = new System.Windows.Forms.DataGridView();
             this.bTipoServicio = new System.Windows.Forms.Button();
+            this.idEmpleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidoMaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroExterior = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colonia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.municipio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaAtaMod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleadosBaneados)).BeginInit();
             this.SuspendLayout();
@@ -181,6 +193,19 @@ namespace AAVD
             // dgvEmpleadosBaneados
             // 
             this.dgvEmpleadosBaneados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmpleadosBaneados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idEmpleado,
+            this.nombreUsuario,
+            this.nombre,
+            this.apellidoPaterno,
+            this.apellidoMaterno,
+            this.nacimiento,
+            this.genero,
+            this.numeroExterior,
+            this.calle,
+            this.colonia,
+            this.municipio,
+            this.fechaAtaMod});
             this.dgvEmpleadosBaneados.Location = new System.Drawing.Point(133, 236);
             this.dgvEmpleadosBaneados.Name = "dgvEmpleadosBaneados";
             this.dgvEmpleadosBaneados.Size = new System.Drawing.Size(426, 330);
@@ -196,6 +221,90 @@ namespace AAVD
             this.bTipoServicio.Text = "Tipos de Servicio";
             this.bTipoServicio.UseVisualStyleBackColor = true;
             this.bTipoServicio.Click += new System.EventHandler(this.bTipoServicio_Click);
+            // 
+            // idEmpleado
+            // 
+            this.idEmpleado.DataPropertyName = "idEmpleado";
+            this.idEmpleado.HeaderText = "Id del Empleado";
+            this.idEmpleado.Name = "idEmpleado";
+            this.idEmpleado.ReadOnly = true;
+            // 
+            // nombreUsuario
+            // 
+            this.nombreUsuario.DataPropertyName = "nombreUsuario";
+            this.nombreUsuario.HeaderText = "Nombre de Usuario";
+            this.nombreUsuario.Name = "nombreUsuario";
+            this.nombreUsuario.ReadOnly = true;
+            // 
+            // nombre
+            // 
+            this.nombre.DataPropertyName = "nombre";
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // apellidoPaterno
+            // 
+            this.apellidoPaterno.DataPropertyName = "apellidoPaterno";
+            this.apellidoPaterno.HeaderText = "Apellido Paterno";
+            this.apellidoPaterno.Name = "apellidoPaterno";
+            this.apellidoPaterno.ReadOnly = true;
+            // 
+            // apellidoMaterno
+            // 
+            this.apellidoMaterno.DataPropertyName = "apellidoMaterno";
+            this.apellidoMaterno.HeaderText = "Apellido Materno";
+            this.apellidoMaterno.Name = "apellidoMaterno";
+            this.apellidoMaterno.ReadOnly = true;
+            // 
+            // nacimiento
+            // 
+            this.nacimiento.DataPropertyName = "nacimiento";
+            this.nacimiento.HeaderText = "Fecha de Nacimiento";
+            this.nacimiento.Name = "nacimiento";
+            this.nacimiento.ReadOnly = true;
+            // 
+            // genero
+            // 
+            this.genero.DataPropertyName = "genero";
+            this.genero.HeaderText = "Genero";
+            this.genero.Name = "genero";
+            this.genero.ReadOnly = true;
+            // 
+            // numeroExterior
+            // 
+            this.numeroExterior.DataPropertyName = "numeroExterior";
+            this.numeroExterior.HeaderText = "Numero Exterior";
+            this.numeroExterior.Name = "numeroExterior";
+            this.numeroExterior.ReadOnly = true;
+            // 
+            // calle
+            // 
+            this.calle.DataPropertyName = "calle";
+            this.calle.HeaderText = "Calle";
+            this.calle.Name = "calle";
+            this.calle.ReadOnly = true;
+            // 
+            // colonia
+            // 
+            this.colonia.DataPropertyName = "colonia";
+            this.colonia.HeaderText = "Colonia";
+            this.colonia.Name = "colonia";
+            this.colonia.ReadOnly = true;
+            // 
+            // municipio
+            // 
+            this.municipio.DataPropertyName = "municipio";
+            this.municipio.HeaderText = "Municipio";
+            this.municipio.Name = "municipio";
+            this.municipio.ReadOnly = true;
+            // 
+            // fechaAtaMod
+            // 
+            this.fechaAtaMod.DataPropertyName = "fechaAtaMod";
+            this.fechaAtaMod.HeaderText = "Fecha de Modificacion";
+            this.fechaAtaMod.Name = "fechaAtaMod";
+            this.fechaAtaMod.ReadOnly = true;
             // 
             // FormAdministradorPrincipal
             // 
@@ -242,5 +351,17 @@ namespace AAVD
         private System.Windows.Forms.Button bActivar;
         private System.Windows.Forms.DataGridView dgvEmpleadosBaneados;
         private System.Windows.Forms.Button bTipoServicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idEmpleado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellidoPaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellidoMaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nacimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numeroExterior;
+        private System.Windows.Forms.DataGridViewTextBoxColumn calle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colonia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn municipio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaAtaMod;
     }
 }

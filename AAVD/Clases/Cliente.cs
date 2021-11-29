@@ -19,7 +19,7 @@ namespace AAVD
         public string apellidoPaterno { get; set; }
         public string apellidoMaterno { get; set; }
         public DateTime nacimiento { get; set; }
-        public char genero { get; set; }
+        public string genero { get; set; }
         public string email { get; set; }
         public DateTime fechaAltaMod { get; set; }
 
@@ -27,7 +27,7 @@ namespace AAVD
         {
 
         }
-        public ClienteFisico(string curp, string nombreUsuario, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime nacimiento, char genero, string email, DateTime fechaAltaMod)
+        public ClienteFisico(string curp, string nombreUsuario, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime nacimiento, string genero, string email, DateTime fechaAltaMod)
         {
             this.curp = curp;
             this.nombreUsuario = nombreUsuario;
@@ -57,13 +57,17 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT curp, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, email, fechaAltaMod" +
+                "SELECT curp, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, email, fechaAltaMod " +
                 "FROM ClienteFisico WHERE curp = '{0}' allow filtering;",
                 curp);
 
                 IMapper mapper = ConexionDB_AAVD.conexion();
                 IEnumerable<ClienteFisico> data = mapper.Fetch<ClienteFisico>(query);
-                temp = data.ToList()[0];
+                List<ClienteFisico> lista = data.ToList();
+                if (lista.Count() > 0)
+                {
+                    temp = lista.ToList()[0];
+                }
             }
             return temp;
         }
@@ -93,7 +97,7 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "INSERT INTO ClieneteFisico(curp, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, email, fechaAltaMod)" +
+                    "INSERT INTO ClieneteFisico(curp, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, email, fechaAltaMod) " +
                     "VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', toUnixTimestamp(now())); ",
                     cliente.curp, cliente.nombreUsuario, cliente.nombre, cliente.apellidoPaterno, cliente.apellidoMaterno, cliente.nacimiento, cliente.genero, cliente.email
                 );
@@ -127,12 +131,12 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "UPDATE ClienteFisico SET nombre = '{1}', apellidoPaterno = '{2}', apellidoMaterno = '{3}', nacimiento = '{4}', genero = '{5}', email = '{6}', fechaAltaMod = toUnixTimestamp(now())" +
-                    "WHERE curp = {0} if exists;",
+                    "UPDATE ClienteFisico SET nombre = '{1}', apellidoPaterno = '{2}', apellidoMaterno = '{3}', nacimiento = '{4}', genero = '{5}', email = '{6}', fechaAltaMod = toUnixTimestamp(now()) " +
+                    "WHERE curp = '{0}' if exists;",
                     cliente.curp, cliente.nombre, cliente.apellidoPaterno, cliente.apellidoMaterno, cliente.nacimiento, cliente.genero, cliente.email
                 );
                 ConexionDB_AAVD.executeQuery(query);
-                MessageBox.Show("Se modificó el cliente correctamente a la base de datos.", "Exito");
+                //MessageBox.Show("Se modificó el cliente correctamente a la base de datos.", "Exito");
             }
         }
         public static void Eliminar(string curp)
@@ -146,7 +150,7 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "DELETE FROM ClienteFisico WHERE curp = {0} if exists;",
+                    "DELETE FROM ClienteFisico WHERE curp = '{0}' if exists;",
                     curp
                     );
                 ConexionDB_AAVD.executeQuery(query);
@@ -172,7 +176,7 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT curp, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, email, fechaAltaMod" +
+                "SELECT curp, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, email, fechaAltaMod " +
                 "FROM ClienteFisico allow filtering;"
                 );
 
@@ -198,14 +202,30 @@ namespace AAVD
             }
             else
             {
-                string query = string.Format(
-                "SELECT curp, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, email, fechaAltaMod" +
-                "FROM ClienteFisico WHERE estado = 2 allow filtering;"
-                );
-
                 IMapper mapper = ConexionDB_AAVD.conexion();
-                IEnumerable<ClienteFisico> data = mapper.Fetch<ClienteFisico>(query);
-                dg.DataSource = data.ToList();
+
+                string query1 = string.Format(
+                "SELECT nombreUsuario " +
+                "FROM Usuario WHERE estado = 2 allow filtering;"
+                );
+                IEnumerable<Usuario> data = mapper.Fetch<Usuario>(query1);
+                List<Usuario> usuarios = data.ToList();
+
+                List<ClienteFisico> clientes = new List<ClienteFisico>();
+                foreach (Usuario usuario in usuarios)
+                {
+                    string query2 = string.Format(
+                    "SELECT curp, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, email, fechaAltaMod " +
+                    "FROM ClienteFisico WHERE nombreUsuario = '{0}' allow filtering;",
+                    usuario.nombreUsuario
+                    );
+                    IEnumerable<ClienteFisico> data2 = mapper.Fetch<ClienteFisico>(query2);
+                    if (data2.Count() > 0)
+                    {
+                        clientes.Add(data2.ToList()[0]);
+                    }
+                }
+                dg.DataSource = clientes.ToList();
             }
         }
 
@@ -226,7 +246,7 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT nombreUsuario" +
+                "SELECT nombreUsuario " +
                 "FROM ClienteFisico allow filtering;"
                 );
 
@@ -277,13 +297,17 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT rfc, nombreUsuario, nombre, constitucion, email, fechaAltaMod" +
+                "SELECT rfc, nombreUsuario, nombre, constitucion, email, fechaAltaMod " +
                 "FROM ClienteMoral WHERE rfc = '{0}' allow filtering;",
                 rfc);
 
                 IMapper mapper = ConexionDB_AAVD.conexion();
                 IEnumerable<ClienteMoral> data = mapper.Fetch<ClienteMoral>(query);
-                temp = data.ToList()[0];
+                List<ClienteMoral> lista = data.ToList();
+                if (lista.Count() > 0)
+                {
+                    temp = lista.ToList()[0];
+                }
             }
             return temp;
         }
@@ -310,8 +334,8 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "INSERT INTO ClieneteMoral(rfc, nombreUsuario, nombre, constitucion, email, fechaAltaMod)" +
-                    "VALUES(uuid(), '{0}', '{1}', '{2}', '{3}', '{4}', toUnixTimestamp(now())); ",
+                    "INSERT INTO ClieneteMoral(rfc, nombreUsuario, nombre, constitucion, email, fechaAltaMod) " +
+                    "VALUES('{0}', '{1}', '{2}', '{3}', '{4}', toUnixTimestamp(now())); ",
                     cliente.rfc, cliente.nombreUsuario, cliente.nombre, cliente.constitucion, cliente.email
                 );
                 ConexionDB_AAVD.executeQuery(query);
@@ -341,8 +365,8 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "UPDATE ClienteMoral SET nombre = '{1}', constitucion = '{2}', email = '{3}', fechaAltaMod = toUnixTimestamp(now())" +
-                    "WHERE rfc = {0} if exists;",
+                    "UPDATE ClienteMoral SET nombre = '{1}', constitucion = '{2}', email = '{3}', fechaAltaMod = toUnixTimestamp(now()) " +
+                    "WHERE rfc = '{0}' if exists;",
                     cliente.rfc, cliente.nombre, cliente.constitucion, cliente.email
                 );
                 ConexionDB_AAVD.executeQuery(query);
@@ -360,7 +384,7 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "DELETE FROM ClienteMoral WHERE rfc = {0} if exists;",
+                    "DELETE FROM ClienteMoral WHERE rfc = '{0}' if exists;",
                     rfc
                     );
                 ConexionDB_AAVD.executeQuery(query);
@@ -386,7 +410,7 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT rfc, nombreUsuario, nombre, constitucion, email, fechaAltaMod" +
+                "SELECT rfc, nombreUsuario, nombre, constitucion, email, fechaAltaMod " +
                 "FROM ClienteMoral allow filtering;"
                 );
 
@@ -411,13 +435,34 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT rfc, nombreUsuario, nombre, constitucion, email, fechaAltaMod" +
+                "SELECT rfc, nombreUsuario, nombre, constitucion, email, fechaAltaMod " +
                 "FROM ClienteMoral WHERE estado = 2 allow filtering;"
                 );
 
                 IMapper mapper = ConexionDB_AAVD.conexion();
-                IEnumerable<ClienteMoral> data = mapper.Fetch<ClienteMoral>(query);
-                dg.DataSource = data.ToList();
+
+                string query1 = string.Format(
+                "SELECT nombreUsuario " +
+                "FROM Usuario WHERE estado = 2 allow filtering;"
+                );
+                IEnumerable<Usuario> data = mapper.Fetch<Usuario>(query1);
+                List<Usuario> usuarios = data.ToList();
+
+                List<ClienteMoral> clientes = new List<ClienteMoral>();
+                foreach (Usuario usuario in usuarios)
+                {
+                    string query2 = string.Format(
+                    "SELECT rfc, nombreUsuario, nombre, constitucion, email, fechaAltaMod " +
+                    "FROM ClienteMoral WHERE nombreUsuario = '{0}' allow filtering;",
+                    usuario.nombreUsuario
+                    );
+                    IEnumerable<ClienteMoral> data2 = mapper.Fetch<ClienteMoral>(query2);
+                    if (data2.Count() > 0)
+                    {
+                        clientes.Add(data2.ToList()[0]);
+                    }
+                }
+                dg.DataSource = clientes.ToList();
             }
         }
 
@@ -438,7 +483,7 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT nombreUsuario" +
+                "SELECT nombreUsuario " +
                 "FROM ClienteMoral allow filtering;"
                 );
 

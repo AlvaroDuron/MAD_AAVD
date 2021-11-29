@@ -50,7 +50,7 @@ namespace AAVD
             this.label5 = new System.Windows.Forms.Label();
             this.btnImportar = new System.Windows.Forms.Button();
             this.numeroMedidor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.año = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.anio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lecturaAnterior = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lecturaActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -172,7 +172,7 @@ namespace AAVD
             this.dgvConsumo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConsumo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.numeroMedidor,
-            this.año,
+            this.anio,
             this.mes,
             this.lecturaAnterior,
             this.lecturaActual});
@@ -254,12 +254,12 @@ namespace AAVD
             this.numeroMedidor.Name = "numeroMedidor";
             this.numeroMedidor.ReadOnly = true;
             // 
-            // año
+            // anio
             // 
-            this.año.DataPropertyName = "año";
-            this.año.HeaderText = "Año";
-            this.año.Name = "año";
-            this.año.ReadOnly = true;
+            this.anio.DataPropertyName = "anio";
+            this.anio.HeaderText = "Año";
+            this.anio.Name = "anio";
+            this.anio.ReadOnly = true;
             // 
             // mes
             // 
@@ -331,7 +331,7 @@ namespace AAVD
         private System.Windows.Forms.Button btnImportar;
         private System.Windows.Forms.ComboBox cbNumeroMedidor;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroMedidor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn año;
+        private System.Windows.Forms.DataGridViewTextBoxColumn anio;
         private System.Windows.Forms.DataGridViewTextBoxColumn mes;
         private System.Windows.Forms.DataGridViewTextBoxColumn lecturaAnterior;
         private System.Windows.Forms.DataGridViewTextBoxColumn lecturaActual;

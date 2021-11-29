@@ -9,7 +9,7 @@ namespace AAVD
     static class Program
     {
         public static bool debug = true;
-        public static bool MAD_AAVD = true; //true = MAD - false = AAVD
+        public static bool MAD_AAVD = false; //true = MAD - false = AAVD
         public static Usuario session;
 
         public static void VentanaPrincipal()

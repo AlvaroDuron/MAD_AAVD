@@ -117,7 +117,11 @@ namespace AAVD
 
                 IMapper mapper = ConexionDB_AAVD.conexion();
                 IEnumerable<Municipio> data = mapper.Fetch<Municipio>(query);
-                temp = data.ToList()[0];
+                List<Municipio> lista = data.ToList();
+                if (lista.Count() > 0)
+                {
+                    temp = lista.ToList()[0];
+                }
             }
             return temp;
         }
@@ -140,8 +144,8 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "INSERT INTO Municipio(municipio, numeroZona)" +
-                    "VALUES('{0}', '{1}'); ",
+                    "INSERT INTO Municipio(municipio, numeroZona) " +
+                    "VALUES('{0}', {1}); ",
                     municipio.municipio, municipio.numeroZona
                 );
                 ConexionDB_AAVD.executeQuery(query);
@@ -166,8 +170,8 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "UPDATE Municipio SET numeroZona = '{1}'" +
-                    "WHERE municipio = {0} if exists;",
+                    "UPDATE Municipio SET numeroZona = {1} " +
+                    "WHERE municipio = '{0}' if exists;",
                     municipio.municipio, municipio.numeroZona
                 );
                 ConexionDB_AAVD.executeQuery(query);
@@ -191,7 +195,7 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "DELETE FROM Municipio WHERE municipio = {0} if exists;",
+                    "DELETE FROM Municipio WHERE municipio = '{0}' if exists;",
                     municipio
                     );
                 ConexionDB_AAVD.executeQuery(query);
@@ -216,7 +220,7 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT municipio, numeroZona" +
+                "SELECT municipio, numeroZona " +
                 "FROM Municipio allow filtering;"
                 );
 
@@ -243,13 +247,18 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT municipio" +
+                "SELECT municipio " +
                 "FROM Municipio allow filtering;"
                 );
 
                 IMapper mapper = ConexionDB_AAVD.conexion();
                 IEnumerable<Municipio> data = mapper.Fetch<Municipio>(query);
-                cb.DataSource = data.ToList();
+                List<Municipio> municipios = data.ToList();
+                cb.Items.Clear();
+                foreach (Municipio municipio in municipios)
+                {
+                    cb.Items.Add(municipio.municipio);
+                }
             }
         }
     }

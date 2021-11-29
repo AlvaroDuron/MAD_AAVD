@@ -55,7 +55,11 @@ namespace AAVD
                 
                 IMapper mapper = ConexionDB_AAVD.conexion();
                 IEnumerable<Usuario> data = mapper.Fetch<Usuario>(query);
-                temp = data.ToList()[0];
+                List<Usuario> usuarios = data.ToList();
+                if (usuarios.Count() > 0)
+                {
+                    temp = usuarios.ToList()[0];
+                }
             }
             return temp;
         }
