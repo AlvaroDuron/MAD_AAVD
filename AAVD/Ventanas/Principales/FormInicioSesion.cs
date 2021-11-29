@@ -18,6 +18,7 @@ namespace AAVD
         }
         private void FormInicioSesion_Load(object sender, EventArgs e)
         {
+            ConexionDB_AAVD.getInstance();
             btnIngresar.Enabled = false;
             cbEmpleado.SelectedIndex = 0;
         }

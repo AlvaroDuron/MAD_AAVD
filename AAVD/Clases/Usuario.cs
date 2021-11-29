@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using Cassandra;
+using Cassandra.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,19 +14,19 @@ namespace AAVD
     public class Usuario
     {
         public string nombreUsuario { get; set; }
-        public string contraseña { get; set; }
+        public string contrasena { get; set; }
         public int empleadoCliente { get; set; }
-        public byte intentos { get; set; }
-        public byte estado { get; set; }
+        public int intentos { get; set; }
+        public int estado { get; set; }
 
         public Usuario()
         {
 
         }
-        public Usuario(string nombreUsuario, string contraseña, byte empleado, byte intentos, byte estado)
+        public Usuario(string nombreUsuario, string contrasena, byte empleado, byte intentos, byte estado)
         {
             this.nombreUsuario = nombreUsuario;
-            this.contraseña = contraseña;
+            this.contrasena = contrasena;
             this.empleadoCliente = empleado;
             this.intentos = intentos;
             this.estado = estado;
@@ -46,7 +48,14 @@ namespace AAVD
             }
             else
             {
-
+                string query = string.Format(
+                "SELECT nombreUsuario, contrasena, empleadoCliente, intentos, estado " +
+                "FROM Usuario WHERE nombreUsuario = '{0}' allow filtering;",
+                nombreUsuario);
+                
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Usuario> data = mapper.Fetch<Usuario>(query);
+                temp = data.ToList()[0];
             }
             return temp;
         }
@@ -60,7 +69,7 @@ namespace AAVD
                     new
                     {
                         @nombreUsuario = usuario.nombreUsuario,
-                        @contraseña = usuario.contraseña,
+                        @contraseña = usuario.contrasena,
                         @empleadoCliente = usuario.empleadoCliente,
                         @intentos = usuario.intentos,
                         @estado = usuario.estado
@@ -72,12 +81,12 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "INSERT INTO Usuario(nombreUsuario, contraseña, empleadoCliente, intentos, estado)" +
-                    "VALUES('{0}', '{1}', '{2}', '{3}', '{4}'); ",
-                    usuario.nombreUsuario, usuario.contraseña, usuario.empleadoCliente, usuario.intentos, usuario.estado
+                    "INSERT INTO Usuario(nombreUsuario, contrasena, empleadoCliente, intentos, estado) " +
+                    "VALUES('{0}', '{1}', {2}, {3}, {4}); ",
+                    usuario.nombreUsuario, usuario.contrasena, usuario.empleadoCliente, usuario.intentos, usuario.estado
                 );
                 ConexionDB_AAVD.executeQuery(query);
-                MessageBox.Show("Se agregó el usuario correctamente a la base de datos.", "Exito");
+                //MessageBox.Show("Se agregó el usuario correctamente a la base de datos.", "Exito");
             }
         }
         public static void Modificar(Usuario usuario)
@@ -90,7 +99,7 @@ namespace AAVD
                     new
                     {
                         @nombreUsuario = usuario.nombreUsuario,
-                        @contraseña = usuario.contraseña,
+                        @contrasena = usuario.contrasena,
                         @empleadoCliente = usuario.empleadoCliente,
                         @intentos = usuario.intentos,
                         @estado = usuario.estado
@@ -102,12 +111,12 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "UPDATE Usuario SET nombreUsuario = '{0}', contraseña = '{1}', empleadoCliente = '{2}', intentos = '{3}', estado = '{4}')" +
-                    "WHERE nombreUsuario = {0} if exists;",
-                    usuario.nombreUsuario, usuario.contraseña, usuario.empleadoCliente, usuario.intentos, usuario.estado
+                    "UPDATE Usuario SET contrasena = '{1}', empleadoCliente = {2}, intentos = {3}, estado = {4} " +
+                    "WHERE nombreUsuario = '{0}' if exists;",
+                    usuario.nombreUsuario, usuario.contrasena, usuario.empleadoCliente, usuario.intentos, usuario.estado
                 );
                 ConexionDB_AAVD.executeQuery(query);
-                MessageBox.Show("Se modificó el usuario correctamente a la base de datos.", "Exito");
+                //MessageBox.Show("Se modificó el usuario correctamente a la base de datos.", "Exito");
             }            
         }
         public static void Eliminar(string nombreUsuario)
@@ -121,11 +130,10 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "DELETE FROM Usuario WHERE nombreUsuario = {0} if exists;",
+                    "DELETE FROM Usuario WHERE nombreUsuario = '{0}' if exists;",
                     nombreUsuario
                     );
                 ConexionDB_AAVD.executeQuery(query);
-                MessageBox.Show("Se eliminó el usuario correctamente de la base de datos.", "Exito");
             }
         }
 
@@ -146,69 +154,66 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT nombreUsuario " +
+                "FROM Usuario allow filtering;"
+                );
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Usuario> data = mapper.Fetch<Usuario>(query);
+                cb.DataSource = data.ToList();
             }
         }
 
-        public static bool LogIn(string usuario, string contraseña, int empleadoCliente)
+        public static bool LogIn(string usuario, string contrasena, int empleadoCliente)
         {
             bool log = false;
-            if (Program.MAD_AAVD)
+            try
             {
-                ConexionDB_MAD.conectar();
-                try
+                Usuario vusuario = Buscar(usuario);
+                if (vusuario != null)
                 {
-                    Usuario vusuario = Buscar(usuario);
-                    if (vusuario != null)
+                    if (vusuario.empleadoCliente == empleadoCliente)
                     {
-                        if (vusuario.empleadoCliente == empleadoCliente)
+                        if (vusuario.intentos < 3)
                         {
-                            if (vusuario.intentos < 3)
+                            if (vusuario.contrasena == contrasena)
                             {
-                                if (vusuario.contraseña == contraseña)
-                                {
-                                    //login
-                                    vusuario.intentos = 0;
-                                    Program.session = vusuario;
-                                    log = true;
-                                }
-                                else
-                                {
-                                    vusuario.intentos++;
-                                    MessageBox.Show("Contraseña incorrecta.");
-                                    if (vusuario.intentos == 3)
-                                    {
-                                        vusuario.estado = 2;
-                                        MessageBox.Show("La cuenta se ha suspendido.");
-                                    }
-                                }
+                                //login
+                                vusuario.intentos = 0;
+                                Program.session = vusuario;
+                                log = true;
                             }
                             else
                             {
-                                MessageBox.Show("La cuenta está suspendida por el momento.");
+                                vusuario.intentos++;
+                                MessageBox.Show("Contraseña incorrecta.");
+                                if (vusuario.intentos == 3)
+                                {
+                                    vusuario.estado = 2;
+                                    MessageBox.Show("La cuenta se ha suspendido.");
+                                }
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Esa cuenta no coincide.");
+                            MessageBox.Show("La cuenta está suspendida por el momento.");
                         }
-                        Modificar(vusuario);
                     }
                     else
                     {
-                        MessageBox.Show("Ese usuario no existe.");
+                        MessageBox.Show("Esa cuenta no coincide.");
                     }
+                    Modificar(vusuario);
                 }
-                catch (Exception except)
+                else
                 {
-                    MessageBox.Show("Error: " + except);
+                    MessageBox.Show("Ese usuario no existe.");
                 }
-                
-                ConexionDB_MAD.desconectar();
             }
-            else
+            catch (Exception except)
             {
-                
+                MessageBox.Show("Error: " + except);
             }
             return log;
         }

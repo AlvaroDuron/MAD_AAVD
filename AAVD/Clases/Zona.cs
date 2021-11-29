@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using Cassandra;
+using Cassandra.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -40,7 +42,14 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT numeroZona, nombre" +
+                "FROM Zona WHERE numeroZona = '{0}' allow filtering;",
+                numeroZona);
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Zona> data = mapper.Fetch<Zona>(query);
+                temp = data.ToList()[0];
             }
             return temp;
         }
@@ -59,7 +68,14 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT numeroZona, nombre" +
+                "FROM Zona WHERE nombre = '{0}' allow filtering;",
+                nombre);
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Zona> data = mapper.Fetch<Zona>(query);
+                temp = data.ToList()[0];
             }
             return temp;
         }
@@ -81,8 +97,12 @@ namespace AAVD
             }
             else
             {
-
-
+                string query = string.Format(
+                    "INSERT INTO Zona(numeroZona, nombre)" +
+                    "VALUES('{0}', '{1}'); ",
+                    zona.numeroZona, zona.nombre
+                );
+                ConexionDB_AAVD.executeQuery(query);
             }
         }
         public static void Modificar(Zona zona)
@@ -103,7 +123,12 @@ namespace AAVD
             }
             else
             {
-
+                string query = string.Format(
+                    "UPDATE Zona SET nombre = '{1}'" +
+                    "WHERE numeroZona = {0} if exists;",
+                    zona.numeroZona, zona.nombre
+                );
+                ConexionDB_AAVD.executeQuery(query);
             }
         }
         public static void Eliminar(int numeroZona)
@@ -123,8 +148,11 @@ namespace AAVD
             }
             else
             {
-
-
+                string query = string.Format(
+                    "DELETE FROM Zona WHERE numeroZona = {0} if exists;",
+                    numeroZona
+                    );
+                ConexionDB_AAVD.executeQuery(query);
             }
         }
 
@@ -145,7 +173,14 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT numeroZona, nombre" +
+                "FROM Zona allow filtering;"
+                );
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Zona> data = mapper.Fetch<Zona>(query);
+                dg.DataSource = data.ToList();
             }
         }
 
@@ -165,7 +200,14 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT nombre" +
+                "FROM Zona allow filtering;"
+                );
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Zona> data = mapper.Fetch<Zona>(query);
+                cb.DataSource = data.ToList();
             }
         }
     }

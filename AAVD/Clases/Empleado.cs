@@ -63,8 +63,8 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT idEmpleado, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, numeroExterior, calle, colonia, municipio, genero, fechaAltaMod" +
-                "FROM Empleado WHERE idEmpleado = '{0}' allow filtering;",
+                "SELECT idEmpleado, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, numeroExterior, calle, colonia, municipio, fechaAltaMod " +
+                "FROM Empleado WHERE idEmpleado = {0} allow filtering;",
                 idEmpleado);
 
                 IMapper mapper = ConexionDB_AAVD.conexion();
@@ -102,12 +102,12 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "INSERT INTO Empleado(idEmpleado, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, numeroExterior, calle, colonia, municipio, genero, fechaAltaMod)" +
-                    "VALUES(uuid(), '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', toUnixTimestamp(now())); ",
-                    empleado.nombreUsuario, empleado.nombre, empleado.apellidoPaterno, empleado.apellidoMaterno, empleado.nacimiento, empleado.numeroExterior, empleado.calle, empleado.colonia, empleado.municipio, empleado.genero
+                    "INSERT INTO Empleado(idEmpleado, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, numeroExterior, calle, colonia, municipio, fechaAltaMod) " +
+                    "VALUES(uuid(), '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', {6}, '{7}', '{8}', '{9}', toUnixTimestamp(now())); ",
+                    empleado.nombreUsuario, empleado.nombre, empleado.apellidoPaterno, empleado.apellidoMaterno, empleado.nacimiento, empleado.genero, empleado.numeroExterior, empleado.calle, empleado.colonia, empleado.municipio
                 );
                 ConexionDB_AAVD.executeQuery(query);
-                MessageBox.Show("Se agregó el empleado correctamente a la base de datos.", "Exito");
+                //MessageBox.Show("Se agregó el empleado correctamente a la base de datos.", "Exito");
             }
         }
         public static void Modificar(Empleado empleado)
@@ -139,12 +139,12 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "UPDATE Empleado SET nombreUsuario = '{0}', nombre = '{1}', apellidoPaterno = '{2}', apellidoMaterno = '{3}', nacimiento = '{4}', numeroExterior = '{5}', calle = '{6}', colonia = '{7}', municipio = '{8}', genero = '{9}', fechaAltaMod = toUnixTimestamp(now())" +
-                    "WHERE idEmpleado = {10} if exists;",
-                    empleado.nombreUsuario, empleado.nombre, empleado.apellidoPaterno, empleado.apellidoMaterno, empleado.nacimiento, empleado.numeroExterior, empleado.calle, empleado.colonia, empleado.municipio, empleado.genero, empleado.idEmpleado
+                    "UPDATE Empleado SET nombreUsuario = '{1}', nombre = '{2}', apellidoPaterno = '{3}', apellidoMaterno = '{4}', nacimiento = '{5}', genero = '{6}', numeroExterior = {7}, calle = '{8}', colonia = '{9}', municipio = '{10}', fechaAltaMod = toUnixTimestamp(now()) " +
+                    "WHERE idEmpleado = {0} if exists;",
+                    empleado.idEmpleado, empleado.nombreUsuario, empleado.nombre, empleado.apellidoPaterno, empleado.apellidoMaterno, empleado.nacimiento, empleado.genero, empleado.numeroExterior, empleado.calle, empleado.colonia, empleado.municipio
                 );
                 ConexionDB_AAVD.executeQuery(query);
-                MessageBox.Show("Se modificó el empleado correctamente a la base de datos.", "Exito");
+                //MessageBox.Show("Se modificó el empleado correctamente a la base de datos.", "Exito");
             }
         }
         public static void Eliminar(int idEmpleado)
@@ -162,7 +162,7 @@ namespace AAVD
                     idEmpleado
                     );
                 ConexionDB_AAVD.executeQuery(query);
-                MessageBox.Show("Se eliminó el empleado correctamente a la base de datos.", "Exito");
+                //MessageBox.Show("Se eliminó el empleado correctamente a la base de datos.", "Exito");
             }
         }
 
@@ -184,7 +184,7 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT idEmpleado, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, numeroExterior, calle, colonia, municipio, genero, fechaAltaMod" +
+                "SELECT idEmpleado, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, numeroExterior, calle, colonia, municipio, fechaAltaMod " +
                 "FROM Empleado allow filtering;"
                 );
 
@@ -207,7 +207,14 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT idEmpleado, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, numeroExterior, calle, colonia, municipio, fechaAltaMod " +
+                "FROM Empleado WHERE estado = 2 allow filtering;"
+                );
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Empleado> data = mapper.Fetch<Empleado>(query);
+                dg.DataSource = data.ToList();
             }
         }
     }
@@ -253,7 +260,14 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT idEmpleado, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, numeroExterior, calle, colonia, municipio, fechaAltaMod " +
+                "FROM Empleado WHERE estado = 2 allow filtering;"
+                );
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<EmpleadoBan> data = mapper.Fetch<EmpleadoBan>(query);
+                dg.DataSource = data.ToList();
             }
         }
     }

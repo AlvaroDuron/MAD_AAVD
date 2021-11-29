@@ -12,18 +12,18 @@ namespace AAVD
 {
     class ConexionDB_AAVD
     {
-        static private string HostCQL { get; set; }
-        static private string keyspace { get; set; }
+        static public string HostCQL { get; set; }
+        static public string keyspace { get; set; }
 
-        static private Cluster cluster;
-        static private ISession session;
+        static public Cluster cluster;
+        static public ISession session;
 
-        static private ConexionDB_AAVD _instance = null;
-        private ConexionDB_AAVD()
+        static public ConexionDB_AAVD _instance = null;
+        public ConexionDB_AAVD()
         {
             HostCQL = ConfigurationManager.AppSettings["HostCQL"].ToString();
             keyspace = ConfigurationManager.AppSettings["KeySpace"].ToString();
-            cluster = Cluster.Builder().AddContactPoint(HostCQL).Build();
+            cluster = Cluster.Builder().AddContactPoint("127.0.0.1").Build();
         }
         static public ConexionDB_AAVD getInstance()
         {

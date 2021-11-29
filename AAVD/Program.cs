@@ -56,6 +56,20 @@ namespace AAVD
             año.SelectedIndex = 0;
         }
 
+        public static Guid Int2Guid(int value)
+        {
+            byte[] bytes = new byte[16];
+            BitConverter.GetBytes(value).CopyTo(bytes, 0);
+            return new Guid(bytes);
+        }
+
+        public static int Guid2Int(Guid value)
+        {
+            byte[] b = value.ToByteArray();
+            int bint = BitConverter.ToInt32(b, 0);
+            return bint;
+        }
+
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>

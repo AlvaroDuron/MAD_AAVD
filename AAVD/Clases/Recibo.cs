@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using Cassandra;
+using Cassandra.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,7 +16,7 @@ namespace AAVD
         public string nombreUsuario { get; set; }
         //public string direccion { get; set; } viene de contrato
         public int numeroContrato { get; set; }
-        public int año { get; set; }
+        public int anio { get; set; }
         public int mes { get; set; }
         public string expedicion { get; set; }
         public int numeroZona { get; set; }
@@ -35,11 +37,11 @@ namespace AAVD
         {
 
         }
-        public Recibo(string nombreUsuario, int numeroContrato, int año, int mes, string expedicion, int numeroZona, float consumo, float subtotal1, float subtotal2, float subtotal3, float total, DateTime vencimiento, bool pagado)
+        public Recibo(string nombreUsuario, int numeroContrato, int anio, int mes, string expedicion, int numeroZona, float consumo, float subtotal1, float subtotal2, float subtotal3, float total, DateTime vencimiento, bool pagado)
         {
             this.nombreUsuario = nombreUsuario;
             this.numeroContrato = numeroContrato;
-            this.año = año;
+            this.anio = anio;
             this.mes = mes;
             this.expedicion = expedicion;
             this.numeroZona = numeroZona;
@@ -75,7 +77,14 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT nombreUsuario, numeroContrato, anio, mes, expedicion, numeroZona, consumo, subtotal1, subtotal2, subtotal3, total, vencimiento, pagado" +
+                "FROM Recibo WHERE numeroContrato = '{0}' AND anio = '{1}' AND mes = '{2}' allow filtering;",
+                numeroContrato, año, mes);
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Recibo> data = mapper.Fetch<Recibo>(query);
+                temp = data.ToList()[0];
             }
             return temp;
         }
@@ -91,7 +100,7 @@ namespace AAVD
                     {
                         @nombreUsuario = recibo.nombreUsuario,
                         @numeroContrato = recibo.numeroContrato,
-                        @año = recibo.año,
+                        @año = recibo.anio,
                         @mes = recibo.mes,
                         @expedicion = recibo.expedicion,
                         @numeroZona = recibo.numeroZona,
@@ -109,7 +118,12 @@ namespace AAVD
             }
             else
             {
-
+                string query = string.Format(
+                    "INSERT INTO Recibo(nombreUsuario, numeroContrato, anio, mes, expedicion, numeroZona, consumo, subtotal1, subtotal2, subtotal3, total, vencimiento, pagado)" +
+                    "VALUES('{0}', '{1}', '{2}', '{3}', '{4}'); ",
+                    recibo.nombreUsuario, recibo.numeroContrato, recibo.anio, recibo.mes, recibo.expedicion, recibo.numeroZona, recibo.consumo, recibo.subtotal1, recibo.subtotal2, recibo.subtotal3, recibo.total, recibo.vencimiento, recibo.pagado
+                );
+                ConexionDB_AAVD.executeQuery(query);
             }
         }
 
@@ -124,7 +138,7 @@ namespace AAVD
                     {
                         @nombreUsuario = recibo.nombreUsuario,
                         @numeroContrato = recibo.numeroContrato,
-                        @año = recibo.año,
+                        @año = recibo.anio,
                         @mes = recibo.mes,
                         @expedicion = recibo.expedicion,
                         @numeroZona = recibo.numeroZona,
@@ -142,7 +156,13 @@ namespace AAVD
             }
             else
             {
-
+                //NO TERMINADA PERO NO NECESARIA
+                //string query = string.Format(
+                //    "UPDATE Recibo SET contrasena = '{1}', empleadoCliente = '{2}', intentos = '{3}', estado = '{4}')" +
+                //    "WHERE numeroContrato = {0} AND anio = {1} AND mes = {2} if exists;",
+                //    usuario.nombreUsuario, usuario.contrasena, usuario.empleadoCliente, usuario.intentos, usuario.estado
+                //);
+                //ConexionDB_AAVD.executeQuery(query);
             }
         }
 
@@ -165,8 +185,11 @@ namespace AAVD
             }
             else
             {
-
-
+                string query = string.Format(
+                    "DELETE FROM Recibo WHERE numeroContrato = {0} AND anio = {1} AND mes = {2} if exists;",
+                    numeroContrato, año, mes
+                    );
+                ConexionDB_AAVD.executeQuery(query);
             }
         }
 
@@ -191,7 +214,15 @@ namespace AAVD
             }
             else
             {
+                string query = string.Format(
+                "SELECT nombreUsuario, numeroContrato, anio, mes, expedicion, numeroZona, consumo, subtotal1, subtotal2, subtotal3, total, vencimiento, pagado" +
+                "FROM Recibo WHERE anio = {0} AND mes = {1} allow filtering;",
+                año, mes
+                );
 
+                IMapper mapper = ConexionDB_AAVD.conexion();
+                IEnumerable<Recibo> data = mapper.Fetch<Recibo>(query);
+                dg.DataSource = data.ToList();
             }
         }
         public static void LlenarDG(DataGridView dg, string tipoServicio, int año, int mes)
