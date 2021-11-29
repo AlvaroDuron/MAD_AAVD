@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Dapper;
+using Cassandra;
+using Cassandra.Mapping;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -55,10 +58,10 @@ namespace AAVD
 
                 Empleado modificado = new Empleado(
                     empleado.idEmpleado, empleado.nombreUsuario,
-                    selectedRow.Cells[2].Value.ToString(), selectedRow.Cells[3].Value.ToString(), selectedRow.Cells[4].Value.ToString(),
-                    Convert.ToDateTime(selectedRow.Cells[5].Value.ToString()),
-                    selectedRow.Cells[6].Value.ToString(),
-                    int.Parse(selectedRow.Cells[7].Value.ToString()), selectedRow.Cells[8].Value.ToString(), selectedRow.Cells[9].Value.ToString(), selectedRow.Cells[10].Value.ToString(),
+                    selectedRow.Cells["nombre"].Value.ToString(), selectedRow.Cells["apellidoPaterno"].Value.ToString(), selectedRow.Cells["apellidoMaterno"].Value.ToString(),
+                    LocalDate.Parse(selectedRow.Cells["nacimiento"].Value.ToString()),
+                    selectedRow.Cells["genero"].Value.ToString(),
+                    int.Parse(selectedRow.Cells["numeroExterior"].Value.ToString()), selectedRow.Cells["calle"].Value.ToString(), selectedRow.Cells["colonia"].Value.ToString(), selectedRow.Cells["municipio"].Value.ToString(),
                     DateTime.Now
                     );
                 Empleado.Modificar(modificado);

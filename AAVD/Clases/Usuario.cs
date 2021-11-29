@@ -159,13 +159,18 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT nombreUsuario " +
-                "FROM Usuario allow filtering;"
+                "SELECT nombreUsuario, contrasena, empleadoCliente, intentos, estado " +
+                "FROM Usuario WHERE empleadoCliente = 0 allow filtering;"
                 );
 
                 IMapper mapper = ConexionDB_AAVD.conexion();
                 IEnumerable<Usuario> data = mapper.Fetch<Usuario>(query);
-                cb.DataSource = data.ToList();
+                List<Usuario> servicios = data.ToList();
+                cb.Items.Clear();
+                foreach (Usuario servicio in servicios)
+                {
+                    cb.Items.Add(servicio.nombreUsuario);
+                }
             }
         }
 

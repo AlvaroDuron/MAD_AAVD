@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Dapper;
+using Cassandra;
+using Cassandra.Mapping;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -69,10 +72,11 @@ namespace AAVD
                         genero = "Mujer";
                     }
                     usuario = new Usuario(tbNombreUsuario.Text, tbContraseña.Text, 1, 0, 1);
+
                     empleado = new Empleado(
                         Guid.Empty, tbNombreUsuario.Text,
                         tbNombre.Text, tbApellidoPaterno.Text, tbApellidoMaterno.Text,
-                        mcNacimiento.SelectionRange.Start,
+                        LocalDate.Parse(mcNacimiento.SelectionRange.Start.ToString("yyyy'-'MM'-'dd")),
                         genero,
                         int.Parse(tbNumero.Text), tbCalle.Text, tbColonia.Text, cbMunicipio.SelectedItem.ToString(),
                         DateTime.Now

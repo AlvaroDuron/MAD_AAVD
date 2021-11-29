@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Dapper;
+using Cassandra;
+using Cassandra.Mapping;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -69,7 +72,7 @@ namespace AAVD
                     cliente = new ClienteFisico(
                         tbCURP.Text, tbNombreUsuario.Text,
                         tbNombre.Text, tbApellidoPaterno.Text, tbApellidoMaterno.Text,
-                        mcNacimiento.SelectionRange.Start,
+                        LocalDate.Parse(mcNacimiento.SelectionRange.Start.ToString("yyyy'-'MM'-'dd")),
                         genero,
                         tbEmail.Text,
                         DateTime.Now

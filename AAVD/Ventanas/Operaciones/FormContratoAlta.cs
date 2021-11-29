@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Dapper;
+using Cassandra;
+using Cassandra.Mapping;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -60,11 +63,11 @@ namespace AAVD
                     }
                     contrato = new Contrato(
                         cbUsuario.SelectedItem.ToString(),
-                        0, int.Parse(tbNumeroMedidor.Text),
-                        char.Parse(cbCategoria.SelectedItem.ToString()), cbTipoServicio.SelectedItem.ToString(),
+                        int.Parse(tbNumeroServicio.Text), int.Parse(tbNumeroMedidor.Text),
+                        cbCategoria.SelectedItem.ToString(), cbTipoServicio.SelectedItem.ToString(),
                         int.Parse(tbNumeroExterior.Text), tbCalle.Text, tbColonia.Text, cbMunicipio.SelectedItem.ToString(),
                         estado,
-                        DateTime.Now, DateTime.Now
+                        LocalDate.Parse(DateTime.Now.ToString("yyyy'-'MM'-'dd")), DateTime.Now
                         );
                     Contrato.Agregar(contrato);
                     MessageBox.Show("Contrato agregado exitosamente.");

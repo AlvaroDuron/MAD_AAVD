@@ -18,19 +18,19 @@ namespace AAVD
         public string nombre { get; set; }
         public string apellidoPaterno { get; set; }
         public string apellidoMaterno { get; set; }
-        public DateTime nacimiento { get; set; }
+        public LocalDate nacimiento { get; set; }
         public string genero { get; set; }
         public int numeroExterior { get; set; }
         public string calle { get; set; }
         public string colonia { get; set; }
         public string municipio { get; set; }
-        public DateTime fechaAltaMod { get; set; }
+        public DateTimeOffset fechaAltaMod { get; set; }
 
         public Empleado()
         {
 
         }
-        public Empleado(Guid idEmpleado, string nombreUsuario, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime nacimiento, string genero, int numeroExterior, string calle, string colonia, string municipio, DateTime fechaAltaMod)
+        public Empleado(Guid idEmpleado, string nombreUsuario, string nombre, string apellidoPaterno, string apellidoMaterno, LocalDate nacimiento, string genero, int numeroExterior, string calle, string colonia, string municipio, DateTimeOffset fechaAltaMod)
         {
             this.idEmpleado = idEmpleado;
             this.nombreUsuario = nombreUsuario;

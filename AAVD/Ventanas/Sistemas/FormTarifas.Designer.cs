@@ -31,6 +31,8 @@ namespace AAVD
         {
             this.label1 = new System.Windows.Forms.Label();
             this.gbTarifas = new System.Windows.Forms.GroupBox();
+            this.cbMes = new System.Windows.Forms.ComboBox();
+            this.cbAño = new System.Windows.Forms.ComboBox();
             this.cbTipoServicio = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tbCuotaFija = new System.Windows.Forms.TextBox();
@@ -45,14 +47,6 @@ namespace AAVD
             this.label2 = new System.Windows.Forms.Label();
             this.cbZona = new System.Windows.Forms.ComboBox();
             this.dgvTarifas = new System.Windows.Forms.DataGridView();
-            this.numeroZona = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoServicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.año = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuotaFija = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rango1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rango2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rango3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -65,8 +59,14 @@ namespace AAVD
             this.btnImportar = new System.Windows.Forms.Button();
             this.btnPdf = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
-            this.cbAño = new System.Windows.Forms.ComboBox();
-            this.cbMes = new System.Windows.Forms.ComboBox();
+            this.numeroZona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoServicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.anio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuotaFija = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rango1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rango2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rango3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbTarifas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTarifas)).BeginInit();
             this.SuspendLayout();
@@ -105,6 +105,24 @@ namespace AAVD
             this.gbTarifas.TabStop = false;
             this.gbTarifas.Text = "Informacion tarifas";
             // 
+            // cbMes
+            // 
+            this.cbMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMes.FormattingEnabled = true;
+            this.cbMes.Location = new System.Drawing.Point(641, 19);
+            this.cbMes.Name = "cbMes";
+            this.cbMes.Size = new System.Drawing.Size(100, 21);
+            this.cbMes.TabIndex = 3;
+            // 
+            // cbAño
+            // 
+            this.cbAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAño.FormattingEnabled = true;
+            this.cbAño.Location = new System.Drawing.Point(480, 19);
+            this.cbAño.Name = "cbAño";
+            this.cbAño.Size = new System.Drawing.Size(100, 21);
+            this.cbAño.TabIndex = 2;
+            // 
             // cbTipoServicio
             // 
             this.cbTipoServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -112,7 +130,7 @@ namespace AAVD
             this.cbTipoServicio.Location = new System.Drawing.Point(301, 19);
             this.cbTipoServicio.Name = "cbTipoServicio";
             this.cbTipoServicio.Size = new System.Drawing.Size(121, 21);
-            this.cbTipoServicio.TabIndex = 16;
+            this.cbTipoServicio.TabIndex = 1;
             // 
             // label8
             // 
@@ -128,28 +146,28 @@ namespace AAVD
             this.tbCuotaFija.Location = new System.Drawing.Point(75, 50);
             this.tbCuotaFija.Name = "tbCuotaFija";
             this.tbCuotaFija.Size = new System.Drawing.Size(121, 20);
-            this.tbCuotaFija.TabIndex = 14;
+            this.tbCuotaFija.TabIndex = 4;
             // 
             // tbRango3
             // 
             this.tbRango3.Location = new System.Drawing.Point(620, 50);
             this.tbRango3.Name = "tbRango3";
             this.tbRango3.Size = new System.Drawing.Size(121, 20);
-            this.tbRango3.TabIndex = 13;
+            this.tbRango3.TabIndex = 7;
             // 
             // tbRango2
             // 
             this.tbRango2.Location = new System.Drawing.Point(439, 50);
             this.tbRango2.Name = "tbRango2";
             this.tbRango2.Size = new System.Drawing.Size(100, 20);
-            this.tbRango2.TabIndex = 12;
+            this.tbRango2.TabIndex = 6;
             // 
             // tbRango1
             // 
             this.tbRango1.Location = new System.Drawing.Point(265, 50);
             this.tbRango1.Name = "tbRango1";
             this.tbRango1.Size = new System.Drawing.Size(100, 20);
-            this.tbRango1.TabIndex = 11;
+            this.tbRango1.TabIndex = 5;
             // 
             // label7
             // 
@@ -212,7 +230,7 @@ namespace AAVD
             this.cbZona.Location = new System.Drawing.Point(75, 19);
             this.cbZona.Name = "cbZona";
             this.cbZona.Size = new System.Drawing.Size(121, 21);
-            this.cbZona.TabIndex = 1;
+            this.cbZona.TabIndex = 0;
             // 
             // dgvTarifas
             // 
@@ -220,7 +238,7 @@ namespace AAVD
             this.dgvTarifas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.numeroZona,
             this.tipoServicio,
-            this.año,
+            this.anio,
             this.mes,
             this.cuotaFija,
             this.rango1,
@@ -232,6 +250,118 @@ namespace AAVD
             this.dgvTarifas.TabIndex = 2;
             this.dgvTarifas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTarifas_CellClick);
             this.dgvTarifas.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvTarifas_CellValidating);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(772, 17);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.TabIndex = 0;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(772, 46);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.TabIndex = 1;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(772, 75);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(792, 145);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Zona:";
+            // 
+            // cbFiltroZona
+            // 
+            this.cbFiltroZona.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFiltroZona.FormattingEnabled = true;
+            this.cbFiltroZona.Location = new System.Drawing.Point(772, 161);
+            this.cbFiltroZona.Name = "cbFiltroZona";
+            this.cbFiltroZona.Size = new System.Drawing.Size(75, 21);
+            this.cbFiltroZona.TabIndex = 6;
+            // 
+            // cbFiltroAño
+            // 
+            this.cbFiltroAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFiltroAño.FormattingEnabled = true;
+            this.cbFiltroAño.Location = new System.Drawing.Point(772, 201);
+            this.cbFiltroAño.Name = "cbFiltroAño";
+            this.cbFiltroAño.Size = new System.Drawing.Size(75, 21);
+            this.cbFiltroAño.TabIndex = 7;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(792, 185);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(29, 13);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Año:";
+            // 
+            // cbFiltroMes
+            // 
+            this.cbFiltroMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFiltroMes.FormattingEnabled = true;
+            this.cbFiltroMes.Location = new System.Drawing.Point(772, 241);
+            this.cbFiltroMes.Name = "cbFiltroMes";
+            this.cbFiltroMes.Size = new System.Drawing.Size(75, 21);
+            this.cbFiltroMes.TabIndex = 8;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(792, 225);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(30, 13);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "Mes:";
+            // 
+            // btnImportar
+            // 
+            this.btnImportar.Location = new System.Drawing.Point(853, 17);
+            this.btnImportar.Name = "btnImportar";
+            this.btnImportar.Size = new System.Drawing.Size(75, 23);
+            this.btnImportar.TabIndex = 3;
+            this.btnImportar.Text = "Importar";
+            this.btnImportar.UseVisualStyleBackColor = true;
+            // 
+            // btnPdf
+            // 
+            this.btnPdf.Location = new System.Drawing.Point(772, 104);
+            this.btnPdf.Name = "btnPdf";
+            this.btnPdf.Size = new System.Drawing.Size(75, 23);
+            this.btnPdf.TabIndex = 4;
+            this.btnPdf.Text = "PDF";
+            this.btnPdf.UseVisualStyleBackColor = true;
+            // 
+            // btnRegresar
+            // 
+            this.btnRegresar.Location = new System.Drawing.Point(853, 46);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(75, 23);
+            this.btnRegresar.TabIndex = 5;
+            this.btnRegresar.Text = "Regresar";
+            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // numeroZona
             // 
@@ -247,12 +377,12 @@ namespace AAVD
             this.tipoServicio.Name = "tipoServicio";
             this.tipoServicio.ReadOnly = true;
             // 
-            // año
+            // anio
             // 
-            this.año.DataPropertyName = "año";
-            this.año.HeaderText = "Año";
-            this.año.Name = "año";
-            this.año.ReadOnly = true;
+            this.anio.DataPropertyName = "anio";
+            this.anio.HeaderText = "Año";
+            this.anio.Name = "anio";
+            this.anio.ReadOnly = true;
             // 
             // mes
             // 
@@ -284,136 +414,6 @@ namespace AAVD
             this.rango3.DataPropertyName = "rango3";
             this.rango3.HeaderText = "Rango 3";
             this.rango3.Name = "rango3";
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Location = new System.Drawing.Point(772, 17);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 3;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Location = new System.Drawing.Point(772, 46);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 23);
-            this.btnModificar.TabIndex = 4;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(772, 75);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 5;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(792, 145);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Zona:";
-            // 
-            // cbFiltroZona
-            // 
-            this.cbFiltroZona.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFiltroZona.FormattingEnabled = true;
-            this.cbFiltroZona.Location = new System.Drawing.Point(772, 161);
-            this.cbFiltroZona.Name = "cbFiltroZona";
-            this.cbFiltroZona.Size = new System.Drawing.Size(75, 21);
-            this.cbFiltroZona.TabIndex = 17;
-            // 
-            // cbFiltroAño
-            // 
-            this.cbFiltroAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFiltroAño.FormattingEnabled = true;
-            this.cbFiltroAño.Location = new System.Drawing.Point(772, 201);
-            this.cbFiltroAño.Name = "cbFiltroAño";
-            this.cbFiltroAño.Size = new System.Drawing.Size(75, 21);
-            this.cbFiltroAño.TabIndex = 18;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(792, 185);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(29, 13);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Año:";
-            // 
-            // cbFiltroMes
-            // 
-            this.cbFiltroMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFiltroMes.FormattingEnabled = true;
-            this.cbFiltroMes.Location = new System.Drawing.Point(772, 241);
-            this.cbFiltroMes.Name = "cbFiltroMes";
-            this.cbFiltroMes.Size = new System.Drawing.Size(75, 21);
-            this.cbFiltroMes.TabIndex = 20;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(792, 225);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(30, 13);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "Mes:";
-            // 
-            // btnImportar
-            // 
-            this.btnImportar.Location = new System.Drawing.Point(853, 17);
-            this.btnImportar.Name = "btnImportar";
-            this.btnImportar.Size = new System.Drawing.Size(75, 23);
-            this.btnImportar.TabIndex = 22;
-            this.btnImportar.Text = "Importar";
-            this.btnImportar.UseVisualStyleBackColor = true;
-            // 
-            // btnPdf
-            // 
-            this.btnPdf.Location = new System.Drawing.Point(772, 104);
-            this.btnPdf.Name = "btnPdf";
-            this.btnPdf.Size = new System.Drawing.Size(75, 23);
-            this.btnPdf.TabIndex = 23;
-            this.btnPdf.Text = "PDF";
-            this.btnPdf.UseVisualStyleBackColor = true;
-            // 
-            // btnRegresar
-            // 
-            this.btnRegresar.Location = new System.Drawing.Point(853, 46);
-            this.btnRegresar.Name = "btnRegresar";
-            this.btnRegresar.Size = new System.Drawing.Size(75, 23);
-            this.btnRegresar.TabIndex = 24;
-            this.btnRegresar.Text = "Regresar";
-            this.btnRegresar.UseVisualStyleBackColor = true;
-            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
-            // 
-            // cbAño
-            // 
-            this.cbAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAño.FormattingEnabled = true;
-            this.cbAño.Location = new System.Drawing.Point(480, 19);
-            this.cbAño.Name = "cbAño";
-            this.cbAño.Size = new System.Drawing.Size(100, 21);
-            this.cbAño.TabIndex = 17;
-            // 
-            // cbMes
-            // 
-            this.cbMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMes.FormattingEnabled = true;
-            this.cbMes.Location = new System.Drawing.Point(641, 19);
-            this.cbMes.Name = "cbMes";
-            this.cbMes.Size = new System.Drawing.Size(100, 21);
-            this.cbMes.TabIndex = 18;
             // 
             // FormTarifas
             // 
@@ -476,15 +476,15 @@ namespace AAVD
         private System.Windows.Forms.Button btnImportar;
         private System.Windows.Forms.Button btnPdf;
         private System.Windows.Forms.Button btnRegresar;
+        private System.Windows.Forms.ComboBox cbAño;
+        private System.Windows.Forms.ComboBox cbMes;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroZona;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoServicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn año;
+        private System.Windows.Forms.DataGridViewTextBoxColumn anio;
         private System.Windows.Forms.DataGridViewTextBoxColumn mes;
         private System.Windows.Forms.DataGridViewTextBoxColumn cuotaFija;
         private System.Windows.Forms.DataGridViewTextBoxColumn rango1;
         private System.Windows.Forms.DataGridViewTextBoxColumn rango2;
         private System.Windows.Forms.DataGridViewTextBoxColumn rango3;
-        private System.Windows.Forms.ComboBox cbAño;
-        private System.Windows.Forms.ComboBox cbMes;
     }
 }

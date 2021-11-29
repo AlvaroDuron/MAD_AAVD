@@ -202,6 +202,7 @@ namespace AAVD
             // 
             // cbCliente
             // 
+            this.cbCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCliente.FormattingEnabled = true;
             this.cbCliente.Location = new System.Drawing.Point(226, 45);
             this.cbCliente.Name = "cbCliente";
@@ -249,6 +250,7 @@ namespace AAVD
             // 
             // cbTipoServicio
             // 
+            this.cbTipoServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoServicio.FormattingEnabled = true;
             this.cbTipoServicio.Location = new System.Drawing.Point(226, 15);
             this.cbTipoServicio.Name = "cbTipoServicio";

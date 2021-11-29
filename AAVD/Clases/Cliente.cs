@@ -18,16 +18,16 @@ namespace AAVD
         public string nombre { get; set; }
         public string apellidoPaterno { get; set; }
         public string apellidoMaterno { get; set; }
-        public DateTime nacimiento { get; set; }
+        public LocalDate nacimiento { get; set; }
         public string genero { get; set; }
         public string email { get; set; }
-        public DateTime fechaAltaMod { get; set; }
+        public DateTimeOffset fechaAltaMod { get; set; }
 
         public ClienteFisico()
         {
 
         }
-        public ClienteFisico(string curp, string nombreUsuario, string nombre, string apellidoPaterno, string apellidoMaterno, DateTime nacimiento, string genero, string email, DateTime fechaAltaMod)
+        public ClienteFisico(string curp, string nombreUsuario, string nombre, string apellidoPaterno, string apellidoMaterno, LocalDate nacimiento, string genero, string email, DateTimeOffset fechaAltaMod)
         {
             this.curp = curp;
             this.nombreUsuario = nombreUsuario;
@@ -97,7 +97,7 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "INSERT INTO ClieneteFisico(curp, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, email, fechaAltaMod) " +
+                    "INSERT INTO ClienteFisico(curp, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, email, fechaAltaMod) " +
                     "VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', toUnixTimestamp(now())); ",
                     cliente.curp, cliente.nombreUsuario, cliente.nombre, cliente.apellidoPaterno, cliente.apellidoMaterno, cliente.nacimiento, cliente.genero, cliente.email
                 );
@@ -246,13 +246,18 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT nombreUsuario " +
+                "SELECT curp, nombreUsuario, nombre, apellidoPaterno, apellidoMaterno, nacimiento, genero, email, fechaAltaMod " +
                 "FROM ClienteFisico allow filtering;"
                 );
 
                 IMapper mapper = ConexionDB_AAVD.conexion();
                 IEnumerable<ClienteFisico> data = mapper.Fetch<ClienteFisico>(query);
-                cb.DataSource = data.ToList();
+                List<ClienteFisico> clientes = data.ToList();
+                cb.Items.Clear();
+                foreach (ClienteFisico cliente in clientes)
+                {
+                    cb.Items.Add(cliente.nombreUsuario);
+                }
             }
         }
     }
@@ -262,15 +267,15 @@ namespace AAVD
         public string rfc { get; set; }
         public string nombreUsuario { get; set; }
         public string nombre { get; set; }
-        public DateTime constitucion { get; set; }
+        public LocalDate constitucion { get; set; }
         public string email { get; set; }
-        public DateTime fechaAltaMod { get; set; }
+        public DateTimeOffset fechaAltaMod { get; set; }
 
         public ClienteMoral()
         {
 
         }
-        public ClienteMoral(string rfc, string nombreUsuario, string nombre, DateTime constitucion, string email, DateTime fechaAltaMod)
+        public ClienteMoral(string rfc, string nombreUsuario, string nombre, LocalDate constitucion, string email, DateTimeOffset fechaAltaMod)
         {
             this.rfc = rfc;
             this.nombreUsuario = nombreUsuario;
@@ -334,7 +339,7 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "INSERT INTO ClieneteMoral(rfc, nombreUsuario, nombre, constitucion, email, fechaAltaMod) " +
+                    "INSERT INTO ClienteMoral(rfc, nombreUsuario, nombre, constitucion, email, fechaAltaMod) " +
                     "VALUES('{0}', '{1}', '{2}', '{3}', '{4}', toUnixTimestamp(now())); ",
                     cliente.rfc, cliente.nombreUsuario, cliente.nombre, cliente.constitucion, cliente.email
                 );
@@ -483,13 +488,18 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT nombreUsuario " +
+                "SELECT rfc, nombreUsuario, nombre, constitucion, email, fechaAltaMod " +
                 "FROM ClienteMoral allow filtering;"
                 );
 
                 IMapper mapper = ConexionDB_AAVD.conexion();
                 IEnumerable<ClienteMoral> data = mapper.Fetch<ClienteMoral>(query);
-                cb.DataSource = data.ToList();
+                List<ClienteMoral> clientes = data.ToList();
+                cb.Items.Clear();
+                foreach (ClienteMoral cliente in clientes)
+                {
+                    cb.Items.Add(cliente.nombreUsuario);
+                }
             }
         }
     }

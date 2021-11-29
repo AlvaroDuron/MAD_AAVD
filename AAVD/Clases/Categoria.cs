@@ -134,13 +134,18 @@ namespace AAVD
                 else
                 {
                     string query = string.Format(
-                    "SELECT categoria" +
+                    "SELECT categoria, porcentaje " +
                     "FROM Categoria allow filtering;"
                     );
 
                     IMapper mapper = ConexionDB_AAVD.conexion();
                     IEnumerable<Categoria> data = mapper.Fetch<Categoria>(query);
-                    cb.DataSource = data.ToList();
+                    List<Categoria> categorias = data.ToList();
+                    cb.Items.Clear();
+                    foreach (Categoria categoria in categorias)
+                    {
+                        cb.Items.Add(categoria.categoria);
+                    }
                 }
             }
             catch (Exception except)

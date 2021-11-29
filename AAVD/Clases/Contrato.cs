@@ -17,21 +17,21 @@ namespace AAVD
         public int numeroMedidor { get; set; }
         public string nombreUsuario { get; set; }
         public string tipoServicio { get; set; }
-        public char categoria { get; set; }
+        public string categoria { get; set; }
         public int numeroExterior { get; set; }
         public string calle { get; set; }
         public string colonia { get; set; }
         public string municipio { get; set; }
-        public byte estado { get; set; }
-        public DateTime creacion { get; set; }
-        public DateTime fechaAltaMod { get; set; }
+        public int estado { get; set; }
+        public LocalDate creacion { get; set; }
+        public DateTimeOffset fechaAltaMod { get; set; }
 
         public Contrato()
         {
 
         }
 
-        public Contrato(string nombreUsuario, int numeroContrato, int numeroMedidor, char categoria, string tipoServicio, int numeroExterior, string calle, string colonia, string municipio, byte estado, DateTime creacion, DateTime fechaAltaMod)
+        public Contrato(string nombreUsuario, int numeroContrato, int numeroMedidor, string categoria, string tipoServicio, int numeroExterior, string calle, string colonia, string municipio, int estado, LocalDate creacion, DateTimeOffset fechaAltaMod)
         {
             this.nombreUsuario = nombreUsuario;
             this.numeroContrato = numeroContrato;
@@ -64,7 +64,7 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT nombreUsuario, numeroContrato, numeroMedidor, categoria, tipoServicio, numeroExterior, calle, colonia, municipio, estado, creacion, fechaAtaMod " +
+                "SELECT nombreUsuario, numeroContrato, numeroMedidor, categoria, tipoServicio, numeroExterior, calle, colonia, municipio, estado, creacion, fechaAltaMod " +
                 "FROM Contrato WHERE numeroContrato = {0} allow filtering;",
                 numeroContrato);
 
@@ -94,15 +94,16 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT nombreUsuario, numeroContrato, numeroMedidor, categoria, tipoServicio, numeroExterior, calle, colonia, municipio, estado, creacion, fechaAtaMod " +
+                "SELECT nombreUsuario, numeroContrato, numeroMedidor, categoria, tipoServicio, numeroExterior, calle, colonia, municipio, estado, creacion, fechaAltaMod " +
                 "FROM Contrato WHERE numeroMedidor = {0} allow filtering;",
                 numeroMedidor);
 
                 IMapper mapper = ConexionDB_AAVD.conexion();
                 IEnumerable<Contrato> data = mapper.Fetch<Contrato>(query);
-                if (data.Count() > 0)
+                List<Contrato> lista = data.ToList();
+                if (lista.Count() > 0)
                 {
-                    temp = data.ToList()[0];
+                    temp = lista.ToList()[0];
                 }
             }
             return temp;
@@ -136,9 +137,9 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                    "INSERT INTO Contrato(numeroContrato, nombreUsuario, numeroMedidor, categoria, tipoServicio, numeroExterior, calle, colonia, municipio, estado, creacion, fechaAtaMod) " +
-                    "VALUES({0}, '{1}', {2}, '{3}', '{4}', {5}, '{6}', '{7}', '{8}', {9}, '{10}', toUnixTimestamp(now()); ",
-                    contrato.numeroContrato, contrato.nombreUsuario, contrato.numeroMedidor, contrato.categoria, contrato.tipoServicio, contrato.numeroExterior, contrato.calle, contrato.colonia, contrato.municipio, contrato.estado, contrato.creacion
+                    "INSERT INTO Contrato(numeroContrato, nombreUsuario, numeroMedidor, tipoServicio, categoria, numeroExterior, calle, colonia, municipio, estado, creacion, fechaAltaMod) " +
+                    "VALUES({0}, '{1}', {2}, '{3}', '{4}', {5}, '{6}', '{7}', '{8}', {9}, '{10}', toUnixTimestamp(now())); ",
+                    contrato.numeroContrato, contrato.nombreUsuario, contrato.numeroMedidor, contrato.tipoServicio, contrato.categoria, contrato.numeroExterior, contrato.calle, contrato.colonia, contrato.municipio, contrato.estado, contrato.creacion
                 );
                 ConexionDB_AAVD.executeQuery(query);
             }
@@ -215,7 +216,7 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT numeroContrato, nombreUsuario, numeroMedidor, categoria, tipoServicio, numeroExterior, calle, colonia, municipio, estado, creacion, fechaAtaMod " +
+                "SELECT numeroContrato, nombreUsuario, numeroMedidor, categoria, tipoServicio, numeroExterior, calle, colonia, municipio, estado, creacion, fechaAltaMod " +
                 "FROM Contrato allow filtering;"
                 );
 
@@ -241,13 +242,18 @@ namespace AAVD
             else
             {
                 string query = string.Format(
-                "SELECT numeroMedidor " +
+                "SELECT numeroContrato, nombreUsuario, numeroMedidor, categoria, tipoServicio, numeroExterior, calle, colonia, municipio, estado, creacion, fechaAltaMod " +
                 "FROM Contrato allow filtering;"
                 );
 
                 IMapper mapper = ConexionDB_AAVD.conexion();
                 IEnumerable<Contrato> data = mapper.Fetch<Contrato>(query);
-                cb.DataSource = data.ToList();
+                List<Contrato> contratos = data.ToList();
+                cb.Items.Clear();
+                foreach (Contrato contrato in contratos)
+                {
+                    cb.Items.Add(contrato.numeroMedidor);
+                }
             }
         }
     }

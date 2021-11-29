@@ -26,6 +26,7 @@ namespace AAVD
             cellSelected = false;
             try
             {
+                TipoServicio.LlenarCB(cbTipoServicio);
                 Contrato.LlenarDG(dgvContrato);
                 if (rbClientesFisicos.Checked)
                 {

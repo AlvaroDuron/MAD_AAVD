@@ -143,7 +143,7 @@ namespace AAVD
                 else
                 {
                     string query = string.Format(
-                        "SELECT nombre " +
+                        "SELECT nombre, cuotaDrenaje, rango1, rango2, rango3 " +
                         "FROM TipoServicio allow filtering;"
                         );
 

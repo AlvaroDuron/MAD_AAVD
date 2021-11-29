@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Dapper;
+using Cassandra;
+using Cassandra.Mapping;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -73,7 +76,7 @@ namespace AAVD
                     ClienteFisico modificado = new ClienteFisico(
                         cliente.curp, cliente.nombreUsuario,
                         selectedRow.Cells["nombre"].Value.ToString(), selectedRow.Cells["apellidoPaterno"].Value.ToString(), selectedRow.Cells["apellidoMaterno"].Value.ToString(),
-                        Convert.ToDateTime(selectedRow.Cells["nacimiento"].Value.ToString()),
+                        LocalDate.Parse(selectedRow.Cells["nacimiento"].Value.ToString()),
                         selectedRow.Cells["genero"].Value.ToString(),
                         selectedRow.Cells["email"].Value.ToString(),
                         DateTime.Now
@@ -87,7 +90,7 @@ namespace AAVD
                     ClienteMoral modificado = new ClienteMoral(
                         cliente.rfc, cliente.nombreUsuario,
                         selectedRow.Cells["nombre"].Value.ToString(),
-                        Convert.ToDateTime(selectedRow.Cells["constitucion"].Value.ToString()),
+                        LocalDate.Parse(selectedRow.Cells["constitucion"].Value.ToString()),
                         selectedRow.Cells["email"].Value.ToString(),
                         DateTime.Now
                         );
